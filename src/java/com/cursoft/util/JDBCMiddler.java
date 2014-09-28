@@ -1,4 +1,4 @@
-package prueba_conexion;
+package com.cursoft.util;
 import java.sql.*;
 import java.util.Iterator;
 import javax.naming.*;
