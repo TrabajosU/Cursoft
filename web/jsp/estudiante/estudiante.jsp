@@ -4,7 +4,6 @@
     Author     : Manuel
 --%>
 
-
 <!doctype html>
 <html lang="es">
     <head>
@@ -47,7 +46,7 @@
                         <div class="row">
                             <div class="col-xs-offset-1 col-xs-10 alert alert-success">
                                 <div id="error">
-                                    <p><strong>¡Mensaje!</strong></p>
+                                    <p><strong><% out.print(session.getAttribute("Mensaje"));%></strong></p>
                                 </div>
                             </div>
                         </div>
@@ -59,106 +58,118 @@
                         <div class="row">
                             <div class="col-xs-offset-1 col-xs-10" id="contenedor">
                                 <div class="row" id="formulario">
-                                    <form action="#" class="form-horizontal" method="post" role="form">
+                                    <form action="administrarEstudiante.jsp" class="form-horizontal" method="get" role="form">
                                         <fieldset>
                                             <legend>Datos de Usuario</legend>
+                                            <div class="form-group">
+                                                <label for="codigo" class="col-xs-12 col-sm-6 col-md-4 control-label">Código:</label>
+                                                <div class="col-xs-12 col-sm-6 col-md-8">
+                                                    <div class="input-group">
+                                                        <span class="input-group-addon"><span class="glyphicon glyphicon-qrcode"></span></span>
+                                                        <input class="form-control" id="codigo" name="codigo" placeholder="1150789" type="text" enabled>
+                                                    </div>
+                                                </div>
+                                            </div>
                                             <div class="form-group">
                                                 <label for="correo" class="col-xs-12 col-sm-6 col-md-4 control-label">Correo electrónico:</label>
                                                 <div class="col-xs-12 col-sm-6 col-md-8">
                                                     <div class="input-group">
                                                         <span class="input-group-addon"><span class="glyphicon glyphicon-envelope"></span></span>
-                                                        <input class="form-control" id="correo" placeholder="abdul.laiseca@gmail.com" type="text" enabled>
+                                                        <input class="form-control" id="correo" name="correo" placeholder="abdul.laiseca@gmail.com" type="text" enabled>
                                                     </div>
                                                 </div>
                                             </div>
                                             <div class="form-group">
-                                                <label class="col-xs-12 col-sm-6 col-md-4 control-label" for="contraseña" >Contraseña:</label>
+                                                <label class="col-xs-12 col-sm-6 col-md-4 control-label" for="contrasenia" >Contraseña:</label>
                                                 <div class="col-xs-12 col-sm-6 col-md-8">
                                                     <div class="input-group">
                                                         <span class="input-group-addon"><span class="glyphicon glyphicon-lock"></span></span>
-                                                        <input class="form-control" id="contraseña" placeholder="********" type="password" enabled>
+                                                        <input class="form-control" id="contrasenia" name="contrasenia" placeholder="********" type="password" enabled>
                                                     </div>
                                                 </div>
                                             </div>
                                             <div class="form-group">
-                                                <label class="col-xs-12 col-sm-6 col-md-4 control-label" for="confirmar_contraseña">Confirmar contraseña:</label>
+                                                <label class="col-xs-12 col-sm-6 col-md-4 control-label" for="confirmarContrasenia">Confirmar contraseña:</label>
                                                 <div class="col-xs-12 col-sm-6 col-md-8">
                                                     <div class="input-group">
                                                         <span class="input-group-addon"><span class="glyphicon glyphicon-lock"></span></span>
-                                                        <input class="form-control" id="confirmar_contraseña" placeholder="********" type="password" enabled>
+                                                        <input class="form-control" id="confirmarContrasenia" name="confirmarContrasenia" placeholder="********" type="password" enabled>
                                                     </div>
                                                 </div>
                                             </div>
                                             <div class="form-group">
-                                                <label for="nombres" class="col-xs-12 col-sm-6 col-md-4 control-label">Nombres:</label>
+                                                <label for="nombre" class="col-xs-12 col-sm-6 col-md-4 control-label">Nombre:</label>
                                                 <div class="col-xs-12 col-sm-6 col-md-8">
                                                     <div class="input-group">
                                                         <span class="input-group-addon"><span class="glyphicon glyphicon-user"></span></span>
-                                                        <input class="form-control" id="nombres" placeholder="Abdul Fabian" type="text" enabled>
+                                                        <input class="form-control" id="nombre" name="nombre" placeholder="Abdul Fabian" type="text" enabled>
                                                     </div>
                                                 </div>
                                             </div>
                                             <div class="form-group">
-                                                <label for="apellidos" class="col-xs-12 col-sm-6 col-md-4 control-label">Apellidos:</label>
+                                                <label for="apellido" class="col-xs-12 col-sm-6 col-md-4 control-label">Apellido:</label>
                                                 <div class="col-xs-12 col-sm-6 col-md-8">
                                                     <div class="input-group">
                                                         <span class="input-group-addon"><span class="glyphicon glyphicon-user"></span></span>
-                                                        <input class="form-control" id="apellidos" placeholder="Laiseca Candelo" type="text" enabled>
+                                                        <input class="form-control" id="apellido" name="apellido" placeholder="Laiseca Candelo" type="text" enabled>
                                                     </div>
                                                 </div>
                                             </div>
                                             <div class="form-group">
-                                                <label for="tipo_documento" class="col-xs-12 col-sm-6 col-md-4 control-label">Tipo de documento:</label>
+                                                <label for="idTipoDocumento" class="col-xs-12 col-sm-6 col-md-4 control-label">Tipo de documento:</label>
                                                 <div class="col-xs-12 col-sm-6 col-md-8">
-                                                    <select class="form-control" id="tipo_documento" enabled>
-                                                        <option value="aspirante">Cédula de ciudadania</option>
-                                                        <option value="estudiante">Tarjeta de identidad</option>
-                                                        <option value="docente">Pasaporte</option>
+                                                    <select class="form-control" id="idTipoDocumento" name="idTipoDocumento" enabled>
+                                                        <%
+                                                        String [] opciones = {"Cédula de ciudadania", "Tarjeta de identidad", "Pasaporte"};
+                                                        for(int i = 0; i<opciones.length; i++){
+                                                            out.print("<option value=\"" + (i+1) +"\">"+ opciones[i] +"</option>" + "\n\t\t\t\t\t\t\t");
+                                                        }
+                                                        %>
                                                     </select>
                                                  </div>
                                             </div>
                                             <div class="form-group">
-                                                <label for="numero_documento" class="col-xs-12 col-sm-6 col-md-4 control-label">Número de documento:</label>
+                                                <label for="numeroDocumento" class="col-xs-12 col-sm-6 col-md-4 control-label">Número de documento:</label>
                                                 <div class="col-xs-12 col-sm-6 col-md-8">
                                                     <div class="input-group">
                                                         <span class="input-group-addon"><span class="glyphicon glyphicon-barcode"></span></span>
-                                                        <input class="form-control" id="numero_documento" placeholder="13278413" type="text" enabled>
+                                                        <input class="form-control" id="numeroDocumento" name="numeroDocumento" placeholder="13278413" type="text" enabled>
                                                     </div>
                                                 </div>
                                             </div>
                                             <div class="form-group">
-                                                <label for="fecha_nacimiento" class="col-xs-12 col-sm-6 col-md-4 control-label">Fecha de nacimiento:</label>
+                                                <label for="fechaNacimiento" class="col-xs-12 col-sm-6 col-md-4 control-label">Fecha de nacimiento:</label>
                                                 <div class="col-xs-12 col-sm-6 col-md-8">
                                                     <div class="input-group">
                                                         <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span></span>
-                                                        <input class="form-control" id="fecha_nacimiento" placeholder="16/04/1984" type="text" enabled>
+                                                        <input class="form-control" id="fechaNacimiento" name="fechaNacimiento"placeholder="16/04/1984" type="text" enabled>
                                                     </div>
                                                 </div>
                                             </div>
                                             <div class="form-group">
-                                                <label for="direccion_residencia" class="col-xs-12 col-sm-6 col-md-4 control-label">Dirección de residencia:</label>
+                                                <label for="direccion" class="col-xs-12 col-sm-6 col-md-4 control-label">Dirección de residencia:</label>
                                                 <div class="col-xs-12 col-sm-6 col-md-8">
                                                     <div class="input-group">
                                                         <span class="input-group-addon"><span class="glyphicon glyphicon-home"></span></span>
-                                                        <input class="form-control" id="direccion_residencia" placeholder="Cl 21A 11 48 Br Alfonso Lopez" type="text" enabled>
+                                                        <input class="form-control" id="direccion" name="direccion" placeholder="Cl 21A 11 48 Br Alfonso Lopez" type="text" enabled>
                                                     </div>
                                                 </div>
                                             </div>
                                             <div class="form-group">
-                                                <label for="telefono_residencia" class="col-xs-12 col-sm-6 col-md-4 control-label">Teléfono de recidencia:</label>
+                                                <label for="telefono" class="col-xs-12 col-sm-6 col-md-4 control-label">Teléfono:</label>
                                                 <div class="col-xs-12 col-sm-6 col-md-8">
                                                     <div class="input-group">
                                                         <span class="input-group-addon"><span class="glyphicon glyphicon-phone-alt"></span></span>
-                                                        <input class="form-control" id="telefono_residencia" placeholder="5822276" type="text" enabled>
+                                                        <input class="form-control" id="telefono" name="telefono" placeholder="5822276" type="text" enabled>
                                                     </div>
                                                 </div>
                                             </div>
                                             <div class="form-group">
-                                                <label for="telefono_movil" class="col-xs-12 col-sm-6 col-md-4 control-label">Teléfono móvil:</label>
+                                                <label for="telefonoMovil" class="col-xs-12 col-sm-6 col-md-4 control-label">Teléfono móvil:</label>
                                                 <div class="col-xs-12 col-sm-6 col-md-8">
                                                     <div class="input-group">
                                                         <span class="input-group-addon"><span class="glyphicon glyphicon-phone"></span></span>
-                                                        <input class="form-control" id="telefono_movil" placeholder="3137496602" type="text" enabled>
+                                                        <input class="form-control" id="telefonoMovil" name="telefonoMovil" placeholder="3137496602" type="text" enabled>
                                                     </div>
                                                 </div>
                                             </div>
@@ -166,82 +177,77 @@
                                         <fieldset>
                                             <legend>Datos de Aspirante</legend>
                                             <div class="form-group">
-                                                <label for="codigo" class="col-xs-12 col-sm-6 col-md-4 control-label">Código:</label>
-                                                <div class="col-xs-12 col-sm-6 col-md-8">
-                                                    <div class="input-group">
-                                                        <span class="input-group-addon"><span class="glyphicon glyphicon-qrcode"></span></span>
-                                                        <input class="form-control" id="telefono_movil" placeholder="1150789" type="text" enabled>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="form-group">
-                                                <label for="promedio_ponderado" class="col-xs-12 col-sm-6 col-md-4 control-label">Promedio ponderado:</label>
+                                                <label for="promedioPonderado" class="col-xs-12 col-sm-6 col-md-4 control-label">Promedio ponderado:</label>
                                                 <div class="col-xs-12 col-sm-6 col-md-8">
                                                     <div class="input-group">
                                                         <span class="input-group-addon"><span class="glyphicon glyphicon-stats"></span></span>
-                                                        <input class="form-control" id="telefono_movil" placeholder="4.2" type="text" enabled>
+                                                        <input class="form-control" id="promedioPonderado" name="promedioPonderado" placeholder="4.2" type="text" enabled>
                                                     </div>
                                                 </div>
                                             </div>
                                             <div class="form-group">
-                                                <label for="semestre_de_terminacion_de_materias" class="col-xs-12 col-sm-6 col-md-4 control-label">Semestre de terminación de materias:</label>
+                                                <label for="semestreFinalizacionMaterias" class="col-xs-12 col-sm-6 col-md-4 control-label">Semestre de terminación de materias:</label>
                                                 <div class="col-xs-12 col-sm-6 col-md-8">
                                                     <div class="input-group">
                                                         <span class="input-group-addon"><span class="glyphicon glyphicon-list-alt"></span></span>
-                                                        <input class="form-control" id="telefono_movil" placeholder="02/2015" type="text" enabled>
+                                                        <input class="form-control" id="semestreFinalizacionMaterias" name="semestreFinalizacionMaterias" placeholder="02/2015" type="text" enabled>
                                                     </div>
                                                 </div>
                                             </div>
                                             <div class="form-group">
-                                                <label for="recibo_de_terminacion_de_materias" class="col-xs-12 col-sm-6 col-md-4 control-label">Recibo de terminación de materias:</label>
+                                                <label for="reporteFinalizacionMaterias" class="col-xs-12 col-sm-6 col-md-4 control-label">Reporte de terminación de materias:</label>
                                                 <div class="col-xs-12 col-sm-6 col-md-8">
-                                                    <input type="file" class="filestyle" data-iconName="glyphicon-inbox" placeholder="recibo_terminacion_materias.pdf" enabled>
+                                                    <input type="file" class="filestyle" id="reporteFinalizacionMaterias" name="reporteFinalizacionMaterias" data-iconName="glyphicon-inbox" placeholder="recibo_terminacion_materias.pdf" enabled>
                                                 </div>
                                             </div>
                                             <div class="form-group">
-                                                <label for="recibo_de_paz_y_salvo" class="col-xs-12 col-sm-6 col-md-4 control-label">Recibo de paz y salvo:</label>
+                                                <label for="reportePazSalvo" class="col-xs-12 col-sm-6 col-md-4 control-label">Reporte de paz y salvo:</label>
                                                 <div class="col-xs-12 col-sm-6 col-md-8">
-                                                    <input type="file" class="filestyle" data-iconName="glyphicon-inbox" placeholder="recibo_paz_y_salvo.pdf" enabled>
+                                                    <input type="file" class="filestyle" id="reportePazSalvo" name="reportePazSalvo" data-iconName="glyphicon-inbox" placeholder="recibo_paz_y_salvo.pdf" enabled>
                                                 </div>
                                             </div>
                                             <div class="form-group">
-                                                <label for="recibo_de_pago_de_inscripcion" class="col-xs-12 col-sm-6 col-md-4 control-label">Recibo de pago de inscripción:</label>
+                                                <label for="reciboInscripcion" class="col-xs-12 col-sm-6 col-md-4 control-label">Recibo de pago de inscripción:</label>
                                                 <div class="col-xs-12 col-sm-6 col-md-8">
-                                                    <input type="file" class="filestyle" data-iconName="glyphicon-inbox" placeholder="recibo_pago_inscripcion.pdf" enabled>
+                                                    <input type="file" class="filestyle" id="reciboInscripcion" name="reciboInscripcion" data-iconName="glyphicon-inbox" placeholder="recibo_pago_inscripcion.pdf" enabled>
                                                 </div>
                                             </div>
                                         </fieldset>
                                         <fieldset>
                                             <legend>Datos de Estudiante</legend>
                                                 <div class="form-group">
-                                                    <div class="table-responsive">
-                                                        <table class="table table-hover">
-                                                            <thead>
-                                                                <tr>
-                                                                    <th># Módulo</th>
-                                                                    <th>Nombre</th>
-                                                                    <th>Profesor</th>
-                                                                    <th>Nota</th>
-                                                                </tr>
-                                                            </thead>
-                                                            <tbody>
-                                                                <tr>
-                                                                    <td>1</td>
-                                                                    <td><a href="#">Arquitectura del Negocio</a></td>
-                                                                    <td><a href="#">Marco Adarme</a></td>
-                                                                    <td>3.5</td>
-                                                                </tr>
-                                                                <tr>
-                                                                    <td></td>
-                                                                    <td></td>
-                                                                    <td><strong>Definitiva:</strong></a></td>
-                                                                    <td>3.5</td>
-                                                                </tr>
-                                                            </tbody>
-                                                        </table>
+                                                    <label for="reciboPagoMatricula" class="col-xs-12 col-sm-6 col-md-4 control-label">Recibo de pago de matricula:</label>
+                                                    <div class="col-xs-12 col-sm-6 col-md-8">
+                                                        <input type="file" class="filestyle" id="reciboPagoMatricula" name="reciboPagoMatricula" data-iconName="glyphicon-inbox" placeholder="recibo_pago_inscripcion.pdf" enabled>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label for="nota" class="col-xs-12 col-sm-6 col-md-4 control-label">Nota:</label>
+                                                    <div class="col-xs-12 col-sm-6 col-md-8">
+                                                        <div class="input-group">
+                                                            <span class="input-group-addon"><span class="glyphicon glyphicon-stats"></span></span>
+                                                            <input class="form-control" id="nota" name="nota" placeholder="5.0" type="text" enabled>
+                                                        </div>
                                                     </div>
                                                 </div>
                                         </fieldset>
+                                        <div class="form-group">
+                                            <div class="row">
+                                                <div class="col-xs-12 text-center">
+                                                    <button class="btn btn-danger" id="consultar" name="requerimiento" value="consultar" type="submit">Consultar</button>
+                                                    <button class="btn btn-danger" id="registrar" name="requerimiento" value="registrar" type="submit">Registrar</button>
+                                                    <button class="btn btn-danger" id="actualizar" name="requerimiento" value="actualizar" type="submit">Actualizar</button>
+                                                    <button class="btn btn-danger" id="eliminar" name="requerimiento" value="eliminar" type="submit">Eliminar</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <div class="row">
+                                                <div class="col-xs-offset-4 col-xs-4 text-center">
+                                                    <button class="btn btn-danger" id="cancelar" type="submit">Cancelar</button>
+                                                </div>
+                                            </div>
+                                        </div>
                                     </form>
                                 </div>
                             </div>
