@@ -66,7 +66,7 @@
                                                 <div class="col-xs-12 col-sm-6 col-md-8">
                                                     <div class="input-group">
                                                         <span class="input-group-addon"><span class="glyphicon glyphicon-qrcode"></span></span>
-                                                        <input class="form-control" id="codigo" name="codigo" placeholder="1150789" type="text" enabled>
+                                                        <input class="form-control" id="codigo" name="codigo" placeholder="1150789" <% out.print(session.getAttribute("codigo"));%> type="text" enabled>
                                                     </div>
                                                 </div>
                                             </div>
@@ -75,7 +75,7 @@
                                                 <div class="col-xs-12 col-sm-6 col-md-8">
                                                     <div class="input-group">
                                                         <span class="input-group-addon"><span class="glyphicon glyphicon-envelope"></span></span>
-                                                        <input class="form-control" id="correo" name="correo" placeholder="abdul.laiseca@gmail.com" type="text" enabled>
+                                                        <input class="form-control" id="correo" name="correo" placeholder="abdul.laiseca@gmail.com" <% out.print(session.getAttribute("correo"));%> type="text" enabled>
                                                     </div>
                                                 </div>
                                             </div>
@@ -84,7 +84,7 @@
                                                 <div class="col-xs-12 col-sm-6 col-md-8">
                                                     <div class="input-group">
                                                         <span class="input-group-addon"><span class="glyphicon glyphicon-lock"></span></span>
-                                                        <input class="form-control" id="contrasenia" name="contrasenia" placeholder="********" type="password" enabled>
+                                                        <input class="form-control" id="contrasenia" name="contrasenia" placeholder= "********" <% out.print(session.getAttribute("contrasenia"));%> type="password" enabled>
                                                     </div>
                                                 </div>
                                             </div>
@@ -93,7 +93,7 @@
                                                 <div class="col-xs-12 col-sm-6 col-md-8">
                                                     <div class="input-group">
                                                         <span class="input-group-addon"><span class="glyphicon glyphicon-lock"></span></span>
-                                                        <input class="form-control" id="confirmarContrasenia" name="confirmarContrasenia" placeholder="********" type="password" enabled>
+                                                        <input class="form-control" id="confirmarContrasenia" name="confirmarContrasenia" placeholder= "********" <% out.print(session.getAttribute("contrasenia2"));%> type="password" enabled>
                                                     </div>
                                                 </div>
                                             </div>
@@ -102,7 +102,7 @@
                                                 <div class="col-xs-12 col-sm-6 col-md-8">
                                                     <div class="input-group">
                                                         <span class="input-group-addon"><span class="glyphicon glyphicon-user"></span></span>
-                                                        <input class="form-control" id="nombre" name="nombre" placeholder="Abdul Fabian" type="text" enabled>
+                                                        <input class="form-control" id="nombre" name="nombre" placeholder="Abdul Fabian" <% out.print(session.getAttribute("nombre"));%> type="text" enabled>
                                                     </div>
                                                 </div>
                                             </div>
@@ -111,7 +111,7 @@
                                                 <div class="col-xs-12 col-sm-6 col-md-8">
                                                     <div class="input-group">
                                                         <span class="input-group-addon"><span class="glyphicon glyphicon-user"></span></span>
-                                                        <input class="form-control" id="apellido" name="apellido" placeholder="Laiseca Candelo" type="text" enabled>
+                                                        <input class="form-control" id="apellido" name="apellido" placeholder="Laiseca Candelo" <% out.print(session.getAttribute("apellido"));%> type="text" enabled>
                                                     </div>
                                                 </div>
                                             </div>
@@ -133,7 +133,7 @@
                                                 <div class="col-xs-12 col-sm-6 col-md-8">
                                                     <div class="input-group">
                                                         <span class="input-group-addon"><span class="glyphicon glyphicon-barcode"></span></span>
-                                                        <input class="form-control" id="numeroDocumento" name="numeroDocumento" placeholder="13278413" type="text" enabled>
+                                                        <input class="form-control" id="numeroDocumento" name="numeroDocumento" placeholder="13278413" <% out.print(session.getAttribute("documento"));%> type="text" enabled>
                                                     </div>
                                                 </div>
                                             </div>
@@ -142,7 +142,7 @@
                                                 <div class="col-xs-12 col-sm-6 col-md-8">
                                                     <div class="input-group">
                                                         <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span></span>
-                                                        <input class="form-control" id="fechaNacimiento" name="fechaNacimiento"placeholder="16/04/1984" type="text" enabled>
+                                                        <input class="form-control" id="fechaNacimiento" name="fechaNacimiento" placeholder="16/04/1984" <% out.print(session.getAttribute("fechaNacimiento"));%> type="text" enabled>
                                                     </div>
                                                 </div>
                                             </div>
@@ -151,7 +151,7 @@
                                                 <div class="col-xs-12 col-sm-6 col-md-8">
                                                     <div class="input-group">
                                                         <span class="input-group-addon"><span class="glyphicon glyphicon-home"></span></span>
-                                                        <input class="form-control" id="direccion" name="direccion" placeholder="Cl 21A 11 48 Br Alfonso Lopez" type="text" enabled>
+                                                        <input class="form-control" id="direccion" name="direccion" placeholder="Cl 21A 11 48 Br Alfonso Lopez" <% out.print(session.getAttribute("direccion"));%> type="text" enabled>
                                                     </div>
                                                 </div>
                                             </div>
@@ -160,7 +160,7 @@
                                                 <div class="col-xs-12 col-sm-6 col-md-8">
                                                     <div class="input-group">
                                                         <span class="input-group-addon"><span class="glyphicon glyphicon-phone-alt"></span></span>
-                                                        <input class="form-control" id="telefono" name="telefono" placeholder="5822276" type="text" enabled>
+                                                        <input class="form-control" id="telefono" name="telefono" placeholder="5822276" <% out.print(session.getAttribute("telefono"));%> type="text" enabled>
                                                     </div>
                                                 </div>
                                             </div>
@@ -169,7 +169,7 @@
                                                 <div class="col-xs-12 col-sm-6 col-md-8">
                                                     <div class="input-group">
                                                         <span class="input-group-addon"><span class="glyphicon glyphicon-phone"></span></span>
-                                                        <input class="form-control" id="telefonoMovil" name="telefonoMovil" placeholder="3137496602" type="text" enabled>
+                                                        <input class="form-control" id="telefonoMovil" name="telefonoMovil" placeholder="3137496602" <% out.print(session.getAttribute("telefonoMovil"));%> type="text" enabled>
                                                     </div>
                                                 </div>
                                             </div>
@@ -181,7 +181,7 @@
                                                 <div class="col-xs-12 col-sm-6 col-md-8">
                                                     <div class="input-group">
                                                         <span class="input-group-addon"><span class="glyphicon glyphicon-stats"></span></span>
-                                                        <input class="form-control" id="promedioPonderado" name="promedioPonderado" placeholder="4.2" type="text" enabled>
+                                                        <input class="form-control" id="promedioPonderado" name="promedioPonderado" placeholder="4.2" <% out.print(session.getAttribute("promedio"));%> type="text" enabled>
                                                     </div>
                                                 </div>
                                             </div>
@@ -190,7 +190,7 @@
                                                 <div class="col-xs-12 col-sm-6 col-md-8">
                                                     <div class="input-group">
                                                         <span class="input-group-addon"><span class="glyphicon glyphicon-list-alt"></span></span>
-                                                        <input class="form-control" id="semestreFinalizacionMaterias" name="semestreFinalizacionMaterias" placeholder="02/2015" type="text" enabled>
+                                                        <input class="form-control" id="semestreFinalizacionMaterias" name="semestreFinalizacionMaterias" placeholder="02/2015" <% out.print(session.getAttribute("semestreTerminacionMaterias"));%> type="text" enabled>
                                                     </div>
                                                 </div>
                                             </div>
@@ -226,7 +226,7 @@
                                                     <div class="col-xs-12 col-sm-6 col-md-8">
                                                         <div class="input-group">
                                                             <span class="input-group-addon"><span class="glyphicon glyphicon-stats"></span></span>
-                                                            <input class="form-control" id="nota" name="nota" placeholder="5.0" type="text" enabled>
+                                                            <input class="form-control" id="nota" name="nota" placeholder="5.0" <% out.print(session.getAttribute("nota"));%> type="text" enabled>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -234,10 +234,10 @@
                                         <div class="form-group">
                                             <div class="row">
                                                 <div class="col-xs-12 text-center">
-                                                    <button class="btn btn-danger" id="consultar" name="requerimiento" value="consultar" type="submit">Consultar</button>
-                                                    <button class="btn btn-danger" id="registrar" name="requerimiento" value="registrar" type="submit">Registrar</button>
-                                                    <button class="btn btn-danger" id="actualizar" name="requerimiento" value="actualizar" type="submit">Actualizar</button>
-                                                    <button class="btn btn-danger" id="eliminar" name="requerimiento" value="eliminar" type="submit">Eliminar</button>
+                                                    <button class="btn btn-danger" id="consultar" name="requerimiento" value="consultar" type="submit" >Consultar</button>
+                                                    <button class="btn btn-danger" id="registrar" name="requerimiento" value="registrar" type="submit" >Registrar</button>
+                                                    <button class="btn btn-danger" id="actualizar" name="requerimiento" value="actualizar" type="submit" >Actualizar</button>
+                                                    <button class="btn btn-danger" id="eliminar" name="requerimiento" value="eliminar" type="submit" >Eliminar</button>
                                                 </div>
                                             </div>
                                         </div>

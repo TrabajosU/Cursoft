@@ -17,4 +17,7 @@ public class Facade {
         return new AdministrarEstudiante().registrarEstudiante(usuario, aspirante, estudiante);
     }
     
+    public String realizarConsultaCodigo(String codigo){
+        return new AdministrarEstudiante().realizarConsultaCodigo(codigo);
+    }
 }

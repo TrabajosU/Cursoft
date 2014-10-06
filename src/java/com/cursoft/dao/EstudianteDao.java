@@ -45,5 +45,49 @@ public class EstudianteDao {
         return true;
         
     }
+
+    public String realizarConsultaCodigo(String codigo) {
+       
+        ConexionMysql.conectar();
+        
+        String consulta = "";
+        String consultaArmada ="";
+        
+        ArrayList resultado = ConexionMysql.getConsultaSQL("SELECT * FROM usuarios WHERE codigo = '"+codigo+"';");
+        //consulta += resultado.toString();
+        System.err.println(resultado.toString());
+        
+        String idUsuario = ((String) resultado.get(0)).split("-")[0];
+        
+        consultaArmada += ((String) resultado.get(0)).split("-")[1] + "-" + ((String) resultado.get(0)).split("-")[2] + "-" +
+                ((String) resultado.get(0)).split("-")[3] + "-" + ((String) resultado.get(0)).split("-")[4] + "-" +
+                ((String) resultado.get(0)).split("-")[5] + "-" + ((String) resultado.get(0)).split("-")[6] + "-" +
+                ((String) resultado.get(0)).split("-")[7] + "-" + ((String) resultado.get(0)).split("-")[8] + "-" +
+                ((String) resultado.get(0)).split("-")[9] + "-" + ((String) resultado.get(0)).split("-")[10] + "-" +
+                ((String) resultado.get(0)).split("-")[11] + "-";
+        
+        resultado.clear();
+        
+        resultado = ConexionMysql.getConsultaSQL("SELECT * FROM aspirantes WHERE idUsuario='" 
+                + idUsuario + "';");
+        //consulta += resultado.toString();
+        
+        String idAspirante = ((String) resultado.get(0)).split("-")[0];
+        
+        consultaArmada += ((String) resultado.get(0)).split("-")[2] + "-" +((String) resultado.get(0)).split("-")[3] + "-";
+        
+        resultado.clear();
+        
+        resultado = ConexionMysql.getConsultaSQL("SELECT * FROM estudiantes WHERE idAspirante='" 
+                + idAspirante + "';");
+        //consulta += resultado.toString();
+        
+        consultaArmada += ((String) resultado.get(0)).split("-")[4];
+        
+        ConexionMysql.desconectar();
+        
+        return consultaArmada;
+        
+    }
     
 }
