@@ -25,23 +25,23 @@
          
          
          
-         session.setAttribute("codigo", "value="+ " \" "+(String)consulta.split("-")[0]+ " \" ");
-         session.setAttribute("correo", "value="+ " \" "+(String)consulta.split("-")[1]+ " \" ");
-         session.setAttribute("contrasenia", "value="+ " \" "+(String)consulta.split("-")[2]+ " \" ");
-         session.setAttribute("contrasenia2", "value="+ " \" "+(String)consulta.split("-")[2]+ " \" ");
-         session.setAttribute("nombre", "value="+ " \" "+(String)consulta.split("-")[3]+ " \" ");
-         session.setAttribute("apellido", "value="+ " \" "+(String)consulta.split("-")[4]+ " \" ");
-         session.setAttribute("tipoDocumento", "value="+ " \" "+(String)consulta.split("-")[5]+ " \" ");
-         session.setAttribute("documento", "value="+ " \" "+(String)consulta.split("-")[6]+ " \" ");
-         session.setAttribute("fechaNacimiento", "value="+ " \" "+(String)consulta.split("-")[7]+ " \" ");
-         session.setAttribute("direccion", "value="+ " \" "+(String)consulta.split("-")[8]+ " \" ");
-         session.setAttribute("telefono", "value="+ " \" "+(String)consulta.split("-")[9]+ " \" ");
-         session.setAttribute("telefonoMovil", "value="+ " \" "+(String)consulta.split("-")[10]+ " \" ");
+         session.setAttribute("codigo", "value="+ "\""+(String)consulta.split("-")[0]+ "\"");
+         session.setAttribute("correo", "value="+ "\""+(String)consulta.split("-")[1]+ "\"");
+         session.setAttribute("contrasenia", "value="+ "\""+(String)consulta.split("-")[2]+ "\"");
+         session.setAttribute("contrasenia2", "value="+ "\""+(String)consulta.split("-")[2]+ "\"");
+         session.setAttribute("nombre", "value="+ "\""+(String)consulta.split("-")[3]+ "\"");
+         session.setAttribute("apellido", "value="+ "\""+(String)consulta.split("-")[4]+ "\"");
+         session.setAttribute("tipoDocumento", "value="+ "\""+(String)consulta.split("-")[5]+ "\"");
+         session.setAttribute("documento", "value="+ "\""+(String)consulta.split("-")[6]+ "\"");
+         session.setAttribute("fechaNacimiento", "value="+ "\""+(String)consulta.split("-")[7]+ "\"");
+         session.setAttribute("direccion", "value="+ "\""+(String)consulta.split("-")[8]+ "\"");
+         session.setAttribute("telefono", "value="+ "\""+(String)consulta.split("-")[9]+ "\"");
+         session.setAttribute("telefonoMovil", "value="+ "\""+(String)consulta.split("-")[10]+ "\"");
          
-         session.setAttribute("promedio", "value="+ " \" "+(String)consulta.split("-")[11]+ " \" ");
-         session.setAttribute("semestreTerminacionMaterias", "value="+ " \" "+(String)consulta.split("-")[12]+ " \" ");
+         session.setAttribute("promedio", "value="+ "\""+(String)consulta.split("-")[11]+ "\"");
+         session.setAttribute("semestreTerminacionMaterias", "value="+ "\""+(String)consulta.split("-")[12]+ "\"");
          
-         session.setAttribute("nota", "value="+ " \" "+(String)consulta.split("-")[13]+ " \" ");
+         session.setAttribute("nota", "value="+ "\""+(String)consulta.split("-")[13]+ "\"");
          
          session.setAttribute("Mensaje", "Éxito");
          response.sendRedirect("estudiante.jsp");
