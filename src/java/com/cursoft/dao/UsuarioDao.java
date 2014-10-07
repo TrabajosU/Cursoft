@@ -6,6 +6,7 @@
 package com.cursoft.dao;
 import com.cursoft.dto.UsuarioDto;
 import com.cursoft.util.ConexionMysql;
+import java.util.ArrayList;
 
 /**
  *
@@ -29,6 +30,26 @@ public class UsuarioDao {
         boolean x = ConexionMysql.ejecutarActualizacionSQL(sql);
         ConexionMysql.desconectar();
         return x;   
+    }
+
+    public boolean validarInicioSesion(UsuarioDto usuario, String tipo) {
+        int tip = Integer.parseInt(tipo);
+        String sql = "SELECT usuarios.nombre,usuarios.apellido FROM usuarios WHERE correo = '"+usuario.getCorreo()+
+                "' AND contrasenia = '"+usuario.getContrasenia()+"' AND idTipoUsuario = '"+tip+"';";
+        
+        ConexionMysql.conectar();
+        ArrayList resultado = ConexionMysql.getConsultaSQL(sql);
+        System.out.println(resultado.toString());
+        
+        boolean sw = false;
+        if(resultado.size()!=0){
+            usuario.setApellido(((String) resultado.get(0)).split("-")[1] );
+            usuario.setNombre(((String) resultado.get(0)).split("-")[0] );
+            sw= true;
+        }
+        ConexionMysql.desconectar();
+        
+        return sw;
     }
     
 }

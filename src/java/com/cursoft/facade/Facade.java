@@ -5,6 +5,7 @@
  */
 package com.cursoft.facade;
 import com.cursoft.controller.AdministrarEstudiante;
+import com.cursoft.controller.AdministrarUsuario;
 import com.cursoft.dto.*;
 
 /**
@@ -19,5 +20,9 @@ public class Facade {
     
     public String realizarConsultaCodigo(String codigo){
         return new AdministrarEstudiante().realizarConsultaCodigo(codigo);
+    }
+    
+    public boolean iniciarSesion(UsuarioDto usuario,String tipo){
+        return new AdministrarUsuario().iniciarSesion(usuario,tipo);
     }
 }

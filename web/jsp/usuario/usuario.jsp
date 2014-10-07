@@ -1,6 +1,6 @@
 <%-- 
     Document   : usuario
-    Created on : 27/09/2014, 05:56:04 PM
+    Created on : 6/10/2014, 08:58:54 PM
     Author     : Manuel
 --%>
 
@@ -12,6 +12,12 @@
         <title>JSP Page</title>
     </head>
     <body>
-        <h1>Hello World!</h1>
+        <h1>Bienvenido</h1>
+        
+        <br>
+        <% out.print(session.getAttribute("nombre"));
+           out.print(" ");
+           out.print(session.getAttribute("apellido"));
+        %>
     </body>
 </html>
