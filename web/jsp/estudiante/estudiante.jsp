@@ -244,7 +244,7 @@
                                         <div class="form-group">
                                             <div class="row">
                                                 <div class="col-xs-offset-4 col-xs-4 text-center">
-                                                    <button class="btn btn-danger" id="cancelar" type="submit">Cancelar</button>
+                                                    <button class="btn btn-danger" id="cancelar" name="requerimiento" value="cancelar" type="submit">Cancelar</button>
                                                 </div>
                                             </div>
                                         </div>

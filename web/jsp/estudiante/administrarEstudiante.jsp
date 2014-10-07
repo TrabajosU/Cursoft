@@ -47,6 +47,7 @@
          response.sendRedirect("estudiante.jsp");
          
         //out.println("consultar");
+         
      }
     else if(val.equals("registrar")){
         
@@ -115,5 +116,8 @@
      else if(val.equals("eliminar")){
          //var=4;
          out.println("eliminar");
+     }
+     else if(val.equals("cancelar")){
+         response.sendRedirect("estudiante.jsp");
      }
 %>
