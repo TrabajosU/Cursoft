@@ -37,5 +37,24 @@ public class AspiranteDao {
         
         return true;
     }
+
+    public boolean actualizarAspirante(UsuarioDto usuario, AspiranteDto aspirante) {
+        System.out.println(" codigo :  "+usuario.getCodigo());
+        ConexionMysql.conectar();
+        String sql1 = "SELECT usuarios.idUsuario FROM usuarios WHERE codigo='" + usuario.getCodigo()+ "';";
+        ArrayList resultado = ConexionMysql.getConsultaSQL(sql1);
+        System.out.println(resultado.toString());
+        
+        String idUsuario = ((String) resultado.get(0)).split("-")[0];
+        
+        String sql = "UPDATE aspirantes SET promedioPonderado = '"+aspirante.getPromedioPonderado()+"', semestreFinalizacionMaterias = '"+aspirante.getSemestreFinalizacionMaterias()+"', "+
+                "reporteFinalizacionMaterias = '"+aspirante.getReporteFinalizacionMaterias()+"', reportePazSalvo = '"+aspirante.getReportePazSalvo()+
+                "', reciboInscripcion = '"+aspirante.getReciboInscripcion()+"', WHERE idUsuario = '"+idUsuario+"'";
+        
+        
+        boolean x = ConexionMysql.ejecutarActualizacionSQL(sql);
+        ConexionMysql.desconectar();
+        return x;
+    }
     
 }

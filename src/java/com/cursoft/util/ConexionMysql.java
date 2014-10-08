@@ -17,7 +17,7 @@ public class ConexionMysql {
     private static  String bd = "cursoft";
     private static  String login = "cursoft";
     private static  String password = "123456";
-    private static  String host = "25.141.198.189";  
+    private static  String host = "25.142.30.209";  
     private static  String url = "jdbc:mysql://" + host + ":3306/"+bd;
     private static  String controlador = "com.mysql.jdbc.Driver";
     private static  JDBCMiddler jdbc;

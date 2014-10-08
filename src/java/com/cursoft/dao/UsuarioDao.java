@@ -31,13 +31,33 @@ public class UsuarioDao {
         ConexionMysql.desconectar();
         return x;   
     }
+    
+    public boolean actualizarUsuario(UsuarioDto usuario) {
+        System.out.println("llego a actualizar en usuario!!!!            ....");
+        
+        String sql = "UPDATE usuarios SET correo = '"+usuario.getCorreo()+"', contrasenia = '"+usuario.getContrasenia()+"', "+
+                "nombre = '"+usuario.getNombre()+"', apellido = '"+usuario.getApellido()+"', idTipoDocumento = '"+usuario.getIdTipoDocumento()+"', "+
+                "numeroDocumento = '"+usuario.getNumeroDocumento()+"', fechaNacimiento = '"+usuario.getFechaNacimiento()+"', "+
+                "direccion = '"+usuario.getDireccion()+"', telefono = '"+usuario.getTelefono()+"', telefonoMovil = '"+usuario.getTelefonoMovil()+"' "+
+                "WHERE codigo = '"+usuario.getCodigo()+"'";
+        
+        ConexionMysql.conectar();
+        boolean x = ConexionMysql.ejecutarActualizacionSQL(sql);
+        ConexionMysql.desconectar();
+        return x;
+    }
 
     public boolean validarInicioSesion(UsuarioDto usuario, String tipo) {
+        
         int tip = Integer.parseInt(tipo);
         String sql = "SELECT usuarios.nombre,usuarios.apellido FROM usuarios WHERE correo = '"+usuario.getCorreo()+
                 "' AND contrasenia = '"+usuario.getContrasenia()+"' AND idTipoUsuario = '"+tip+"';";
         
+        //boolean sw = false;
         ConexionMysql.conectar();
+        //sw = true;
+        
+        
         ArrayList resultado = ConexionMysql.getConsultaSQL(sql);
         System.out.println(resultado.toString());
         
@@ -47,9 +67,12 @@ public class UsuarioDao {
             usuario.setNombre(((String) resultado.get(0)).split("-")[0] );
             sw= true;
         }
+        
         ConexionMysql.desconectar();
         
         return sw;
     }
+
+    
     
 }

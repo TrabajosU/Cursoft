@@ -66,7 +66,7 @@
                                                 <div class="col-xs-12 col-sm-6 col-md-8">
                                                     <div class="input-group">
                                                         <span class="input-group-addon"><span class="glyphicon glyphicon-qrcode"></span></span>
-                                                        <input class="form-control" id="codigo" name="codigo" placeholder="1150789" <% out.print(session.getAttribute("codigo"));%> type="text" enabled>
+                                                        <input class="form-control" id="codigo" name="codigo" placeholder="1150789" <% out.print(session.getAttribute("codigo"));%> type="text">
                                                     </div>
                                                 </div>
                                             </div>

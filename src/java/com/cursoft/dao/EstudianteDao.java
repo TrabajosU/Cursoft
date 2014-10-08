@@ -45,8 +45,31 @@ public class EstudianteDao {
         return true;
         
     }
+    
+    public boolean actualizarEstudiante(UsuarioDto usuario, AspiranteDto aspirante, EstudianteDto estudiante) {
+        
+        ConexionMysql.conectar();
+        
+        ArrayList resultado = ConexionMysql.getConsultaSQL("SELECT usuarios.idUsuario FROM usuarios WHERE codigo='" + usuario.getCodigo()+ "';");
+           
+        String idUsuario = ((String) resultado.get(0)).split("-")[0];
+        
+        resultado.clear();
+        
+        resultado = ConexionMysql.getConsultaSQL("SELECT aspirantes.idAspirante FROM aspirantes WHERE idUsuario='" 
+                + idUsuario + "';");
+        
+        String idAspirante = ((String) resultado.get(0)).split("-")[0];
+        
+        String sql = "UPDATE estudiantes SET nota = '"+estudiante.getNota()+"' WHERE idAspirante = '"+idAspirante+"'";
+        
+        ConexionMysql.ejecutarActualizacionSQL(sql);
+        ConexionMysql.desconectar();
+        return true;
+        
+    }
 
-    public String realizarConsultaCodigo(String codigo) {
+    public String consultarEstudianteCodigo(String codigo) {
        
         ConexionMysql.conectar();
         
@@ -89,5 +112,7 @@ public class EstudianteDao {
         return consultaArmada;
         
     }
+
+    
     
 }

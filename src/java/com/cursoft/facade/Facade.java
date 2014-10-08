@@ -18,8 +18,12 @@ public class Facade {
         return new AdministrarEstudiante().registrarEstudiante(usuario, aspirante, estudiante);
     }
     
-    public String realizarConsultaCodigo(String codigo){
-        return new AdministrarEstudiante().realizarConsultaCodigo(codigo);
+    public String consultarEstudianteCodigo(String codigo){
+        return new AdministrarEstudiante().consultarEstudianteCodigo(codigo);
+    }
+    
+    public int actualizarEstudiante(UsuarioDto usuario, AspiranteDto aspirante, EstudianteDto estudiante ) {
+        return new AdministrarEstudiante().actualizarEstudiante(usuario, aspirante, estudiante);
     }
     
     public boolean iniciarSesion(UsuarioDto usuario,String tipo){

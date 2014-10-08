@@ -34,7 +34,7 @@ public class AdministrarEstudiante {
         return 0;
     }
 
-    public String realizarConsultaCodigo(String codigo) {
+    public String consultarEstudianteCodigo(String codigo) {
         if(codigo.isEmpty())
             return "";
         
@@ -49,7 +49,7 @@ public class AdministrarEstudiante {
         //Fin niño bueno
         
         EstudianteDao estudianteDao = new EstudianteDao();
-        String consulta = estudianteDao.realizarConsultaCodigo(codigo);
+        String consulta = estudianteDao.consultarEstudianteCodigo(codigo);
         
         
         
@@ -60,6 +60,23 @@ public class AdministrarEstudiante {
         */
         
         return consulta;
+    }
+
+    public int actualizarEstudiante(UsuarioDto usuario, AspiranteDto aspirante, EstudianteDto estudiante) {
+        
+        UsuarioDao usuarioDao = new UsuarioDao();
+        boolean us = usuarioDao.actualizarUsuario(usuario);
+        //System.out.println("Usuario: "+usuario.toString());
+        
+        AspiranteDao aspiranteDao = new AspiranteDao();
+        boolean as =  aspiranteDao.actualizarAspirante(usuario, aspirante);
+        
+        EstudianteDao estudianteDao = new EstudianteDao();
+        boolean es = estudianteDao.actualizarEstudiante(usuario, aspirante, estudiante);
+        
+        if( us || as || es )
+            return 1;
+        return 0;
     }
     
 }
