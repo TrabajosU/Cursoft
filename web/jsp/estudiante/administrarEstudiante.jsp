@@ -170,7 +170,7 @@
         int bandera = facade.actualizarEstudiante(usuario, aspirante, estudiante);
         System.out.println(" actualizaaarrrrrrr");
         if (bandera == 1) {
-            /*
+            
             String consulta = facade.consultarEstudianteCodigo(codigo);
             out.println("La consulta esssss:                    ......     "+consulta);
         
@@ -191,7 +191,7 @@
             session.setAttribute("semestreTerminacionMaterias", "value="+ "\""+(String)consulta.split("-")[12]+ "\"");
          
             session.setAttribute("nota", "value="+ "\""+(String)consulta.split("-")[13]+ "\"");
-         */
+         
             session.setAttribute("Mensaje", "Éxito");
             response.sendRedirect("estudiante.jsp");
         }

@@ -26,9 +26,9 @@ public class AspiranteDao {
         String idUsuario = ((String) resultado.get(0)).split("-")[0];
         
         String sql = "INSERT INTO aspirantes (idUsuario, promedioPonderado, semestreFinalizacionMaterias, "
-                + "reporteFinalizacionMaterias, reportePazSalvo, reciboInscripcion) VALUES ('" + idUsuario + "','" + aspirante.getPromedioPonderado()
+                + "reporteFinalizacionMaterias, reportePazSalvo, reciboInscripcion, estado) VALUES ('" + idUsuario + "','" + aspirante.getPromedioPonderado()
                 + "','" + aspirante.getSemestreFinalizacionMaterias() + "','" + aspirante.getReporteFinalizacionMaterias() + "','"
-                + aspirante.getReportePazSalvo() + "','" + aspirante.getReciboInscripcion() + "')";
+                + aspirante.getReportePazSalvo() + "','" + aspirante.getReciboInscripcion() + "','0'" + ")";
         
         System.out.println(sql);
         
@@ -56,5 +56,26 @@ public class AspiranteDao {
         ConexionMysql.desconectar();
         return x;
     }
+
+    public String consultarAspirantes() {
+        
+        ConexionMysql.conectar();
+        String sql1 = "SELECT usuarios.idUsuario, usuarios.codigo, usuarios.nombre, usuarios.apellido FROM usuarios;";
+        ArrayList resultado = ConexionMysql.getConsultaSQL(sql1);
+        System.out.println(resultado.toString());
+        String consulta = "";
+        for(int i =0; i<resultado.size(); i++){
+            String [] idUsuarios = resultado.get(i).toString().split("-");
+            
+            ArrayList resultado2 = ConexionMysql.getConsultaSQL("SELECT aspirantes.estado FROM aspirantes WHERE idUsuario='" 
+                    + idUsuarios[0] + "';");
+            System.out.println(resultado2.toString());
+            consulta += idUsuarios[1]+"-"+idUsuarios[2]+"-"+idUsuarios[3]+"-"+resultado2.get(0).toString().split("-")[0]+";";
+        }
+        ConexionMysql.desconectar();
+        return consulta;
+    }
+    
+    
     
 }

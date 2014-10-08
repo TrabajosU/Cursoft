@@ -4,6 +4,7 @@
  * and open the template in the editor.
  */
 package com.cursoft.facade;
+import com.cursoft.controller.AdministrarAspirante;
 import com.cursoft.controller.AdministrarEstudiante;
 import com.cursoft.controller.AdministrarUsuario;
 import com.cursoft.dto.*;
@@ -28,5 +29,13 @@ public class Facade {
     
     public boolean iniciarSesion(UsuarioDto usuario,String tipo){
         return new AdministrarUsuario().iniciarSesion(usuario,tipo);
+    }
+    
+    public String consultarAspirantes(){
+        return new AdministrarAspirante().consultarAspirantes();
+    }
+    
+    public String consultarEstudiantes(){
+        return new AdministrarEstudiante().consultarEstudiantes();
     }
 }

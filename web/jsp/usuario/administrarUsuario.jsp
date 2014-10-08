@@ -26,9 +26,9 @@
         boolean bandera = facade.iniciarSesion(usuario,tipo);
     
         if(bandera){
-            session.setAttribute("nombre",usuario.getNombre());
-            session.setAttribute("apellido", usuario.getApellido());
-            response.sendRedirect("usuario.jsp");
+            //session.setAttribute("nombre",usuario.getNombre());
+            //session.setAttribute("apellido", usuario.getApellido());
+            response.sendRedirect("administrarCoordinador.jsp");
             //out.println("Conecto");
         }
         else{

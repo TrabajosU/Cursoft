@@ -79,4 +79,10 @@ public class AdministrarEstudiante {
         return 0;
     }
     
+    public String consultarEstudiantes(){
+        
+        EstudianteDao estudiante = new EstudianteDao();
+        return estudiante.consultarEstudiantes();
+    }
+    
 }

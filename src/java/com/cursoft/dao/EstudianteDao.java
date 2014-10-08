@@ -113,6 +113,29 @@ public class EstudianteDao {
         
     }
 
-    
+    public String consultarEstudiantes() {
+        
+        ConexionMysql.conectar();
+        String sql1 = "SELECT usuarios.idUsuario,usuarios.codigo,usuarios.nombre,usuarios.apellido FROM usuarios ;";
+        ArrayList resultado = ConexionMysql.getConsultaSQL(sql1);
+        System.out.println(resultado.toString());
+        String consulta = "";
+        for(int i =0; i<resultado.size(); i++){
+            
+            String [] idUsuarios = resultado.get(i).toString().split("-");
+            
+            ArrayList resultado2 = ConexionMysql.getConsultaSQL("SELECT aspirantes.idAspirante FROM aspirantes WHERE idUsuario='" 
+                    + idUsuarios[0] + "';");
+            
+            System.out.println(resultado2.toString());
+            
+            ArrayList resultado3 = ConexionMysql.getConsultaSQL("SELECT estudiantes.estado FROM estudiantes WHERE idAspirante='"+
+                    resultado2.get(0).toString().split("-")[0]+"';");
+            
+            consulta += idUsuarios[1]+"-"+idUsuarios[2]+"-"+idUsuarios[3]+"-"+resultado3.get(0).toString().split("-")[0]+";";
+        }
+        ConexionMysql.desconectar();
+        return consulta;
+    }
     
 }
