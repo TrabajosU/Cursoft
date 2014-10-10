@@ -5,6 +5,9 @@
  */
 package com.cursoft.controller;
 import com.cursoft.dao.AspiranteDao;
+import com.cursoft.dto.AspiranteDto;
+import com.cursoft.dto.EstudianteDto;
+import com.cursoft.dto.UsuarioDto;
 /**
  *
  * @author Manuel
@@ -18,4 +21,12 @@ public class AdministrarAspirante {
         AspiranteDao aspirante = new AspiranteDao();
         return aspirante.consultarAspirantes();
     }
+
+    public void actualizarAspiranteEstado(UsuarioDto usuario, AspiranteDto aspirante) {
+        
+        AspiranteDao aspirant = new AspiranteDao();
+        aspirant.actualizarAspiranteEstado(usuario,aspirante);
+        return;
+    }
+
 }

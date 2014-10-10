@@ -107,24 +107,7 @@
                                             <% out.println(session.getAttribute("aspirantes")); %>
                                         </tbody>
                                     </table>
-                                    <form action="administrarEstudiante.jsp" class="form-horizontal" method="get" role="form">
-                                        <div class="form-group">
-                                            <div class="row">
-                                                <div class="col-xs-offset-4 col-xs-4 text-center">
-                                                    <button class="btn btn-danger" id="cancelar" name="requerimiento" value="guardarCambios" type="submit">Guardar Cambios</button>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </form>
-                                    <form>
-                                        <div class="form-group">
-                                            <div class="row">
-                                                <div class="col-xs-offset-4 col-xs-4 text-center">
-                                                    <button class="btn btn-danger" id="cancelar" name="requerimiento" value="cancelar" type="submit">Cancelar</button>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </form>
+                                    
                                 </div>
                             </div>
                         </div>
@@ -144,30 +127,23 @@
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            <tr>
-                                                <td>1</td>
-                                                <td><a href="#">1150682</a></td>
-                                                <td>Jhroman Arlex Perez Buendia</td>
-                                                <td>Aprobado</td>
-                                            </tr>
-                                            <tr>
-                                                <td>2</td>
-                                                <td><a href="#">1150013</a></td>
-                                                <td>Ana Katerine Montesinos Gelvez</td>
-                                                <td>Rechazado</td>
-                                            </tr>
-                                            <tr>
-                                                <td>3</td>
-                                                <td><a href="#">1150000</a></td>
-                                                <td>Albert Antonio Orellano Suarez</td>
-                                                <td>Pendiente</td>
-                                            </tr>
+                                            <% out.println(session.getAttribute("estudiantes")); %>
                                         </tbody>
                                     </table>
                                 </div>
                             </div>
                         </div>
                     </div>
+                   
+                    <form>
+                        <div class="form-group">
+                            <div class="row">
+                                <div class="col-xs-offset-4 col-xs-4 text-center">
+                                    <button class="btn btn-danger" id="cancelar" name="requerimiento" value="cancelar" type="submit">Cancelar</button>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
                 </div>
             </div>
         </section>

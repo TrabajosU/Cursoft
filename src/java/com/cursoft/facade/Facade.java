@@ -38,4 +38,14 @@ public class Facade {
     public String consultarEstudiantes(){
         return new AdministrarEstudiante().consultarEstudiantes();
     }
+    
+    public void actualizarAspiranteEstado(UsuarioDto usuario,AspiranteDto aspirante){
+        new AdministrarAspirante().actualizarAspiranteEstado(usuario,aspirante);
+        return;
+    }
+    
+    public void actualizarEstudianteEstado(UsuarioDto usuario,EstudianteDto estudiante){
+        new AdministrarEstudiante().actualizarEstudianteEstado(usuario,estudiante);
+        return;
+    }
 }

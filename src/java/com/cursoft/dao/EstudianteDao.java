@@ -137,5 +137,29 @@ public class EstudianteDao {
         ConexionMysql.desconectar();
         return consulta;
     }
+
+    public void actualizarEstudianteEstado(UsuarioDto usuario, EstudianteDto estudiante) {
+        ConexionMysql.conectar();
+        
+        ArrayList resultado = ConexionMysql.getConsultaSQL("SELECT usuarios.idUsuario FROM usuarios WHERE codigo='" + usuario.getCodigo()+ "';");
+           
+        String idUsuario = ((String) resultado.get(0)).split("-")[0];
+        
+        resultado.clear();
+        
+        resultado = ConexionMysql.getConsultaSQL("SELECT aspirantes.idAspirante FROM aspirantes WHERE idUsuario='" 
+                + idUsuario + "';");
+        
+        String idAspirante = ((String) resultado.get(0)).split("-")[0];
+        
+        int est = Integer.parseInt(estudiante.getEstado())-1;
+        
+        String sql = "UPDATE estudiantes SET estado = '"+est+"' WHERE idAspirante = '"+idAspirante+"'";
+        
+        boolean x =ConexionMysql.ejecutarActualizacionSQL(sql);
+        ConexionMysql.desconectar();
+        System.out.println("actualizo????::::::  "+x);
+        return;
+    }
     
 }

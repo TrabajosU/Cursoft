@@ -49,7 +49,7 @@ public class AspiranteDao {
         
         String sql = "UPDATE aspirantes SET promedioPonderado = '"+aspirante.getPromedioPonderado()+"', semestreFinalizacionMaterias = '"+aspirante.getSemestreFinalizacionMaterias()+"', "+
                 "reporteFinalizacionMaterias = '"+aspirante.getReporteFinalizacionMaterias()+"', reportePazSalvo = '"+aspirante.getReportePazSalvo()+
-                "', reciboInscripcion = '"+aspirante.getReciboInscripcion()+"', WHERE idUsuario = '"+idUsuario+"'";
+                "', reciboInscripcion = '"+aspirante.getReciboInscripcion()+"' WHERE idUsuario = '"+idUsuario+"'";
         
         
         boolean x = ConexionMysql.ejecutarActualizacionSQL(sql);
@@ -74,6 +74,25 @@ public class AspiranteDao {
         }
         ConexionMysql.desconectar();
         return consulta;
+    }
+
+    public void actualizarAspiranteEstado(UsuarioDto usuario, AspiranteDto aspirante) {
+        System.out.println(" actualizarAspiranteEstado con codigo :  "+usuario.getCodigo()+"y estado:   "+aspirante.getEstado());
+        ConexionMysql.conectar();
+        String sql1 = "SELECT usuarios.idUsuario FROM usuarios WHERE codigo='" + usuario.getCodigo()+ "';";
+        ArrayList resultado = ConexionMysql.getConsultaSQL(sql1);
+        System.out.println(resultado.toString());
+        
+        String idUsuario = ((String) resultado.get(0)).split("-")[0];
+        int estad = Integer.parseInt(aspirante.getEstado())-1;
+        String sql = "UPDATE aspirantes SET estado = '"+estad+"' WHERE idUsuario = '"+idUsuario+"'";
+        
+        
+        boolean x = ConexionMysql.ejecutarActualizacionSQL(sql);
+        ConexionMysql.desconectar();
+        System.out.println("actualizo estado ???? : "+x);
+        return;
+        
     }
     
     

@@ -84,5 +84,11 @@ public class AdministrarEstudiante {
         EstudianteDao estudiante = new EstudianteDao();
         return estudiante.consultarEstudiantes();
     }
+
+    public void actualizarEstudianteEstado(UsuarioDto usuario, EstudianteDto estudiante) {
+        EstudianteDao student = new EstudianteDao();
+        student.actualizarEstudianteEstado(usuario,estudiante);
+        return;
+    }
     
 }
