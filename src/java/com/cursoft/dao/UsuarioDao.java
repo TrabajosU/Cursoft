@@ -55,7 +55,7 @@ public class UsuarioDao {
         
         ConexionMysql.conectar();
                 
-        String consultaArmada = "";//hola
+        String consultaArmada = "";  //hola
         
         String sql = "UPDATE usuarios SET estado = '" + estado + "' "
                         + "WHERE codigo = '" + usuario.getCodigo() + "';";                                                  
