@@ -29,7 +29,7 @@ public class UsuarioDao {
         ConexionMysql.conectar();
         boolean x = ConexionMysql.ejecutarActualizacionSQL(sql);
         ConexionMysql.desconectar();
-        return x;   
+        return x; 
     }
     
     public boolean actualizarUsuario(UsuarioDto usuario) {
@@ -46,6 +46,39 @@ public class UsuarioDao {
         ConexionMysql.desconectar();
         return x;
     }
+    
+    /**
+     * Método que cambia el estado de un usuario a inactivo.
+     * @return 
+     */
+    public String actualizarEstadoUsuario(UsuarioDto usuario, byte estado){
+        
+        ConexionMysql.conectar();
+                
+        String consultaArmada = "";
+        
+        String sql = "UPDATE usuarios SET estado = '" + estado + "' "
+                        + "WHERE codigo = '" + usuario.getCodigo() + "';";                                                  
+        
+        ConexionMysql.ejecutarActualizacionSQL(sql);        
+        
+        
+        ArrayList resultado = ConexionMysql.getConsultaSQL("SELECT usuarios.* FROM usuarios WHERE codigo = '" + usuario.getCodigo()+ "';");
+           
+        String [] registro = resultado.get(0).toString().split("-");
+        
+        consultaArmada += registro[1] + '-' + registro[4] + '-' + registro[5];
+                                
+        //consulta += resultado.toString();
+        
+        
+        ConexionMysql.desconectar();
+         
+        return consultaArmada;
+        
+        
+    }
+    
 
     public boolean validarInicioSesion(UsuarioDto usuario, String tipo) {
         
