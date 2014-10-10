@@ -37,8 +37,8 @@ public class EstudianteDao {
         
         System.out.println(idAspirante);
         
-        String sql = "INSERT INTO estudiantes(idAspirante, nota) VALUES ('"
-                +  idAspirante + "','" + estudiante.getNota()+ "')";
+        String sql = "INSERT INTO estudiantes(idAspirante, nota, estado) VALUES ('"
+                +  idAspirante + "','" + estudiante.getNota()+ "','0')";
         
         ConexionMysql.ejecutarActualizacionSQL(sql);
         ConexionMysql.desconectar();
