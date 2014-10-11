@@ -97,7 +97,7 @@
         int bandera = facade.registrarEstudiante(usuario, aspirante, estudiante);
         
         if (bandera == 1) {
-            session.setAttribute("Mensaje", "Éxito");
+            session.setAttribute("Mensaje", "¡Su registro ha sido exitoso!");
             response.sendRedirect("estudiante.jsp");
         }
         else if(bandera == 0) {
@@ -205,6 +205,23 @@
      else if(val.equals("eliminar")){
          //var=4;
          out.println("eliminar");
+         
+         String codigo = request.getParameter("codigo");   
+         usuario.setCodigo(codigo);
+         
+         String respuesta = facade.eliminarEstudiante(usuario);
+         
+         if(!respuesta.isEmpty()){
+             session.setAttribute("Mensaje", "Procedimiento exitoso. Información del"
+                                + " estudiante eliminado del sistema:\n" + 
+                                    respuesta.split("-")[0] + " " + respuesta.split("-")[1] + " " + respuesta.split("-")[2]);          
+         }
+         else{
+            session.setAttribute("Mensaje", "Error");            
+         }
+         
+         response.sendRedirect("estudiante.jsp");
+         
      }
      
      else if(val.equals("cancelar")){

@@ -21,7 +21,8 @@ public class AspiranteDao {
         ConexionMysql.conectar();
         String sql1 = "SELECT usuarios.idUsuario FROM usuarios WHERE codigo='" + usuario.getCodigo()+ "';";
         ArrayList resultado = ConexionMysql.getConsultaSQL(sql1);
-        System.out.println(resultado.toString());
+        System.out.println("CÓDIGO: "+usuario.getCodigo());
+        System.out.println(resultado.get(0).toString());
         
         String idUsuario = ((String) resultado.get(0)).split("-")[0];
         

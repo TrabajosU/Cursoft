@@ -120,7 +120,7 @@
                                                 <div class="col-xs-12 col-sm-6 col-md-8">
                                                     <select class="form-control" id="idTipoDocumento" name="idTipoDocumento" enabled>
                                                         <%
-                                                        String [] opciones = {"Cédula de ciudadania", "Tarjeta de identidad", "Pasaporte"};
+                                                        String [] opciones = {"Cédula de ciudadanía", "Tarjeta de identidad", "Pasaporte"};
                                                         for(int i = 0; i<opciones.length; i++){
                                                             out.print("<option value=\"" + (i+1) +"\">"+ opciones[i] +"</option>" + "\n\t\t\t\t\t\t\t");
                                                         }

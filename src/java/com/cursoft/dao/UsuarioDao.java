@@ -19,15 +19,17 @@ public class UsuarioDao {
     
     public boolean registrarUsuario (UsuarioDto usuario) {
         
+        System.out.println("datosss: "+usuario.toString());
         String sql = "INSERT INTO usuarios(codigo, correo, contrasenia, nombre, apellido, idTipoDocumento, numeroDocumento, "
-                + "fechaNacimiento, direccion, telefono, telefonoMovil, idTipoUsuario) VALUES ('" + usuario.getCodigo() + "','" 
+                + "fechaNacimiento, direccion, telefono, telefonoMovil, idTipoUsuario, estado) VALUES ('" + usuario.getCodigo() + "','" 
                 + usuario.getCorreo()+ "','" + usuario.getContrasenia() + "','" + usuario.getNombre() + "','"
                 + usuario.getApellido() + "','" + usuario.getIdTipoDocumento() + "','" + usuario.getNumeroDocumento() + "','"
                 + usuario.getFechaNacimiento() + "','"+ usuario.getDireccion() + "','" + usuario.getTelefono() + "','"
-                + usuario.getTelefonoMovil() + "','" + usuario.getIdTipoUsuario() + "')";
+                + usuario.getTelefonoMovil() + "','" + usuario.getIdTipoUsuario() + "', '1')";
         
         ConexionMysql.conectar();
         boolean x = ConexionMysql.ejecutarActualizacionSQL(sql);
+        System.out.println("ingresó a tabla usuario el dato?: "+x);
         ConexionMysql.desconectar();
         return x; 
     }

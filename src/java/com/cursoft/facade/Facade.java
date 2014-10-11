@@ -48,4 +48,8 @@ public class Facade {
         new AdministrarEstudiante().actualizarEstudianteEstado(usuario,estudiante);
         return;
     }
+    
+    public String eliminarEstudiante(UsuarioDto usuario){
+        return new AdministrarUsuario().eliminarUsuario(usuario, (byte)0);
+    }
 }
