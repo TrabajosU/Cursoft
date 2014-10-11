@@ -18,7 +18,7 @@
 
     if(val.equals("consultar")){
         
-         out.println("consultar");
+         //out.println("consultar");
          String codigo = request.getParameter("codigo");
          String consulta = facade.consultarEstudianteCodigo(codigo);
          //out.println("La consulta esssss:                    ......     "+consulta);

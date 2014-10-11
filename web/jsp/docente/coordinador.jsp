@@ -54,27 +54,20 @@
                 <div class="sidebar-collapse">
                     <ul class="nav" id="side-menu">
                         <li>
-                            <a href="#"><i class="fa fa-bar-chart-o fa-fw"></i> Aspirante<span class="fa arrow"></span></a>
+                            <a href="#"><i class="fa fa-bar-chart-o fa-fw"></i> Administrar<span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
                                 <li>
-                                    <a href="#">Consultar</a>
+                                    <a href="#">Aspirantes</a>
                                 </li>
                                 <li>
-                                    <a href="#">Actualizar</a>
+                                    <a href="#">Estudiantes</a>
+                                </li>
+                                <li>
+                                    <a href="docente.jsp">Docentes</a>
                                 </li>
                             </ul>
                         </li>
-                        <li>
-                            <a href="#"><i class="fa fa-bar-chart-o fa-fw"></i> Estudiante<span class="fa arrow"></span></a>
-                            <ul class="nav nav-second-level">
-                                <li>
-                                    <a href="#">Consultar</a>
-                                </li>
-                                <li>
-                                    <a href="#">Actualizar</a>
-                                </li>
-                            </ul>
-                        </li>
+                        
                     </ul>
                 </div>
             </div>
