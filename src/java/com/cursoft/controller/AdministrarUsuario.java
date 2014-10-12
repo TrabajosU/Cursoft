@@ -16,11 +16,11 @@ public class AdministrarUsuario {
     
     public AdministrarUsuario(){}
     
-    public boolean iniciarSesion(UsuarioDto usuario, String tipo){
+    public String iniciarSesion(UsuarioDto usuario){
         
-        UsuarioDao user=new UsuarioDao();
-        
-        return user.validarInicioSesion(usuario, tipo);
+        UsuarioDao user = new UsuarioDao();
+                
+        return user.validarInicioSesion(usuario);
     }
     
      public String eliminarUsuario(UsuarioDto usuario, byte estado){
@@ -51,7 +51,18 @@ public class AdministrarUsuario {
          encuentra en espera que el coordinador le apruebe como estudiante)
          1. Aprobado (aquel que ya sido matriculado en el curso tras validar su recibo de
          matrícula)
-         2. Graduado         
+         2. Graduado
+         
+         -Tipos de docente:
+         
+         0. Administrador
+         1. Profesor
+         2. Coordinador
+         3. 1 y 2
+         4. 0 y 1
+         5. 0 y 2
+         6. 0, 1 y 2
+         
          */
         UsuarioDao user = new UsuarioDao();
         

@@ -49,6 +49,73 @@ public class UsuarioDao {
         return x;
     }
     
+    public String validarInicioSesion(UsuarioDto usuario){
+        
+        ConexionMysql.conectar();
+        
+        String consulta = "";
+        String info ="";
+        
+        ArrayList resultado = ConexionMysql.getConsultaSQL("SELECT * FROM usuarios WHERE correo = '" + usuario.getCorreo() + "';");
+        //consulta += resultado.toString();
+        System.err.println(resultado.toString());
+        
+        if(resultado.isEmpty()){
+            return "-1";
+        }
+        String [] registro = resultado.get(0).toString().split("-");
+        
+        if(!String.valueOf(usuario.getIdTipoUsuario()).equals(registro[12]) ||
+            !registro[3].equals(usuario.getContrasenia())){
+            return "-1"; //Datos incorrectos
+        }
+        if(registro[13].equals("0")){
+            return "-2";
+        }
+        String idUsuario = registro[0];
+        
+        resultado.clear();
+        
+        if(usuario.getIdTipoUsuario() == 1){
+            //busco en aspirante y estudiante
+            resultado = ConexionMysql.getConsultaSQL("SELECT aspirantes.idAspirante, "
+                        + "aspirantes.estado FROM aspirantes WHERE idUsuario = '" + idUsuario + "';");
+            if(!resultado.isEmpty()){
+                registro = resultado.get(0).toString().split("-");
+                if(registro[1].equals("0")){
+                    return "A0";
+                }
+                else{
+                    String idAspirante = registro[0];
+                    resultado.clear();
+                    resultado = ConexionMysql.getConsultaSQL("SELECT estudiantes.estado, "
+                        + " FROM estudiantes WHERE idAspirante = '" + idAspirante + "';");
+                    if(!resultado.isEmpty()){
+                        registro = resultado.get(0).toString().split("-");
+                        return ("E" + registro[0]);                        
+                    }
+                    return "A1";
+                    
+                }
+            }            
+        }
+        else if(usuario.getIdTipoUsuario() == 2 || usuario.getIdTipoUsuario() == 3){
+            //busco en docente
+            resultado = ConexionMysql.getConsultaSQL("SELECT docentes.estado, "
+                        + " FROM docentes WHERE idUsuario = '" + idUsuario + "';");
+            if(!resultado.isEmpty()){
+                registro = resultado.get(0).toString().split("-");
+                return ("D" + registro[0]);
+            }           
+        }        
+                                                
+        //info += registro[1] + '-' + registro[4] + '-' + registro[5];
+        ConexionMysql.desconectar();
+        
+        return "-1";
+    }
+    
+    
     /**
      * Método que cambia el estado de un usuario a inactivo.
      * @return 

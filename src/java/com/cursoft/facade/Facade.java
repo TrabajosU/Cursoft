@@ -29,8 +29,8 @@ public class Facade {
         return new AdministrarEstudiante().actualizarEstudiante(usuario, aspirante, estudiante);
     }
     
-    public boolean iniciarSesion(UsuarioDto usuario,String tipo){
-        return new AdministrarUsuario().iniciarSesion(usuario,tipo);
+    public String iniciarSesion(UsuarioDto usuario){
+        return new AdministrarUsuario().iniciarSesion(usuario);
     }
     
     public String consultarAspirantes(){

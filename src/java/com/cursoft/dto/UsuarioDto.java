@@ -23,12 +23,12 @@ public class UsuarioDto {
     private String direccion;
     private String telefono;
     private String telefonoMovil;
-    private String idTipoUsuario;
+    private byte idTipoUsuario;
 
     public UsuarioDto() {
     }
 
-    public UsuarioDto(int idUsuario, String codigo, String correo, String contrasenia, String nombre, String apellido, int idTipoDocumento, String numeroDocumento, String fechaNacimiento, String direccion, String telefono, String telefonoMovil, String idTipoUsuario) {
+    public UsuarioDto(int idUsuario, String codigo, String correo, String contrasenia, String nombre, String apellido, int idTipoDocumento, String numeroDocumento, String fechaNacimiento, String direccion, String telefono, String telefonoMovil, byte idTipoUsuario) {
         this.idUsuario = idUsuario;
         this.codigo = codigo;
         this.correo = correo;
@@ -140,11 +140,11 @@ public class UsuarioDto {
         this.telefonoMovil = telefonoMovil;
     }
 
-    public String getIdTipoUsuario() {
+    public byte getIdTipoUsuario() {
         return idTipoUsuario;
     }
 
-    public void setIdTipoUsuario(String idTipoUsuario) {
+    public void setIdTipoUsuario(byte idTipoUsuario) {
         this.idTipoUsuario = idTipoUsuario;
     }
 

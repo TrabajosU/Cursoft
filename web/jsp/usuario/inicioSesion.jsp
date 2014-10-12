@@ -54,9 +54,11 @@
                             <div class="form-group">
                                 <label for="tipo">Tipo de usuario:</label>
                                 <select class="form-control" id="tipo" name = "tipo">
-                                  <option value="1">Aspirante</option>
-                                  <option value="3">Estudiante</option>
-                                  <option value="2">Profesor</option>
+                                  <!--<option value="1">Aspirante</option>-->
+                                  <option value="1">Estudiante</option>
+                                  <!--<option value="2">Profesor</option>-->
+                                  <option value="2">Docente</option>
+                                  <option value="0">Administrador</option>
                                 </select>
                                 <p class="help-block">Selecciona tu tipo de usuario</p>
                             </div>
