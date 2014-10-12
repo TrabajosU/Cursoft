@@ -24,16 +24,22 @@
     
         usuario.setIdTipoUsuario(tipo);
         usuario.setCorreo(correo);
-        usuario.setContrasenia(contrasenia);
-            
+        usuario.setContrasenia(contrasenia);            
+               
+        
         String resp = facade.iniciarSesion(usuario);
         
         if(resp.equals("A0")){
-            out.print("Bienvenido, eres un aspirante pendiente");
+            //out.print("Bienvenido, eres un aspirante pendiente");
+            response.sendRedirect("../aspirante/aspirantePendiente.jsp");
         }
         else if(resp.equals("A1")){
-            out.print("Bienvenido, eres un aspirante aprobado, puedes cargar tu matrícula");
-        }            
+            //out.print("Bienvenido, eres un aspirante aprobado, puedes cargar tu matrícula");
+            response.sendRedirect("../aspirante/aspiranteAprobado.jsp");
+        }
+        else if(resp.equals("A2")){
+            out.print("Bienvenido, eres un aspirante en estado rechazado, comunícate con el coordinador del curso");
+        }
         else if(resp.equals("E0")){
             out.print("Bienvenido, eres un estudiante pendiente");
         }
@@ -42,6 +48,9 @@
         }
         else if(resp.equals("E2")){
             out.print("Bienvenido, eres un estudiante egresado");
+        }
+        else if(resp.equals("E3")){
+            out.print("Bienvenido, eres un estudiante en estado rechazado, comunícate con el coordinador del curso");
         }
         else if(resp.equals("D0")){
             out.print("Bienvenido, eres el administrador");
@@ -63,16 +72,15 @@
         }
         else if(resp.equals("D6")){
             out.print("Bienvenido, eres un docente con de todos los tipos");
+            
         }
-        else if(resp.equals("-1")){
-            out.print("Datos incorrectos, verifica tu usuario y contraseña");
-            session.setAttribute("Mensaje", "Tu cuenta se encuentra inactiva");
-            response.sendRedirect("estudiante.jsp");
+        else if(resp.equals("-1")){            
+            session.setAttribute("Mensaje", "Datos incorrectos, verifica tu usuario y contraseña");
+            response.sendRedirect("inicioSesion.jsp");
         }
-        else if(resp.equals("-2")){
-            //out.print("Tu cuenta se encuentra inactiva");
-            session.setAttribute("Mensaje", "Tu cuenta se encuentra inactiva");
-            response.sendRedirect("estudiante.jsp");
+        else if(resp.equals("-2")){            
+            session.setAttribute("Mensaje", "Tu cuenta se encuentra inhabilitada");
+            response.sendRedirect("inicioSesion.jsp");            
         }
         
         HttpSession ssn = request.getSession(true);

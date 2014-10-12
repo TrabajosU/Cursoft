@@ -60,7 +60,7 @@ public class UsuarioDao {
         //consulta += resultado.toString();
         System.err.println(resultado.toString());
         
-        if(resultado.isEmpty()){
+        if(resultado == null){
             return "-1";
         }
         String [] registro = resultado.get(0).toString().split("-");
@@ -80,17 +80,20 @@ public class UsuarioDao {
             //busco en aspirante y estudiante
             resultado = ConexionMysql.getConsultaSQL("SELECT aspirantes.idAspirante, "
                         + "aspirantes.estado FROM aspirantes WHERE idUsuario = '" + idUsuario + "';");
-            if(!resultado.isEmpty()){
+            if(resultado == null){
                 registro = resultado.get(0).toString().split("-");
                 if(registro[1].equals("0")){
                     return "A0";
+                }
+                else if(registro[1].equals("2")){
+                    return "A2";
                 }
                 else{
                     String idAspirante = registro[0];
                     resultado.clear();
                     resultado = ConexionMysql.getConsultaSQL("SELECT estudiantes.estado, "
                         + " FROM estudiantes WHERE idAspirante = '" + idAspirante + "';");
-                    if(!resultado.isEmpty()){
+                    if(resultado == null){
                         registro = resultado.get(0).toString().split("-");
                         return ("E" + registro[0]);                        
                     }

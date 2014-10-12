@@ -75,7 +75,7 @@
                                                 <div class="col-xs-12 col-sm-6 col-md-8">
                                                     <div class="input-group">
                                                         <span class="input-group-addon"><span class="glyphicon glyphicon-envelope"></span></span>
-                                                        <input class="form-control" id="correo" name="correo" placeholder="abdul.laiseca@gmail.com" <% out.print(session.getAttribute("correo"));%> type="text" enabled>
+                                                        <input class="form-control" id="correo" name="correo" placeholder="abdul.laiseca@gmail.com" <% out.print(session.getAttribute("correo"));%> type="text">
                                                     </div>
                                                 </div>
                                             </div>
@@ -84,7 +84,7 @@
                                                 <div class="col-xs-12 col-sm-6 col-md-8">
                                                     <div class="input-group">
                                                         <span class="input-group-addon"><span class="glyphicon glyphicon-lock"></span></span>
-                                                        <input class="form-control" id="contrasenia" name="contrasenia" placeholder= "********" <% out.print(session.getAttribute("contrasenia"));%> type="password" enabled>
+                                                        <input class="form-control" id="contrasenia" name="contrasenia" placeholder= "********" <% out.print(session.getAttribute("contrasenia"));%> type="password">
                                                     </div>
                                                 </div>
                                             </div>
@@ -93,7 +93,7 @@
                                                 <div class="col-xs-12 col-sm-6 col-md-8">
                                                     <div class="input-group">
                                                         <span class="input-group-addon"><span class="glyphicon glyphicon-lock"></span></span>
-                                                        <input class="form-control" id="confirmarContrasenia" name="confirmarContrasenia" placeholder= "********" <% out.print(session.getAttribute("contrasenia2"));%> type="password" enabled>
+                                                        <input class="form-control" id="confirmarContrasenia" name="confirmarContrasenia" placeholder= "********" <% out.print(session.getAttribute("contrasenia2"));%> type="password">
                                                     </div>
                                                 </div>
                                             </div>
@@ -102,7 +102,7 @@
                                                 <div class="col-xs-12 col-sm-6 col-md-8">
                                                     <div class="input-group">
                                                         <span class="input-group-addon"><span class="glyphicon glyphicon-user"></span></span>
-                                                        <input class="form-control" id="nombre" name="nombre" placeholder="Abdul Fabian" <% out.print(session.getAttribute("nombre"));%> type="text" enabled>
+                                                        <input class="form-control" id="nombre" name="nombre" placeholder="Abdul Fabian" <% out.print(session.getAttribute("nombre"));%> type="text">
                                                     </div>
                                                 </div>
                                             </div>
@@ -111,14 +111,14 @@
                                                 <div class="col-xs-12 col-sm-6 col-md-8">
                                                     <div class="input-group">
                                                         <span class="input-group-addon"><span class="glyphicon glyphicon-user"></span></span>
-                                                        <input class="form-control" id="apellido" name="apellido" placeholder="Laiseca Candelo" <% out.print(session.getAttribute("apellido"));%> type="text" enabled>
+                                                        <input class="form-control" id="apellido" name="apellido" placeholder="Laiseca Candelo" <% out.print(session.getAttribute("apellido"));%> type="text">
                                                     </div>
                                                 </div>
                                             </div>
                                             <div class="form-group">
                                                 <label for="idTipoDocumento" class="col-xs-12 col-sm-6 col-md-4 control-label">Tipo de documento:</label>
                                                 <div class="col-xs-12 col-sm-6 col-md-8">
-                                                    <select class="form-control" id="idTipoDocumento" name="idTipoDocumento" enabled>
+                                                    <select class="form-control" id="idTipoDocumento" name="idTipoDocumento">
                                                         <%
                                                         String [] opciones = {"Cédula de ciudadanía", "Tarjeta de identidad", "Pasaporte"};
                                                         for(int i = 0; i<opciones.length; i++){
@@ -133,7 +133,7 @@
                                                 <div class="col-xs-12 col-sm-6 col-md-8">
                                                     <div class="input-group">
                                                         <span class="input-group-addon"><span class="glyphicon glyphicon-barcode"></span></span>
-                                                        <input class="form-control" id="numeroDocumento" name="numeroDocumento" placeholder="13278413" <% out.print(session.getAttribute("documento"));%> type="text" enabled>
+                                                        <input class="form-control" id="numeroDocumento" name="numeroDocumento" placeholder="13278413" <% out.print(session.getAttribute("documento"));%> type="text">
                                                     </div>
                                                 </div>
                                             </div>
@@ -142,7 +142,7 @@
                                                 <div class="col-xs-12 col-sm-6 col-md-8">
                                                     <div class="input-group">
                                                         <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span></span>
-                                                        <input class="form-control" id="fechaNacimiento" name="fechaNacimiento" placeholder="16/04/1984" <% out.print(session.getAttribute("fechaNacimiento"));%> type="text" enabled>
+                                                        <input class="form-control" id="fechaNacimiento" name="fechaNacimiento" placeholder="16/04/1984" <% out.print(session.getAttribute("fechaNacimiento"));%> type="text">
                                                     </div>
                                                 </div>
                                             </div>
@@ -151,7 +151,7 @@
                                                 <div class="col-xs-12 col-sm-6 col-md-8">
                                                     <div class="input-group">
                                                         <span class="input-group-addon"><span class="glyphicon glyphicon-home"></span></span>
-                                                        <input class="form-control" id="direccion" name="direccion" placeholder="Cl 21A 11 48 Br Alfonso Lopez" <% out.print(session.getAttribute("direccion"));%> type="text" enabled>
+                                                        <input class="form-control" id="direccion" name="direccion" placeholder="Cl 21A 11 48 Br Alfonso Lopez" <% out.print(session.getAttribute("direccion"));%> type="text">
                                                     </div>
                                                 </div>
                                             </div>
@@ -160,7 +160,7 @@
                                                 <div class="col-xs-12 col-sm-6 col-md-8">
                                                     <div class="input-group">
                                                         <span class="input-group-addon"><span class="glyphicon glyphicon-phone-alt"></span></span>
-                                                        <input class="form-control" id="telefono" name="telefono" placeholder="5822276" <% out.print(session.getAttribute("telefono"));%> type="text" enabled>
+                                                        <input class="form-control" id="telefono" name="telefono" placeholder="5822276" <% out.print(session.getAttribute("telefono"));%> type="text">
                                                     </div>
                                                 </div>
                                             </div>
@@ -169,7 +169,7 @@
                                                 <div class="col-xs-12 col-sm-6 col-md-8">
                                                     <div class="input-group">
                                                         <span class="input-group-addon"><span class="glyphicon glyphicon-phone"></span></span>
-                                                        <input class="form-control" id="telefonoMovil" name="telefonoMovil" placeholder="3137496602" <% out.print(session.getAttribute("telefonoMovil"));%> type="text" enabled>
+                                                        <input class="form-control" id="telefonoMovil" name="telefonoMovil" placeholder="3137496602" <% out.print(session.getAttribute("telefonoMovil"));%> type="text">
                                                     </div>
                                                 </div>
                                             </div>
@@ -181,7 +181,7 @@
                                                 <div class="col-xs-12 col-sm-6 col-md-8">
                                                     <div class="input-group">
                                                         <span class="input-group-addon"><span class="glyphicon glyphicon-stats"></span></span>
-                                                        <input class="form-control" id="promedioPonderado" name="promedioPonderado" placeholder="4.2" <% out.print(session.getAttribute("promedio"));%> type="text" enabled>
+                                                        <input class="form-control" id="promedioPonderado" name="promedioPonderado" placeholder="4.2" <% out.print(session.getAttribute("promedio"));%> type="text">
                                                     </div>
                                                 </div>
                                             </div>
@@ -190,26 +190,26 @@
                                                 <div class="col-xs-12 col-sm-6 col-md-8">
                                                     <div class="input-group">
                                                         <span class="input-group-addon"><span class="glyphicon glyphicon-list-alt"></span></span>
-                                                        <input class="form-control" id="semestreFinalizacionMaterias" name="semestreFinalizacionMaterias" placeholder="02/2015" <% out.print(session.getAttribute("semestreTerminacionMaterias"));%> type="text" enabled>
+                                                        <input class="form-control" id="semestreFinalizacionMaterias" name="semestreFinalizacionMaterias" placeholder="02/2015" <% out.print(session.getAttribute("semestreTerminacionMaterias"));%> type="text">
                                                     </div>
                                                 </div>
                                             </div>
                                             <div class="form-group">
                                                 <label for="reporteFinalizacionMaterias" class="col-xs-12 col-sm-6 col-md-4 control-label">Reporte de terminación de materias:</label>
                                                 <div class="col-xs-12 col-sm-6 col-md-8">
-                                                    <input type="file" class="filestyle" id="reporteFinalizacionMaterias" name="reporteFinalizacionMaterias" data-iconName="glyphicon-inbox" placeholder="recibo_terminacion_materias.pdf" enabled>
+                                                    <input type="file" class="filestyle" id="reporteFinalizacionMaterias" name="reporteFinalizacionMaterias" data-iconName="glyphicon-inbox">
                                                 </div>
                                             </div>
                                             <div class="form-group">
                                                 <label for="reportePazSalvo" class="col-xs-12 col-sm-6 col-md-4 control-label">Reporte de paz y salvo:</label>
                                                 <div class="col-xs-12 col-sm-6 col-md-8">
-                                                    <input type="file" class="filestyle" id="reportePazSalvo" name="reportePazSalvo" data-iconName="glyphicon-inbox" placeholder="recibo_paz_y_salvo.pdf" enabled>
+                                                    <input type="file" class="filestyle" id="reportePazSalvo" name="reportePazSalvo" data-iconName="glyphicon-inbox">
                                                 </div>
                                             </div>
                                             <div class="form-group">
                                                 <label for="reciboInscripcion" class="col-xs-12 col-sm-6 col-md-4 control-label">Recibo de pago de inscripción:</label>
                                                 <div class="col-xs-12 col-sm-6 col-md-8">
-                                                    <input type="file" class="filestyle" id="reciboInscripcion" name="reciboInscripcion" data-iconName="glyphicon-inbox" placeholder="recibo_pago_inscripcion.pdf" enabled>
+                                                    <input type="file" class="filestyle" id="reciboInscripcion" name="reciboInscripcion" data-iconName="glyphicon-inbox">
                                                 </div>
                                             </div>
                                         </fieldset>
@@ -218,7 +218,7 @@
                                                 <div class="form-group">
                                                     <label for="reciboPagoMatricula" class="col-xs-12 col-sm-6 col-md-4 control-label">Recibo de pago de matricula:</label>
                                                     <div class="col-xs-12 col-sm-6 col-md-8">
-                                                        <input type="file" class="filestyle" id="reciboPagoMatricula" name="reciboPagoMatricula" data-iconName="glyphicon-inbox" placeholder="recibo_pago_inscripcion.pdf" enabled>
+                                                        <input type="file" class="filestyle" id="reciboPagoMatricula" name="reciboPagoMatricula" data-iconName="glyphicon-inbox">
                                                     </div>
                                                 </div>
                                                 <div class="form-group">
@@ -226,7 +226,7 @@
                                                     <div class="col-xs-12 col-sm-6 col-md-8">
                                                         <div class="input-group">
                                                             <span class="input-group-addon"><span class="glyphicon glyphicon-stats"></span></span>
-                                                            <input class="form-control" id="nota" name="nota" placeholder="5.0" <% out.print(session.getAttribute("nota"));%> type="text" enabled>
+                                                            <input class="form-control" id="nota" name="nota" placeholder="5.0" <% out.print(session.getAttribute("nota"));%> type="text">
                                                         </div>
                                                     </div>
                                                 </div>

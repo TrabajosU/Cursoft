@@ -44,6 +44,7 @@ public class AdministrarUsuario {
          1. Aprobado (aquel que ya ha sido aprobado por el coordinador del curso)
          Cuando el coordinador aprueba al aspirante, se hace éste cambio de estado y
          se habilita la opción de carga del recibo de pago de matrícula del curso.
+         2. Rechazado
          
          -Estados para estudiante:
          
@@ -52,6 +53,7 @@ public class AdministrarUsuario {
          1. Aprobado (aquel que ya sido matriculado en el curso tras validar su recibo de
          matrícula)
          2. Graduado
+         3. Rechazado
          
          -Tipos de docente:
          
