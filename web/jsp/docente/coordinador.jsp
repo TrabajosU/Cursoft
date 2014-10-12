@@ -60,10 +60,13 @@
                                     <a href="#">Aspirantes</a>
                                 </li>
                                 <li>
-                                    <a href="#">Estudiantes</a>
+                                    <a href="../estudiante/estudiante.jsp">Estudiantes</a>
                                 </li>
                                 <li>
                                     <a href="docente.jsp">Docentes</a>
+                                </li>
+                                <li>
+                                    <a href="../modulo/cargarProfesores.jsp">Modulos</a>
                                 </li>
                             </ul>
                         </li>

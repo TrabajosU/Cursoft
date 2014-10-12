@@ -188,6 +188,7 @@
                                                     </select>
                                                 </div>
                                             </div>
+                                                  
                                             <div class="form-group">
                                                 <label for="escalafon" class="col-xs-12 col-sm-6 col-md-4 control-label">Nivel de Escalafón:</label>
                                                 <div class="col-xs-12 col-sm-6 col-md-8">
@@ -223,17 +224,17 @@
                                         <div class="form-group">
                                             <div class="row">
                                                 <div class="col-xs-12 text-center">
-                                                    <button class="btn btn-danger" id="consultar" name="requerimiento" value="consultar" type="submit" >Consultar</button>
-                                                    <button class="btn btn-danger" id="registrar" name="requerimiento" value="registrar" type="submit" >Registrar</button>
-                                                    <button class="btn btn-danger" id="actualizar" name="requerimiento" value="actualizar" type="submit" >Actualizar</button>
-                                                    <button class="btn btn-danger" id="eliminar" name="requerimiento" value="eliminar" type="submit" >Eliminar</button>
+                                                    <button class="btn btn-danger" id="consultar" name="requerimiento" value="consultarDocente" type="submit" >Consultar</button>
+                                                    <button class="btn btn-danger" id="registrar" name="requerimiento" value="registrarDocente" type="submit" >Registrar</button>
+                                                    <button class="btn btn-danger" id="actualizar" name="requerimiento" value="actualizarDocente" type="submit" >Actualizar</button>
+                                                    <button class="btn btn-danger" id="eliminar" name="requerimiento" value="eliminarDocente" type="submit" >Eliminar</button>
                                                 </div>
                                             </div>
                                         </div>
                                         <div class="form-group">
                                             <div class="row">
                                                 <div class="col-xs-offset-4 col-xs-4 text-center">
-                                                    <button class="btn btn-danger" id="cancelar" name="requerimiento" value="cancelar" type="submit">Cancelar</button>
+                                                    <button class="btn btn-danger" id="cancelar" name="requerimiento" value="cancelarDocente" type="submit">Cancelar</button>
                                                 </div>
                                             </div>
                                         </div>

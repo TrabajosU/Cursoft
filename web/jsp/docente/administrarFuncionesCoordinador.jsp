@@ -10,12 +10,13 @@
 <jsp:useBean id="aspirante" class="com.cursoft.dto.AspiranteDto"></jsp:useBean>
 <jsp:useBean id="estudiante" class="com.cursoft.dto.EstudianteDto"></jsp:useBean>
 <jsp:useBean id="docente" class="com.cursoft.dto.DocenteDto"></jsp:useBean>
+<jsp:useBean id="modulo" class="com.cursoft.dto.ModuloDto"></jsp:useBean>
 
 <%
     String bot = request.getParameter("requerimiento");
-    int r = 0;
+    System.out.println("llego a funciones");
     if(bot.equals("guardarCambiosAspirante")){
-        r = 1;
+        
         System.out.println("llego a guardarCambiosAspirante");
         String asp = session.getAttribute("listaAspirantes").toString();
         System.out.println("lista de aspirantes :: "+asp);
@@ -33,9 +34,13 @@
         usuario.setCodigo(codigo);
         aspirante.setEstado(String.valueOf(estado));
         facade.actualizarAspiranteEstado(usuario,aspirante);
-        }
+        
+    
+        response.sendRedirect("administrarCoordinador.jsp");     
+    
+    }
     else if(bot.equals("guardarCambiosEstudiante")) {
-        r = 1;
+        
         System.out.println("llego a guardarCambiosEstudiantee");
         String asp = session.getAttribute("listaEstudiantes").toString();
         System.out.println("lista de estudiantes :: "+asp);
@@ -53,8 +58,13 @@
         usuario.setCodigo(codigo);
         estudiante.setEstado(String.valueOf(estado));
         facade.actualizarEstudianteEstado(usuario,estudiante);
+        
+    
+        response.sendRedirect("administrarCoordinador.jsp");     
+    
     }
-    else if(bot.equals("registrar")){
+    
+    else if(bot.equals("registrarDocente")){
         String codigo = request.getParameter("codigo");   
         String correo = request.getParameter("correo");
         String contrasenia = request.getParameter("contrasenia");
@@ -98,7 +108,8 @@
             response.sendRedirect("docente.jsp");
         }
     }
-    else if(bot.equals("consultar")){
+    
+    else if(bot.equals("consultarDocente")){
         
          String codigo = request.getParameter("codigo");
          
@@ -125,7 +136,8 @@
          response.sendRedirect("docente.jsp");
         
     }
-    else if(bot.equals("actualizar")){
+    
+    else if(bot.equals("actualizarDocente")){
         
         String codigo = request.getParameter("codigo");   
         String correo = request.getParameter("correo");
@@ -188,12 +200,51 @@
             response.sendRedirect("docente.jsp");
         }
     }
-    else if(bot.equals("eliminar")){
+    
+    else if(bot.equals("eliminarDocente")){
         //toca primero hacer los modulos, de modo que cuando se elimine se quite tambn de los modulos...
     }
-    if(r==1){
-        response.sendRedirect("administrarCoordinador.jsp");     
+    
+    else if(bot.equals("cancelarDocente")){
+        response.sendRedirect("docente.jsp");
     }
+    
+    else if(bot.equals("registrarModulo")){
+        String nombre = request.getParameter("nombre");
+        String horas = request.getParameter("horas");
+        int tipo = Integer.parseInt(request.getParameter("tipo").toString());
+        String fechaInicio = request.getParameter("fechaInicio");
+        int prof = Integer.parseInt(request.getParameter("profesor"));
+        if(session.getAttribute("horario")!=null){
+            String horario = session.getAttribute("horario").toString();
+            String [] profes = session.getAttribute("profesores").toString().split(";");
+            String [] profesor = profes[prof].split("-");
+            String codigoProfe = profesor[0];
+            
+            modulo.setNombre(nombre);
+            modulo.setHoras(horas);
+            modulo.setTipo(""+tipo);
+            modulo.setFechaInicio(fechaInicio);
+            
+            usuario.setCodigo(codigoProfe);
+            
+            boolean x = facade.registrarModulo(modulo,usuario,horario);
+            
+            if(x){
+                session.setAttribute("Mensaje", "Registro Exitoso");
+                response.sendRedirect("../modulo/cargarProfesores.jsp");
+            }
+        }
+        else{
+           response.sendRedirect("docente.jsp"); 
+        }
+    }
+    else if(bot.equals("horarioBtn")){
+        System.out.println("llego a horariobtn");
+        response.sendRedirect("../modulo/horario.jsp");
+    }
+    
+    
     
      
 %> 

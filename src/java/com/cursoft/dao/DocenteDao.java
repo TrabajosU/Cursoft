@@ -85,5 +85,29 @@ public class DocenteDao {
         ConexionMysql.desconectar();
         return x;
     }
+
+    public String consultarProfesores() {
+        ConexionMysql.conectar();
+        String sql1 = "SELECT usuarios.idUsuario, usuarios.codigo, usuarios.nombre, usuarios.apellido FROM usuarios;";
+        ArrayList resultado = ConexionMysql.getConsultaSQL(sql1);
+        System.out.println("el resultado es:     "+resultado.toString());
+        String consulta = "";
+        for(int i =0; i<resultado.size(); i++){
+            System.out.println("i va de la sgte manera:  "+i);
+            String [] idUsuarios = resultado.get(i).toString().split("-");
+            
+            ArrayList resultado2 = ConexionMysql.getConsultaSQL("SELECT docentes.idDocente FROM docentes WHERE idUsuarioDoc='" 
+                    + idUsuarios[0] + "';");
+            System.out.println("el resultado 2 es igual a:  "+resultado2.toString());
+            if(!resultado2.isEmpty()){
+                System.out.println(resultado2.toString());
+                consulta += idUsuarios[1]+"-"+idUsuarios[2]+"-"+idUsuarios[3]+";";
+                System.out.println("La consulta va de la siguiente manera:   "+consulta);
+            }
+        }
+        ConexionMysql.desconectar();
+        return consulta;
+    }
+    
     
 }

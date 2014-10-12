@@ -7,6 +7,7 @@ package com.cursoft.facade;
 import com.cursoft.controller.AdministrarAspirante;
 import com.cursoft.controller.AdministrarDocente;
 import com.cursoft.controller.AdministrarEstudiante;
+import com.cursoft.controller.AdministrarModulo;
 import com.cursoft.controller.AdministrarUsuario;
 import com.cursoft.dto.*;
 
@@ -52,6 +53,8 @@ public class Facade {
     
     public String eliminarEstudiante(UsuarioDto usuario){
         return new AdministrarUsuario().eliminarUsuario(usuario, (byte)0);
+    }
+    
     public boolean registrarDocente(UsuarioDto usuario, DocenteDto docente){
         return new AdministrarDocente().registrarDocente(usuario,docente);
     }
@@ -62,5 +65,13 @@ public class Facade {
     
     public int actualizarDocente(UsuarioDto usuario, DocenteDto docente){
         return new AdministrarDocente().actualizarDocente(usuario,docente);
+    }
+    
+    public String consultarProfesores(){
+        return new AdministrarDocente().consultarProfesores();
+    }
+    
+    public boolean registrarModulo(ModuloDto modulo, UsuarioDto usuario, String horario){
+        return new AdministrarModulo().registrarModulo(modulo,usuario,horario);
     }
 }
