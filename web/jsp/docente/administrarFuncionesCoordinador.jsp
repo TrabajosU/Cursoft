@@ -221,10 +221,14 @@
         int tipo = Integer.parseInt(request.getParameter("tipo").toString());
         String fechaInicio = request.getParameter("fechaInicio");
         int prof = Integer.parseInt(request.getParameter("profesor"));
+        
+        
+        
         if(session.getAttribute("horario")!=null){
             String horario = session.getAttribute("horario").toString();
             String [] profes = session.getAttribute("profesores").toString().split(";");
             String [] profesor = profes[prof].split("-");
+            
             String codigoProfe = profesor[0];
             
             modulo.setNombre(nombre);
@@ -242,12 +246,52 @@
             }
         }
         else{
+            session.setAttribute("Mensaje", "Debe asignar un horario");
            response.sendRedirect("../modulo/modulo.jsp"); 
         }
     }
     else if(bot.equals("horarioBtn")){
+        session.setAttribute("horario", null);
         System.out.println("llego a horariobtn");
         response.sendRedirect("../modulo/horario.jsp");
+    }
+    
+    else if(bot.equals("actualizarModulo")){
+        String nombre = request.getParameter("nombre");
+        String horas = request.getParameter("horas");
+        int tipo = Integer.parseInt(request.getParameter("tipo").toString());
+        String fechaInicio = request.getParameter("fechaInicio");
+        int prof = Integer.parseInt(request.getParameter("profesor"));
+        System.out.println("La posicion del profesor es: "+prof);
+        
+        if(session.getAttribute("horario")!=null){
+            String horario = session.getAttribute("horario").toString();
+            String [] profes = session.getAttribute("profesores").toString().split(";");
+            String [] profesor = profes[prof].split("-");
+            
+            System.out.println("el profesor es: "+profesor[0].toString());
+            
+            String codigoProfe = profesor[0];
+            
+            System.out.println("El codigo profe es:"+codigoProfe);
+            modulo.setNombre(nombre);
+            modulo.setHoras(horas);
+            modulo.setTipo(""+tipo);
+            modulo.setFechaInicio(fechaInicio);
+            
+            usuario.setCodigo(codigoProfe);
+            
+            boolean x = facade.actualizarModulo(modulo,usuario,horario);
+            
+            if(x){
+                session.setAttribute("Mensaje", "Actualizacion Exitoso");
+                response.sendRedirect("../modulo/cargarProfesores.jsp");
+            }
+        }
+        else{
+            session.setAttribute("Mensaje", "Debe asignar un horario");
+           response.sendRedirect("../modulo/modulo.jsp"); 
+        }
     }
     else if(bot.equals("consultarModulo")){
         String nombre = request.getParameter("nombre");

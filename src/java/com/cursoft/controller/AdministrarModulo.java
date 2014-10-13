@@ -26,5 +26,10 @@ public class AdministrarModulo {
         ModuloDao mod = new ModuloDao();
         return mod.consultarModulo(modulo);
     }
+
+    public boolean actualizarModulo(ModuloDto modulo, UsuarioDto usuario, String horario) {
+        ModuloDao mod = new ModuloDao();
+        return mod.actualizarModulo(modulo,usuario,horario);
+    }
     
 }

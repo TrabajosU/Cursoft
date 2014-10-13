@@ -82,4 +82,8 @@ public class Facade {
     public String consultarModulo(ModuloDto modulo){
         return new AdministrarModulo().consultarModulo(modulo);
     }
+    
+    public boolean actualizarModulo(ModuloDto modulo, UsuarioDto usuario, String horario){
+        return new AdministrarModulo().actualizarModulo(modulo,usuario,horario);
+    }
 }
