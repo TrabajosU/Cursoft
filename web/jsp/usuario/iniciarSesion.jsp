@@ -4,18 +4,19 @@
     Author     : Manuel
 --%>
 
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
 
 <!DOCTYPE html>
 <html>
     <head>
-        <!--Codificación de caracteres-->
+        <!--CodificaciÃ³n de caracteres-->
         <meta charset="utf-8">
         <!--Titulo-->
-        <title>CURSOFT - Sistema de Información</title>
-        <!--Visualización-->
+        <title>CURSOFT - Sistema de InformaciÃ³n</title>
+        <!--VisualizaciÃ³n-->
         <meta content="width=device-width, heigth=device-height, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
-        <!--Información-->
-        <meta content="CURSOFT - Sistema de información para la administración de curso de profundización" name="description">
+        <!--InformaciÃ³n-->
+        <meta content="CURSOFT - Sistema de informaciÃ³n para la administraciÃ³n de curso de profundizaciÃ³n" name="description">
         <meta content="Megaterios" name="author">
         <meta content="index, follow" name="robots">
         <!--Normalizar estilos-->
@@ -43,7 +44,7 @@
         </div>
         <div class="row">
             <div id="subtitulo">
-                <h2>Iniciar sesión</h2>
+                <h2>Iniciar sesiÃ³n</h2>
             </div>        
             <div class="col-xs-12 col-sm-offset-2 col-sm-8 col-md-offset-3 col-md-6 col-lg-offset-3 col-lg-6">
                 <div class="row">
@@ -72,25 +73,25 @@
                                     <p class="help-block">Selecciona tu tipo de usuario</p>
                                 </div>
                                 <div class="[CLASS_CORREO]">
-                                    <label for="correo">Correo electrónico:</label>
+                                    <label for="correo">Correo electrÃ³nico:</label>
                                     <div class="input-group">
                                         <span class="input-group-addon"><span class="glyphicon glyphicon-envelope"></span></span>
-                                        <input class="form-control" id="correo" name = "correo" placeholder="Ingresa tu correo electrónico" type="text">
+                                        <input class="form-control" id="correo" name = "correo" placeholder="Ingresa tu correo electrÃ³nico" type="text">
                                     </div>
                                 </div>
                                 <div class="[CLASS_CONTRASENIA]">
-                                    <label for="contraseña">Contraseña:</label>
+                                    <label for="contraseÃ±a">ContraseÃ±a:</label>
                                     <div class="input-group">
                                         <span class="input-group-addon"><span class="glyphicon glyphicon-lock"></span></span>
-                                        <input class="form-control" id="contraseña" name = "contrasenia" placeholder="Ingresa tu contraseña" type="password">
+                                        <input class="form-control" id="contraseÃ±a" name = "contrasenia" placeholder="Ingresa tu contraseÃ±a" type="password">
                                     </div>
                                     <div id="recordar">
-                                        <p><a href="index.php?mostrar=IU_RECUPERAR_CONTRASENIA">¿Olvidaste tu contraseña?</a></p>
+                                        <p><a href="index.php?mostrar=IU_RECUPERAR_CONTRASENIA">Â¿Olvidaste tu contraseÃ±a?</a></p>
                                     </div>
                                 </div>
                                 <div class="form-group">
                                     <div id="botones">
-                                        <button class="btn btn-danger" id="registrar" name = "requerimiento" value="iniciarSesion" type="submit">Iniciar Sesión</button>
+                                        <button class="btn btn-danger" id="registrar" name = "requerimiento" value="iniciarSesion" type="submit">Iniciar SesiÃ³n</button>
                                     </div>
                                 </div>
                             </form>
@@ -98,14 +99,14 @@
                     </div>
                 </div>
                 <div id="registro">
-                    <p><strong>¿Es tu primera vez en CURSOFT?</strong></p>
+                    <p><strong>Â¿Es tu primera vez en CURSOFT?</strong></p>
 
                     <a class="btn btn-danger" role="button" href="../estudiante/estudiante.jsp">Registrar - Aspirante</a>
                 </div>
             </div>
         </div>
         <footer>
-            <p><strong>Copyright © 2014. Programa de Ingeniería de Sistemas - UFPS</strong></p>
+            <p><strong>Copyright Â© 2014. Programa de IngenierÃ­a de Sistemas - UFPS</strong></p>
             <p>Desarrollado por: <span class="icon-github"></span><strong><a id="megaterios" href="https://github.com/Megaterios/"> Megaterios</a></strong></p>
         </footer>
         <!--Scripts-->

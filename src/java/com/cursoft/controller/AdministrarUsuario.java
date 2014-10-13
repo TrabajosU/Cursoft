@@ -52,9 +52,9 @@ public class AdministrarUsuario {
          encuentra en espera que el coordinador le apruebe como estudiante)
          1. Aprobado (aquel que ya sido matriculado en el curso tras validar su recibo de
          matrícula)
-         2. Graduado
-         3. Rechazado
-         
+         2. Rechazado
+         3. Graduado
+                  
          -Tipos de docente:
          
          0. Administrador

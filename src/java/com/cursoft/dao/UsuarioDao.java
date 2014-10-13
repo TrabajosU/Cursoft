@@ -77,10 +77,11 @@ public class UsuarioDao {
         resultado.clear();
         
         if(usuario.getIdTipoUsuario() == 1){
+            System.out.println("bienvenido a primer IF");
             //busco en aspirante y estudiante
             resultado = ConexionMysql.getConsultaSQL("SELECT aspirantes.idAspirante, "
                         + "aspirantes.estado FROM aspirantes WHERE idUsuario = '" + idUsuario + "';");
-            if(resultado == null){
+            if(resultado != null){
                 registro = resultado.get(0).toString().split("-");
                 if(registro[1].equals("0")){
                     return "A0";
@@ -88,25 +89,27 @@ public class UsuarioDao {
                 else if(registro[1].equals("2")){
                     return "A2";
                 }
-                else{
+                else{                    
                     String idAspirante = registro[0];
-                    resultado.clear();
-                    resultado = ConexionMysql.getConsultaSQL("SELECT estudiantes.estado, "
+                    resultado.clear();                    
+                    resultado = ConexionMysql.getConsultaSQL("SELECT estudiantes.estado "
                         + " FROM estudiantes WHERE idAspirante = '" + idAspirante + "';");
-                    if(resultado == null){
+                    
+                    if(resultado != null){
+                        System.out.println("no soy nulo");
                         registro = resultado.get(0).toString().split("-");
                         return ("E" + registro[0]);                        
                     }
-                    return "A1";
-                    
+                   
+                    return "A1";                    
                 }
             }            
         }
         else if(usuario.getIdTipoUsuario() == 2 || usuario.getIdTipoUsuario() == 3){
             //busco en docente
-            resultado = ConexionMysql.getConsultaSQL("SELECT docentes.estado, "
+            resultado = ConexionMysql.getConsultaSQL("SELECT docentes.estado "
                         + " FROM docentes WHERE idUsuario = '" + idUsuario + "';");
-            if(!resultado.isEmpty()){
+            if(resultado != null){
                 registro = resultado.get(0).toString().split("-");
                 return ("D" + registro[0]);
             }           

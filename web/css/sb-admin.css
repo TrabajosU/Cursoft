@@ -3,7 +3,7 @@
 /* ------------------------------- */
 
  body {
-    background-color: #f8f8f8;
+    //background-color: #f8f8f8;
     padding-top: 100px;
 }
 
@@ -39,6 +39,7 @@
 
 .navbar-static-side ul li {
     border-bottom: 1px solid #e7e7e7;
+    border-top: 1px solid #e7e7e7; //Agregado
 }
 
 /* Navigation */
@@ -48,7 +49,7 @@
 /* Top Right Navigation Dropdown Styles */
 
  .navbar-top-links li {
-    display: inline-block;
+    display: inline-block;    
 }
 
 .navbar-top-links li:last-child {
@@ -108,15 +109,15 @@
 }
 
 .arrow {
-    float: right;
+    float: right;    
 }
 
 .fa.arrow:before {
-    content: "\f104";
+    content: "\f107";
 }
 
 .active > a > .fa.arrow:before {
-    content: "\f107";
+    content: "\f106";
 }
 
 .nav-second-level li,

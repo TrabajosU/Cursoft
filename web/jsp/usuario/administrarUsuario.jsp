@@ -44,13 +44,14 @@
             out.print("Bienvenido, eres un estudiante pendiente");
         }
         else if(resp.equals("E1")){
-            out.print("Bienvenido, eres un estudiante aprobado, ya estás matriculado");
+            //out.print("Bienvenido, eres un estudiante aprobado, ya estás matriculado");
+            response.sendRedirect("../estudiante/estudianteAprobado.jsp");
         }
         else if(resp.equals("E2")){
-            out.print("Bienvenido, eres un estudiante egresado");
+            out.print("Bienvenido, eres un estudiante en estado rechazado, comunícate con el coordinador del curso");            
         }
         else if(resp.equals("E3")){
-            out.print("Bienvenido, eres un estudiante en estado rechazado, comunícate con el coordinador del curso");
+            out.print("Bienvenido, eres un estudiante egresado");
         }
         else if(resp.equals("D0")){
             out.print("Bienvenido, eres el administrador");
@@ -76,11 +77,11 @@
         }
         else if(resp.equals("-1")){            
             session.setAttribute("Mensaje", "Datos incorrectos, verifica tu usuario y contraseña");
-            response.sendRedirect("inicioSesion.jsp");
+            response.sendRedirect("iniciarSesion.jsp");
         }
         else if(resp.equals("-2")){            
             session.setAttribute("Mensaje", "Tu cuenta se encuentra inhabilitada");
-            response.sendRedirect("inicioSesion.jsp");            
+            response.sendRedirect("iniciarSesion.jsp");            
         }
         
         HttpSession ssn = request.getSession(true);
@@ -95,7 +96,7 @@
             //out.println("Conecto");
         }
         else{
-            response.sendRedirect("inicioSesion.jsp");
+            response.sendRedirect("iniciarSesion.jsp");
             //out.println("No Conecto");
         }
         */

@@ -7,24 +7,35 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
-    <head>        
+    <head>
+        <!--Codificación de caracteres-->
         <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-        <meta name="description" content="CURSOFT - Sistema de información para la administración de curso de profundización">
-
+        <!--Titulo-->
         <title>CURSOFT - Sistema de Información</title>
-
-
-        <link href="../../css/bootstrap.min.css" rel="stylesheet">
-        <link href="../../css/bootstrap-theme.min.css" rel="stylesheet">
+        <!--Visualización-->
+        <meta content="width=device-width, heigth=device-height, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+        <!--Información-->
+        <meta content="CURSOFT - Sistema de información para la administración de curso de profundización" name="description">
+        <meta content="Megaterios" name="author">
+        <meta content="index, follow" name="robots">
+        <!--Normalizar estilos-->
+        <link href="../../css/normalize.css" rel="stylesheet">
+        <!--Bootstrap-->
+        <link href="../../css/bootstrap.css" rel="stylesheet">
+        <link href="../../css/bootstrap-theme.css" rel="stylesheet">
+        <link href="../../css/bootstrap-formhelpers.css" rel="stylesheet">
+        <!--Hojas de estilo-->
         <link href="../../css/style.css" rel="stylesheet">
-
-        <script src="../../js/vendor/modernizr-2.6.2.min.js"></script>
-        <script src="../../js/vendor/jquery-1.10.2.min.js"></script>
-        <script src="../../js/bootstrap-filestyle.min.js"></script>
-        <script src="../../js/plugins.js"></script>
-        <script src="../../js/main.js"></script>
+        <!-- Core CSS - Include with every page -->
+        <link href="../../css/bootstrap.min.css" rel="stylesheet">
+        <link href="../../font-awesome/css/font-awesome.css" rel="stylesheet">
+        <!-- Page-Level Plugin CSS - Dashboard -->
+        <link href="../../css/plugins/morris/morris-0.4.3.min.css" rel="stylesheet">
+        <link href="../../css/plugins/timeline/timeline.css" rel="stylesheet">
+        <!-- SB Admin CSS - Include with every page -->
+        <link href="../../css/sb-admin.css" rel="stylesheet">
+        <!--Iconos-->
+        <link href="../../img/favicon.ico" rel="shortcut icon">
     </head>
     <body>
         <div class="container">
@@ -41,22 +52,23 @@
             <section>
                 <div class="row">
                     <div class="col-xs-12 col-sm-3 col-md-3 col-lg-3" id="menu">
-                        <ul class="nav nav-pills nav-stacked">
-                            <li class=""><strong><a href="inicio_aspirante_aprobado.html">Aspirante</a></strong></li>
-                            <li class=""><a href="consultar_aspirante.html">Consultar</a></li>
-                            <li class=""><a href="actualizar_aspirante.html">Actualizar</a></li>
-                            <li class=""><a href="actualizar_aspirante.html">Borrar</a></li>
-                            <li class=""><strong><a href="inicio_aspirante_aprobado.html">Estudiante</a></strong></li>
-                            <li class=""><a href="consultar_aspirante.html">Consultar</a></li>
-                            <li class=""><a href="actualizar_aspirante.html">Actualizar</a></li>
-                            <li class=""><a href="actualizar_aspirante.html">Borrar</a></li>
-                            <li class=""><strong><a href="inicio_aspirante_aprobado.html">Docente</a></strong></li>
-                            <li class=""><a href="consultar_aspirante.html">Consultar</a></li>
-                            <li class=""><a href="actualizar_aspirante.html">Actualizar</a></li>
-                            <li class=""><a href="actualizar_aspirante.html">Borrar</a></li>
-                        </ul>
+                        <div class="navbar-default navbar-static-side" role="navigation">
+                            <div class="sidebar-collapse">                    
+                                <ul class="nav" id="side-menu">
+                                    <li>
+                                        <a href="#"><i class="fa fa-bar-chart-o fa-fw"></i> Operaciones<span class="fa arrow"></span></a>
+                                        <ul class="nav nav-second-level">
+                                            <li>
+                                                <a href="aspirante.jsp">Consultar Datos</a>
+                                            </li>                                            
+                                        </ul>
+                                    </li>
+
+                                </ul>
+                            </div>
+                        </div>
                     </div>
-                    <div class="col-xs-12 col-sm-9 col-md-9 col-lg-9" id="contenido">
+                    <div class="col-xs-9 col-sm-9 col-md-9 col-lg-9" id="contenido">
                         <ol class="breadcrumb">
                             <li><a href="#">Inicio</a></li>
                             <li class="active">Aspirante</li>
@@ -71,13 +83,42 @@
                         </div>
                     </div>
                 </div>
+                <br>
+                <br>
+                <br>
+                <br>
             </section>
+
 
             <footer>
                 <p><strong>Copyright © 2014. Programa de Ingeniería de Sistemas - UFPS</strong></p>
                 <p>Desarrollado por <strom><a href="#">Megaterios</a></strong></p>
             </footer>
 
+            <!--Scripts-->
+            <script src="../../js/modernizr.js"></script>
+            <script src="../../js/main.js"></script>
+            <script src="../../js/jquery.js"></script>
+            <!--Scripts Bootstrap-->
+            <script src="../../js/bootstrap.js"></script>
+            <script src="../../js/vendor/bootstrap-filestyle.js"></script>
+            <script src="../../js/vendor/bootstrap-formhelpers.js"></script>
+            <!-- Core Scripts - Include with every page -->
+            <script src="../../js/jquery-1.10.2.js"></script>
+            <script src="../../js/bootstrap.min.js"></script>
+            <script src="../../js/plugins/metisMenu/jquery.metisMenu.js"></script>
+            <!-- Page-Level Plugin Scripts - Tables -->
+            <script src="../../js/plugins/dataTables/jquery.dataTables.js"></script>
+            <script src="../../js/plugins/dataTables/dataTables.bootstrap.js"></script>
+            <!-- SB Admin Scripts - Include with every page -->
+            <script src="../../js/sb-admin.js"></script>
+
+            <!-- Page-Level Demo Scripts - Tables - Use for reference -->
+            <script>
+                $(document).ready(function () {
+                    $('#dataTables-example').dataTable();
+                });
+            </script>
         </div>
     </body>
 </html>

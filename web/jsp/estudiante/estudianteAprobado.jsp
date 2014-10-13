@@ -1,12 +1,12 @@
 <%-- 
-    Document   : aspiranteAprobado
-    Created on : 12/10/2014, 01:22:24 PM
+    Document   : estudianteAprobado
+    Created on : 12/10/2014, 05:39:17 PM
     Author     : Jhorman Perez
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
-<html>
+<html lang="es">
     <head>
         <!--Codificación de caracteres-->
         <meta charset="utf-8">
@@ -37,6 +37,7 @@
         <!--Iconos-->
         <link href="../../img/favicon.ico" rel="shortcut icon">
     </head>
+
     <body>
         <div class="container">
             <header>
@@ -77,43 +78,50 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-xs-12 col-sm-9 col-md-9 col-lg-9" id="contenido">
+
+                    <div class="col-xs-9 col-sm-9 col-md-9 col-lg-8" id="contenido">
                         <ol class="breadcrumb">
                             <li><a href="#">Inicio</a></li>
-                            <li class="active">Aspirante</li>
+                            <li class="active">Estudiante</li>
                         </ol>
                         <div id="subtitulo">
-                            <h2>Inicio Aspirante - Aprobado</h2>
+                            <h2>Inicio Estudiante - Aprobado</h2>
                         </div>
                         <div class="row">
                             <div class="col-xs-offset-1 col-xs-10" id="contenedor">
-                                <p>Consignar el valor de $ X.XXX.XXX</p>
-                                <p>En cualquiera de los siguietes bancos:</p>
-                                <ol>
-                                    <li>Bancolombia</li>
-                                    <li>Davivienda</li>
-                                    <li>Banco de Bogotá</li>
-                                </ol>
-                                <p>Si ya realizó el pago, cargue el archivo a continuación:</p>
-                                <div id="formulario">
-                                    <form action="#" method="post" role="form">
-                                        <fieldset>
-                                            <legend>Documentos</legend>
-                                            <div class="form-group">
-                                                <label for="telefono_movil" class="col-xs-12 col-sm-6 col-md-4 control-label">Recibo de pago de matricula:</label>
-                                                <div class="col-xs-12 col-sm-6 col-md-8">
-                                                    <input type="file" class="filestyle" data-iconName="glyphicon-inbox">
-                                                    <p class="help-block">Selecciona tu archivo del recibo de pago de matricula</p>
-                                                </div>
-                                            </div>
-                                        </fieldset>
-                                        <br>
-                                        <div class="form-group">
-                                            <div id="botones">
-                                                <button class="btn btn-danger" id="recuperar" type="submit">Guardar</button>
-                                            </div>
+                                <div class="panel panel-default">
+                                    <div class="panel-heading text-center">
+                                        <strong>Módulos Matriculados</strong>
+                                    </div> 
+                                    <div class="panel-body">                                     
+                                        <div class="table-responsive">
+                                            <table class="table table-hover">
+                                                <thead>
+                                                    <tr>
+                                                        <th># Módulo</th>
+                                                        <th>Nombre</th>
+                                                        <th>Profesor</th>
+                                                        <th>Nota</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+
+                                                    <tr>
+                                                        <td>4</td>
+                                                        <td>Proyecto de grado</td>
+                                                        <td></a></td>
+                                                        <td>5.0</td>
+                                                    </tr>                                                                                      
+                                                    <tr>
+                                                        <td></td>
+                                                        <td></td>
+                                                        <td><strong>Definitiva:</strong></a></td>
+                                                        <td>3.5</td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
                                         </div>
-                                    </form>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -123,9 +131,10 @@
 
             <footer>
                 <p><strong>Copyright © 2014. Programa de Ingeniería de Sistemas - UFPS</strong></p>
-                <p>Desarrollado por <strom><a href="#">Megaterios</a></strong></p>
+                <p>Desarrollado por: <span class="icon-github"></span><strong><a id="megaterios" href="https://github.com/Megaterios/"> Megaterios</a></strong></p>
             </footer>
-            
+
+
             <!--Scripts-->
             <script src="../../js/modernizr.js"></script>
             <script src="../../js/main.js"></script>
@@ -150,7 +159,6 @@
                     $('#dataTables-example').dataTable();
                 });
             </script>
-            
         </div>
     </body>
 </html>

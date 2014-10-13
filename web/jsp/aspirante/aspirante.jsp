@@ -1,20 +1,22 @@
 <%-- 
-    Document   : estudiante
-    Created on : 27/09/2014, 08:37:49 PM
-    Author     : Manuel
+    Document   : aspirante
+    Created on : 12/10/2014, 09:54:58 PM
+    Author     : Jhorman Perez
 --%>
+
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
 
 <!DOCTYPE html>
 <html lang="es">
     <head>
-        <!--Codificación de caracteres-->
+        <!--CodificaciÃ³n de caracteres-->
         <meta charset="utf-8">
         <!--Titulo-->
-        <title>CURSOFT - Sistema de Información</title>
-        <!--Visualización-->
+        <title>CURSOFT - Sistema de InformaciÃ³n</title>
+        <!--VisualizaciÃ³n-->
         <meta content="width=device-width, heigth=device-height, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
-        <!--Información-->
-        <meta content="CURSOFT - Sistema de información para la administración de curso de profundización" name="description">
+        <!--InformaciÃ³n-->
+        <meta content="CURSOFT - Sistema de informaciÃ³n para la administraciÃ³n de curso de profundizaciÃ³n" name="description">
         <meta content="Megaterios" name="author">
         <meta content="index, follow" name="robots">
         <!--Normalizar estilos-->
@@ -25,9 +27,18 @@
         <link href="../../css/bootstrap-formhelpers.css" rel="stylesheet">
         <!--Hojas de estilo-->
         <link href="../../css/style.css" rel="stylesheet">
+        <!-- Core CSS - Include with every page -->
+        <link href="../../css/bootstrap.min.css" rel="stylesheet">
+        <link href="../../font-awesome/css/font-awesome.css" rel="stylesheet">
+        <!-- Page-Level Plugin CSS - Dashboard -->
+        <link href="../../css/plugins/morris/morris-0.4.3.min.css" rel="stylesheet">
+        <link href="../../css/plugins/timeline/timeline.css" rel="stylesheet">
+        <!-- SB Admin CSS - Include with every page -->
+        <link href="../../css/sb-admin.css" rel="stylesheet">
         <!--Iconos-->
         <link href="../../img/favicon.ico" rel="shortcut icon">
     </head>
+    
     <body>
         <div class="container">
             <header>
@@ -42,17 +53,34 @@
             <br>
             <section>
                 <div class="row">
-                    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" id="contenido">
-                        <div class="row">
-                            <div class="col-xs-offset-1 col-xs-10 alert alert-success">
-                                <div id="error">
-                                    <p><strong><% out.print(session.getAttribute("Mensaje"));%></strong></p>
-                                </div>
+                    <div class="col-xs-12 col-sm-3 col-md-3 col-lg-3" id="menu">
+                        <div class="navbar-default navbar-static-side" role="navigation">
+                            <div class="sidebar-collapse">                    
+                                <ul class="nav" id="side-menu">
+                                    <li>
+                                        <a href="#"><i class="fa fa-bar-chart-o fa-fw"></i> Operaciones<span class="fa arrow"></span></a>
+                                        <ul class="nav nav-second-level">
+                                            <li>
+                                                <a href="aspirante.jsp">Consultar Datos</a>
+                                            </li>                                            
+                                        </ul>
+                                    </li>
+
+                                </ul>
                             </div>
                         </div>
+                    </div>
+                    <div class="col-xs-9 col-sm-9 col-md-9 col-lg-9" id="contenido">
+                        <ol class="breadcrumb">
+                            <li><a href="aspirantePendiente.jsp">Inicio</a></li>
+                            <li class="active">Aspirante</li>
+                        </ol>
+                        <div id="subtitulo">
+                            <h2>Inicio Aspirante - Pendiente</h2>
+                        </div>
                         <div class="row">
-                            <div class="col-xs-offset-1 col-xs-10" id="subtitulo">
-                                <h2>Administrar Estudiante</h2>
+                            <div id="error">
+                                <p><strong><% out.print(session.getAttribute("Mensaje"));%></strong></p>
                             </div>
                         </div>
                         <div class="row">
@@ -62,7 +90,7 @@
                                         <fieldset>
                                             <legend>Datos de Usuario</legend>
                                             <div class="form-group">
-                                                <label for="codigo" class="col-xs-12 col-sm-6 col-md-4 control-label">Código:</label>
+                                                <label for="codigo" class="col-xs-12 col-sm-6 col-md-4 control-label">CÃ³digo:</label>
                                                 <div class="col-xs-12 col-sm-6 col-md-8">
                                                     <div class="input-group">
                                                         <span class="input-group-addon"><span class="glyphicon glyphicon-qrcode"></span></span>
@@ -71,7 +99,7 @@
                                                 </div>
                                             </div>
                                             <div class="form-group">
-                                                <label for="correo" class="col-xs-12 col-sm-6 col-md-4 control-label">Correo electrónico:</label>
+                                                <label for="correo" class="col-xs-12 col-sm-6 col-md-4 control-label">Correo electrÃ³nico:</label>
                                                 <div class="col-xs-12 col-sm-6 col-md-8">
                                                     <div class="input-group">
                                                         <span class="input-group-addon"><span class="glyphicon glyphicon-envelope"></span></span>
@@ -80,7 +108,7 @@
                                                 </div>
                                             </div>
                                             <div class="form-group">
-                                                <label class="col-xs-12 col-sm-6 col-md-4 control-label" for="contrasenia" >Contraseña:</label>
+                                                <label class="col-xs-12 col-sm-6 col-md-4 control-label" for="contrasenia" >ContraseÃ±a:</label>
                                                 <div class="col-xs-12 col-sm-6 col-md-8">
                                                     <div class="input-group">
                                                         <span class="input-group-addon"><span class="glyphicon glyphicon-lock"></span></span>
@@ -89,7 +117,7 @@
                                                 </div>
                                             </div>
                                             <div class="form-group">
-                                                <label class="col-xs-12 col-sm-6 col-md-4 control-label" for="confirmarContrasenia">Confirmar contraseña:</label>
+                                                <label class="col-xs-12 col-sm-6 col-md-4 control-label" for="confirmarContrasenia">Confirmar contraseÃ±a:</label>
                                                 <div class="col-xs-12 col-sm-6 col-md-8">
                                                     <div class="input-group">
                                                         <span class="input-group-addon"><span class="glyphicon glyphicon-lock"></span></span>
@@ -120,16 +148,16 @@
                                                 <div class="col-xs-12 col-sm-6 col-md-8">
                                                     <select class="form-control" id="idTipoDocumento" name="idTipoDocumento">
                                                         <%
-                                                        String [] opciones = {"Cédula de ciudadanía", "Tarjeta de identidad", "Pasaporte"};
-                                                        for(int i = 0; i<opciones.length; i++){
-                                                            out.print("<option value=\"" + (i+1) +"\">"+ opciones[i] +"</option>" + "\n\t\t\t\t\t\t\t");
-                                                        }
+                                                            String[] opciones = {"CÃ©dula de ciudadanÃ­a", "Tarjeta de identidad", "Pasaporte"};
+                                                            for (int i = 0; i < opciones.length; i++) {
+                                                                out.print("<option value=\"" + (i + 1) + "\">" + opciones[i] + "</option>" + "\n\t\t\t\t\t\t\t");
+                                                            }
                                                         %>
                                                     </select>
-                                                 </div>
+                                                </div>
                                             </div>
                                             <div class="form-group">
-                                                <label for="numeroDocumento" class="col-xs-12 col-sm-6 col-md-4 control-label">Número de documento:</label>
+                                                <label for="numeroDocumento" class="col-xs-12 col-sm-6 col-md-4 control-label">NÃºmero de documento:</label>
                                                 <div class="col-xs-12 col-sm-6 col-md-8">
                                                     <div class="input-group">
                                                         <span class="input-group-addon"><span class="glyphicon glyphicon-barcode"></span></span>
@@ -147,7 +175,7 @@
                                                 </div>
                                             </div>
                                             <div class="form-group">
-                                                <label for="direccion" class="col-xs-12 col-sm-6 col-md-4 control-label">Dirección de residencia:</label>
+                                                <label for="direccion" class="col-xs-12 col-sm-6 col-md-4 control-label">DirecciÃ³n de residencia:</label>
                                                 <div class="col-xs-12 col-sm-6 col-md-8">
                                                     <div class="input-group">
                                                         <span class="input-group-addon"><span class="glyphicon glyphicon-home"></span></span>
@@ -156,7 +184,7 @@
                                                 </div>
                                             </div>
                                             <div class="form-group">
-                                                <label for="telefono" class="col-xs-12 col-sm-6 col-md-4 control-label">Teléfono:</label>
+                                                <label for="telefono" class="col-xs-12 col-sm-6 col-md-4 control-label">TelÃ©fono:</label>
                                                 <div class="col-xs-12 col-sm-6 col-md-8">
                                                     <div class="input-group">
                                                         <span class="input-group-addon"><span class="glyphicon glyphicon-phone-alt"></span></span>
@@ -165,7 +193,7 @@
                                                 </div>
                                             </div>
                                             <div class="form-group">
-                                                <label for="telefonoMovil" class="col-xs-12 col-sm-6 col-md-4 control-label">Teléfono móvil:</label>
+                                                <label for="telefonoMovil" class="col-xs-12 col-sm-6 col-md-4 control-label">TelÃ©fono mÃ³vil:</label>
                                                 <div class="col-xs-12 col-sm-6 col-md-8">
                                                     <div class="input-group">
                                                         <span class="input-group-addon"><span class="glyphicon glyphicon-phone"></span></span>
@@ -186,7 +214,7 @@
                                                 </div>
                                             </div>
                                             <div class="form-group">
-                                                <label for="semestreFinalizacionMaterias" class="col-xs-12 col-sm-6 col-md-4 control-label">Semestre de terminación de materias:</label>
+                                                <label for="semestreFinalizacionMaterias" class="col-xs-12 col-sm-6 col-md-4 control-label">Semestre de terminaciÃ³n de materias:</label>
                                                 <div class="col-xs-12 col-sm-6 col-md-8">
                                                     <div class="input-group">
                                                         <span class="input-group-addon"><span class="glyphicon glyphicon-list-alt"></span></span>
@@ -195,7 +223,7 @@
                                                 </div>
                                             </div>
                                             <div class="form-group">
-                                                <label for="reporteFinalizacionMaterias" class="col-xs-12 col-sm-6 col-md-4 control-label">Reporte de terminación de materias:</label>
+                                                <label for="reporteFinalizacionMaterias" class="col-xs-12 col-sm-6 col-md-4 control-label">Reporte de terminaciÃ³n de materias:</label>
                                                 <div class="col-xs-12 col-sm-6 col-md-8">
                                                     <input type="file" class="filestyle" id="reporteFinalizacionMaterias" name="reporteFinalizacionMaterias" data-iconName="glyphicon-inbox">
                                                 </div>
@@ -207,7 +235,7 @@
                                                 </div>
                                             </div>
                                             <div class="form-group">
-                                                <label for="reciboInscripcion" class="col-xs-12 col-sm-6 col-md-4 control-label">Recibo de pago de inscripción:</label>
+                                                <label for="reciboInscripcion" class="col-xs-12 col-sm-6 col-md-4 control-label">Recibo de pago de inscripciÃ³n:</label>
                                                 <div class="col-xs-12 col-sm-6 col-md-8">
                                                     <input type="file" class="filestyle" id="reciboInscripcion" name="reciboInscripcion" data-iconName="glyphicon-inbox">
                                                 </div>
@@ -215,21 +243,21 @@
                                         </fieldset>
                                         <fieldset>
                                             <legend>Datos de Estudiante</legend>
-                                                <div class="form-group">
-                                                    <label for="reciboPagoMatricula" class="col-xs-12 col-sm-6 col-md-4 control-label">Recibo de pago de matricula:</label>
-                                                    <div class="col-xs-12 col-sm-6 col-md-8">
-                                                        <input type="file" class="filestyle" id="reciboPagoMatricula" name="reciboPagoMatricula" data-iconName="glyphicon-inbox">
+                                            <div class="form-group">
+                                                <label for="reciboPagoMatricula" class="col-xs-12 col-sm-6 col-md-4 control-label">Recibo de pago de matricula:</label>
+                                                <div class="col-xs-12 col-sm-6 col-md-8">
+                                                    <input type="file" class="filestyle" id="reciboPagoMatricula" name="reciboPagoMatricula" data-iconName="glyphicon-inbox">
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="nota" class="col-xs-12 col-sm-6 col-md-4 control-label">Nota:</label>
+                                                <div class="col-xs-12 col-sm-6 col-md-8">
+                                                    <div class="input-group">
+                                                        <span class="input-group-addon"><span class="glyphicon glyphicon-stats"></span></span>
+                                                        <input class="form-control" id="nota" name="nota" placeholder="5.0" <% out.print(session.getAttribute("nota"));%> type="text">
                                                     </div>
                                                 </div>
-                                                <div class="form-group">
-                                                    <label for="nota" class="col-xs-12 col-sm-6 col-md-4 control-label">Nota:</label>
-                                                    <div class="col-xs-12 col-sm-6 col-md-8">
-                                                        <div class="input-group">
-                                                            <span class="input-group-addon"><span class="glyphicon glyphicon-stats"></span></span>
-                                                            <input class="form-control" id="nota" name="nota" placeholder="5.0" <% out.print(session.getAttribute("nota"));%> type="text">
-                                                        </div>
-                                                    </div>
-                                                </div>
+                                            </div>
                                         </fieldset>
                                         <div class="form-group">
                                             <div class="row">
@@ -251,14 +279,21 @@
                                     </form>
                                 </div>
                             </div>
-                        </div>
+                        </div>    
+                            
                     </div>
                 </div>
+                <br>
+                <br>
+                <br>
+                <br>
             </section>
+            
             <footer>
-                <p><strong>Copyright © 2014. Programa de Ingeniería de Sistemas - UFPS</strong></p>
+                <p><strong>Copyright Â© 2014. Programa de IngenierÃ­a de Sistemas - UFPS</strong></p>
                 <p>Desarrollado por: <span class="icon-github"></span><strong><a id="megaterios" href="https://github.com/Megaterios/"> Megaterios</a></strong></p>
             </footer>
+
             <!--Scripts-->
             <script src="../../js/modernizr.js"></script>
             <script src="../../js/main.js"></script>
@@ -267,6 +302,22 @@
             <script src="../../js/bootstrap.js"></script>
             <script src="../../js/vendor/bootstrap-filestyle.js"></script>
             <script src="../../js/vendor/bootstrap-formhelpers.js"></script>
+            <!-- Core Scripts - Include with every page -->
+            <script src="../../js/jquery-1.10.2.js"></script>
+            <script src="../../js/bootstrap.min.js"></script>
+            <script src="../../js/plugins/metisMenu/jquery.metisMenu.js"></script>
+            <!-- Page-Level Plugin Scripts - Tables -->
+            <script src="../../js/plugins/dataTables/jquery.dataTables.js"></script>
+            <script src="../../js/plugins/dataTables/dataTables.bootstrap.js"></script>
+            <!-- SB Admin Scripts - Include with every page -->
+            <script src="../../js/sb-admin.js"></script>
+
+            <!-- Page-Level Demo Scripts - Tables - Use for reference -->
+            <script>
+                $(document).ready(function () {
+                    $('#dataTables-example').dataTable();
+                });
+            </script>
 
         </div>
     </body>
