@@ -80,5 +80,63 @@ public class ModuloDao {
         ConexionMysql.desconectar();
         return idDocente;
     }
+
+    public String consultarModulo(ModuloDto modulo) {
+        String consulta="";
+        ConexionMysql.conectar();
+        
+        ArrayList resultado = ConexionMysql.getConsultaSQL("SELECT modulos.idModulo, modulos.horas, modulos.tipo, modulos.fechaInicio FROM modulos WHERE nombre='"+modulo.getNombre()+"';");
+        
+        String [] mod = resultado.get(0).toString().split("-");
+        String idModulo = mod[0];
+        modulo.setHoras(mod[1]);
+        modulo.setTipo(mod[2]);
+        modulo.setFechaInicio(mod[3]);
+        
+        
+        resultado.clear();
+        
+        resultado = ConexionMysql.getConsultaSQL("SELECT horarios.dia, horarios.horaInicio, horarios.horaFin, horarios.salon FROM horarios WHERE idModulo='"+idModulo+"';");
+        
+        for(int i=0; i<resultado.size();i++){
+            consulta += resultado.get(i).toString() +";";
+        }
+        consulta += "::";
+        
+        resultado.clear();
+        
+        resultado = ConexionMysql.getConsultaSQL("SELECT docentesmodulos.idDocenteFK FROM docentesmodulos WHERE idModuloFK='"+idModulo+"';");
+        
+        String idDocente = resultado.get(0).toString().split("-")[0];
+        
+        resultado.clear();
+        
+        resultado = ConexionMysql.getConsultaSQL("SELECT docentes.idUsuarioDoc FROM docentes WHERE idDocente='"+idDocente+"';");
+        
+        String idUsuario = resultado.get(0).toString().split("-")[0];
+        
+        resultado.clear();
+        
+        resultado = ConexionMysql.getConsultaSQL("SELECT usuarios.codigo, usuarios.nombre, usuarios.apellido FROM usuarios WHERE idUsuario='"+idUsuario+"';");
+        
+        String codProfe = resultado.get(0).toString().split("-")[0];
+        
+        consulta += resultado.get(0).toString() + ";";
+        
+        resultado.clear();
+        
+        //   ¡Reutilizacion de Codigo!
+        DocenteDao docente = new DocenteDao();
+        String d = docente.consultarProfesores();
+        String [] docentes = d.split(";");
+        for(int i =0; i<docentes.length;i++){
+            String doc[] = docentes[i].split("-");
+            if(!doc[0].equals(codProfe)){
+                consulta += doc[0]+"-"+doc[1]+"-"+doc[2]+";";
+            }
+        }
+        ConexionMysql.desconectar();
+        return consulta;
+    }
     
 }

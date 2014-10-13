@@ -21,5 +21,10 @@ public class AdministrarModulo {
         ModuloDao mod = new ModuloDao();
         return mod.registrarModulo(modulo,usuario,horario);
     }
+
+    public String consultarModulo(ModuloDto modulo) {
+        ModuloDao mod = new ModuloDao();
+        return mod.consultarModulo(modulo);
+    }
     
 }

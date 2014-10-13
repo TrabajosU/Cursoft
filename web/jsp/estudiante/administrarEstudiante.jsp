@@ -81,7 +81,7 @@
         usuario.setDireccion(direccion);
         usuario.setTelefono(telefono);
         usuario.setTelefonoMovil(telefonoMovil);
-        usuario.setIdTipoUsuario("1");
+        usuario.setIdTipoUsuario(((byte)1));
         //out.println(usuario.getTelefonoMovil());
         aspirante.setPromedioPonderado(promedioPonderado);
         aspirante.setSemestreFinalizacionMaterias(semestreFinalizacionMaterias);
@@ -154,7 +154,7 @@
         usuario.setDireccion(direccion);
         usuario.setTelefono(telefono);
         usuario.setTelefonoMovil(telefonoMovil);
-        usuario.setIdTipoUsuario("1");
+        usuario.setIdTipoUsuario(((byte)1));
         //out.println(usuario.getTelefonoMovil());
         aspirante.setPromedioPonderado(promedioPonderado);
         aspirante.setSemestreFinalizacionMaterias(semestreFinalizacionMaterias);

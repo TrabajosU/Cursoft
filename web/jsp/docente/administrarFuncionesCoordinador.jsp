@@ -93,7 +93,7 @@
         usuario.setDireccion(direccion);
         usuario.setTelefono(telefono);
         usuario.setTelefonoMovil(telefonoMovil);
-        usuario.setIdTipoUsuario("3");
+        usuario.setIdTipoUsuario(((byte)2));
         
         docente.setEscalafon(escalafon);
         docente.setEscolaridad(""+escolaridad);
@@ -167,7 +167,7 @@
         usuario.setDireccion(direccion);
         usuario.setTelefono(telefono);
         usuario.setTelefonoMovil(telefonoMovil);
-        usuario.setIdTipoUsuario("3");
+        usuario.setIdTipoUsuario(((byte)2));
         
         docente.setEscalafon(escalafon);
         docente.setEscolaridad(""+escolaridad);
@@ -242,6 +242,28 @@
     else if(bot.equals("horarioBtn")){
         System.out.println("llego a horariobtn");
         response.sendRedirect("../modulo/horario.jsp");
+    }
+    else if(bot.equals("consultarModulo")){
+        String nombre = request.getParameter("nombre");
+        modulo.setNombre(nombre);
+        String consulta = facade.consultarModulo(modulo);
+        
+        session.setAttribute("nombre", "value="+ "\""+modulo.getNombre()+ "\"");
+        session.setAttribute("horas", "value="+ "\""+modulo.getHoras()+ "\"");
+        session.setAttribute("fechaInicio", "value="+ "\""+modulo.getFechaInicio()+ "\"");
+        System.out.println("la consulta es: "+consulta);
+        String horarios = consulta.split("::")[0];
+        
+        System.out.println("los horarios son: "+horarios);
+        String profesores = consulta.split("::")[1];
+        System.out.println("Los profesores son: "+profesores);
+        
+        session.setAttribute("horario", "value="+ "\""+horarios+"\" disabled");
+        session.setAttribute("profesores", profesores);
+        
+        session.setAttribute("Mensaje", "Consulta Exitosa");
+        
+        response.sendRedirect("../modulo/modulo.jsp");
     }
     
     

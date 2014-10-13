@@ -74,4 +74,8 @@ public class Facade {
     public boolean registrarModulo(ModuloDto modulo, UsuarioDto usuario, String horario){
         return new AdministrarModulo().registrarModulo(modulo,usuario,horario);
     }
+    
+    public String consultarModulo(ModuloDto modulo){
+        return new AdministrarModulo().consultarModulo(modulo);
+    }
 }
