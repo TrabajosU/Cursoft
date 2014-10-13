@@ -105,7 +105,7 @@
                                                 <div class="col-xs-12 col-sm-6 col-md-8">
                                                     <div class="input-group">
                                                         <span class="input-group-addon"><span class="glyphicon glyphicon-list-alt"></span></span>
-                                                        <input class="form-control" id="horario" name="horario"  <% out.print(session.getAttribute("horario"));%> type="text" disabled>
+                                                        <input class="form-control" id="horario" name="horario"  value =" <% out.print(session.getAttribute("horario")); %>" type="text" disabled>
                                                         
                                                     </div>
                                                     

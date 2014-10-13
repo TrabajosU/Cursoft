@@ -50,6 +50,7 @@
         <section>
                 <div id="subtitulo">
                     <h2>Crear Horarios</h2>
+                    
                     </div>
                     <div class="col-xs-offset-3 col-xs-6" id="contenedor">
                         <div class="panel panel-default">

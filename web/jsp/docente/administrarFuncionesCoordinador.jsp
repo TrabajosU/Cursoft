@@ -13,6 +13,11 @@
 <jsp:useBean id="modulo" class="com.cursoft.dto.ModuloDto"></jsp:useBean>
 
 <%
+    
+    /*
+    tarea: Acomodar los horarios, agregar boton actualizar horario y agregar nuevo horario
+    */
+    
     String bot = request.getParameter("requerimiento");
     System.out.println("llego a funciones");
     if(bot.equals("guardarCambiosAspirante")){
@@ -210,6 +215,7 @@
     }
     
     else if(bot.equals("registrarModulo")){
+        
         String nombre = request.getParameter("nombre");
         String horas = request.getParameter("horas");
         int tipo = Integer.parseInt(request.getParameter("tipo").toString());
@@ -236,7 +242,7 @@
             }
         }
         else{
-           response.sendRedirect("docente.jsp"); 
+           response.sendRedirect("../modulo/modulo.jsp"); 
         }
     }
     else if(bot.equals("horarioBtn")){
@@ -258,7 +264,7 @@
         String profesores = consulta.split("::")[1];
         System.out.println("Los profesores son: "+profesores);
         
-        session.setAttribute("horario", "value="+ "\""+horarios+"\" disabled");
+        session.setAttribute("horario",horarios);
         session.setAttribute("profesores", profesores);
         
         session.setAttribute("Mensaje", "Consulta Exitosa");

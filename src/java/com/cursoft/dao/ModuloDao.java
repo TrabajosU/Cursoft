@@ -99,7 +99,8 @@ public class ModuloDao {
         resultado = ConexionMysql.getConsultaSQL("SELECT horarios.dia, horarios.horaInicio, horarios.horaFin, horarios.salon FROM horarios WHERE idModulo='"+idModulo+"';");
         
         for(int i=0; i<resultado.size();i++){
-            consulta += resultado.get(i).toString() +";";
+            String []c = resultado.get(i).toString().split("-");
+            consulta += c[0]+"-"+c[1]+"-"+c[2]+"-"+c[3]+";";
         }
         consulta += "::";
         
