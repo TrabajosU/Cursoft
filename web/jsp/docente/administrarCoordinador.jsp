@@ -14,6 +14,18 @@
     
         System.out.println("Aspirantes:     "+aspirantes);
         System.out.println("Estudiantes:     "+estudiantes);
+        
+        int a=0,e=0;
+        if(aspirantes.isEmpty()){
+            session.setAttribute("aspirantes", " ");
+            a=1;
+        }
+        if(estudiantes.isEmpty()){
+            session.setAttribute("estudiantes", " ");
+            e=1;
+        }
+        
+        if(a!=1){
     
         session.setAttribute("listaAspirantes", aspirantes);
         String aspi ="";
@@ -57,7 +69,9 @@
         }
         session.setAttribute("aspirantes", aspi);
     System.out.println("termino con aspirantes");
+        }
         
+        if(e!=1){
         session.setAttribute("listaEstudiantes", estudiantes);
     
     System.out.println("comenzo con estudiantes");
@@ -104,7 +118,7 @@
         }
         session.setAttribute("estudiantes", estu);
     System.out.println("termino con estudiantes");
-    
+        }
     
         response.sendRedirect("coordinador.jsp");
     

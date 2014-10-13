@@ -271,6 +271,10 @@
         
         response.sendRedirect("../modulo/modulo.jsp");
     }
+    else if(bot.equals("cancelarModulo")){
+        
+        response.sendRedirect("../modulo/cargarProfesores.jsp");
+    }
     
     
     
