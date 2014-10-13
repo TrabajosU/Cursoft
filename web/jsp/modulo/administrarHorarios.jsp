@@ -25,13 +25,13 @@
        
        if(session.getAttribute("horario")==null){
            cad = dia +"-"+horaInicio+"-"+horaFin+"-"+salon+";";
-           session.setAttribute("horario", cad);
+           session.setAttribute("horario",cad);
        }
        else{
            cad = session.getAttribute("horario").toString();
            cad += dia +"-"+horaInicio+"-"+horaFin+"-"+salon+";";
            session.setAttribute("horario", cad);
-       }
+       } 
        
        System.out.println("el horario es: "+cad);
        

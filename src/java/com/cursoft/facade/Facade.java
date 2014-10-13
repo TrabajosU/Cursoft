@@ -77,5 +77,7 @@ public class Facade {
     
     public String consultarAspiranteCorreo(String correo){
         return new AdministrarAspirante().consultarAspiranteCorreo(correo);
+    public String consultarModulo(ModuloDto modulo){
+        return new AdministrarModulo().consultarModulo(modulo);
     }
 }

@@ -105,7 +105,7 @@
                                                 <div class="col-xs-12 col-sm-6 col-md-8">
                                                     <div class="input-group">
                                                         <span class="input-group-addon"><span class="glyphicon glyphicon-list-alt"></span></span>
-                                                        <input class="form-control" id="horario" name="horario"  value=" <% out.print(session.getAttribute("horario"));%> " type="text" disabled>
+                                                        <input class="form-control" id="horario" name="horario"  value =" <% out.print(session.getAttribute("horario")); %>" type="text" disabled>
                                                         
                                                     </div>
                                                     
@@ -118,7 +118,7 @@
                                                 <label for="profesor" class="col-xs-12 col-sm-6 col-md-4 control-label">Profesor:</label>
                                                 <div class="col-xs-12 col-sm-6 col-md-8">
                                                     <select class="form-control" id="profesor" name="profesor" enabled>
-                                                        <%
+                                                        <% 
                                                         String profes = session.getAttribute("profesores").toString();
                                                         String [] profesores = profes.split(";");
                                                         for(int i = 0; i<profesores.length; i++){
