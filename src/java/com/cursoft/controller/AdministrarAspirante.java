@@ -25,8 +25,13 @@ public class AdministrarAspirante {
     public void actualizarAspiranteEstado(UsuarioDto usuario, AspiranteDto aspirante) {
         
         AspiranteDao aspirant = new AspiranteDao();
-        aspirant.actualizarAspiranteEstado(usuario,aspirante);
+        aspirant.actualizarAspiranteEstado(usuario, aspirante);
         return;
+    }
+    
+    public String consultarAspiranteCorreo(String correo){
+        AspiranteDao aspirante = new AspiranteDao();
+        return aspirante.consultarAspiranteCorreo(correo);
     }
 
 }

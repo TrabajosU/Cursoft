@@ -61,7 +61,7 @@
                                         <a href="#"><i class="fa fa-bar-chart-o fa-fw"></i> Operaciones<span class="fa arrow"></span></a>
                                         <ul class="nav nav-second-level">
                                             <li>
-                                                <a href="aspirante.jsp">Consultar Datos</a>
+                                                <a href="administrarAspirante.jsp?requerimiento=consultar">Consultar Datos</a>
                                             </li>                                            
                                         </ul>
                                     </li>
@@ -72,11 +72,11 @@
                     </div>
                     <div class="col-xs-9 col-sm-9 col-md-9 col-lg-9" id="contenido">
                         <ol class="breadcrumb">
-                            <li><a href="aspirantePendiente.jsp">Inicio</a></li>
+                            <li><a href="administrarAspirante.jsp?requerimiento=mostrarInicio">Inicio</a></li>
                             <li class="active">Aspirante</li>
                         </ol>
                         <div id="subtitulo">
-                            <h2>Inicio Aspirante - Pendiente</h2>
+                            <h2>Consultar Datos</h2>
                         </div>
                         <div class="row">
                             <div id="error">
@@ -86,7 +86,7 @@
                         <div class="row">
                             <div class="col-xs-offset-1 col-xs-10" id="contenedor">
                                 <div class="row" id="formulario">
-                                    <form action="administrarEstudiante.jsp" class="form-horizontal" method="get" role="form">
+                                    <form action="administrarAspirante.jsp" class="form-horizontal" method="get" role="form">
                                         <fieldset>
                                             <legend>Datos de Usuario</legend>
                                             <div class="form-group">
@@ -241,38 +241,19 @@
                                                 </div>
                                             </div>
                                         </fieldset>
-                                        <fieldset>
-                                            <legend>Datos de Estudiante</legend>
-                                            <div class="form-group">
-                                                <label for="reciboPagoMatricula" class="col-xs-12 col-sm-6 col-md-4 control-label">Recibo de pago de matricula:</label>
-                                                <div class="col-xs-12 col-sm-6 col-md-8">
-                                                    <input type="file" class="filestyle" id="reciboPagoMatricula" name="reciboPagoMatricula" data-iconName="glyphicon-inbox">
-                                                </div>
-                                            </div>
-                                            <div class="form-group">
-                                                <label for="nota" class="col-xs-12 col-sm-6 col-md-4 control-label">Nota:</label>
-                                                <div class="col-xs-12 col-sm-6 col-md-8">
-                                                    <div class="input-group">
-                                                        <span class="input-group-addon"><span class="glyphicon glyphicon-stats"></span></span>
-                                                        <input class="form-control" id="nota" name="nota" placeholder="5.0" <% out.print(session.getAttribute("nota"));%> type="text">
-                                                    </div>
-                                                </div>
-                                            </div>
+                                        <fieldset>                                            
                                         </fieldset>
                                         <div class="form-group">
                                             <div class="row">
-                                                <div class="col-xs-12 text-center">
-                                                    <button class="btn btn-danger" id="consultar" name="requerimiento" value="consultar" type="submit" >Consultar</button>
-                                                    <button class="btn btn-danger" id="registrar" name="requerimiento" value="registrar" type="submit" >Registrar</button>
-                                                    <button class="btn btn-danger" id="actualizar" name="requerimiento" value="actualizar" type="submit" >Actualizar</button>
-                                                    <button class="btn btn-danger" id="eliminar" name="requerimiento" value="eliminar" type="submit" >Eliminar</button>
+                                                <div class="col-xs-12 text-center">                                                    
+                                                    <button class="btn btn-danger" id="actualizar" name="requerimiento" value="actualizar" type="submit" >Actualizar</button>                                                    
                                                 </div>
                                             </div>
                                         </div>
                                         <div class="form-group">
                                             <div class="row">
                                                 <div class="col-xs-offset-4 col-xs-4 text-center">
-                                                    <button class="btn btn-danger" id="cancelar" name="requerimiento" value="cancelar" type="submit">Cancelar</button>
+                                                    <button class="btn btn-danger" id="cancelar" name="requerimiento" value="mostrarInicio" type="submit">Cancelar</button>
                                                 </div>
                                             </div>
                                         </div>

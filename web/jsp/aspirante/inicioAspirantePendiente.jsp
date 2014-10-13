@@ -59,7 +59,7 @@
                                         <a href="#"><i class="fa fa-bar-chart-o fa-fw"></i> Operaciones<span class="fa arrow"></span></a>
                                         <ul class="nav nav-second-level">
                                             <li>
-                                                <a href="aspirante.jsp">Consultar Datos</a>
+                                                <a href="administrarAspirante.jsp?requerimiento=consultar">Consultar Datos</a>
                                             </li>                                            
                                         </ul>
                                     </li>
@@ -69,9 +69,11 @@
                         </div>
                     </div>
                     <div class="col-xs-9 col-sm-9 col-md-9 col-lg-9" id="contenido">
+                        <div class="text-right">
+                        <% out.print(session.getAttribute("nombre") + " " +session.getAttribute("apellido"));%>
+                        </div>
                         <ol class="breadcrumb">
-                            <li><a href="#">Inicio</a></li>
-                            <li class="active">Aspirante</li>
+                            <li><a href="#">Inicio</a></li>                            
                         </ol>
                         <div id="subtitulo">
                             <h2>Inicio Aspirante - Pendiente</h2>

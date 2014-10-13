@@ -53,6 +53,8 @@
                             <p><strong><% out.print(session.getAttribute("Mensaje"));
                                         session.setAttribute("Mensaje", "");%>
                                 </strong>
+                                <strong><% out.print(session.getAttribute("requerimiento"));%>
+                                </strong>
                             </p>
                         </div>
                     </div>

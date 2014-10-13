@@ -101,6 +101,44 @@ public class AspiranteDao {
         
     }
     
+    public String consultarAspiranteCorreo(String correo){
+        
+        ConexionMysql.conectar();
+                
+        String info ="";
+        
+        ArrayList resultado = ConexionMysql.getConsultaSQL("SELECT * FROM usuarios WHERE correo = '"+correo+"';");
+        //consulta += resultado.toString();
+        System.err.println(resultado.toString());
+        if(resultado == null){
+            return "";
+        }
+        String [] registro = resultado.get(0).toString().split("-");
+        
+        String idUsuario = registro[0];
+        
+        info += registro[1] + "-" + registro[2] + "-" + registro[3] + "-" + registro[4] + "-" +
+                registro[5] + "-" + registro[6] + "-" + registro[7] + "-" + registro[8] + "-" +
+                registro[9] + "-" + registro[10] + "-" + registro[11] + "-" + registro[12] + "-" +
+                registro[13] + "-";
+                
+        resultado.clear();
+        
+        resultado = ConexionMysql.getConsultaSQL("SELECT * FROM aspirantes WHERE idUsuario='" 
+                + idUsuario + "';");                        
+                
+        if(resultado == null){
+            return "";
+        }
+        
+        registro = resultado.get(0).toString().split("-");
+        
+        info += registro[2] + "-" + registro[3] + "-";
+        
+        ConexionMysql.desconectar();
+        
+        return info;
+    }
     
     
 }

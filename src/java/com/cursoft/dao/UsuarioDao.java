@@ -76,8 +76,7 @@ public class UsuarioDao {
         
         resultado.clear();
         
-        if(usuario.getIdTipoUsuario() == 1){
-            System.out.println("bienvenido a primer IF");
+        if(usuario.getIdTipoUsuario() == 1){            
             //busco en aspirante y estudiante
             resultado = ConexionMysql.getConsultaSQL("SELECT aspirantes.idAspirante, "
                         + "aspirantes.estado FROM aspirantes WHERE idUsuario = '" + idUsuario + "';");

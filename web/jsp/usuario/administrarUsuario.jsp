@@ -15,7 +15,7 @@
     // <a class="btn btn-danger" role="button" href="index.php?mostrar=IU_REGISTRAR_ASPIRANTE">Registrar - Aspirante</a>
     // <button class="btn btn-danger" id="registrar" name = "requerimiento" value="registrarAspirante" type="submit">Registrar - Aspirante</button>
     String boton = (String)request.getParameter("requerimiento");
-    //out.print(boton);
+    
     if(boton.equals("iniciarSesion")){
         
         byte tipo = Byte.parseByte(request.getParameter("tipo"));
@@ -28,51 +28,95 @@
                
         
         String resp = facade.iniciarSesion(usuario);
+        HttpSession sesionUsuario;
         
         if(resp.equals("A0")){
             //out.print("Bienvenido, eres un aspirante pendiente");
-            response.sendRedirect("../aspirante/aspirantePendiente.jsp");
+            sesionUsuario = request.getSession(true);
+            sesionUsuario.setAttribute("usuario", correo);
+            sesionUsuario.setAttribute("estadoUsuario", resp);
+            
+            response.sendRedirect("../aspirante/administrarAspirante.jsp?requerimiento=mostrarInicio");
         }
         else if(resp.equals("A1")){
             //out.print("Bienvenido, eres un aspirante aprobado, puedes cargar tu matrícula");
-            response.sendRedirect("../aspirante/aspiranteAprobado.jsp");
+            sesionUsuario = request.getSession(true);
+            sesionUsuario.setAttribute("usuario", correo);
+            sesionUsuario.setAttribute("estadoUsuario", resp);
+            response.sendRedirect("../aspirante/inicioAspiranteAprobado.jsp");
         }
         else if(resp.equals("A2")){
             out.print("Bienvenido, eres un aspirante en estado rechazado, comunícate con el coordinador del curso");
+            sesionUsuario = request.getSession(true);
+            sesionUsuario.setAttribute("usuario", correo);
+            sesionUsuario.setAttribute("estadoUsuario", resp);
         }
         else if(resp.equals("E0")){
             out.print("Bienvenido, eres un estudiante pendiente");
+            sesionUsuario = request.getSession(true);
+            sesionUsuario.setAttribute("usuario", correo);
+            sesionUsuario.setAttribute("estadoUsuario", resp);
         }
         else if(resp.equals("E1")){
             //out.print("Bienvenido, eres un estudiante aprobado, ya estás matriculado");
-            response.sendRedirect("../estudiante/estudianteAprobado.jsp");
+            sesionUsuario = request.getSession(true);
+            sesionUsuario.setAttribute("usuario", correo);
+            sesionUsuario.setAttribute("estadoUsuario", resp);
+            response.sendRedirect("../estudiante/inicioEstudianteAprobado.jsp");
         }
         else if(resp.equals("E2")){
             out.print("Bienvenido, eres un estudiante en estado rechazado, comunícate con el coordinador del curso");            
+            sesionUsuario = request.getSession(true);
+            sesionUsuario.setAttribute("usuario", correo);
+            sesionUsuario.setAttribute("estadoUsuario", resp);
         }
         else if(resp.equals("E3")){
             out.print("Bienvenido, eres un estudiante egresado");
+            sesionUsuario = request.getSession(true);
+            sesionUsuario.setAttribute("usuario", correo);
+            sesionUsuario.setAttribute("estadoUsuario", resp);
         }
         else if(resp.equals("D0")){
             out.print("Bienvenido, eres el administrador");
+            sesionUsuario = request.getSession(true);
+            sesionUsuario.setAttribute("usuario", correo);
+            sesionUsuario.setAttribute("estadoUsuario", resp);
         }
         else if(resp.equals("D1")){
             out.print("Bienvenido, eres un profesor");
+            sesionUsuario = request.getSession(true);
+            sesionUsuario.setAttribute("usuario", correo);
+            sesionUsuario.setAttribute("estadoUsuario", resp);
         }
         else if(resp.equals("D2")){
             out.print("Bienvenido, eres un estudiante coordinador");
+            sesionUsuario = request.getSession(true);
+            sesionUsuario.setAttribute("usuario", correo);
+            sesionUsuario.setAttribute("estadoUsuario", resp);
         }
         else if(resp.equals("D3")){
             out.print("Bienvenido, eres un profesor-coordinador");
+            sesionUsuario = request.getSession(true);
+            sesionUsuario.setAttribute("usuario", correo);
+            sesionUsuario.setAttribute("estadoUsuario", resp);
         }
         else if(resp.equals("D4")){
             out.print("Bienvenido, eres un administrador-profesor");
+            sesionUsuario = request.getSession(true);
+            sesionUsuario.setAttribute("usuario", correo);
+            sesionUsuario.setAttribute("estadoUsuario", resp);
         }
         else if(resp.equals("D5")){
             out.print("Bienvenido, eres un administrador-coordinador");
+            sesionUsuario = request.getSession(true);
+            sesionUsuario.setAttribute("usuario", correo);
+            sesionUsuario.setAttribute("estadoUsuario", resp);
         }
         else if(resp.equals("D6")){
             out.print("Bienvenido, eres un docente con de todos los tipos");
+            sesionUsuario = request.getSession(true);
+            sesionUsuario.setAttribute("usuario", correo);
+            sesionUsuario.setAttribute("estadoUsuario", resp);
             
         }
         else if(resp.equals("-1")){            
@@ -84,8 +128,7 @@
             response.sendRedirect("iniciarSesion.jsp");            
         }
         
-        HttpSession ssn = request.getSession(true);
-        ssn.setAttribute("usuario", usuario);
+        
         
         
         /*
