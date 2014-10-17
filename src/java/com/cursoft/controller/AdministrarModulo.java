@@ -31,5 +31,10 @@ public class AdministrarModulo {
         ModuloDao mod = new ModuloDao();
         return mod.actualizarModulo(modulo,usuario,horario);
     }
+
+    public boolean eliminarModulo(ModuloDto modulo) {
+        ModuloDao mod = new ModuloDao();
+        return mod.eliminarModulo(modulo);
+    }
     
 }

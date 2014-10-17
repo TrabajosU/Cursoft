@@ -315,6 +315,19 @@
         
         response.sendRedirect("../modulo/modulo.jsp");
     }
+    
+    else if(bot.equals("eliminarModulo")){
+        String nombre = request.getParameter("nombre");
+        modulo.setNombre(nombre);
+        boolean x = facade.eliminarModulo(modulo);
+        if(x){
+            session.setAttribute("Mensaje", "El modulo "+modulo.getNombre()+" ha sido eliminado");
+        }
+        else{
+            session.setAttribute("Mensaje", "Error");
+        }
+        response.sendRedirect("../modulo/modulo.jsp");
+    }
     else if(bot.equals("cancelarModulo")){
         
         response.sendRedirect("../modulo/cargarProfesores.jsp");

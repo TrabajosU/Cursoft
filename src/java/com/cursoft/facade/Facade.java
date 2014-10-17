@@ -86,4 +86,8 @@ public class Facade {
     public boolean actualizarModulo(ModuloDto modulo, UsuarioDto usuario, String horario){
         return new AdministrarModulo().actualizarModulo(modulo,usuario,horario);
     }
+    
+    public boolean eliminarModulo(ModuloDto modulo){
+        return new AdministrarModulo().eliminarModulo(modulo);
+    }
 }

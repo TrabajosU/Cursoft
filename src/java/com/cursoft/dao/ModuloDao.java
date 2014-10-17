@@ -176,4 +176,26 @@ public class ModuloDao {
         return idDocente;
     }
 
+    public boolean eliminarModulo(ModuloDto modulo) {
+        
+        ConexionMysql.conectar();
+        
+        ArrayList resultado = ConexionMysql.getConsultaSQL("SELECT modulos.idModulo FROM modulos WHERE nombre='"+modulo.getNombre()+"';");
+        String idModulo = resultado.get(0).toString().split("-")[0];
+        
+        String sql1 = "DELETE FROM horarios WHERE idModulo='"+idModulo+"'";
+        boolean a = ConexionMysql.ejecutarActualizacionSQL(sql1);
+        
+        sql1 = "DELETE FROM docentesmodulos WHERE idModuloFK='"+idModulo+"'";
+        boolean b = ConexionMysql.ejecutarActualizacionSQL(sql1);
+        
+        sql1= "DELETE FROM modulos WHERE idModulo='"+idModulo+"'";
+        boolean c = ConexionMysql.ejecutarActualizacionSQL(sql1);
+        
+        if(a&&b&&c){
+            return true;
+        }
+        return false;
+    }
+
 }
