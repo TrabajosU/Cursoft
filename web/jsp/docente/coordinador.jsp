@@ -50,23 +50,40 @@
         <section>
             <div class="row">
                 <div class="col-xs-12 col-sm-3 col-md-3 col-lg-3" id="menu">
-                    <div class="navbar-default navbar-static-side" role="navigation">
+                <div class="navbar-default navbar-static-side" role="navigation">
                 <div class="sidebar-collapse">
                     <ul class="nav" id="side-menu">
                         <li>
                             <a href="#"><i class="fa fa-bar-chart-o fa-fw"></i> Administrar<span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
                                 <li>
-                                    <a href="#">Aspirantes</a>
+                                    <a href="#">Aspirante</a>
                                 </li>
                                 <li>
-                                    <a href="../estudiante/estudiante.jsp">Estudiantes</a>
+                                    <a href="../estudiante/estudiante.jsp">Estudiante</a>
                                 </li>
                                 <li>
-                                    <a href="docente.jsp">Docentes</a>
+                                    <a href="docente.jsp">Docente</a>
                                 </li>
                                 <li>
-                                    <a href="../modulo/cargarProfesores.jsp">Modulos</a>
+                                    <a href="../modulo/cargarProfesores.jsp">Modulo</a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="#"><i class="fa fa-bar-chart-o fa-fw"></i> Consultar Listados<span class="fa arrow"></span></a>
+                            <ul class="nav nav-second-level">
+                                <li>
+                                    <a href="../aspirante/cargarListadoAspirantes.jsp">Listar Aspirantes</a>
+                                </li>
+                                <li>
+                                    <a href="../estudiante/cargarListadoEstudiantes.jsp">Listar Estudiantes</a>
+                                </li>
+                                <li>
+                                    <a href="cargarListadoDocentes.jsp">Listar Docentes</a>
+                                </li>
+                                <li>
+                                    <a href="../modulo/cargarListadoModulos.jsp">Listar Modulos</a>
                                 </li>
                             </ul>
                         </li>
@@ -74,7 +91,7 @@
                     </ul>
                 </div>
             </div>
-                </div>
+            </div>
                 <div class="col-xs-12 col-sm-9 col-md-9 col-lg-9" id="contenido">
                     <ol class="breadcrumb">
                         <li><a href="#">Inicio</a></li>
