@@ -59,7 +59,7 @@
                                         <a href="#"><i class="fa fa-bar-chart-o fa-fw"></i> Operaciones<span class="fa arrow"></span></a>
                                         <ul class="nav nav-second-level">
                                             <li>
-                                                <a href="administrarAspirante.jsp?requerimiento=consultar">Consultar Datos</a>
+                                                <a href="administrarAspirante.jsp?requerimiento=consultarCorreo">Consultar Datos</a>
                                             </li>                                            
                                         </ul>
                                     </li>
@@ -70,7 +70,8 @@
                     </div>
                     <div class="col-xs-9 col-sm-9 col-md-9 col-lg-9" id="contenido">
                         <div class="text-right">
-                        <% out.print(session.getAttribute("nombre") + " " +session.getAttribute("apellido"));%>
+                            <% out.print(session.getAttribute("nombre") + " " + session.getAttribute("apellido"));%>                            
+                            <a href="../usuario/administrarUsuario.jsp?requerimiento=cerrarSesion">  (Cerrar sesión)</a>                        
                         </div>
                         <ol class="breadcrumb">
                             <li><a href="#">Inicio</a></li>                            

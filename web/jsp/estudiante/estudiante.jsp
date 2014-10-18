@@ -25,9 +25,18 @@
         <link href="../../css/bootstrap-formhelpers.css" rel="stylesheet">
         <!--Hojas de estilo-->
         <link href="../../css/style.css" rel="stylesheet">
+        <!-- Core CSS - Include with every page -->
+        <link href="../../css/bootstrap.min.css" rel="stylesheet">
+        <link href="../../font-awesome/css/font-awesome.css" rel="stylesheet">
+        <!-- Page-Level Plugin CSS - Dashboard -->
+        <link href="../../css/plugins/morris/morris-0.4.3.min.css" rel="stylesheet">
+        <link href="../../css/plugins/timeline/timeline.css" rel="stylesheet">
+        <!-- SB Admin CSS - Include with every page -->
+        <link href="../../css/sb-admin.css" rel="stylesheet">
         <!--Iconos-->
         <link href="../../img/favicon.ico" rel="shortcut icon">
     </head>
+
     <body>
         <div class="container">
             <header>
@@ -42,23 +51,44 @@
             <br>
             <section>
                 <div class="row">
-                    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" id="contenido">
-                        <div class="row">
-                            <div class="col-xs-offset-1 col-xs-10 alert alert-success">
-                                <div id="error">
-                                    <p><strong><% out.print(session.getAttribute("Mensaje"));%></strong></p>
-                                </div>
+                    <div class="col-xs-12 col-sm-3 col-md-3 col-lg-3" id="menu">
+                        <div class="navbar-default navbar-static-side" role="navigation">
+                            <div class="sidebar-collapse">                    
+                                <ul class="nav" id="side-menu">
+                                    <li>
+                                        <a href="#"><i class="fa fa-bar-chart-o fa-fw"></i> Operaciones<span class="fa arrow"></span></a>
+                                        <ul class="nav nav-second-level">
+                                            <li>
+                                                <a href="administrarEstudiante.jsp?requerimiento=consultar">Consultar Datos</a>
+                                            </li>                                            
+                                        </ul>
+                                    </li>
+
+                                </ul>
                             </div>
                         </div>
-                        <div class="row">
-                            <div class="col-xs-offset-1 col-xs-10" id="subtitulo">
-                                <h2>Administrar Estudiante</h2>
-                            </div>
+                    </div>
+                    <div class="col-xs-9 col-sm-9 col-md-9 col-lg-9" id="contenido">
+                        <div class="text-right">
+                            <% out.print(session.getAttribute("nombre") + " " + session.getAttribute("apellido"));%>
+                            <a href="../usuario/administrarUsuario.jsp?requerimiento=cerrarSesion">  (Cerrar sesión)</a>
                         </div>
+                        <ol class="breadcrumb">
+                            <li><a href="administrarEstudiante.jsp?requerimiento=mostrarInicio">Inicio</a></li>
+                            <li class="active">Estudiante</li>
+                        </ol>
+                        <div id="subtitulo">
+                            <h2>Consultar Datos</h2>
+                        </div>
+                        <div class="row">
+                            <div id="error">
+                                <p><strong><% out.print(session.getAttribute("Mensaje"));%></strong></p>
+                            </div>
+                        </div>                                           
                         <div class="row">
                             <div class="col-xs-offset-1 col-xs-10" id="contenedor">
                                 <div class="row" id="formulario">
-                                    <form action="administrarEstudiante.jsp" class="form-horizontal" method="get" role="form">
+                                    <form action="administrarEstudiante.jsp" class="form-horizontal" method="post" role="form">
                                         <fieldset>
                                             <legend>Datos de Usuario</legend>
                                             <div class="form-group">
@@ -66,7 +96,7 @@
                                                 <div class="col-xs-12 col-sm-6 col-md-8">
                                                     <div class="input-group">
                                                         <span class="input-group-addon"><span class="glyphicon glyphicon-qrcode"></span></span>
-                                                        <input class="form-control" id="codigo" name="codigo" placeholder="1150789" <% out.print(session.getAttribute("codigo"));%> type="text">
+                                                        <input class="form-control" id="codigo" name="codigo" value="<% out.print(session.getAttribute("codigo"));%>" type="text">
                                                     </div>
                                                 </div>
                                             </div>
@@ -75,7 +105,7 @@
                                                 <div class="col-xs-12 col-sm-6 col-md-8">
                                                     <div class="input-group">
                                                         <span class="input-group-addon"><span class="glyphicon glyphicon-envelope"></span></span>
-                                                        <input class="form-control" id="correo" name="correo" placeholder="abdul.laiseca@gmail.com" <% out.print(session.getAttribute("correo"));%> type="text">
+                                                        <input class="form-control" id="correo" name="correo" value="<% out.print(session.getAttribute("correo"));%>" type="text">
                                                     </div>
                                                 </div>
                                             </div>
@@ -84,7 +114,7 @@
                                                 <div class="col-xs-12 col-sm-6 col-md-8">
                                                     <div class="input-group">
                                                         <span class="input-group-addon"><span class="glyphicon glyphicon-lock"></span></span>
-                                                        <input class="form-control" id="contrasenia" name="contrasenia" placeholder= "********" <% out.print(session.getAttribute("contrasenia"));%> type="password">
+                                                        <input class="form-control" id="contrasenia" name="contrasenia" value="<% out.print(session.getAttribute("contrasenia"));%>" type="password">
                                                     </div>
                                                 </div>
                                             </div>
@@ -93,7 +123,7 @@
                                                 <div class="col-xs-12 col-sm-6 col-md-8">
                                                     <div class="input-group">
                                                         <span class="input-group-addon"><span class="glyphicon glyphicon-lock"></span></span>
-                                                        <input class="form-control" id="confirmarContrasenia" name="confirmarContrasenia" placeholder= "********" <% out.print(session.getAttribute("contrasenia2"));%> type="password">
+                                                        <input class="form-control" id="confirmarContrasenia" name="confirmarContrasenia" value="<% out.print(session.getAttribute("contrasenia2"));%>" type="password">
                                                     </div>
                                                 </div>
                                             </div>
@@ -102,7 +132,7 @@
                                                 <div class="col-xs-12 col-sm-6 col-md-8">
                                                     <div class="input-group">
                                                         <span class="input-group-addon"><span class="glyphicon glyphicon-user"></span></span>
-                                                        <input class="form-control" id="nombre" name="nombre" placeholder="Abdul Fabian" <% out.print(session.getAttribute("nombre"));%> type="text">
+                                                        <input class="form-control" id="nombre" name="nombre" value="<% out.print(session.getAttribute("nombre"));%>" type="text">
                                                     </div>
                                                 </div>
                                             </div>
@@ -111,7 +141,7 @@
                                                 <div class="col-xs-12 col-sm-6 col-md-8">
                                                     <div class="input-group">
                                                         <span class="input-group-addon"><span class="glyphicon glyphicon-user"></span></span>
-                                                        <input class="form-control" id="apellido" name="apellido" placeholder="Laiseca Candelo" <% out.print(session.getAttribute("apellido"));%> type="text">
+                                                        <input class="form-control" id="apellido" name="apellido" value="<% out.print(session.getAttribute("apellido"));%>" type="text">
                                                     </div>
                                                 </div>
                                             </div>
@@ -120,20 +150,20 @@
                                                 <div class="col-xs-12 col-sm-6 col-md-8">
                                                     <select class="form-control" id="idTipoDocumento" name="idTipoDocumento">
                                                         <%
-                                                        String [] opciones = {"Cédula de ciudadanía", "Tarjeta de identidad", "Pasaporte"};
-                                                        for(int i = 0; i<opciones.length; i++){
-                                                            out.print("<option value=\"" + (i+1) +"\">"+ opciones[i] +"</option>" + "\n\t\t\t\t\t\t\t");
-                                                        }
+                                                            String[] opciones = {"Cédula de ciudadanía", "Tarjeta de identidad", "Pasaporte"};
+                                                            for (int i = 0; i < opciones.length; i++) {
+                                                                out.print("<option value=\"" + (i + 1) + "\">" + opciones[i] + "</option>" + "\n\t\t\t\t\t\t\t");
+                                                            }
                                                         %>
                                                     </select>
-                                                 </div>
+                                                </div>
                                             </div>
                                             <div class="form-group">
                                                 <label for="numeroDocumento" class="col-xs-12 col-sm-6 col-md-4 control-label">Número de documento:</label>
                                                 <div class="col-xs-12 col-sm-6 col-md-8">
                                                     <div class="input-group">
                                                         <span class="input-group-addon"><span class="glyphicon glyphicon-barcode"></span></span>
-                                                        <input class="form-control" id="numeroDocumento" name="numeroDocumento" placeholder="13278413" <% out.print(session.getAttribute("documento"));%> type="text">
+                                                        <input class="form-control" id="numeroDocumento" name="numeroDocumento" value="<% out.print(session.getAttribute("documento"));%>" type="text">
                                                     </div>
                                                 </div>
                                             </div>
@@ -142,7 +172,7 @@
                                                 <div class="col-xs-12 col-sm-6 col-md-8">
                                                     <div class="input-group">
                                                         <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span></span>
-                                                        <input class="form-control" id="fechaNacimiento" name="fechaNacimiento" placeholder="16/04/1984" <% out.print(session.getAttribute("fechaNacimiento"));%> type="text">
+                                                        <input class="form-control" id="fechaNacimiento" name="fechaNacimiento" value="<% out.print(session.getAttribute("fechaNacimiento"));%>" type="text">
                                                     </div>
                                                 </div>
                                             </div>
@@ -151,7 +181,7 @@
                                                 <div class="col-xs-12 col-sm-6 col-md-8">
                                                     <div class="input-group">
                                                         <span class="input-group-addon"><span class="glyphicon glyphicon-home"></span></span>
-                                                        <input class="form-control" id="direccion" name="direccion" placeholder="Cl 21A 11 48 Br Alfonso Lopez" <% out.print(session.getAttribute("direccion"));%> type="text">
+                                                        <input class="form-control" id="direccion" name="direccion" value="<% out.print(session.getAttribute("direccion"));%>" type="text">
                                                     </div>
                                                 </div>
                                             </div>
@@ -160,7 +190,7 @@
                                                 <div class="col-xs-12 col-sm-6 col-md-8">
                                                     <div class="input-group">
                                                         <span class="input-group-addon"><span class="glyphicon glyphicon-phone-alt"></span></span>
-                                                        <input class="form-control" id="telefono" name="telefono" placeholder="5822276" <% out.print(session.getAttribute("telefono"));%> type="text">
+                                                        <input class="form-control" id="telefono" name="telefono" value="<% out.print(session.getAttribute("telefono"));%>" type="text">
                                                     </div>
                                                 </div>
                                             </div>
@@ -169,7 +199,7 @@
                                                 <div class="col-xs-12 col-sm-6 col-md-8">
                                                     <div class="input-group">
                                                         <span class="input-group-addon"><span class="glyphicon glyphicon-phone"></span></span>
-                                                        <input class="form-control" id="telefonoMovil" name="telefonoMovil" placeholder="3137496602" <% out.print(session.getAttribute("telefonoMovil"));%> type="text">
+                                                        <input class="form-control" id="telefonoMovil" name="telefonoMovil" value="<% out.print(session.getAttribute("telefonoMovil"));%>" type="text">
                                                     </div>
                                                 </div>
                                             </div>
@@ -181,7 +211,7 @@
                                                 <div class="col-xs-12 col-sm-6 col-md-8">
                                                     <div class="input-group">
                                                         <span class="input-group-addon"><span class="glyphicon glyphicon-stats"></span></span>
-                                                        <input class="form-control" id="promedioPonderado" name="promedioPonderado" placeholder="4.2" <% out.print(session.getAttribute("promedio"));%> type="text">
+                                                        <input class="form-control" id="promedioPonderado" name="promedioPonderado" value="<% out.print(session.getAttribute("promedio"));%>" type="text">
                                                     </div>
                                                 </div>
                                             </div>
@@ -190,7 +220,7 @@
                                                 <div class="col-xs-12 col-sm-6 col-md-8">
                                                     <div class="input-group">
                                                         <span class="input-group-addon"><span class="glyphicon glyphicon-list-alt"></span></span>
-                                                        <input class="form-control" id="semestreFinalizacionMaterias" name="semestreFinalizacionMaterias" placeholder="02/2015" <% out.print(session.getAttribute("semestreTerminacionMaterias"));%> type="text">
+                                                        <input class="form-control" id="semestreFinalizacionMaterias" name="semestreFinalizacionMaterias" value="<% out.print(session.getAttribute("semestreTerminacionMaterias"));%>" type="text">
                                                     </div>
                                                 </div>
                                             </div>
@@ -198,46 +228,67 @@
                                                 <label for="reporteFinalizacionMaterias" class="col-xs-12 col-sm-6 col-md-4 control-label">Reporte de terminación de materias:</label>
                                                 <div class="col-xs-12 col-sm-6 col-md-8">
                                                     <input type="file" class="filestyle" id="reporteFinalizacionMaterias" name="reporteFinalizacionMaterias" data-iconName="glyphicon-inbox">
+                                                    <!--agregado-->
+
+                                                    <a href="<% out.print(session.getAttribute("reporteFinalizacionMaterias"));%>" class="thumbnail">
+                                                        <img src="<% out.print(session.getAttribute("reporteFinalizacionMaterias"));%>" alt="Reporte Finalización de Materias">
+                                                    </a>  
                                                 </div>
                                             </div>
                                             <div class="form-group">
                                                 <label for="reportePazSalvo" class="col-xs-12 col-sm-6 col-md-4 control-label">Reporte de paz y salvo:</label>
                                                 <div class="col-xs-12 col-sm-6 col-md-8">
                                                     <input type="file" class="filestyle" id="reportePazSalvo" name="reportePazSalvo" data-iconName="glyphicon-inbox">
+                                                    <!--agregado-->
+
+                                                    <a href="<% out.print(session.getAttribute("reportePazSalvo"));%>" class="thumbnail">
+                                                        <img src="<% out.print(session.getAttribute("reportePazSalvo"));%>" alt="Reporte Paz y Salvo">
+                                                    </a>  
+
                                                 </div>
+
+
+
                                             </div>
                                             <div class="form-group">
                                                 <label for="reciboInscripcion" class="col-xs-12 col-sm-6 col-md-4 control-label">Recibo de pago de inscripción:</label>
                                                 <div class="col-xs-12 col-sm-6 col-md-8">
                                                     <input type="file" class="filestyle" id="reciboInscripcion" name="reciboInscripcion" data-iconName="glyphicon-inbox">
+                                                    <!--agregado-->
+                                                    <% out.print(session.getAttribute("reciboInscripcion"));%>      
+                                                    <a href="<% out.print(session.getAttribute("reciboInscripcion"));%>" class="thumbnail">
+                                                        <img src="<% out.print(session.getAttribute("reciboInscripcion"));%>" alt="Recibo Inscripción">
+                                                    </a>  
                                                 </div>
                                             </div>
                                         </fieldset>
                                         <fieldset>
                                             <legend>Datos de Estudiante</legend>
-                                                <div class="form-group">
-                                                    <label for="reciboPagoMatricula" class="col-xs-12 col-sm-6 col-md-4 control-label">Recibo de pago de matricula:</label>
-                                                    <div class="col-xs-12 col-sm-6 col-md-8">
-                                                        <input type="file" class="filestyle" id="reciboPagoMatricula" name="reciboPagoMatricula" data-iconName="glyphicon-inbox">
+                                            <div class="form-group">
+                                                <label for="reciboPagoMatricula" class="col-xs-12 col-sm-6 col-md-4 control-label">Recibo de pago de matricula:</label>
+                                                <div class="col-xs-12 col-sm-6 col-md-8">
+                                                    <input type="file" class="filestyle" id="reciboPagoMatricula" name="reciboPagoMatricula" data-iconName="glyphicon-inbox">
+                                                    <!--agregado-->
+
+                                                    <a href="<% out.print(session.getAttribute("reciboPagoMatricula"));%>" class="thumbnail">
+                                                        <img src="<% out.print(session.getAttribute("reciboPagoMatricula"));%>" alt="Recibo Pago Matrícula">
+                                                    </a>  
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="nota" class="col-xs-12 col-sm-6 col-md-4 control-label">Nota:</label>
+                                                <div class="col-xs-12 col-sm-6 col-md-8">
+                                                    <div class="input-group">
+                                                        <span class="input-group-addon"><span class="glyphicon glyphicon-stats"></span></span>
+                                                        <input class="form-control" id="nota" name="nota" placeholder="5.0" <% out.print(session.getAttribute("nota"));%> type="text">
                                                     </div>
                                                 </div>
-                                                <div class="form-group">
-                                                    <label for="nota" class="col-xs-12 col-sm-6 col-md-4 control-label">Nota:</label>
-                                                    <div class="col-xs-12 col-sm-6 col-md-8">
-                                                        <div class="input-group">
-                                                            <span class="input-group-addon"><span class="glyphicon glyphicon-stats"></span></span>
-                                                            <input class="form-control" id="nota" name="nota" placeholder="5.0" <% out.print(session.getAttribute("nota"));%> type="text">
-                                                        </div>
-                                                    </div>
-                                                </div>
+                                            </div>
                                         </fieldset>
                                         <div class="form-group">
                                             <div class="row">
-                                                <div class="col-xs-12 text-center">
-                                                    <button class="btn btn-danger" id="consultar" name="requerimiento" value="consultar" type="submit" >Consultar</button>
-                                                    <button class="btn btn-danger" id="registrar" name="requerimiento" value="registrar" type="submit" >Registrar</button>
-                                                    <button class="btn btn-danger" id="actualizar" name="requerimiento" value="actualizar" type="submit" >Actualizar</button>
-                                                    <button class="btn btn-danger" id="eliminar" name="requerimiento" value="eliminar" type="submit" >Eliminar</button>
+                                                <div class="col-xs-12 text-center">                                                    
+                                                    <button class="btn btn-danger" id="actualizar" name="requerimiento" value="actualizar" type="submit" >Actualizar</button>                                                    
                                                 </div>
                                             </div>
                                         </div>
@@ -259,15 +310,49 @@
                 <p><strong>Copyright © 2014. Programa de Ingeniería de Sistemas - UFPS</strong></p>
                 <p>Desarrollado por: <span class="icon-github"></span><strong><a id="megaterios" href="https://github.com/Megaterios/"> Megaterios</a></strong></p>
             </footer>
+
             <!--Scripts-->
             <script src="../../js/modernizr.js"></script>
             <script src="../../js/main.js"></script>
             <script src="../../js/jquery.js"></script>
+            <script src="../../js/angular.js"></script>
             <!--Scripts Bootstrap-->
             <script src="../../js/bootstrap.js"></script>
             <script src="../../js/vendor/bootstrap-filestyle.js"></script>
             <script src="../../js/vendor/bootstrap-formhelpers.js"></script>
+            <!-- Core Scripts - Include with every page -->
+            <script src="../../js/jquery-1.10.2.js"></script>
+            <script src="../../js/bootstrap.min.js"></script>
+            <script src="../../js/plugins/metisMenu/jquery.metisMenu.js"></script>
+            <!-- Page-Level Plugin Scripts - Tables -->
+            <script src="../../js/plugins/dataTables/jquery.dataTables.js"></script>
+            <script src="../../js/plugins/dataTables/dataTables.bootstrap.js"></script>
+            <!-- SB Admin Scripts - Include with every page -->
+            <script src="../../js/sb-admin.js"></script>
 
+
+            <script src="../../js/plugins/flot/excanvas.min.js"></script>
+            <script src="../../js/plugins/flot/jquery.flot.js"></script>
+            <script src="../../js/plugins/flot/jquery.flot.pie.js"></script>
+            <script src="../../js/plugins/flot/jquery.flot.resize.js"></script>
+            <script src="../../js/plugins/flot/jquery.flot.tooltip.min.js"></script>
+
+            <script src="../../js/plugins/metisMenu/jquery.metisMenu.js"></script>
+
+
+            <script src="../../js/plugins/morris/morris.js"></script>
+            <script src="../../js/plugins/morris/raphael-2.1.0.min.js"></script>
+
+
+
+
+
+            <!-- Page-Level Demo Scripts - Tables - Use for reference -->
+            <script>
+                $(document).ready(function () {
+                    $('#dataTables-example').dataTable();
+                });
+            </script>
         </div>
     </body>
 </html>

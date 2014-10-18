@@ -25,6 +25,10 @@ public class Facade {
         return new AdministrarEstudiante().consultarEstudianteCodigo(codigo);
     }
     
+    public String consultarEstudianteCorreo(String correo){
+        return new AdministrarEstudiante().consultarEstudianteCorreo(correo);
+    }
+    
     public int actualizarEstudiante(UsuarioDto usuario, AspiranteDto aspirante, EstudianteDto estudiante ) {
         return new AdministrarEstudiante().actualizarEstudiante(usuario, aspirante, estudiante);
     }
@@ -77,6 +81,12 @@ public class Facade {
     
     public String consultarAspiranteCorreo(String correo){
         return new AdministrarAspirante().consultarAspiranteCorreo(correo);
+    }
+    
+    public String consultarAspiranteCodigo(String codigo){
+        return new AdministrarAspirante().consultarAspiranteCodigo(codigo);
+    }
+    
     public String consultarModulo(ModuloDto modulo){
         return new AdministrarModulo().consultarModulo(modulo);
     }

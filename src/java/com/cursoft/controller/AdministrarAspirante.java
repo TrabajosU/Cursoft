@@ -33,5 +33,10 @@ public class AdministrarAspirante {
         AspiranteDao aspirante = new AspiranteDao();
         return aspirante.consultarAspiranteCorreo(correo);
     }
+    
+    public String consultarAspiranteCodigo(String codigo){
+        AspiranteDao aspirante = new AspiranteDao();
+        return aspirante.consultarAspiranteCodigo(codigo);
+    }
 
 }

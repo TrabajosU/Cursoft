@@ -57,8 +57,8 @@ public class UsuarioDao {
         String info ="";
         
         ArrayList resultado = ConexionMysql.getConsultaSQL("SELECT * FROM usuarios WHERE correo = '" + usuario.getCorreo() + "';");
-        //consulta += resultado.toString();
-        System.err.println(resultado.toString());
+        //consulta += resultado.toString();        
+        //System.err.println(resultado.toString());
         
         if(resultado == null){
             return "-1";

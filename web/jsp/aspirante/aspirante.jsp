@@ -38,7 +38,7 @@
         <!--Iconos-->
         <link href="../../img/favicon.ico" rel="shortcut icon">
     </head>
-    
+
     <body>
         <div class="container">
             <header>
@@ -71,6 +71,10 @@
                         </div>
                     </div>
                     <div class="col-xs-9 col-sm-9 col-md-9 col-lg-9" id="contenido">
+                        <div class="text-right">
+                            <% out.print(session.getAttribute("nombre") + " " + session.getAttribute("apellido"));%>
+                            <a href="../usuario/administrarUsuario.jsp?requerimiento=cerrarSesion">  (Cerrar sesión)</a>
+                        </div>
                         <ol class="breadcrumb">
                             <li><a href="administrarAspirante.jsp?requerimiento=mostrarInicio">Inicio</a></li>
                             <li class="active">Aspirante</li>
@@ -86,7 +90,7 @@
                         <div class="row">
                             <div class="col-xs-offset-1 col-xs-10" id="contenedor">
                                 <div class="row" id="formulario">
-                                    <form action="administrarAspirante.jsp" class="form-horizontal" method="get" role="form">
+                                    <form action="administrarAspirante.jsp" class="form-horizontal" method="post" role="form">
                                         <fieldset>
                                             <legend>Datos de Usuario</legend>
                                             <div class="form-group">
@@ -94,7 +98,7 @@
                                                 <div class="col-xs-12 col-sm-6 col-md-8">
                                                     <div class="input-group">
                                                         <span class="input-group-addon"><span class="glyphicon glyphicon-qrcode"></span></span>
-                                                        <input class="form-control" id="codigo" name="codigo" placeholder="1150789" <% out.print(session.getAttribute("codigo"));%> type="text">
+                                                        <input class="form-control" id="codigo" name="codigo" <% out.print(session.getAttribute("codigo"));%> type="text">
                                                     </div>
                                                 </div>
                                             </div>
@@ -103,7 +107,7 @@
                                                 <div class="col-xs-12 col-sm-6 col-md-8">
                                                     <div class="input-group">
                                                         <span class="input-group-addon"><span class="glyphicon glyphicon-envelope"></span></span>
-                                                        <input class="form-control" id="correo" name="correo" placeholder="abdul.laiseca@gmail.com" <% out.print(session.getAttribute("correo"));%> type="text">
+                                                        <input class="form-control" id="correo" name="correo" <% out.print(session.getAttribute("correo"));%> type="text">
                                                     </div>
                                                 </div>
                                             </div>
@@ -130,7 +134,7 @@
                                                 <div class="col-xs-12 col-sm-6 col-md-8">
                                                     <div class="input-group">
                                                         <span class="input-group-addon"><span class="glyphicon glyphicon-user"></span></span>
-                                                        <input class="form-control" id="nombre" name="nombre" placeholder="Abdul Fabian" <% out.print(session.getAttribute("nombre"));%> type="text">
+                                                        <input class="form-control" id="nombre" name="nombre" value="<% out.print(session.getAttribute("nombre"));%>" type="text">
                                                     </div>
                                                 </div>
                                             </div>
@@ -139,7 +143,7 @@
                                                 <div class="col-xs-12 col-sm-6 col-md-8">
                                                     <div class="input-group">
                                                         <span class="input-group-addon"><span class="glyphicon glyphicon-user"></span></span>
-                                                        <input class="form-control" id="apellido" name="apellido" placeholder="Laiseca Candelo" <% out.print(session.getAttribute("apellido"));%> type="text">
+                                                        <input class="form-control" id="apellido" name="apellido" value="<% out.print(session.getAttribute("apellido"));%>" type="text">
                                                     </div>
                                                 </div>
                                             </div>
@@ -261,7 +265,7 @@
                                 </div>
                             </div>
                         </div>    
-                            
+
                     </div>
                 </div>
                 <br>
@@ -269,7 +273,7 @@
                 <br>
                 <br>
             </section>
-            
+
             <footer>
                 <p><strong>Copyright © 2014. Programa de Ingeniería de Sistemas - UFPS</strong></p>
                 <p>Desarrollado por: <span class="icon-github"></span><strong><a id="megaterios" href="https://github.com/Megaterios/"> Megaterios</a></strong></p>

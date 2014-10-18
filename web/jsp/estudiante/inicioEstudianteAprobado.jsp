@@ -57,29 +57,24 @@
                             <div class="sidebar-collapse">                    
                                 <ul class="nav" id="side-menu">
                                     <li>
-                                        <a href="#"><i class="fa fa-bar-chart-o fa-fw"></i> Administrar<span class="fa arrow"></span></a>
+                                        <a href="#"><i class="fa fa-bar-chart-o fa-fw"></i> Operaciones<span class="fa arrow"></span></a>
                                         <ul class="nav nav-second-level">
                                             <li>
-                                                <a href="#">Aspirantes</a>
-                                            </li>
-                                            <li>
-                                                <a href="../estudiante/estudiante.jsp">Estudiantes</a>
-                                            </li>
-                                            <li>
-                                                <a href="docente.jsp">Docentes</a>
-                                            </li>
-                                            <li>
-                                                <a href="../modulo/cargarProfesores.jsp">Modulos</a>
-                                            </li>
+                                                <a href="administrarEstudiante.jsp?requerimiento=consultarCorreo">Consultar Datos</a>
+                                            </li>                                            
                                         </ul>
                                     </li>
 
                                 </ul>
                             </div>
-                        </div>
+                        </div>                            
                     </div>
 
                     <div class="col-xs-9 col-sm-9 col-md-9 col-lg-8" id="contenido">
+                        <div class="text-right">
+                            <% out.print(session.getAttribute("nombre") + " " + session.getAttribute("apellido"));%>                            
+                            <a href="../usuario/administrarUsuario.jsp?requerimiento=cerrarSesion">  (Cerrar sesión)</a>                        
+                        </div> 
                         <ol class="breadcrumb">
                             <li><a href="#">Inicio</a></li>
                             <li class="active">Estudiante</li>

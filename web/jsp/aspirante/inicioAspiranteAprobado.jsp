@@ -78,6 +78,10 @@
                         </div>
                     </div>
                     <div class="col-xs-12 col-sm-9 col-md-9 col-lg-9" id="contenido">
+                        <div class="text-right">
+                            <% out.print(session.getAttribute("nombre") + " " + session.getAttribute("apellido"));%>                            
+                            <a href="../usuario/administrarUsuario.jsp?requerimiento=cerrarSesion">  (Cerrar sesión)</a>                        
+                        </div>                        
                         <ol class="breadcrumb">
                             <li><a href="#">Inicio</a></li>
                             <li class="active">Aspirante</li>

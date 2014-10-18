@@ -15,6 +15,7 @@
     // <a class="btn btn-danger" role="button" href="index.php?mostrar=IU_REGISTRAR_ASPIRANTE">Registrar - Aspirante</a>
     // <button class="btn btn-danger" id="registrar" name = "requerimiento" value="registrarAspirante" type="submit">Registrar - Aspirante</button>
     String boton = (String)request.getParameter("requerimiento");
+    HttpSession sesionUsuario = null;
     
     if(boton.equals("iniciarSesion")){
         
@@ -27,8 +28,7 @@
         usuario.setContrasenia(contrasenia);            
                
         
-        String resp = facade.iniciarSesion(usuario);
-        HttpSession sesionUsuario;
+        String resp = facade.iniciarSesion(usuario);        
         
         if(resp.equals("A0")){
             //out.print("Bienvenido, eres un aspirante pendiente");
@@ -43,7 +43,7 @@
             sesionUsuario = request.getSession(true);
             sesionUsuario.setAttribute("usuario", correo);
             sesionUsuario.setAttribute("estadoUsuario", resp);
-            response.sendRedirect("../aspirante/inicioAspiranteAprobado.jsp");
+            response.sendRedirect("../aspirante/inicioAspiranteAprobado.jsp?requerimiento=mostrarInicio");
         }
         else if(resp.equals("A2")){
             out.print("Bienvenido, eres un aspirante en estado rechazado, comunícate con el coordinador del curso");
@@ -62,7 +62,7 @@
             sesionUsuario = request.getSession(true);
             sesionUsuario.setAttribute("usuario", correo);
             sesionUsuario.setAttribute("estadoUsuario", resp);
-            response.sendRedirect("../estudiante/inicioEstudianteAprobado.jsp");
+            response.sendRedirect("../estudiante/administrarEstudiante.jsp?requerimiento=mostrarInicio");
         }
         else if(resp.equals("E2")){
             out.print("Bienvenido, eres un estudiante en estado rechazado, comunícate con el coordinador del curso");            
@@ -146,6 +146,11 @@
     }
     else if(boton.equals("registrarAspirante")){
         response.sendRedirect("../estudiante/estudiante.jsp");
+    }
+    else if(boton.equals("cerrarSesion")){
+        sesionUsuario = request.getSession(true);
+        sesionUsuario.invalidate();
+        response.sendRedirect("iniciarSesion.jsp");
     }
     
     
