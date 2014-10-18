@@ -50,7 +50,7 @@
             <div class="row">
                 <div class="col-xs-12 col-sm-9 col-md-9 col-lg-9" id="contenido">
                         <ol class="breadcrumb">
-                        <li><a href="#">Inicio</a></li>
+                        <li><a href="administrarCoordinador.jsp">Inicio</a></li>
                         <li><a href="#">Docente</a></li>
                         </ol>
                         
@@ -67,14 +67,13 @@
                                         <table class="table">
                                             <thead>
                                                 <tr>
-                                                    <th>#</th>
                                                     <th>Código</th>
                                                     <th>Nombre</th>
-                                                    <th>Estado</th>
+                                                    <th>Módulos</th>
                                                 </tr>
                                             </thead>
                                             <tbody>
-                                                
+                                                <% out.println(session.getAttribute("listadoDocentes")); %>
                                             </tbody>
                                         </table>
                                     

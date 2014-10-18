@@ -50,5 +50,11 @@ public class AdministrarDocente {
         String consulta = doc.consultarProfesores();
         return consulta;
     }
+
+    public String listarDocentes() {
+        DocenteDao doc = new DocenteDao();
+        String lista = doc.listarDocentes();
+        return lista;
+    }
     
 }
