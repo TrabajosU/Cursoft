@@ -41,7 +41,7 @@ public class ModuloDao {
         }
         
         String idDocente = this.consultarIdDocente(usuario.getCodigo());
-        sql = "INSERT INTO docentesmodulos(idDocenteFK, idModuloFK, fecha) VALUES('"+idDocente+"','"+idModulo+"',"+"'1')";
+        sql = "INSERT INTO docentesmodulos(idDocenteFK, idModuloFK, fecha) VALUES('"+idDocente+"','"+idModulo+"','"+modulo.getFechaInicio()+"')";
         ConexionMysql.conectar();
         ConexionMysql.ejecutarActualizacionSQL(sql);
         ConexionMysql.desconectar();
@@ -49,36 +49,6 @@ public class ModuloDao {
         return true;
         
         
-    }
-
-    private String consultarIdModulo(ModuloDto modulo) {
-        ConexionMysql.conectar();
-        String sql1 = "SELECT modulos.idModulo FROM modulos WHERE nombre='" + modulo.getNombre()+ "' AND horas='"+modulo.getHoras()+
-                "' AND tipo='"+modulo.getTipo()+"' AND fechaInicio='"+modulo.getFechaInicio()+"';";
-        ArrayList resultado = ConexionMysql.getConsultaSQL(sql1);
-        System.out.println(resultado.toString());
-        
-        String idModulo = ((String) resultado.get(0)).split("-")[0];
-        ConexionMysql.desconectar();
-        return idModulo;
-    }
-
-    private String consultarIdDocente(String codigo) {
-        ConexionMysql.conectar();
-        
-        ArrayList resultado = ConexionMysql.getConsultaSQL("SELECT usuarios.idUsuario FROM usuarios WHERE codigo='" + codigo+ "';");
-           
-        String idUsuario = ((String) resultado.get(0)).split("-")[0];
-        System.out.println("El idUsuario es: "+idUsuario);
-        resultado.clear();
-        
-        resultado = ConexionMysql.getConsultaSQL("SELECT docentes.idDocente FROM docentes WHERE idUsuarioDoc='" 
-                + idUsuario + "';");
-        
-        String idDocente = ((String) resultado.get(0)).split("-")[0];
-        System.out.println("El idDocente es: "+idDocente);
-        ConexionMysql.desconectar();
-        return idDocente;
     }
 
     public String consultarModulo(ModuloDto modulo) {
@@ -139,5 +109,93 @@ public class ModuloDao {
         ConexionMysql.desconectar();
         return consulta;
     }
+
+    public boolean actualizarModulo(ModuloDto modulo, UsuarioDto usuario, String horario) {
+        String sql = "UPDATE modulos SET horas='"+modulo.getHoras()+"', tipo='"+modulo.getTipo()+"', fechaInicio='"+modulo.getFechaInicio()+"' WHERE nombre='"+modulo.getNombre()+"'";
+        
+        ConexionMysql.conectar();
+        ConexionMysql.ejecutarActualizacionSQL(sql);
+        ConexionMysql.desconectar();
+        
+        String horarios [] = horario.split(";");
+        String idModulo = this.consultarIdModulo(modulo);
+        String sql1 = "DELETE FROM horarios WHERE idModulo='"+idModulo+"'";
+        ConexionMysql.conectar();
+        ConexionMysql.ejecutarActualizacionSQL(sql1);
+        ConexionMysql.desconectar();
+        for(int i=0;i<horarios.length;i++){
+            String horas[] = horarios[i].split("-");
+            System.out.println("El horario a actualizar es: "+horas.toString());
+            
+            sql = "INSERT horarios(idModulo, dia, horaInicio, horaFin, salon) VALUES ('"+idModulo+"','" + horas[0] + "','" 
+                + horas[1]+ "','" + horas[2] + "','" + horas[3] + "')";
+            System.out.println("El sql a insertar es: "+sql);
+            ConexionMysql.conectar();
+            
+            ConexionMysql.ejecutarActualizacionSQL(sql);
+            System.out.println("Inserto el horario "+i);
+            ConexionMysql.desconectar();
+        }
+        
+        String idDocente = this.consultarIdDocente(usuario.getCodigo());
+        sql = "UPDATE docentesmodulos SET idDocenteFK='"+idDocente+"', fecha='"+modulo.getFechaInicio()+"' WHERE idModuloFK='"+idModulo+"'";
+        ConexionMysql.conectar();
+        ConexionMysql.ejecutarActualizacionSQL(sql);
+        ConexionMysql.desconectar();
+        
+        return true;
+    }
     
+    
+    private String consultarIdModulo(ModuloDto modulo) {
+        ConexionMysql.conectar();
+        String sql1 = "SELECT modulos.idModulo FROM modulos WHERE nombre='" + modulo.getNombre()+"';";
+        ArrayList resultado = ConexionMysql.getConsultaSQL(sql1);
+        System.out.println(resultado.toString());
+        
+        String idModulo = ((String) resultado.get(0)).split("-")[0];
+        ConexionMysql.desconectar();
+        return idModulo;
+    }
+
+    private String consultarIdDocente(String codigo) {
+        ConexionMysql.conectar();
+        
+        ArrayList resultado = ConexionMysql.getConsultaSQL("SELECT usuarios.idUsuario FROM usuarios WHERE codigo='" + codigo+ "';");
+           
+        String idUsuario = ((String) resultado.get(0)).split("-")[0];
+        System.out.println("El idUsuario es: "+idUsuario);
+        resultado.clear();
+        
+        resultado = ConexionMysql.getConsultaSQL("SELECT docentes.idDocente FROM docentes WHERE idUsuarioDoc='" 
+                + idUsuario + "';");
+        
+        String idDocente = ((String) resultado.get(0)).split("-")[0];
+        System.out.println("El idDocente es: "+idDocente);
+        ConexionMysql.desconectar();
+        return idDocente;
+    }
+
+    public boolean eliminarModulo(ModuloDto modulo) {
+        
+        ConexionMysql.conectar();
+        
+        ArrayList resultado = ConexionMysql.getConsultaSQL("SELECT modulos.idModulo FROM modulos WHERE nombre='"+modulo.getNombre()+"';");
+        String idModulo = resultado.get(0).toString().split("-")[0];
+        
+        String sql1 = "DELETE FROM horarios WHERE idModulo='"+idModulo+"'";
+        boolean a = ConexionMysql.ejecutarActualizacionSQL(sql1);
+        
+        sql1 = "DELETE FROM docentesmodulos WHERE idModuloFK='"+idModulo+"'";
+        boolean b = ConexionMysql.ejecutarActualizacionSQL(sql1);
+        
+        sql1= "DELETE FROM modulos WHERE idModulo='"+idModulo+"'";
+        boolean c = ConexionMysql.ejecutarActualizacionSQL(sql1);
+        
+        if(a&&b&&c){
+            return true;
+        }
+        return false;
+    }
+
 }

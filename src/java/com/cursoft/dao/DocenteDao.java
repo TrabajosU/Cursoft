@@ -108,6 +108,37 @@ public class DocenteDao {
         ConexionMysql.desconectar();
         return consulta;
     }
+
+    public String listarDocentes() {
+        ConexionMysql.conectar();
+        String sql1 = "SELECT usuarios.idUsuario, usuarios.codigo, usuarios.nombre, usuarios.apellido FROM usuarios;";
+        ArrayList resultado = ConexionMysql.getConsultaSQL(sql1);
+        String lista ="";
+        for(int i =0; i<resultado.size(); i++){
+            String [] usuario = resultado.get(i).toString().split("-");
+            ArrayList resultado2 = ConexionMysql.getConsultaSQL("SELECT docentes.idDocente FROM docentes WHERE idUsuarioDoc='"+ usuario[0] + "';");
+            if(!resultado2.isEmpty()){
+                String idDocente = resultado2.get(0).toString().split("-")[0];
+                lista += usuario[1]+"-"+usuario[2]+" "+usuario[3]+"-";
+                System.out.println("Haciendo la super Consulta");
+                ArrayList resultado3 = ConexionMysql.getConsultaSQL("SELECT modulos.nombre FROM modulos JOIN docentesmodulos WHERE docentesmodulos.idDocenteFK='"+idDocente+"' AND modulos.idModulo = docentesmodulos.idModuloFK;");
+                System.out.println("llego de la super consulta");
+                String listaMod ="";
+                if(!resultado3.isEmpty()){
+                    for(int j=0; j<resultado3.size(); j++){
+                        String [] modulos = resultado3.get(j).toString().split("-");
+                        listaMod += modulos[0]+"/";
+                    }
+                }
+                if(listaMod.isEmpty()){
+                    listaMod = "Sin Módulos/";
+                }
+                lista += listaMod + "::";
+            }
+        }
+        ConexionMysql.desconectar();
+        return lista;
+    }
     
     
 }

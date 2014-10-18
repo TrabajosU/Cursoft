@@ -75,6 +75,10 @@ public class Facade {
         return new AdministrarDocente().consultarProfesores();
     }
     
+    public String listarDocentes(){
+        return new AdministrarDocente().listarDocentes();
+    }
+    
     public boolean registrarModulo(ModuloDto modulo, UsuarioDto usuario, String horario){
         return new AdministrarModulo().registrarModulo(modulo,usuario,horario);
     }
@@ -89,5 +93,13 @@ public class Facade {
     
     public String consultarModulo(ModuloDto modulo){
         return new AdministrarModulo().consultarModulo(modulo);
+    }
+    
+    public boolean actualizarModulo(ModuloDto modulo, UsuarioDto usuario, String horario){
+        return new AdministrarModulo().actualizarModulo(modulo,usuario,horario);
+    }
+    
+    public boolean eliminarModulo(ModuloDto modulo){
+        return new AdministrarModulo().eliminarModulo(modulo);
     }
 }
