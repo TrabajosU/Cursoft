@@ -13,11 +13,6 @@
 <jsp:useBean id="modulo" class="com.cursoft.dto.ModuloDto"></jsp:useBean>
 
 <%
-    
-    /*
-    tarea: Acomodar los horarios, agregar boton actualizar horario y agregar nuevo horario
-    */
-    
     String bot = request.getParameter("requerimiento");
     System.out.println("llego a funciones");
     if(bot.equals("guardarCambiosAspirante")){
@@ -41,7 +36,7 @@
         facade.actualizarAspiranteEstado(usuario,aspirante);
         
     
-        response.sendRedirect("administrarCoordinador.jsp");     
+        response.sendRedirect("cargarCoordinador.jsp");     
     
     }
     else if(bot.equals("guardarCambiosEstudiante")) {
@@ -65,7 +60,7 @@
         facade.actualizarEstudianteEstado(usuario,estudiante);
         
     
-        response.sendRedirect("administrarCoordinador.jsp");     
+        response.sendRedirect("cargarCoordinador.jsp");     
     
     }
     

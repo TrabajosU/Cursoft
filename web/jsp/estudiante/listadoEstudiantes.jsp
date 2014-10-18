@@ -1,6 +1,6 @@
 <%-- 
-    Document   : listadoAspirantes
-    Created on : 18/10/2014, 10:39:56 AM
+    Document   : listadoEstudiantes
+    Created on : 18/10/2014, 12:20:35 PM
     Author     : Manuel
 --%>
 
@@ -56,11 +56,11 @@
                         
                         <div class="col-xs-offset-3 col-xs-10" id="contenedor">
                             <div id="subtitulo">
-                            <h2>Listado de Aspirantes</h2>
+                            <h2>Listado de Estudiantes</h2>
                             </div>
                             <div class="panel panel-default">
                                 <div class="panel-heading">
-                                    <strong>Aspirantes</strong>
+                                    <strong>Estudiantes</strong>
                                 </div>
                                 <div class="panel-body">
                                     <div class="table-responsive">
@@ -73,7 +73,7 @@
                                                 </tr>
                                             </thead>
                                             <tbody>
-                                                <% out.println(session.getAttribute("listadoAspirantes")); %>
+                                                <% out.println(session.getAttribute("listadoEstudiantes")); %>
                                             </tbody>
                                         </table>
                                     
