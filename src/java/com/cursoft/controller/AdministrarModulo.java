@@ -36,5 +36,7 @@ public class AdministrarModulo {
         ModuloDao mod = new ModuloDao();
         return mod.eliminarModulo(modulo);
     }
+
+    
     
 }

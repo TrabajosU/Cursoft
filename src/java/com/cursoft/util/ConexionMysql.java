@@ -14,16 +14,16 @@ import java.sql.*;
  */
 public class ConexionMysql {
     
-    private static  String bd = "cursoft";
-    private static  String login = "cursoft";
-    private static  String password = "123456";
+    private static  String bd = "solucion_cursoft";
+    private static  String login = "solucion_cursoft";
+    private static  String password = "c123456";
     //private static  String host = "25.142.30.209";  
-    private static  String host = "25.37.130.127";
-    private static  String url = "jdbc:mysql://" + host + ":3306/"+bd;
+    private static  String host = "www.solucionesinformaticasltda.com.co";
+    private static  String url = "jdbc:mysql://" + host + ":2082/"+bd;
     private static  String controlador = "com.mysql.jdbc.Driver";
     private static  JDBCMiddler jdbc;
     
-    
+   
     
     /**
      * Comprueba si hay o no hay conexion

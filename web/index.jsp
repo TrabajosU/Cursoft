@@ -5,10 +5,16 @@
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<!DOCTYPE html>
+<jsp:useBean id="facade" class="com.cursoft.facade.Facade" ></jsp:useBean>
 
 <%
 
-    response.sendRedirect("jsp/usuario/iniciarSesion.jsp");
+    //response.sendRedirect("jsp/usuario/iniciarSesion.jsp");
+    boolean x = facade.hayConexion();
+    
+    if(x)
+        response.sendRedirect("jsp/usuario/iniciarSesion.jsp");
+    else
+        System.out.println("no hay conexion");
 
 %>

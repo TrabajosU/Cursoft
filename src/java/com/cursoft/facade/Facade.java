@@ -102,4 +102,8 @@ public class Facade {
     public boolean eliminarModulo(ModuloDto modulo){
         return new AdministrarModulo().eliminarModulo(modulo);
     }
+    
+    public boolean hayConexion(){
+        return new AdministrarModulo().hayConexion();
+    }
 }
