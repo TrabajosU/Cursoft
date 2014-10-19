@@ -198,5 +198,22 @@ public class ModuloDao {
         return false;
     }
 
+    public String listarModulos() {
+        
+        ConexionMysql.conectar();
+        
+        ArrayList resultado = ConexionMysql.getConsultaSQL("SELECT m.nombre, m.tipo, u.nombre, u.apellido FROM modulos m, docentes d, docentesmodulos dm, usuarios u WHERE m.idModulo = dm.idModuloFK AND dm.idDocenteFK = d.idDocente AND d.idUsuarioDoc = u.idUsuario;");
+        System.out.println("modulos  "+resultado.toString());
+        String lista = "";
+        for(int i=0; i<resultado.size(); i++){
+            String consul[] = resultado.get(i).toString().split("-");
+            lista += consul[0]+",,"+consul[1]+",,"+consul[2]+" "+consul[3]+";";
+        }
+        
+        ConexionMysql.desconectar();
+        
+        return lista;
+    }
+
     
 }

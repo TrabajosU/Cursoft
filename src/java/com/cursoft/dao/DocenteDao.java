@@ -26,8 +26,8 @@ public class DocenteDao {
         
         String idUsuario = ((String) resultado.get(0)).split("-")[0];
         
-        String sql = "INSERT INTO docentes (escolaridad, escalafon, puntaje, tipo, idUsuarioDoc) VALUES ('" + docente.getEscolaridad() + "','" +
-                docente.getEscalafon() + "','" + docente.getPuntaje() + "','" + docente.getTipo() + "','" + idUsuario + "'" + ")";
+        String sql = "INSERT INTO docentes (escolaridad, escalafon, puntaje, tipo, idUsuarioDoc,contrato) VALUES ('" + docente.getEscolaridad() + "','" +
+                docente.getEscalafon() + "','" + docente.getPuntaje() + "','" + docente.getTipo() + "','" + idUsuario + "'" +",'"+docente.getContrato() +"')";
         
         System.out.println(sql);
         

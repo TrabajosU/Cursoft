@@ -80,7 +80,7 @@
         int escolaridad = Integer.parseInt(request.getParameter("escolaridad"));
         String escalafon = request.getParameter("escalafon");
         String puntaje = request.getParameter("puntaje");
-        int tipoDocente = Integer.parseInt(request.getParameter("tipoDocente"));
+        int contrato = Integer.parseInt(request.getParameter("contrato"));
         
         usuario.setCodigo(codigo);
         usuario.setCorreo(correo);
@@ -98,7 +98,8 @@
         docente.setEscalafon(escalafon);
         docente.setEscolaridad(""+escolaridad);
         docente.setPuntaje(puntaje);
-        docente.setTipo(tipoDocente+"");
+        docente.setContrato(contrato+"");
+        docente.setTipo("1");
         
         boolean x = facade.registrarDocente(usuario,docente);
         

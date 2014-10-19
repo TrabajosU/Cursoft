@@ -5,13 +5,29 @@
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<!DOCTYPE html>
-<html>
-    <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
-    </head>
-    <body>
-        <h1>Hello World!</h1>
-    </body>
-</html>
+<jsp:useBean id="facade" class="com.cursoft.facade.Facade" ></jsp:useBean>
+
+<%
+    String lista = facade.listarModulos();
+    System.out.println("la lista de los modulos es : "+lista);
+    if(!lista.isEmpty()){
+        String listadoHtml ="";
+        String [] mods = lista.split(";");
+        for(int i =0; i<mods.length; i++){
+            String [] modulo = mods[i].split(",,");
+            listadoHtml += "<tr>"+"<td>"+modulo[0]+"</td>";
+            int tipo = Integer.parseInt(modulo[1]);
+            String es ="";
+            if(tipo == 1)
+                es = "fijo";
+            else if(tipo==2)
+                es = "Acompañamiento";
+           
+            listadoHtml += "<td>"+es+"</td><td>"+modulo[2]+"</td></tr>";
+        }
+        session.setAttribute("listadoModulos", listadoHtml);
+    }
+    response.sendRedirect("listadoModulos.jsp");
+    
+    
+%>

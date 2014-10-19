@@ -15,6 +15,7 @@ public class DocenteDto {
     private String escalafon;
     private String puntaje;
     private String tipo;
+    private String contrato;
     
     public DocenteDto(){}
 
@@ -56,7 +57,13 @@ public class DocenteDto {
     public void setTipo(String tipo) {
         this.tipo = tipo;
     }
-    
-    
 
+    public String getContrato() {
+        return contrato;
+    }
+
+    public void setContrato(String contrato) {
+        this.contrato = contrato;
+    }
+    
 }

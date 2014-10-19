@@ -103,4 +103,7 @@ public class Facade {
         return new AdministrarModulo().eliminarModulo(modulo);
     }
     
+    public String listarModulos(){
+        return new AdministrarModulo().listarModulos();
+    }
 }
