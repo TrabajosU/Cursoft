@@ -198,11 +198,5 @@ public class ModuloDao {
         return false;
     }
 
-    public boolean hayConexion() {
-        ConexionMysql.conectar();
-        boolean x = ConexionMysql.hayConexion();
-        ConexionMysql.desconectar();
-        return x;
-    }
-
+    
 }

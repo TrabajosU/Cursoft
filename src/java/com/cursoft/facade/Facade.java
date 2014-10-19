@@ -103,7 +103,4 @@ public class Facade {
         return new AdministrarModulo().eliminarModulo(modulo);
     }
     
-    public boolean hayConexion(){
-        return new AdministrarModulo().hayConexion();
-    }
 }
