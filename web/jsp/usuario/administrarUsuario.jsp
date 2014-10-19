@@ -81,42 +81,49 @@
             sesionUsuario = request.getSession(true);
             sesionUsuario.setAttribute("usuario", correo);
             sesionUsuario.setAttribute("estadoUsuario", resp);
+            response.sendRedirect("../docente/administrarDocente.jsp?requerimiento=mostrarInicio");
         }
         else if(resp.equals("D1")){
             out.print("Bienvenido, eres un profesor");
             sesionUsuario = request.getSession(true);
             sesionUsuario.setAttribute("usuario", correo);
             sesionUsuario.setAttribute("estadoUsuario", resp);
+            response.sendRedirect("../docente/administrarDocente.jsp?requerimiento=mostrarInicio");
         }
         else if(resp.equals("D2")){
             out.print("Bienvenido, eres un estudiante coordinador");
             sesionUsuario = request.getSession(true);
             sesionUsuario.setAttribute("usuario", correo);
             sesionUsuario.setAttribute("estadoUsuario", resp);
+            response.sendRedirect("../docente/administrarDocente.jsp?requerimiento=mostrarInicio");
         }
         else if(resp.equals("D3")){
             out.print("Bienvenido, eres un profesor-coordinador");
             sesionUsuario = request.getSession(true);
             sesionUsuario.setAttribute("usuario", correo);
             sesionUsuario.setAttribute("estadoUsuario", resp);
+            response.sendRedirect("../docente/administrarDocente.jsp?requerimiento=mostrarInicio");
         }
         else if(resp.equals("D4")){
             out.print("Bienvenido, eres un administrador-profesor");
             sesionUsuario = request.getSession(true);
             sesionUsuario.setAttribute("usuario", correo);
             sesionUsuario.setAttribute("estadoUsuario", resp);
+            response.sendRedirect("../docente/administrarDocente.jsp?requerimiento=mostrarInicio");
         }
         else if(resp.equals("D5")){
             out.print("Bienvenido, eres un administrador-coordinador");
             sesionUsuario = request.getSession(true);
             sesionUsuario.setAttribute("usuario", correo);
             sesionUsuario.setAttribute("estadoUsuario", resp);
+            response.sendRedirect("../docente/administrarDocente.jsp?requerimiento=mostrarInicio");
         }
         else if(resp.equals("D6")){
             out.print("Bienvenido, eres un docente con de todos los tipos");
             sesionUsuario = request.getSession(true);
             sesionUsuario.setAttribute("usuario", correo);
             sesionUsuario.setAttribute("estadoUsuario", resp);
+            response.sendRedirect("../docente/administrarDocente.jsp?requerimiento=mostrarInicio");
             
         }
         else if(resp.equals("-1")){            

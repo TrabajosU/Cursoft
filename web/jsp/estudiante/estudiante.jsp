@@ -285,13 +285,7 @@
                                                 </div>
                                             </div>
                                         </fieldset>
-                                        <div class="form-group">
-                                            <div class="row">
-                                                <div class="col-xs-12 text-center">                                                    
-                                                    <button class="btn btn-danger" id="actualizar" name="requerimiento" value="actualizar" type="submit" >Actualizar</button>                                                    
-                                                </div>
-                                            </div>
-                                        </div>
+                                        <% out.print(session.getAttribute("actualizar"));%>
                                         <div class="form-group">
                                             <div class="row">
                                                 <div class="col-xs-offset-4 col-xs-4 text-center">

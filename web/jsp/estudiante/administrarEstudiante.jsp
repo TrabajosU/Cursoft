@@ -73,7 +73,48 @@
         session.setAttribute("reportePazSalvo", resul[14]);
         session.setAttribute("reciboInscripcion", resul[15]);
         session.setAttribute("reciboPagoMaatricula", resul[16]);
-        session.setAttribute("nota", resul[17]);        
+        session.setAttribute("nota", resul[17]);
+        
+        String actualizarButton = "<div class=\"form-group\">"+
+                        "<div class=\"row\">"+
+                        "<div class=\"col-xs-offset-4 col-xs-4 text-center\">"+
+                        "<button class=\"btn btn-danger\" id=\"cancelar\" name=\"requerimiento\""+
+                        "value=\"actualizar\" type=\"submit\">Actualizar</button>"+
+                        "</div>"+
+                        "</div>"+
+                        "</div>";
+        
+        String registrarButton = "<div class=\"form-group\">"+
+                        "<div class=\"row\">"+
+                        "<div class=\"col-xs-offset-4 col-xs-4 text-center\">"+
+                        "<button class=\"btn btn-danger\" id=\"cancelar\" name=\"requerimiento\""+
+                        "value=\"registrar\" type=\"submit\">Registrar</button>"+
+                        "</div>"+
+                        "</div>"+
+                        "</div>";
+        
+        String eliminarButton = "<div class=\"form-group\">"+
+                        "<div class=\"row\">"+
+                        "<div class=\"col-xs-offset-4 col-xs-4 text-center\">"+
+                        "<button class=\"btn btn-danger\" id=\"cancelar\" name=\"requerimiento\""+
+                        "value=\"eliminar\" type=\"submit\">Eliminar</button>"+
+                        "</div>"+
+                        "</div>"+
+                        "</div>";
+        
+        String consultarButton = "<div class=\"form-group\">"+
+                        "<div class=\"row\">"+
+                        "<div class=\"col-xs-offset-4 col-xs-4 text-center\">"+
+                        "<button class=\"btn btn-danger\" id=\"cancelar\" name=\"requerimiento\""+
+                        "value=\"consultar\" type=\"submit\">Consultar</button>"+
+                        "</div>"+
+                        "</div>"+
+                        "</div>";
+        
+        session.setAttribute("actualizar", actualizarButton);
+        session.setAttribute("registrar", "");
+        session.setAttribute("eliminar", "");
+        session.setAttribute("consultar", actualizarButton);
 
         out.print("SOY RECIBO INSC: "+session.getAttribute("reciboInscripcion"));
         response.sendRedirect("estudiante.jsp");
