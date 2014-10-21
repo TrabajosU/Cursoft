@@ -1,6 +1,6 @@
 <%-- 
-    Document   : listadoModulos
-    Created on : 18/10/2014, 12:54:55 PM
+    Document   : principalProfesor
+    Created on : 20/10/2014, 09:12:43 PM
     Author     : Manuel
 --%>
 
@@ -46,41 +46,49 @@
                 <img alt="CURSOFT" class="img-responsive" id="banner_cursoft" src="../../img/banne_cursoft.png">
             </figure>
         </header>
+
         <section>
             <div class="row">
                 <div class="col-xs-12 col-sm-9 col-md-9 col-lg-9" id="contenido">
-                        <ol class="breadcrumb">
-                        <li><a href="../docente/cargarCoordinador.jsp">Inicio</a></li>
+                    <ol class="breadcrumb">
+                        <li><a href="cargarProfesor.jsp">Inicio</a></li>
                         <li><a href="#">Docente</a></li>
-                        </ol>
-                        
-                        <div class="col-xs-offset-3 col-xs-10" id="contenedor">
-                            <div id="subtitulo">
-                                <h2>Listado de Modulos</h2>
+                    </ol>
+                    <div class="col-xs-offset-3 col-xs-10" id="contenedor">
+                        <div id="subtitulo">
+                            <h2>Principal Profesor</h2>
+                        </div>
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <strong>Modulos Dictados</strong>
                             </div>
-                            <div class="panel panel-default">
-                                <div class="panel-heading">
-                                    <strong>Modulos</strong>
-                                </div>
-                                <div class="panel-body">
-                                    <div class="table-responsive">
-                                        <table class="table">
-                                            <thead>
-                                                <tr>
-                                                    <th>Nombre</th>
-                                                    <th>Tipo</th>
-                                                    <th>Docente</th>
-                                                </tr>
-                                            </thead>
-                                            <tbody>
-                                                <% out.println(session.getAttribute("listadoModulos")); %>
-                                            </tbody>
-                                        </table>
+                            <div class="panel-body">
+                                <div class="table-responsive">
+                                    <table class="table">
+                                        <thead>
+                                            <tr>
+                                                <th>Nombre</th>
+                                                <th>Horario</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <% out.println(session.getAttribute("modulosDictados")); %>
+                                        </tbody>
+                                    </table>
                                     
-                                    </div>
                                 </div>
                             </div>
                         </div>
+                        <form>
+                            <div class="form-group">
+                                <div class="row">
+                                    <div class="col-xs-offset-4 col-xs-4 text-center">
+                                        <button class="btn btn-danger" id="cancelar" name="requerimiento" value="cancelar" type="submit">Cancelar</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
                 </div>
             </div>
         </section>
@@ -110,6 +118,8 @@
             $('#dataTables-example').dataTable();
         });
         </script>
+        
+        
     </div>
 </body>
 </html>

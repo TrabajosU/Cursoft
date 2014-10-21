@@ -139,6 +139,27 @@ public class DocenteDao {
         ConexionMysql.desconectar();
         return lista;
     }
+
+    public String listarModulosProfesor(String cod) {
+        ConexionMysql.conectar();
+        ArrayList resultado = ConexionMysql.getConsultaSQL("SELECT m.nombre, m.idModulo FROM usuarios u, docentes d, modulos m, docentesmodulos dm WHERE u.codigo = '"+cod+"' AND d.idUsuarioDoc = u.idUsuario AND d.idDocente = dm.idDocenteFK AND dm.idModuloFK = m.idModulo;");
+        String lista ="";
+        if(!resultado.isEmpty()){
+            for(int i = 0; i<resultado.size(); i++){
+                String mods [] = resultado.get(i).toString().split("-");
+                lista += mods[0] +",,";
+                ArrayList resultado2 = ConexionMysql.getConsultaSQL("SELECT h.dia, h.horaInicio, h.horaFin, h.salon FROM horarios h WHERE h.idModulo ='"+mods[1]+"';");
+                if(!resultado2.isEmpty()){
+                    for(int j =0; j<resultado2.size(); j++){
+                        String hors [] = resultado2.get(j).toString().split("-");
+                        lista += hors[0] + " de "+ hors[1] + " a " + hors[2] + " en " + hors[3] + ":,";
+                    }
+                }
+                lista += ";";
+            }
+        }
+        return lista;
+    }
     
     
 }
