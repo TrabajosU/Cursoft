@@ -208,9 +208,9 @@
                                                 </div>
                                             </div>
                                             <div class="form-group">
-                                                <label for="tipoDocente" class="col-xs-12 col-sm-6 col-md-4 control-label">Tipo:</label>
+                                                <label for="contrato" class="col-xs-12 col-sm-6 col-md-4 control-label">Contrato:</label>
                                                 <div class="col-xs-12 col-sm-6 col-md-8">
-                                                    <select class="form-control" id="tipoDocente" name="tipoDocente" enabled>
+                                                    <select class="form-control" id="contrato" name="contrato" enabled>
                                                         <%
                                                         String [] tipo = {"Catedra", "Planta"};
                                                         for(int i = 0; i<tipo.length; i++){

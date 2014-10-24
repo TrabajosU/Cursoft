@@ -62,5 +62,11 @@ public class AdministrarDocente {
         String lista = doc.listarDocentes();
         return lista;
     }
+
+    public String listarModulosProfesor(String cod) {
+        DocenteDao doc = new DocenteDao();
+        String lista = doc.listarModulosProfesor(cod);
+        return lista;
+    }
     
 }
