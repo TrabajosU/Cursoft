@@ -108,9 +108,8 @@ public class AspiranteDao {
         String info ="";
         
         ArrayList resultado = ConexionMysql.getConsultaSQL("SELECT * FROM usuarios WHERE correo = '"+correo+"';");
-        //consulta += resultado.toString();
-        System.err.println(resultado.toString());
-        if(resultado == null){
+        
+        if(resultado.isEmpty()){
             return "";
         }
         String [] registro = resultado.get(0).toString().split("-");
@@ -127,7 +126,7 @@ public class AspiranteDao {
         resultado = ConexionMysql.getConsultaSQL("SELECT * FROM aspirantes WHERE idUsuario='" 
                 + idUsuario + "';");                        
                 
-        if(resultado == null){
+        if(resultado.isEmpty()){
             return "";
         }
         
@@ -149,7 +148,8 @@ public class AspiranteDao {
         ArrayList resultado = ConexionMysql.getConsultaSQL("SELECT * FROM usuarios WHERE codigo = '" + codigo + "';");
         //consulta += resultado.toString();
         System.err.println(resultado.toString());
-        if(resultado == null){
+        if(resultado.isEmpty()){
+            System.out.println("holavago");
             return "";
         }
         String [] registro = resultado.get(0).toString().split("-");
@@ -166,7 +166,7 @@ public class AspiranteDao {
         resultado = ConexionMysql.getConsultaSQL("SELECT * FROM aspirantes WHERE idUsuario='" 
                 + idUsuario + "';");                        
                 
-        if(resultado == null){
+        if(resultado.isEmpty()){
             return "";
         }
         

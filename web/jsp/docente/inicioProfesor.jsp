@@ -1,6 +1,6 @@
 <%-- 
-    Document   : aspiranteAprobado
-    Created on : 12/10/2014, 01:22:24 PM
+    Document   : inicioProfesor
+    Created on : 22-oct-2014, 20:22:42
     Author     : Jhorman Perez
 --%>
 
@@ -59,7 +59,7 @@
                                         <a href="#"><i class="fa fa-bar-chart-o fa-fw"></i> Operaciones<span class="fa arrow"></span></a>
                                         <ul class="nav nav-second-level">
                                             <li>
-                                                <a href="administrarAspirante.jsp?requerimiento=consultarCorreo">Consultar Datos</a>
+                                                <a href="administrarDocente.jsp?requerimiento=consultarCorreo">Consultar Datos</a>
                                             </li>                                            
                                         </ul>
                                     </li>
@@ -68,59 +68,36 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-xs-12 col-sm-9 col-md-9 col-lg-9" id="contenido">
+                    <div class="col-xs-9 col-sm-9 col-md-9 col-lg-9" id="contenido">
                         <div class="text-right">
                             <% out.print(session.getAttribute("nombre") + " " + session.getAttribute("apellido"));%>                            
                             <a href="../usuario/administrarUsuario.jsp?requerimiento=cerrarSesion">  (Cerrar sesión)</a>                        
-                        </div>                        
+                        </div>
                         <ol class="breadcrumb">
-                            <li><a href="#">Inicio</a></li>
-                            <li class="active">Aspirante</li>
+                            <li><a href="#">Inicio</a></li>                            
                         </ol>
                         <div id="subtitulo">
-                            <h2>Inicio Aspirante - Aprobado</h2>
+                            <h2>Inicio Profesor</h2>
                         </div>
                         <div class="row">
                             <div class="col-xs-offset-1 col-xs-10" id="contenedor">
-                                <p>Consignar el valor de $ X.XXX.XXX</p>
-                                <p>En cualquiera de los siguietes bancos:</p>
-                                <ol>
-                                    <li>Bancolombia</li>
-                                    <li>Davivienda</li>
-                                    <li>Banco de Bogotá</li>
-                                </ol>
-                                <p>Si ya realizó el pago, cargue el archivo a continuación:</p>
-                                <div id="formulario">
-                                    <form action="#" method="post" role="form">
-                                        <fieldset>
-                                            <legend>Documentos</legend>
-                                            <div class="form-group">
-                                                <label for="telefono_movil" class="col-xs-12 col-sm-6 col-md-4 control-label">Recibo de pago de matricula:</label>
-                                                <div class="col-xs-12 col-sm-6 col-md-8">
-                                                    <input type="file" class="filestyle" data-iconName="glyphicon-inbox">
-                                                    <p class="help-block">Selecciona tu archivo del recibo de pago de matricula</p>
-                                                </div>
-                                            </div>
-                                        </fieldset>
-                                        <br>
-                                        <div class="form-group">
-                                            <div id="botones">
-                                                <button class="btn btn-danger" id="recuperar" type="submit">Guardar</button>
-                                            </div>
-                                        </div>
-                                    </form>
-                                </div>
+                                <% out.print(session.getAttribute("modulos")); %>
                             </div>
                         </div>
                     </div>
                 </div>
+                <br>
+                <br>
+                <br>
+                <br>
             </section>
+
 
             <footer>
                 <p><strong>Copyright © 2014. Programa de Ingeniería de Sistemas - UFPS</strong></p>
                 <p>Desarrollado por <strom><a href="#">Megaterios</a></strong></p>
             </footer>
-            
+
             <!--Scripts-->
             <script src="../../js/modernizr.js"></script>
             <script src="../../js/main.js"></script>
@@ -145,7 +122,6 @@
                     $('#dataTables-example').dataTable();
                 });
             </script>
-            
         </div>
     </body>
 </html>

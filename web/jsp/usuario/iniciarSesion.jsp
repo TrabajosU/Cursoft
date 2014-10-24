@@ -52,9 +52,7 @@
                         <div id="error">
                             <p><strong><% out.print(session.getAttribute("Mensaje"));
                                         session.setAttribute("Mensaje", "");%>
-                                </strong>
-                                <strong><% out.print(session.getAttribute("requerimiento"));%>
-                                </strong>
+                                </strong>                                
                             </p>
                         </div>
                     </div>
@@ -103,7 +101,7 @@
                 <div id="registro">
                     <p><strong>¿Es tu primera vez en CURSOFT?</strong></p>
 
-                    <a class="btn btn-danger" role="button" href="../estudiante/estudiante.jsp">Registrar - Aspirante</a>
+                    <a class="btn btn-danger" role="button" href="../aspirante/administrarAspirante.jsp?requerimiento=mostrarRegistrarAspirante">Registrar Aspirante</a>
                 </div>
             </div>
         </div>

@@ -27,6 +27,12 @@ public class AdministrarDocente {
         return false;
     }
 
+    public String consultarDocenteCorreo(String correo) {
+        DocenteDao doc = new DocenteDao();
+        String consulta = doc.consultarDocenteCorreo(correo);
+        return consulta;
+    }
+    
     public String consultarDocenteCodigo(String codigo) {
         DocenteDao doc = new DocenteDao();
         String consulta = doc.consultarDocenteCodigo(codigo);

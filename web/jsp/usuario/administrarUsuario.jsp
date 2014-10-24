@@ -43,7 +43,7 @@
             sesionUsuario = request.getSession(true);
             sesionUsuario.setAttribute("usuario", correo);
             sesionUsuario.setAttribute("estadoUsuario", resp);
-            response.sendRedirect("../aspirante/inicioAspiranteAprobado.jsp?requerimiento=mostrarInicio");
+            response.sendRedirect("../aspirante/administrarAspirante.jsp?requerimiento=mostrarInicio");
         }
         else if(resp.equals("A2")){
             out.print("Bienvenido, eres un aspirante en estado rechazado, comunícate con el coordinador del curso");

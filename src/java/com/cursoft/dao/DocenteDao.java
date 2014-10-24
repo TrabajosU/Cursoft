@@ -37,6 +37,36 @@ public class DocenteDao {
         return true;
     }
 
+    public String consultarDocenteCorreo(String correo) {
+        ConexionMysql.conectar();
+                
+        String consultaArmada ="";
+        
+        ArrayList resultado = ConexionMysql.getConsultaSQL("SELECT * FROM usuarios WHERE correo = '"+correo+"';");
+        
+        System.err.println(resultado.toString());
+        
+        String idUsuario = ((String) resultado.get(0)).split("-")[0];
+        
+        consultaArmada += ((String) resultado.get(0)).split("-")[1] + "-" + ((String) resultado.get(0)).split("-")[2] + "-" +
+                ((String) resultado.get(0)).split("-")[3] + "-" + ((String) resultado.get(0)).split("-")[4] + "-" +
+                ((String) resultado.get(0)).split("-")[5] + "-" + ((String) resultado.get(0)).split("-")[6] + "-" +
+                ((String) resultado.get(0)).split("-")[7] + "-" + ((String) resultado.get(0)).split("-")[8] + "-" +
+                ((String) resultado.get(0)).split("-")[9] + "-" + ((String) resultado.get(0)).split("-")[10] + "-" +
+                ((String) resultado.get(0)).split("-")[11] + "-";
+        
+        resultado.clear();
+        
+        resultado = ConexionMysql.getConsultaSQL("SELECT * FROM docentes WHERE idUsuarioDoc='" 
+                + idUsuario + "';");
+        
+        consultaArmada += ((String) resultado.get(0)).split("-")[2] + "-" + ((String) resultado.get(0)).split("-")[3];
+        
+        ConexionMysql.desconectar();
+        
+        return consultaArmada;
+    }
+    
     public String consultarDocenteCodigo(String codigo) {
         ConexionMysql.conectar();
         

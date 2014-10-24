@@ -1,11 +1,10 @@
 <%-- 
-    Document   : aspirante
-    Created on : 12/10/2014, 09:54:58 PM
+    Document   : registrarAspirante
+    Created on : 19-oct-2014, 16:06:17
     Author     : Jhorman Perez
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-
 <!DOCTYPE html>
 <html lang="es">
     <head>
@@ -52,35 +51,11 @@
             </header>
             <br>
             <section>
-                <div class="row">
-                    <div class="col-xs-12 col-sm-3 col-md-3 col-lg-3" id="menu">
-                        <div class="navbar-default navbar-static-side" role="navigation">
-                            <div class="sidebar-collapse">                    
-                                <ul class="nav" id="side-menu">
-                                    <li>
-                                        <a href="#"><i class="fa fa-bar-chart-o fa-fw"></i> Operaciones<span class="fa arrow"></span></a>
-                                        <ul class="nav nav-second-level">
-                                            <li>
-                                                <a href="administrarAspirante.jsp?requerimiento=consultarCorreo">Consultar Datos</a>
-                                            </li>                                            
-                                        </ul>
-                                    </li>
-
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-xs-9 col-sm-9 col-md-9 col-lg-9" id="contenido">
-                        <div class="text-right">
-                            <% out.print(session.getAttribute("nombre") + " " + session.getAttribute("apellido"));%>
-                            <a href="../usuario/administrarUsuario.jsp?requerimiento=cerrarSesion">  (Cerrar sesión)</a>
-                        </div>
-                        <ol class="breadcrumb">
-                            <li><a href="administrarAspirante.jsp?requerimiento=mostrarInicio">Inicio</a></li>
-                            <li class="active">Aspirante</li>
-                        </ol>
-                        <div id="subtitulo">
-                            <h2>Consultar Datos</h2>
+                <div class="row">                    
+                    <div class="col-xs-6 col-
+                         sm-12 col-md-9 col-lg-12" id="contenido">                        
+                        <div class="text-center" id="subtitulo">
+                            <h2>Registrar Aspirante</h2>
                         </div>
                         <div class="row">
                             <div id="error">
@@ -98,7 +73,7 @@
                                                 <div class="col-xs-12 col-sm-6 col-md-8">
                                                     <div class="input-group">
                                                         <span class="input-group-addon"><span class="glyphicon glyphicon-qrcode"></span></span>
-                                                        <input class="form-control" id="codigo" name="codigo" <% out.print(session.getAttribute("codigo"));%> type="text">
+                                                        <input class="form-control" id="codigo" name="codigo" type="text" required>
                                                     </div>
                                                 </div>
                                             </div>
@@ -107,7 +82,7 @@
                                                 <div class="col-xs-12 col-sm-6 col-md-8">
                                                     <div class="input-group">
                                                         <span class="input-group-addon"><span class="glyphicon glyphicon-envelope"></span></span>
-                                                        <input class="form-control" id="correo" name="correo" <% out.print(session.getAttribute("correo"));%> type="text">
+                                                        <input class="form-control" id="correo" name="correo" type="text" required>
                                                     </div>
                                                 </div>
                                             </div>
@@ -116,7 +91,7 @@
                                                 <div class="col-xs-12 col-sm-6 col-md-8">
                                                     <div class="input-group">
                                                         <span class="input-group-addon"><span class="glyphicon glyphicon-lock"></span></span>
-                                                        <input class="form-control" id="contrasenia" name="contrasenia" placeholder= "********" <% out.print(session.getAttribute("contrasenia"));%> type="password">
+                                                        <input class="form-control" id="contrasenia" name="contrasenia" placeholder= "********" type="password" required>
                                                     </div>
                                                 </div>
                                             </div>
@@ -125,7 +100,7 @@
                                                 <div class="col-xs-12 col-sm-6 col-md-8">
                                                     <div class="input-group">
                                                         <span class="input-group-addon"><span class="glyphicon glyphicon-lock"></span></span>
-                                                        <input class="form-control" id="confirmarContrasenia" name="confirmarContrasenia" placeholder= "********" <% out.print(session.getAttribute("contrasenia2"));%> type="password">
+                                                        <input class="form-control" id="confirmarContrasenia" name="confirmarContrasenia" placeholder= "********" type="password" required>
                                                     </div>
                                                 </div>
                                             </div>
@@ -134,7 +109,7 @@
                                                 <div class="col-xs-12 col-sm-6 col-md-8">
                                                     <div class="input-group">
                                                         <span class="input-group-addon"><span class="glyphicon glyphicon-user"></span></span>
-                                                        <input class="form-control" id="nombre" name="nombre" value="<% out.print(session.getAttribute("nombre"));%>" type="text">
+                                                        <input class="form-control" id="nombre" name="nombre" type="text" required>
                                                     </div>
                                                 </div>
                                             </div>
@@ -143,7 +118,7 @@
                                                 <div class="col-xs-12 col-sm-6 col-md-8">
                                                     <div class="input-group">
                                                         <span class="input-group-addon"><span class="glyphicon glyphicon-user"></span></span>
-                                                        <input class="form-control" id="apellido" name="apellido" value="<% out.print(session.getAttribute("apellido"));%>" type="text">
+                                                        <input class="form-control" id="apellido" name="apellido" type="text" required>
                                                     </div>
                                                 </div>
                                             </div>
@@ -165,7 +140,7 @@
                                                 <div class="col-xs-12 col-sm-6 col-md-8">
                                                     <div class="input-group">
                                                         <span class="input-group-addon"><span class="glyphicon glyphicon-barcode"></span></span>
-                                                        <input class="form-control" id="numeroDocumento" name="numeroDocumento" placeholder="13278413" <% out.print(session.getAttribute("documento"));%> type="text">
+                                                        <input class="form-control" id="numeroDocumento" name="numeroDocumento" placeholder="13278413" type="text" required>
                                                     </div>
                                                 </div>
                                             </div>
@@ -174,7 +149,7 @@
                                                 <div class="col-xs-12 col-sm-6 col-md-8">
                                                     <div class="input-group">
                                                         <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span></span>
-                                                        <input class="form-control" id="fechaNacimiento" name="fechaNacimiento" placeholder="16/04/1984" <% out.print(session.getAttribute("fechaNacimiento"));%> type="text">
+                                                        <input class="form-control" id="fechaNacimiento" name="fechaNacimiento" placeholder="16/04/1984" type="text" required>
                                                     </div>
                                                 </div>
                                             </div>
@@ -183,7 +158,7 @@
                                                 <div class="col-xs-12 col-sm-6 col-md-8">
                                                     <div class="input-group">
                                                         <span class="input-group-addon"><span class="glyphicon glyphicon-home"></span></span>
-                                                        <input class="form-control" id="direccion" name="direccion" placeholder="Cl 21A 11 48 Br Alfonso Lopez" <% out.print(session.getAttribute("direccion"));%> type="text">
+                                                        <input class="form-control" id="direccion" name="direccion" placeholder="Cl 21A 11 48 Br Alfonso Lopez" type="text" required>
                                                     </div>
                                                 </div>
                                             </div>
@@ -192,7 +167,7 @@
                                                 <div class="col-xs-12 col-sm-6 col-md-8">
                                                     <div class="input-group">
                                                         <span class="input-group-addon"><span class="glyphicon glyphicon-phone-alt"></span></span>
-                                                        <input class="form-control" id="telefono" name="telefono" placeholder="5822276" <% out.print(session.getAttribute("telefono"));%> type="text">
+                                                        <input class="form-control" id="telefono" name="telefono" placeholder="5822276" type="text" required>
                                                     </div>
                                                 </div>
                                             </div>
@@ -201,7 +176,7 @@
                                                 <div class="col-xs-12 col-sm-6 col-md-8">
                                                     <div class="input-group">
                                                         <span class="input-group-addon"><span class="glyphicon glyphicon-phone"></span></span>
-                                                        <input class="form-control" id="telefonoMovil" name="telefonoMovil" placeholder="3137496602" <% out.print(session.getAttribute("telefonoMovil"));%> type="text">
+                                                        <input class="form-control" id="telefonoMovil" name="telefonoMovil" placeholder="3137496602" type="text" required>
                                                     </div>
                                                 </div>
                                             </div>
@@ -213,7 +188,7 @@
                                                 <div class="col-xs-12 col-sm-6 col-md-8">
                                                     <div class="input-group">
                                                         <span class="input-group-addon"><span class="glyphicon glyphicon-stats"></span></span>
-                                                        <input class="form-control" id="promedioPonderado" name="promedioPonderado" placeholder="4.2" <% out.print(session.getAttribute("promedio"));%> type="text">
+                                                        <input class="form-control" id="promedioPonderado" name="promedioPonderado" placeholder="4.2" type="text" required>
                                                     </div>
                                                 </div>
                                             </div>
@@ -222,26 +197,26 @@
                                                 <div class="col-xs-12 col-sm-6 col-md-8">
                                                     <div class="input-group">
                                                         <span class="input-group-addon"><span class="glyphicon glyphicon-list-alt"></span></span>
-                                                        <input class="form-control" id="semestreFinalizacionMaterias" name="semestreFinalizacionMaterias" placeholder="02/2015" <% out.print(session.getAttribute("semestreTerminacionMaterias"));%> type="text">
+                                                        <input class="form-control" id="semestreFinalizacionMaterias" name="semestreFinalizacionMaterias" placeholder="02/2015" type="text" required>
                                                     </div>
                                                 </div>
                                             </div>
                                             <div class="form-group">
                                                 <label for="reporteFinalizacionMaterias" class="col-xs-12 col-sm-6 col-md-4 control-label">Reporte de terminación de materias:</label>
                                                 <div class="col-xs-12 col-sm-6 col-md-8">
-                                                    <input type="file" class="filestyle" id="reporteFinalizacionMaterias" name="reporteFinalizacionMaterias" data-iconName="glyphicon-inbox">
+                                                    <input type="file" class="filestyle" id="reporteFinalizacionMaterias" name="reporteFinalizacionMaterias" data-iconName="glyphicon-inbox" required>
                                                 </div>
                                             </div>
                                             <div class="form-group">
                                                 <label for="reportePazSalvo" class="col-xs-12 col-sm-6 col-md-4 control-label">Reporte de paz y salvo:</label>
                                                 <div class="col-xs-12 col-sm-6 col-md-8">
-                                                    <input type="file" class="filestyle" id="reportePazSalvo" name="reportePazSalvo" data-iconName="glyphicon-inbox">
+                                                    <input type="file" class="filestyle" id="reportePazSalvo" name="reportePazSalvo" data-iconName="glyphicon-inbox" required>
                                                 </div>
                                             </div>
                                             <div class="form-group">
                                                 <label for="reciboInscripcion" class="col-xs-12 col-sm-6 col-md-4 control-label">Recibo de pago de inscripción:</label>
                                                 <div class="col-xs-12 col-sm-6 col-md-8">
-                                                    <input type="file" class="filestyle" id="reciboInscripcion" name="reciboInscripcion" data-iconName="glyphicon-inbox">
+                                                    <input type="file" class="filestyle" id="reciboInscripcion" name="reciboInscripcion" data-iconName="glyphicon-inbox" required>
                                                 </div>
                                             </div>
                                         </fieldset>
@@ -250,18 +225,14 @@
                                         <div class="form-group">
                                             <div class="row">
                                                 <div class="col-xs-12 text-center">                                                    
-                                                    <button class="btn btn-danger" id="actualizar" name="requerimiento" value="actualizar" type="submit" >Actualizar</button>                                                    
+                                                    <button class="btn btn-danger" id="actualizar" name="requerimiento" value="registrarAspirante" type="submit" >Registrar</button>                                                    
                                                 </div>
                                             </div>
-                                        </div>
-                                        <div class="form-group">
-                                            <div class="row">
-                                                <div class="col-xs-offset-4 col-xs-4 text-center">
-                                                    <button class="btn btn-danger" id="cancelar" name="requerimiento" value="mostrarInicio" type="submit">Cancelar</button>
-                                                </div>
-                                            </div>
-                                        </div>
+                                        </div>                                        
                                     </form>
+                                    <div id="registro">
+                                        <a class="btn btn-danger" role="button" href="../usuario/iniciarSesion.jsp">Cancelar</a>
+                                    </div>
                                 </div>
                             </div>
                         </div>    

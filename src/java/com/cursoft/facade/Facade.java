@@ -17,8 +17,8 @@ import com.cursoft.dto.*;
  */
 public class Facade {
     
-    public int registrarEstudiante(UsuarioDto usuario, AspiranteDto aspirante, EstudianteDto estudiante ) {
-        return new AdministrarEstudiante().registrarEstudiante(usuario, aspirante, estudiante);
+    public int registrarAspirante(UsuarioDto usuario, AspiranteDto aspirante) {
+        return new AdministrarAspirante().registrarAspirante(usuario, aspirante);
     }
     
     public String consultarEstudianteCodigo(String codigo){
@@ -61,6 +61,10 @@ public class Facade {
     
     public boolean registrarDocente(UsuarioDto usuario, DocenteDto docente){
         return new AdministrarDocente().registrarDocente(usuario,docente);
+    }
+    
+    public String consultarDocenteCorreo(String correo){
+        return new AdministrarDocente().consultarDocenteCorreo(correo);
     }
     
     public String consultarDocenteCodigo(String codigo){
