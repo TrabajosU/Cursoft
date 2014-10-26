@@ -145,7 +145,7 @@ public class UsuarioDao {
            
         String [] registro = resultado.get(0).toString().split("-");
         
-        consultaArmada += registro[1] + '-' + registro[4] + '-' + registro[5];
+        consultaArmada += registro[1] + ",," + registro[4] + ",," + registro[5];
                                 
         //consulta += resultado.toString();
         

@@ -1,6 +1,6 @@
 <%-- 
-    Document   : estudianteAprobado
-    Created on : 12/10/2014, 05:39:17 PM
+    Document   : matricularModuloEstudiante
+    Created on : 24-oct-2014, 15:52:15
     Author     : Jhorman Perez
 --%>
 
@@ -60,19 +60,19 @@
                                         <a href="#"><i class="fa fa-bar-chart-o fa-fw"></i> Operaciones<span class="fa arrow"></span></a>
                                         <ul class="nav nav-second-level">
                                             <li>
-                                                <a href="administrarEstudiante.jsp?requerimiento=consultarCorreo">Consultar Datos</a>
+                                                <a href="../estudiante/administrarEstudiante.jsp?requerimiento=consultarCorreo">Consultar Datos</a>
                                             </li>
                                             <li>
                                                 <a href="#"><i class="fa fa-bar-chart-o fa-fw"></i> Administrar Módulos<span class="fa arrow"></span></a>
                                                 <ul class="nav nav-third-level">
                                                     <li>
-                                                        <a href="../modulo/administrarModulo.jsp?requerimiento=matricularModuloEstudiante">Matricular Módulo</a>                                                                                                
-                                                        <a href="../modulo/administrarModulo.jsp?requerimiento=consultarModulosEstudiante">Consultar Módulos</a>
+                                                        <a href="administrarModulo.jsp?requerimiento=matricularModuloEstudiante">Matricular Módulo</a>                                                                                                
+                                                        <a href="administrarModulo.jsp?requerimiento=consultarModulosEstudiante">Consultar Módulos</a>
                                                     </li>                                            
                                                 </ul>
-                                            </li>
+                                            </li>                                            
+                                        </ul>
 
-                                        </ul>                                        
                                     </li>
                                     <li>
                                         <a href="../usuario/administrarUsuario.jsp?requerimiento=cerrarSesion">Cerrar Sesión</a>
@@ -88,11 +88,11 @@
                             <a href="../usuario/administrarUsuario.jsp?requerimiento=cerrarSesion">  (Cerrar sesión)</a>                        
                         </div> 
                         <ol class="breadcrumb">
-                            <li><a href="administrarEstudiante?requerimiento=mostrarInicio">Inicio</a></li>
+                            <li><a href="../estudiante/administrarEstudiante.jsp?requerimiento=mostrarInicio">Inicio</a></li>
                             <li class="active">Estudiante</li>
                         </ol>
                         <div id="subtitulo">
-                            <h2>Inicio Estudiante - Aprobado</h2>
+                            <h2>Matricular Módulo</h2>
                         </div>
                         <div class="row">
                             <div class="col-xs-offset-1 col-xs-10" id="contenedor">
@@ -104,27 +104,16 @@
                                         <div class="table-responsive">
                                             <table class="table table-hover">
                                                 <thead>
-                                                    <tr>
-                                                        <th># Módulo</th>
+                                                    <tr>                                                        
                                                         <th>Nombre</th>
+                                                        <th>Tipo</th>
                                                         <th>Profesor</th>
-                                                        <th>Nota</th>
                                                     </tr>
                                                 </thead>
                                                 <tbody>
-
-                                                    <tr>
-                                                        <td>4</td>
-                                                        <td>Proyecto de grado</td>
-                                                        <td></a></td>
-                                                        <td>5.0</td>
-                                                    </tr>                                                                                      
-                                                    <tr>
-                                                        <td></td>
-                                                        <td></td>
-                                                        <td><strong>Definitiva:</strong></a></td>
-                                                        <td>3.5</td>
-                                                    </tr>
+                                                    <%
+                                                        out.print(session.getAttribute("modulos"));
+                                                    %>
                                                 </tbody>
                                             </table>
                                         </div>

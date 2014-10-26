@@ -31,7 +31,7 @@
                 session.setAttribute("Mensaje", "Datos incorrectos, verifica tu usuario y contraseña");
                 response.sendRedirect("../usuario/iniciarSesion.jsp");
             }
-            resul = resp.split("-");
+            resul = resp.split(",,");
             sesionUsuario.setAttribute("nombre", resul[3]);
             sesionUsuario.setAttribute("apellido", resul[4]);
 
@@ -61,7 +61,7 @@
             
             try{
                 resp = facade.consultarDocenteCorreo((String) sesionUsuario.getAttribute("usuario"));         
-                resul = resp.split("-");
+                resul = resp.split(",,");
                 
                 session.setAttribute("codigo", "value=" + "\"" + (String) resp.split("-")[0] + "\"");
                 session.setAttribute("correo", "value=" + "\"" + (String) resp.split("-")[1] + "\"");

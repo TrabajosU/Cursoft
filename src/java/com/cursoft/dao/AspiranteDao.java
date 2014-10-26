@@ -74,7 +74,7 @@ public class AspiranteDao {
             System.out.println("el resultado 2 es igual a:  "+resultado2.toString());
             if(!resultado2.isEmpty()){
                 System.out.println(resultado2.toString());
-                consulta += idUsuarios[1]+"-"+idUsuarios[2]+"-"+idUsuarios[3]+"-"+resultado2.get(0).toString().split("-")[0]+";";
+                consulta += idUsuarios[1]+",,"+idUsuarios[2]+",,"+idUsuarios[3]+",,"+resultado2.get(0).toString().split("-")[0]+";";
                 System.out.println("La consulta va de la siguiente manera:   "+consulta);
             }
         }
@@ -116,10 +116,10 @@ public class AspiranteDao {
         
         String idUsuario = registro[0];
         
-        info += registro[1] + "-" + registro[2] + "-" + registro[3] + "-" + registro[4] + "-" +
-                registro[5] + "-" + registro[6] + "-" + registro[7] + "-" + registro[8] + "-" +
-                registro[9] + "-" + registro[10] + "-" + registro[11] + "-" + registro[12] + "-" +
-                registro[13] + "-";
+        info += registro[1] + ",," + registro[2] + ",," + registro[3] + ",," + registro[4] + ",," +
+                registro[5] + ",," + registro[6] + ",," + registro[7] + ",," + registro[8] + ",," +
+                registro[9] + ",," + registro[10] + ",," + registro[11] + ",," + registro[12] + ",," +
+                registro[13] + ",,";
                 
         resultado.clear();
         
@@ -132,7 +132,7 @@ public class AspiranteDao {
         
         registro = resultado.get(0).toString().split("-");
         
-        info += registro[2] + "-" + registro[3] + "-";
+        info += registro[2] + ",," + registro[3] + ",,";
         
         ConexionMysql.desconectar();
         
@@ -156,10 +156,10 @@ public class AspiranteDao {
         
         String idUsuario = registro[0];
         
-        info += registro[1] + "-" + registro[2] + "-" + registro[3] + "-" + registro[4] + "-" +
-                registro[5] + "-" + registro[6] + "-" + registro[7] + "-" + registro[8] + "-" +
-                registro[9] + "-" + registro[10] + "-" + registro[11] + "-" + registro[12] + "-" +
-                registro[13] + "-";
+        info += registro[1] + ",," + registro[2] + ",," + registro[3] + ",," + registro[4] + ",," +
+                registro[5] + ",," + registro[6] + ",," + registro[7] + ",," + registro[8] + ",," +
+                registro[9] + ",," + registro[10] + ",," + registro[11] + ",," + registro[12] + ",," +
+                registro[13] + ",,";
                 
         resultado.clear();
         
@@ -172,7 +172,7 @@ public class AspiranteDao {
         
         registro = resultado.get(0).toString().split("-");
         
-        info += registro[2] + "-" + registro[3] + "-";
+        info += registro[2] + ",," + registro[3] + ",,";
         
         ConexionMysql.desconectar();
         

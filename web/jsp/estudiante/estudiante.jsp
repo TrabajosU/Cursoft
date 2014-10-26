@@ -60,10 +60,21 @@
                                         <ul class="nav nav-second-level">
                                             <li>
                                                 <a href="administrarEstudiante.jsp?requerimiento=consultar">Consultar Datos</a>
+                                            </li>
+                                            <li>
+                                                <a href="#"><i class="fa fa-bar-chart-o fa-fw"></i> Administrar Módulos<span class="fa arrow"></span></a>
+                                                <ul class="nav nav-third-level">
+                                                    <li>
+                                                        <a href="../modulo/administrarModulo.jsp?requerimiento=matricularModuloEstudiante">Matricular Módulo</a>                                                                                                
+                                                        <a href="../modulo/administrarModulo.jsp?requerimiento=consultarModulosEstudiante">Consultar Módulos</a>
+                                                    </li>                                            
+                                                </ul>
                                             </li>                                            
                                         </ul>
                                     </li>
-
+                                    <li>
+                                        <a href="../usuario/administrarUsuario.jsp?requerimiento=cerrarSesion">Cerrar Sesión</a>
+                                    </li>
                                 </ul>
                             </div>
                         </div>

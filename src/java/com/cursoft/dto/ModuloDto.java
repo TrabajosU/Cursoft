@@ -11,6 +11,7 @@ package com.cursoft.dto;
  */
 public class ModuloDto {
     
+    private int idModulo;
     private String nombre;
     private String horas;
     private String tipo;
@@ -26,6 +27,14 @@ public class ModuloDto {
         this.fechaInicio = fechaInicio;
     }
 
+    public int getIdModulo() {
+        return idModulo;
+    }
+
+    public void setIdModulo(int idModulo) {
+        this.idModulo = idModulo;
+    }
+    
     public String getNombre() {
         return nombre;
     }

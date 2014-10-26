@@ -63,12 +63,14 @@
                                             </li>                                            
                                         </ul>
                                     </li>
-
+                                    <li>
+                                        <a href="../usuario/administrarUsuario.jsp?requerimiento=cerrarSesion">Cerrar Sesión</a>
+                                    </li>
                                 </ul>
                             </div>
                         </div>
                     </div>
-                    <div class="col-xs-9 col-sm-9 col-md-9 col-lg-9" id="contenido">
+                    <div class="col-xs-9 col-sm-9 col-md-9 col-lg-8" id="contenido">
                         <div class="text-right">
                             <% out.print(session.getAttribute("nombre") + " " + session.getAttribute("apellido"));%>                            
                             <a href="../usuario/administrarUsuario.jsp?requerimiento=cerrarSesion">  (Cerrar sesión)</a>                        
@@ -80,8 +82,28 @@
                             <h2>Inicio Profesor</h2>
                         </div>
                         <div class="row">
-                            <div class="col-xs-offset-1 col-xs-10" id="contenedor">
-                                <% out.print(session.getAttribute("modulos")); %>
+                            <div class="col-xs-offset-1 col-xs-10" id="contenedor">                                
+                                <div class="panel panel-default">
+                                    <div class="panel-heading">
+                                        <strong>Modulos Dictados</strong>
+                                    </div>
+                                    <div class="panel-body">
+                                        <div class="table-responsive">
+                                            <table class="table">
+                                                <thead>
+                                                    <tr>
+                                                        <th>Nombre</th>
+                                                        <th>Horario</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <% out.println(session.getAttribute("modulosDictados"));%>
+                                                </tbody>
+                                            </table>
+
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>

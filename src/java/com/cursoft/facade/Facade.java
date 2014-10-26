@@ -114,4 +114,8 @@ public class Facade {
     public String listarModulosProfesor(String cod){
         return new AdministrarDocente().listarModulosProfesor(cod);
     }
+    
+    public String obtenerIdModulo(ModuloDto modulo){
+        return new AdministrarModulo().obtenerIdModulo(modulo);
+    }
 }

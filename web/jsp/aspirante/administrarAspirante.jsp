@@ -31,8 +31,8 @@
                 session.setAttribute("Mensaje", "Datos incorrectos, verifica tu usuario y contraseña");
                 response.sendRedirect("../usuario/iniciarSesion.jsp");
             }
-            sesionUsuario.setAttribute("nombre", (String) resp.split("-")[3]);
-            sesionUsuario.setAttribute("apellido", (String) resp.split("-")[4]);
+            sesionUsuario.setAttribute("nombre", (String) resp.split(",,")[3]);
+            sesionUsuario.setAttribute("apellido", (String) resp.split(",,")[4]);
 
            
             if (sesionUsuario.getAttribute("estadoUsuario").equals("A0")) {
@@ -48,7 +48,7 @@
 
             try {
                 resp = facade.consultarAspiranteCorreo((String) sesionUsuario.getAttribute("usuario"));
-                resul = resp.split("-");
+                resul = resp.split(",,");
                 
                 sesionUsuario.setAttribute("codigo", "value=" + "\"" + resul[0] + "\"");
                 sesionUsuario.setAttribute("correo", "value=" + "\"" + resul[1] + "\"");
@@ -76,7 +76,7 @@
         } else if (req.equals("consultar")) {
 
             resp = facade.consultarAspiranteCodigo(request.getParameter("codigo"));
-            resul = resp.split("-");
+            resul = resp.split(",,");
             
             sesionUsuario.setAttribute("codigo", "value=" + "\"" + resul[0] + "\"");
             sesionUsuario.setAttribute("correo", "value=" + "\"" + resul[1] + "\"");

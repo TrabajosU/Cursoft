@@ -24,16 +24,16 @@
     if (sesionUsuario == null || sesionUsuario.getAttribute("usuario") == null) {
         response.sendRedirect("../usuario/iniciarSesion.jsp");
         return;
-    }   
+    }
 
     String resp = "";
-    String [] resul;
-    
+    String[] resul;
+
     if (val.equals("mostrarInicio")) {
 
         resp = facade.consultarEstudianteCorreo((String) sesionUsuario.getAttribute("usuario"));
-        resul = resp.split("-");
-        
+        resul = resp.split(",,");
+
         sesionUsuario.setAttribute("nombre", resul[3]);
         sesionUsuario.setAttribute("apellido", resul[4]);
 
@@ -50,11 +50,11 @@
             response.sendRedirect("inicioEstudianteGraduado.jsp");
         }
     } else if (val.equals("consultarCorreo")) {
-        
+
         resp = facade.consultarEstudianteCorreo((String) sesionUsuario.getAttribute("usuario"));
-        
-        resul = resp.split("-");
-        
+
+        resul = resp.split(",,");
+
         session.setAttribute("codigo", resul[0]);
         session.setAttribute("correo", resul[1]);
         session.setAttribute("contrasenia", resul[2]);
@@ -74,56 +74,56 @@
         session.setAttribute("reciboInscripcion", resul[15]);
         session.setAttribute("reciboPagoMaatricula", resul[16]);
         session.setAttribute("nota", resul[17]);
-        
-        String actualizarButton = "<div class=\"form-group\">"+
-                        "<div class=\"row\">"+
-                        "<div class=\"col-xs-offset-4 col-xs-4 text-center\">"+
-                        "<button class=\"btn btn-danger\" id=\"cancelar\" name=\"requerimiento\""+
-                        "value=\"actualizar\" type=\"submit\">Actualizar</button>"+
-                        "</div>"+
-                        "</div>"+
-                        "</div>";
-        
-        String registrarButton = "<div class=\"form-group\">"+
-                        "<div class=\"row\">"+
-                        "<div class=\"col-xs-offset-4 col-xs-4 text-center\">"+
-                        "<button class=\"btn btn-danger\" id=\"cancelar\" name=\"requerimiento\""+
-                        "value=\"registrar\" type=\"submit\">Registrar</button>"+
-                        "</div>"+
-                        "</div>"+
-                        "</div>";
-        
-        String eliminarButton = "<div class=\"form-group\">"+
-                        "<div class=\"row\">"+
-                        "<div class=\"col-xs-offset-4 col-xs-4 text-center\">"+
-                        "<button class=\"btn btn-danger\" id=\"cancelar\" name=\"requerimiento\""+
-                        "value=\"eliminar\" type=\"submit\">Eliminar</button>"+
-                        "</div>"+
-                        "</div>"+
-                        "</div>";
-        
-        String consultarButton = "<div class=\"form-group\">"+
-                        "<div class=\"row\">"+
-                        "<div class=\"col-xs-offset-4 col-xs-4 text-center\">"+
-                        "<button class=\"btn btn-danger\" id=\"cancelar\" name=\"requerimiento\""+
-                        "value=\"consultar\" type=\"submit\">Consultar</button>"+
-                        "</div>"+
-                        "</div>"+
-                        "</div>";
-        
+
+        String actualizarButton = "<div class=\"form-group\">"
+                + "<div class=\"row\">"
+                + "<div class=\"col-xs-offset-4 col-xs-4 text-center\">"
+                + "<button class=\"btn btn-danger\" id=\"cancelar\" name=\"requerimiento\""
+                + "value=\"actualizar\" type=\"submit\">Actualizar</button>"
+                + "</div>"
+                + "</div>"
+                + "</div>";
+
+        String registrarButton = "<div class=\"form-group\">"
+                + "<div class=\"row\">"
+                + "<div class=\"col-xs-offset-4 col-xs-4 text-center\">"
+                + "<button class=\"btn btn-danger\" id=\"cancelar\" name=\"requerimiento\""
+                + "value=\"registrar\" type=\"submit\">Registrar</button>"
+                + "</div>"
+                + "</div>"
+                + "</div>";
+
+        String eliminarButton = "<div class=\"form-group\">"
+                + "<div class=\"row\">"
+                + "<div class=\"col-xs-offset-4 col-xs-4 text-center\">"
+                + "<button class=\"btn btn-danger\" id=\"cancelar\" name=\"requerimiento\""
+                + "value=\"eliminar\" type=\"submit\">Eliminar</button>"
+                + "</div>"
+                + "</div>"
+                + "</div>";
+
+        String consultarButton = "<div class=\"form-group\">"
+                + "<div class=\"row\">"
+                + "<div class=\"col-xs-offset-4 col-xs-4 text-center\">"
+                + "<button class=\"btn btn-danger\" id=\"cancelar\" name=\"requerimiento\""
+                + "value=\"consultar\" type=\"submit\">Consultar</button>"
+                + "</div>"
+                + "</div>"
+                + "</div>";
+
         session.setAttribute("actualizar", actualizarButton);
         session.setAttribute("registrar", "");
         session.setAttribute("eliminar", "");
         session.setAttribute("consultar", "");
 
-        out.print("SOY RECIBO INSC: "+session.getAttribute("reciboInscripcion"));
+        out.print("SOY RECIBO INSC: " + session.getAttribute("reciboInscripcion"));
         response.sendRedirect("estudiante.jsp");
 
     } else if (val.equals("consultar")) {
-        
+
         resp = facade.consultarEstudianteCodigo(request.getParameter("codigo"));
-        
-        resul = resp.split("-");
+
+        resul = resp.split(",,");
 
         session.setAttribute("codigo", resul[0]);
         session.setAttribute("correo", resul[1]);
@@ -211,23 +211,23 @@
             String consulta = facade.consultarEstudianteCodigo(codigo);
             out.println("La consulta esssss:                    ......     " + consulta);
 
-            session.setAttribute("codigo", (String) consulta.split("-")[0] + "\" disabled");
-            session.setAttribute("correo", (String) consulta.split("-")[1]);
-            session.setAttribute("contrasenia", (String) consulta.split("-")[2]);
-            session.setAttribute("contrasenia2", (String) consulta.split("-")[2]);
-            session.setAttribute("nombre", (String) consulta.split("-")[3]);
-            session.setAttribute("apellido", (String) consulta.split("-")[4]);
-            session.setAttribute("tipoDocumento", (String) consulta.split("-")[5]);
-            session.setAttribute("documento", (String) consulta.split("-")[6]);
-            session.setAttribute("fechaNacimiento", (String) consulta.split("-")[7]);
-            session.setAttribute("direccion", (String) consulta.split("-")[8]);
-            session.setAttribute("telefono", (String) consulta.split("-")[9]);
-            session.setAttribute("telefonoMovil", (String) consulta.split("-")[10]);
+            session.setAttribute("codigo", (String) consulta.split(",,")[0] + "\" disabled");
+            session.setAttribute("correo", (String) consulta.split(",,")[1]);
+            session.setAttribute("contrasenia", (String) consulta.split(",,")[2]);
+            session.setAttribute("contrasenia2", (String) consulta.split(",,")[2]);
+            session.setAttribute("nombre", (String) consulta.split(",,")[3]);
+            session.setAttribute("apellido", (String) consulta.split(",,")[4]);
+            session.setAttribute("tipoDocumento", (String) consulta.split(",,")[5]);
+            session.setAttribute("documento", (String) consulta.split(",,")[6]);
+            session.setAttribute("fechaNacimiento", (String) consulta.split(",,")[7]);
+            session.setAttribute("direccion", (String) consulta.split(",,")[8]);
+            session.setAttribute("telefono", (String) consulta.split(",,")[9]);
+            session.setAttribute("telefonoMovil", (String) consulta.split(",,")[10]);
 
-            session.setAttribute("promedio", (String) consulta.split("-")[11]);
-            session.setAttribute("semestreTerminacionMaterias", (String) consulta.split("-")[12]);
+            session.setAttribute("promedio", (String) consulta.split(",,")[11]);
+            session.setAttribute("semestreTerminacionMaterias", (String) consulta.split(",,")[12]);
 
-            session.setAttribute("nota", (String) consulta.split("-")[13]);
+            session.setAttribute("nota", (String) consulta.split(",,")[13]);
 
             session.setAttribute("Mensaje", "Éxito");
             response.sendRedirect("estudiante.jsp");
@@ -249,7 +249,7 @@
         if (!respuesta.isEmpty()) {
             session.setAttribute("Mensaje", "Procedimiento exitoso. Información del"
                     + " estudiante eliminado del sistema:\n"
-                    + respuesta.split("-")[0] + " " + respuesta.split("-")[1] + " " + respuesta.split("-")[2]);
+                    + respuesta.split(",,")[0] + " " + respuesta.split(",,")[1] + " " + respuesta.split(",,")[2]);
         } else {
             session.setAttribute("Mensaje", "Error");
         }

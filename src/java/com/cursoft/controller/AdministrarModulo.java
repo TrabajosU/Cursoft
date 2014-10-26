@@ -42,6 +42,10 @@ public class AdministrarModulo {
         return mod.listarModulos();
     }
 
+    public String obtenerIdModulo(ModuloDto modulo){
+        ModuloDao mod = new ModuloDao();
+        return mod.obtenerIdModulo(modulo);
+    }
     
     
 }

@@ -65,7 +65,9 @@
                                             </li>                                            
                                         </ul>
                                     </li>
-
+                                    <li>
+                                        <a href="../usuario/administrarUsuario.jsp?requerimiento=cerrarSesion">Cerrar Sesión</a>
+                                    </li>
                                 </ul>
                             </div>
                         </div>

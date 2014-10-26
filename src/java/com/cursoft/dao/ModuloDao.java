@@ -50,6 +50,21 @@ public class ModuloDao {
         
         
     }
+    
+    public String obtenerIdModulo(ModuloDto modulo){
+        
+        String consulta="";
+        ConexionMysql.conectar();
+        
+        ArrayList resultado = ConexionMysql.getConsultaSQL("SELECT modulos.idModulo, modulos.horas, modulos.tipo, modulos.fechaInicio FROM modulos WHERE nombre='"+modulo.getNombre()+"';");
+        
+        String [] mod = resultado.get(0).toString().split("-");
+        modulo.setIdModulo(Integer.parseInt(mod[0]));
+        
+        ConexionMysql.desconectar();
+        
+        return mod[0];
+    }
 
     public String consultarModulo(ModuloDto modulo) {
         String consulta="";
@@ -59,6 +74,7 @@ public class ModuloDao {
         
         String [] mod = resultado.get(0).toString().split("-");
         String idModulo = mod[0];
+        modulo.setIdModulo(Integer.parseInt(idModulo));
         modulo.setHoras(mod[1]);
         modulo.setTipo(mod[2]);
         modulo.setFechaInicio(mod[3]);
