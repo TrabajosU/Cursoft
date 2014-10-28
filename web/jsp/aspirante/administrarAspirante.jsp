@@ -5,15 +5,16 @@
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-
-<jsp:useBean id="facade">
-    <jsp:attribute name="class" trim="true">com.cursoft.facade.Facade</jsp:attribute>
-</jsp:useBean>
-
+<jsp:useBean id="facade" class="com.cursoft.facade.Facade" type="com.cursoft.facade.Facade"></jsp:useBean>
 <jsp:useBean id="usuario" class="com.cursoft.dto.UsuarioDto"></jsp:useBean>
 <jsp:useBean id="aspirante" class="com.cursoft.dto.AspiranteDto"></jsp:useBean>
 <%@page session='true'%>
 
+<%--
+<jsp:useBean id="facade">
+    <jsp:attribute name="class" trim="true">com.cursoft.facade.Facade</jsp:attribute>
+</jsp:useBean>
+--%>
 
 <%
 
