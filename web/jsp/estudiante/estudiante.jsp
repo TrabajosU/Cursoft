@@ -59,7 +59,7 @@
                                         <a href="#"><i class="fa fa-bar-chart-o fa-fw"></i> Operaciones<span class="fa arrow"></span></a>
                                         <ul class="nav nav-second-level">
                                             <li>
-                                                <a href="administrarEstudiante.jsp?requerimiento=consultar">Consultar Datos</a>
+                                                <a href="administrarEstudiante.jsp?requerimiento=consultarCorreo">Consultar Datos</a>
                                             </li>
                                             <li>
                                                 <a href="#"><i class="fa fa-bar-chart-o fa-fw"></i> Administrar Módulos<span class="fa arrow"></span></a>
@@ -237,8 +237,7 @@
                                             </div>
                                             <div class="form-group">
                                                 <label for="reporteFinalizacionMaterias" class="col-xs-12 col-sm-6 col-md-4 control-label">Reporte de terminación de materias:</label>
-                                                <div class="col-xs-12 col-sm-6 col-md-8">
-                                                    <input type="file" class="filestyle" id="reporteFinalizacionMaterias" name="reporteFinalizacionMaterias" data-iconName="glyphicon-inbox">
+                                                <div class="col-xs-12 col-sm-6 col-md-8">                                                    
                                                     <!--agregado-->
 
                                                     <a href="<% out.print(session.getAttribute("reporteFinalizacionMaterias"));%>" class="thumbnail">
@@ -248,8 +247,7 @@
                                             </div>
                                             <div class="form-group">
                                                 <label for="reportePazSalvo" class="col-xs-12 col-sm-6 col-md-4 control-label">Reporte de paz y salvo:</label>
-                                                <div class="col-xs-12 col-sm-6 col-md-8">
-                                                    <input type="file" class="filestyle" id="reportePazSalvo" name="reportePazSalvo" data-iconName="glyphicon-inbox">
+                                                <div class="col-xs-12 col-sm-6 col-md-8">                                                    
                                                     <!--agregado-->
 
                                                     <a href="<% out.print(session.getAttribute("reportePazSalvo"));%>" class="thumbnail">
@@ -263,10 +261,8 @@
                                             </div>
                                             <div class="form-group">
                                                 <label for="reciboInscripcion" class="col-xs-12 col-sm-6 col-md-4 control-label">Recibo de pago de inscripción:</label>
-                                                <div class="col-xs-12 col-sm-6 col-md-8">
-                                                    <input type="file" class="filestyle" id="reciboInscripcion" name="reciboInscripcion" data-iconName="glyphicon-inbox">
-                                                    <!--agregado-->
-                                                    <% out.print(session.getAttribute("reciboInscripcion"));%>      
+                                                <div class="col-xs-12 col-sm-6 col-md-8">                                                   
+                                                    <!--agregado-->                                                    
                                                     <a href="<% out.print(session.getAttribute("reciboInscripcion"));%>" class="thumbnail">
                                                         <img src="<% out.print(session.getAttribute("reciboInscripcion"));%>" alt="Recibo Inscripción">
                                                     </a>  
@@ -276,25 +272,15 @@
                                         <fieldset>
                                             <legend>Datos de Estudiante</legend>
                                             <div class="form-group">
-                                                <label for="reciboPagoMatricula" class="col-xs-12 col-sm-6 col-md-4 control-label">Recibo de pago de matricula:</label>
-                                                <div class="col-xs-12 col-sm-6 col-md-8">
-                                                    <input type="file" class="filestyle" id="reciboPagoMatricula" name="reciboPagoMatricula" data-iconName="glyphicon-inbox">
+                                                <label for="reciboPagoMatricula" class="col-xs-12 col-sm-6 col-md-4 control-label">Recibo de pago de matrícula:</label>
+                                                <div class="col-xs-12 col-sm-6 col-md-8">                                                    
                                                     <!--agregado-->
 
                                                     <a href="<% out.print(session.getAttribute("reciboPagoMatricula"));%>" class="thumbnail">
                                                         <img src="<% out.print(session.getAttribute("reciboPagoMatricula"));%>" alt="Recibo Pago Matrícula">
                                                     </a>  
                                                 </div>
-                                            </div>
-                                            <div class="form-group">
-                                                <label for="nota" class="col-xs-12 col-sm-6 col-md-4 control-label">Nota:</label>
-                                                <div class="col-xs-12 col-sm-6 col-md-8">
-                                                    <div class="input-group">
-                                                        <span class="input-group-addon"><span class="glyphicon glyphicon-stats"></span></span>
-                                                        <input class="form-control" id="nota" name="nota" placeholder="5.0" <% out.print(session.getAttribute("nota"));%> type="text">
-                                                    </div>
-                                                </div>
-                                            </div>
+                                            </div>                                            
                                         </fieldset>
                                         <% out.print(session.getAttribute("actualizar"));%>
                                         <div class="form-group">

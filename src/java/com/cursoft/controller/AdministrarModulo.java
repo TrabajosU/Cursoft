@@ -46,6 +46,18 @@ public class AdministrarModulo {
         ModuloDao mod = new ModuloDao();
         return mod.obtenerIdModulo(modulo);
     }
+
+    public boolean matricularModuloEstudiante(String idEstudiante, String idModuloDoc) {
+        return new ModuloDao().matricularModuloEstudiante(idEstudiante, idModuloDoc);
+    }
     
+    public String listarModulosAMatricular(String idEstudiante) {
+        ModuloDao mod = new ModuloDao();
+        return mod.listarModulosAMatricular(idEstudiante);
+    }
     
+    public String listarModulosMatriculados(String idEstudiante){
+        ModuloDao mod = new ModuloDao();
+        return mod.listarModulosMatriculados(idEstudiante);
+    }
 }

@@ -97,10 +97,10 @@
                                         <fieldset>
                                             <legend>Documentos</legend>
                                             <div class="form-group">
-                                                <label for="telefono_movil" class="col-xs-12 col-sm-6 col-md-4 control-label">Recibo de pago de matricula:</label>
+                                                <label for="telefono_movil" class="col-xs-12 col-sm-6 col-md-4 control-label">Recibo de pago de matrícula:</label>
                                                 <div class="col-xs-12 col-sm-6 col-md-8">
                                                     <input type="file" class="filestyle" data-iconName="glyphicon-inbox">
-                                                    <p class="help-block">Selecciona tu archivo del recibo de pago de matricula</p>
+                                                    <p class="help-block">Selecciona tu archivo del recibo de pago de matrícula</p>
                                                 </div>
                                             </div>
                                         </fieldset>

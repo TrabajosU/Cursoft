@@ -118,4 +118,26 @@ public class Facade {
     public String obtenerIdModulo(ModuloDto modulo){
         return new AdministrarModulo().obtenerIdModulo(modulo);
     }
+    
+    public String obtenerIdEstudiante(String correo){
+        return new AdministrarEstudiante().obtenerIdEstudiante(correo);
+    }
+    
+    public boolean matricularModuloEstudiante(String idEstudiante, String idModuloDoc){
+        return new AdministrarModulo().matricularModuloEstudiante(idEstudiante, idModuloDoc);
+    }
+    
+    /**
+     * Método que permite listar los módulos que no han sido matriculados por un estudiante
+     * determinado.
+     * @param idEstudiante
+     * @return 
+     */
+    public String listarModulosAMatricular(String idEstudiante){
+        return new AdministrarModulo().listarModulosAMatricular(idEstudiante);
+    }
+    
+    public String listarModulosMatriculados(String idEstudiante){
+        return new AdministrarModulo().listarModulosMatriculados(idEstudiante);
+    }
 }

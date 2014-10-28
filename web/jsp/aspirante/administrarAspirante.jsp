@@ -21,24 +21,23 @@
     if (!sesionUsuario.isNew() && sesionUsuario != null && sesionUsuario.getAttribute("usuario") != null) {
 
         String resp = "";
-        String [] resul;
-        
+        String[] resul;
+
         if (req.equals("mostrarInicio")) {
 
             resp = facade.consultarAspiranteCorreo((String) sesionUsuario.getAttribute("usuario"));
 
-            if(resp.isEmpty()){
+            if (resp.isEmpty()) {
                 session.setAttribute("Mensaje", "Datos incorrectos, verifica tu usuario y contraseña");
                 response.sendRedirect("../usuario/iniciarSesion.jsp");
             }
             sesionUsuario.setAttribute("nombre", (String) resp.split(",,")[3]);
             sesionUsuario.setAttribute("apellido", (String) resp.split(",,")[4]);
 
-           
             if (sesionUsuario.getAttribute("estadoUsuario").equals("A0")) {
                 response.sendRedirect("inicioAspirantePendiente.jsp");
             }
-            if (sesionUsuario.getAttribute("estadoUsuario").equals("A1")) {                                 
+            if (sesionUsuario.getAttribute("estadoUsuario").equals("A1")) {
                 response.sendRedirect("inicioAspiranteAprobado.jsp");
             }
             if (sesionUsuario.getAttribute("estadoUsuario").equals("A2")) {
@@ -49,7 +48,7 @@
             try {
                 resp = facade.consultarAspiranteCorreo((String) sesionUsuario.getAttribute("usuario"));
                 resul = resp.split(",,");
-                
+
                 sesionUsuario.setAttribute("codigo", "value=" + "\"" + resul[0] + "\"");
                 sesionUsuario.setAttribute("correo", "value=" + "\"" + resul[1] + "\"");
                 sesionUsuario.setAttribute("contrasenia", "value=" + "\"" + resul[2] + "\"");
@@ -66,9 +65,14 @@
                 sesionUsuario.setAttribute("promedio", "value=" + "\"" + resul[11] + "\"");
                 sesionUsuario.setAttribute("semestreTerminacionMaterias", "value=" + "\"" + resul[12] + "\"");
 
+                sesionUsuario.setAttribute("reporteFinalizacionMaterias", resul[13]);
+                sesionUsuario.setAttribute("reportePazSalvo", resul[14]);
+                sesionUsuario.setAttribute("reciboInscripcion", resul[15]);
+                sesionUsuario.setAttribute("reciboPagoMatricula", resul[16]);
+
                 response.sendRedirect("aspirante.jsp");
 
-            }catch(Exception e){
+            } catch (Exception e) {
                 out.println("Error. Servidor no disponible");
                 //response.sendRedirect("aspirante.jsp");
             }
@@ -77,7 +81,7 @@
 
             resp = facade.consultarAspiranteCodigo(request.getParameter("codigo"));
             resul = resp.split(",,");
-            
+
             sesionUsuario.setAttribute("codigo", "value=" + "\"" + resul[0] + "\"");
             sesionUsuario.setAttribute("correo", "value=" + "\"" + resul[1] + "\"");
             sesionUsuario.setAttribute("contrasenia", "value=" + "\"" + resul[2] + "\"");
@@ -93,6 +97,11 @@
 
             sesionUsuario.setAttribute("promedio", "value=" + "\"" + resul[11] + "\"");
             sesionUsuario.setAttribute("semestreTerminacionMaterias", "value=" + "\"" + resul[12] + "\"");
+
+            sesionUsuario.setAttribute("reporteFinalizacionMaterias", resul[13]);
+            sesionUsuario.setAttribute("reportePazSalvo", resul[14]);
+            sesionUsuario.setAttribute("reciboInscripcion", resul[15]);
+            sesionUsuario.setAttribute("reciboPagoMatricula", resul[16]);
 
             response.sendRedirect("aspirante.jsp");
 

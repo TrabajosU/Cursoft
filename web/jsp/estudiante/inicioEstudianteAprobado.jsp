@@ -88,7 +88,7 @@
                             <a href="../usuario/administrarUsuario.jsp?requerimiento=cerrarSesion">  (Cerrar sesión)</a>                        
                         </div> 
                         <ol class="breadcrumb">
-                            <li><a href="administrarEstudiante?requerimiento=mostrarInicio">Inicio</a></li>
+                            <li><a href="administrarEstudiante.jsp?requerimiento=mostrarInicio">Inicio</a></li>
                             <li class="active">Estudiante</li>
                         </ol>
                         <div id="subtitulo">
@@ -101,33 +101,9 @@
                                         <strong>Módulos Matriculados</strong>
                                     </div> 
                                     <div class="panel-body">                                     
-                                        <div class="table-responsive">
-                                            <table class="table table-hover">
-                                                <thead>
-                                                    <tr>
-                                                        <th># Módulo</th>
-                                                        <th>Nombre</th>
-                                                        <th>Profesor</th>
-                                                        <th>Nota</th>
-                                                    </tr>
-                                                </thead>
-                                                <tbody>
-
-                                                    <tr>
-                                                        <td>4</td>
-                                                        <td>Proyecto de grado</td>
-                                                        <td></a></td>
-                                                        <td>5.0</td>
-                                                    </tr>                                                                                      
-                                                    <tr>
-                                                        <td></td>
-                                                        <td></td>
-                                                        <td><strong>Definitiva:</strong></a></td>
-                                                        <td>3.5</td>
-                                                    </tr>
-                                                </tbody>
-                                            </table>
-                                        </div>
+                                        <%
+                                            out.print(session.getAttribute("modulos"));
+                                        %>
                                     </div>
                                 </div>
                             </div>

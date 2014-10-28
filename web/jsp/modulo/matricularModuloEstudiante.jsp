@@ -98,25 +98,14 @@
                             <div class="col-xs-offset-1 col-xs-10" id="contenedor">
                                 <div class="panel panel-default">
                                     <div class="panel-heading text-center">
-                                        <strong>Módulos Matriculados</strong>
+                                        <strong>Módulos Disponibles</strong>
                                     </div> 
                                     <div class="panel-body">                                     
-                                        <div class="table-responsive">
-                                            <table class="table table-hover">
-                                                <thead>
-                                                    <tr>                                                        
-                                                        <th>Nombre</th>
-                                                        <th>Tipo</th>
-                                                        <th>Profesor</th>
-                                                    </tr>
-                                                </thead>
-                                                <tbody>
-                                                    <%
-                                                        out.print(session.getAttribute("modulos"));
-                                                    %>
-                                                </tbody>
-                                            </table>
-                                        </div>
+
+                                        <%
+                                            out.print(session.getAttribute("modulos"));
+                                        %>
+
                                     </div>
                                 </div>
                             </div>

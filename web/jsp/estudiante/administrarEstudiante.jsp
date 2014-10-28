@@ -10,6 +10,7 @@
 <jsp:useBean id="usuario" class="com.cursoft.dto.UsuarioDto"></jsp:useBean>
 <jsp:useBean id="aspirante" class="com.cursoft.dto.AspiranteDto"></jsp:useBean>
 <jsp:useBean id="estudiante" class="com.cursoft.dto.EstudianteDto"></jsp:useBean>
+<jsp:useBean id="moduloDto" class="com.cursoft.dto.ModuloDto"></jsp:useBean>
 
 <%
 
@@ -41,6 +42,50 @@
             response.sendRedirect("inicioEstudiantePendiente.jsp");
         }
         if (sesionUsuario.getAttribute("estadoUsuario").equals("E1")) {
+
+            String idEstudiante = facade.obtenerIdEstudiante((String) sesionUsuario.getAttribute("usuario"));
+
+            String m = "", tipo = "";
+
+            resp = facade.listarModulosMatriculados(idEstudiante);
+
+            String tabla = "<div class=\"table-responsive\">"
+                    + "<table class=\"table table-hover\">"
+                    + "<thead>"
+                    + "<tr>"
+                    + "<th>Nombre</th>"
+                    + "<th>Tipo</th>"
+                    + "<th>Profesor</th>"
+                    + "<th>Nota</th>"
+                    + "</tr>"
+                    + "</thead>"
+                    + "<tbody>";
+
+            if (!resp.isEmpty()) {
+                String[] mods = resp.split(";");
+                for (int i = 0; i < mods.length; i++) {
+                    String[] modulo = mods[i].split(",,");
+                    
+                    if (modulo[1].equals("1")) {
+                        tipo = "Semestral";
+                    } else if (modulo[1].equals("2")) {
+                        tipo = "Acompañamiento";
+                    }
+                    m += "<tr>" + "<td>" + modulo[0] + "</td>" + "<td>" + tipo + "</td>" + "<td>" + modulo[2] + "</td>"
+                            + "<td>" + modulo[3]
+                            + "</td>" + "</tr>";
+                }
+
+                tabla += m
+                        + "</tbody>"
+                        + "</table>"
+                        + "</div>";
+
+            } else {
+                tabla = "<div class=\"text-center\">No hay módulos matriculados.</div>";
+            }
+            sesionUsuario.setAttribute("modulos", tabla);
+
             response.sendRedirect("inicioEstudianteAprobado.jsp");
         }
         if (sesionUsuario.getAttribute("estadoUsuario").equals("E2")) {
@@ -72,8 +117,7 @@
         session.setAttribute("reporteFinalizacionMaterias", resul[13]);
         session.setAttribute("reportePazSalvo", resul[14]);
         session.setAttribute("reciboInscripcion", resul[15]);
-        session.setAttribute("reciboPagoMaatricula", resul[16]);
-        session.setAttribute("nota", resul[17]);
+        session.setAttribute("reciboPagoMatricula", resul[16]);
 
         String actualizarButton = "<div class=\"form-group\">"
                 + "<div class=\"row\">"
@@ -257,6 +301,6 @@
         response.sendRedirect("estudiante.jsp");
 
     } else if (val.equals("cancelar")) {
-        response.sendRedirect("estudiante.jsp");
+        response.sendRedirect("administrarEstudiante.jsp?requerimiento=mostrarInicio");
     }
 %>

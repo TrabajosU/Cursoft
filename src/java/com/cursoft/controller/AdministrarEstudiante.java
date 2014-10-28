@@ -103,5 +103,9 @@ public class AdministrarEstudiante {
         student.actualizarEstudianteEstado(usuario,estudiante);
         return;
     }
+
+    public String obtenerIdEstudiante(String correo) {
+        return new EstudianteDao().obtenerIdEstudiante(correo);
+    }
     
 }
