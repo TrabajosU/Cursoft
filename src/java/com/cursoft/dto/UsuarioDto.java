@@ -26,6 +26,7 @@ public class UsuarioDto {
     private byte idTipoUsuario;
 
     public UsuarioDto() {
+        
     }
 
     public UsuarioDto(int idUsuario, String codigo, String correo, String contrasenia, String nombre, String apellido, int idTipoDocumento, String numeroDocumento, String fechaNacimiento, String direccion, String telefono, String telefonoMovil, byte idTipoUsuario) {

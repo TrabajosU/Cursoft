@@ -15,7 +15,9 @@ import com.cursoft.dao.ModuloDao;
  */
 public class AdministrarModulo {
 
-    public AdministrarModulo(){}
+    public AdministrarModulo(){
+    
+    }
     
     public boolean registrarModulo(ModuloDto modulo, UsuarioDto usuario, String horario) {
         ModuloDao mod = new ModuloDao();

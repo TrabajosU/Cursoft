@@ -17,6 +17,10 @@ import com.cursoft.dto.*;
  */
 public class Facade {
     
+    public Facade(){
+        
+    }
+    
     public int registrarAspirante(UsuarioDto usuario, AspiranteDto aspirante) {
         return new AdministrarAspirante().registrarAspirante(usuario, aspirante);
     }

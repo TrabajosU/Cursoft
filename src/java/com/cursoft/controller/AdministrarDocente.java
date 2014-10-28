@@ -15,7 +15,9 @@ import com.cursoft.dao.*;
  */
 public class AdministrarDocente {
 
-    public AdministrarDocente(){}
+    public AdministrarDocente(){
+    
+    }
     
     public boolean registrarDocente(UsuarioDto usuario, DocenteDto docente) {
         UsuarioDao user = new UsuarioDao();

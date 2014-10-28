@@ -21,6 +21,7 @@ public class AspiranteDto {
     private String estado;
 
     public AspiranteDto() {
+        
     }
 
     public AspiranteDto(int idAspirante, int idUsuario, String promedioPonderado, String semestreFinalizacionMaterias, String reporteFinalizacionMaterias, String reportePazSalvo, String reciboInscripcion, String estado) {

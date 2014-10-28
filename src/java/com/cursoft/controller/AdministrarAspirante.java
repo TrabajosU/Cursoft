@@ -17,6 +17,7 @@ import com.cursoft.dto.UsuarioDto;
 public class AdministrarAspirante {
 
     public AdministrarAspirante() {
+        
     }
 
     public int registrarAspirante(UsuarioDto usuario, AspiranteDto aspirante) {
