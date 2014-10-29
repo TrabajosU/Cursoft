@@ -96,13 +96,13 @@ public class AspiranteDao {
         
         boolean x = ConexionMysql.ejecutarActualizacionSQL(sql);
         
-        resultado = ConexionMysql.getConsultaSQL("SELECT aspirantes.idAspirante FROM aspirantes WHERE idUsuario = '"+idUsuario+"';");
+        //resultado = ConexionMysql.getConsultaSQL("SELECT aspirantes.idAspirante FROM aspirantes WHERE idUsuario = '"+idUsuario+"';");
         
-        if(estad == 1){
+        /*if(estad == 1){
             String idAspirante = ((String) resultado.get(0)).split("-")[0];  
             String sq = "INSERT INTO estudiantes (idAspirante, nota, estado, reciboPagoMatricula) VALUES ('"+idAspirante+"','0','0','reciboPagoMatricula')";
             ConexionMysql.ejecutarActualizacionSQL(sq);
-        }
+        }*/
         ConexionMysql.desconectar();
         System.out.println("actualizo estado ???? : "+x);
         return;
