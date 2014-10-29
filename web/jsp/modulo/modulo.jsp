@@ -122,7 +122,7 @@
                                                         String profes = session.getAttribute("profesores").toString();
                                                         String [] profesores = profes.split(";");
                                                         for(int i = 0; i<profesores.length; i++){
-                                                            String p [] = profesores[i].split("-");
+                                                            String p [] = profesores[i].split(",,");
                                                             out.print("<option value=\"" + (i) +"\">"+ p[1]+" "+p[2] +"</option>" + "\n\t\t\t\t\t\t\t");
                                                         }
                                                         %>

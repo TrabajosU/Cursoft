@@ -147,6 +147,8 @@ public class Facade {
     
     public String listarModulosMatriculados(String idEstudiante){
         return new AdministrarModulo().listarModulosMatriculados(idEstudiante);
+    }
+    
     public String listarEstudiantesModulo(String nombre){
         return new AdministrarModulo().listarEstudiantesModulo(nombre);
     }
