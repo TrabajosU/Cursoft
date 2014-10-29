@@ -24,7 +24,9 @@
         System.out.println("la posicion es:  "+ request.getParameter("posicion"));
         int i = Integer.parseInt(request.getParameter("posicion"));
 
-        String datos [] = aspirantes[i].split("-");
+        
+        //cambio realizado
+        String datos [] = aspirantes[i].split(",,");
         String codigo = datos[0];
         String numEstado = "estado"+i;
         System.out.println("El estado numero:     "+request.getParameter(numEstado));
@@ -48,7 +50,9 @@
         System.out.println("la posicion es:  "+ request.getParameter("posicion"));
         int i = Integer.parseInt(request.getParameter("posicion"));
 
-        String datos [] = estudiantes[i].split("-");
+        
+        // cambio realizado
+        String datos [] = estudiantes[i].split(",,");
         String codigo = datos[0];
         String numEstado = "estado"+i;
         System.out.println("El estado numero:     "+request.getParameter(numEstado));
@@ -223,6 +227,9 @@
         if(session.getAttribute("horario")!=null){
             String horario = session.getAttribute("horario").toString();
             String [] profes = session.getAttribute("profesores").toString().split(";");
+            
+            
+            //mirar si aca tambien
             String [] profesor = profes[prof].split("-");
             
             String codigoProfe = profesor[0];
@@ -263,6 +270,8 @@
         if(session.getAttribute("horario")!=null){
             String horario = session.getAttribute("horario").toString();
             String [] profes = session.getAttribute("profesores").toString().split(";");
+            
+            //revisar aca tambien
             String [] profesor = profes[prof].split("-");
             
             System.out.println("el profesor es: "+profesor[0].toString());
