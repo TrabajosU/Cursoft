@@ -13,7 +13,7 @@
         String listadoHtml ="";
         String [] asp = lista.split(";");
         for(int i =0; i<asp.length; i++){
-            String [] aspirante = asp[i].split("-");
+            String [] aspirante = asp[i].split(",,");
             listadoHtml += "<tr>"+"<td>"+aspirante[0]+"</td>"+"<td>"+aspirante[1]+" "+aspirante[2]+"</td>";
             int estado = Integer.parseInt(aspirante[3]);
             String es ="";

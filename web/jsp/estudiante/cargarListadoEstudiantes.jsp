@@ -13,7 +13,7 @@
         String listadoHtml ="";
         String [] est = lista.split(";");
         for(int i =0; i<est.length; i++){
-            String [] estudiante = est[i].split("-");
+            String [] estudiante = est[i].split(",,");
             listadoHtml += "<tr>"+"<td>"+estudiante[0]+"</td>"+"<td>"+estudiante[1]+" "+estudiante[2]+"</td>";
             int estado = Integer.parseInt(estudiante[3]);
             String es ="";
