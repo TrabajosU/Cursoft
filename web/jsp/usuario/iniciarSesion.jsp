@@ -47,18 +47,12 @@
                 <h2>Iniciar sesión</h2>
             </div>        
             <div class="col-xs-12 col-sm-offset-2 col-sm-8 col-md-offset-3 col-md-6 col-lg-offset-3 col-lg-6">
-                <div class="row">
-                    <div class="col-xs-offset-1 col-xs-10 alert alert-success">
-                        <div id="error">
-                            <p><strong><% out.print(session.getAttribute("Mensaje"));
-                                        session.setAttribute("Mensaje", "");%>
-                                </strong>
-                                <strong><% out.print(session.getAttribute("requerimiento"));%>
-                                </strong>
-                            </p>
-                        </div>
-                    </div>
-                </div>
+
+                <%                     
+                    out.print(session.getAttribute("Mensaje"));
+                    session.setAttribute("Mensaje", "");
+                %>
+
                 <div class="row">
                     <div class="col-xs-offset-2 col-xs-8 panel panel-default">
                         <div id="formulario">
@@ -103,7 +97,7 @@
                 <div id="registro">
                     <p><strong>¿Es tu primera vez en CURSOFT?</strong></p>
 
-                    <a class="btn btn-danger" role="button" href="../estudiante/estudiante.jsp">Registrar - Aspirante</a>
+                    <a class="btn btn-danger" role="button" href="../aspirante/administrarAspirante.jsp?requerimiento=mostrarRegistrarAspirante">Registrar Aspirante</a>
                 </div>
             </div>
         </div>

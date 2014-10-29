@@ -15,24 +15,9 @@ import com.cursoft.dao.*;
 public class AdministrarEstudiante {
 
     public AdministrarEstudiante() {
+        
     }
-    
-    public int registrarEstudiante(UsuarioDto usuario, AspiranteDto aspirante, EstudianteDto estudiante ) {
         
-        UsuarioDao usuarioDao = new UsuarioDao();
-        boolean us = usuarioDao.registrarUsuario(usuario);
-        System.out.println("Usuario: "+usuario.toString());
-        
-        AspiranteDao aspiranteDao = new AspiranteDao();
-        boolean as =  aspiranteDao.registrarAspirante(usuario, aspirante);
-        
-        EstudianteDao estudianteDao = new EstudianteDao();
-        boolean es = estudianteDao.registrarEstudiante(usuario, aspirante, estudiante);
-        
-        if( us && as && es )
-            return 1;
-        return 0;
-    }
 
     public String consultarEstudianteCodigo(String codigo) {
         
@@ -103,7 +88,7 @@ public class AdministrarEstudiante {
         EstudianteDao estudianteDao = new EstudianteDao();
         boolean es = estudianteDao.actualizarEstudiante(usuario, aspirante, estudiante);
         
-        if( us || as || es )
+        if( us && as && es )
             return 1;
         return 0;
     }
@@ -118,6 +103,10 @@ public class AdministrarEstudiante {
         EstudianteDao student = new EstudianteDao();
         student.actualizarEstudianteEstado(usuario,estudiante);
         return;
+    }
+
+    public String obtenerIdEstudiante(String correo) {
+        return new EstudianteDao().obtenerIdEstudiante(correo);
     }
     
 }

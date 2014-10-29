@@ -4,10 +4,11 @@
     Author     : Jhorman Perez
 --%>
 
+<%@page session='true'%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 
 <%
-
+    session.setAttribute("Mensaje", "");
     response.sendRedirect("jsp/usuario/iniciarSesion.jsp");
 
 %>

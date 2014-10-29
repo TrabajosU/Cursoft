@@ -19,7 +19,8 @@ public class UsuarioDao {
     
     public boolean registrarUsuario (UsuarioDto usuario) {
         
-        System.out.println("datosss: "+usuario.toString());
+        usuario.setDireccion(usuario.getDireccion().replace("-", " "));
+        
         String sql = "INSERT INTO usuarios(codigo, correo, contrasenia, nombre, apellido, idTipoDocumento, numeroDocumento, "
                 + "fechaNacimiento, direccion, telefono, telefonoMovil, idTipoUsuario, estado) VALUES ('" + usuario.getCodigo() + "','" 
                 + usuario.getCorreo()+ "','" + usuario.getContrasenia() + "','" + usuario.getNombre() + "','"
@@ -53,36 +54,40 @@ public class UsuarioDao {
         
         ConexionMysql.conectar();
         
-        String consulta = "";
-        String info ="";
-        
         ArrayList resultado = ConexionMysql.getConsultaSQL("SELECT * FROM usuarios WHERE correo = '" + usuario.getCorreo() + "';");
         //consulta += resultado.toString();        
-        //System.err.println(resultado.toString());
-        
-        if(resultado == null){
+                
+        if(resultado.isEmpty()){            
             return "-1";
         }
         String [] registro = resultado.get(0).toString().split("-");
         
+        System.out.println("a: "+usuario.getIdTipoUsuario());
+        System.out.println("b: "+registro[12]);
+        System.out.println("c: "+usuario.getContrasenia());
+        System.out.println("d: "+registro[3]);
+                
         if(!String.valueOf(usuario.getIdTipoUsuario()).equals(registro[12]) ||
-            !registro[3].equals(usuario.getContrasenia())){
+            !registro[3].equals(usuario.getContrasenia())){      
+            System.out.println("lala");
             return "-1"; //Datos incorrectos
         }
         if(registro[13].equals("0")){
+            System.out.println("lele");
             return "-2";
         }
         String idUsuario = registro[0];
         
         resultado.clear();
         
-        if(usuario.getIdTipoUsuario() == 1){            
-            //busco en aspirante y estudiante
+        if(usuario.getIdTipoUsuario() == 1){
+            //busco en aspirante y estudiante            
             resultado = ConexionMysql.getConsultaSQL("SELECT aspirantes.idAspirante, "
                         + "aspirantes.estado FROM aspirantes WHERE idUsuario = '" + idUsuario + "';");
-            if(resultado != null){
+            if(!resultado.isEmpty()){
+                System.out.println("xoxo");
                 registro = resultado.get(0).toString().split("-");
-                if(registro[1].equals("0")){
+                if(registro[1].equals("0")){                    
                     return "A0";
                 }
                 else if(registro[1].equals("2")){
@@ -94,21 +99,21 @@ public class UsuarioDao {
                     resultado = ConexionMysql.getConsultaSQL("SELECT estudiantes.estado "
                         + " FROM estudiantes WHERE idAspirante = '" + idAspirante + "';");
                     
-                    if(resultado != null){
-                        System.out.println("no soy nulo");
+                    if(!resultado.isEmpty()){                        
                         registro = resultado.get(0).toString().split("-");
                         return ("E" + registro[0]);                        
                     }
                    
                     return "A1";                    
                 }
-            }            
+            }
+            System.out.println("xaxa");
         }
         else if(usuario.getIdTipoUsuario() == 2 || usuario.getIdTipoUsuario() == 3){
             //busco en docente
-            resultado = ConexionMysql.getConsultaSQL("SELECT docentes.estado "
-                        + " FROM docentes WHERE idUsuario = '" + idUsuario + "';");
-            if(resultado != null){
+            resultado = ConexionMysql.getConsultaSQL("SELECT docentes.tipo "
+                        + " FROM docentes WHERE idUsuarioDoc = '" + idUsuario + "';");
+            if(!resultado.isEmpty()){
                 registro = resultado.get(0).toString().split("-");
                 return ("D" + registro[0]);
             }           
@@ -116,7 +121,7 @@ public class UsuarioDao {
                                                 
         //info += registro[1] + '-' + registro[4] + '-' + registro[5];
         ConexionMysql.desconectar();
-        
+        System.out.println("lolo");
         return "-1";
     }
     
@@ -141,7 +146,7 @@ public class UsuarioDao {
            
         String [] registro = resultado.get(0).toString().split("-");
         
-        consultaArmada += registro[1] + '-' + registro[4] + '-' + registro[5];
+        consultaArmada += registro[1] + ",," + registro[4] + ",," + registro[5];
                                 
         //consulta += resultado.toString();
         

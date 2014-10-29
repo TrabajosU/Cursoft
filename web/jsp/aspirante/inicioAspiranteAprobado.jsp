@@ -56,23 +56,16 @@
                             <div class="sidebar-collapse">                    
                                 <ul class="nav" id="side-menu">
                                     <li>
-                                        <a href="#"><i class="fa fa-bar-chart-o fa-fw"></i> Administrar<span class="fa arrow"></span></a>
+                                        <a href="#"><i class="fa fa-bar-chart-o fa-fw"></i> Operaciones<span class="fa arrow"></span></a>
                                         <ul class="nav nav-second-level">
                                             <li>
-                                                <a href="#">Aspirantes</a>
-                                            </li>
-                                            <li>
-                                                <a href="../estudiante/estudiante.jsp">Estudiantes</a>
-                                            </li>
-                                            <li>
-                                                <a href="docente.jsp">Docentes</a>
-                                            </li>
-                                            <li>
-                                                <a href="../modulo/cargarProfesores.jsp">Modulos</a>
-                                            </li>
+                                                <a href="administrarAspirante.jsp?requerimiento=consultarCorreo">Consultar Datos</a>
+                                            </li>                                            
                                         </ul>
                                     </li>
-
+                                    <li>
+                                        <a href="../usuario/administrarUsuario.jsp?requerimiento=cerrarSesion">Cerrar Sesión</a>
+                                    </li>
                                 </ul>
                             </div>
                         </div>
@@ -104,10 +97,10 @@
                                         <fieldset>
                                             <legend>Documentos</legend>
                                             <div class="form-group">
-                                                <label for="telefono_movil" class="col-xs-12 col-sm-6 col-md-4 control-label">Recibo de pago de matricula:</label>
+                                                <label for="telefono_movil" class="col-xs-12 col-sm-6 col-md-4 control-label">Recibo de pago de matrícula:</label>
                                                 <div class="col-xs-12 col-sm-6 col-md-8">
                                                     <input type="file" class="filestyle" data-iconName="glyphicon-inbox">
-                                                    <p class="help-block">Selecciona tu archivo del recibo de pago de matricula</p>
+                                                    <p class="help-block">Selecciona tu archivo del recibo de pago de matrícula</p>
                                                 </div>
                                             </div>
                                         </fieldset>

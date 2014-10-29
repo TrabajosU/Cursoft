@@ -61,11 +61,13 @@
                                         <a href="#"><i class="fa fa-bar-chart-o fa-fw"></i> Operaciones<span class="fa arrow"></span></a>
                                         <ul class="nav nav-second-level">
                                             <li>
-                                                <a href="administrarAspirante.jsp?requerimiento=consultar">Consultar Datos</a>
+                                                <a href="administrarAspirante.jsp?requerimiento=consultarCorreo">Consultar Datos</a>
                                             </li>                                            
                                         </ul>
                                     </li>
-
+                                    <li>
+                                        <a href="../usuario/administrarUsuario.jsp?requerimiento=cerrarSesion">Cerrar Sesión</a>
+                                    </li>
                                 </ul>
                             </div>
                         </div>
@@ -84,7 +86,12 @@
                         </div>
                         <div class="row">
                             <div id="error">
-                                <p><strong><% out.print(session.getAttribute("Mensaje"));%></strong></p>
+                                <p><strong><%
+
+                                    out.print(session.getAttribute("Mensaje"));
+                                    session.setAttribute("Mensaje", "");
+                                        %>
+                                    </strong></p>
                             </div>
                         </div>
                         <div class="row">
@@ -228,20 +235,35 @@
                                             </div>
                                             <div class="form-group">
                                                 <label for="reporteFinalizacionMaterias" class="col-xs-12 col-sm-6 col-md-4 control-label">Reporte de terminación de materias:</label>
-                                                <div class="col-xs-12 col-sm-6 col-md-8">
-                                                    <input type="file" class="filestyle" id="reporteFinalizacionMaterias" name="reporteFinalizacionMaterias" data-iconName="glyphicon-inbox">
+                                                <div class="col-xs-12 col-sm-6 col-md-8">                                                    
+                                                    <!--agregado-->
+
+                                                    <a href="<% out.print(session.getAttribute("reporteFinalizacionMaterias"));%>" class="thumbnail">
+                                                        <img src="<% out.print(session.getAttribute("reporteFinalizacionMaterias"));%>" alt="Reporte Finalización de Materias">
+                                                    </a>  
                                                 </div>
                                             </div>
                                             <div class="form-group">
                                                 <label for="reportePazSalvo" class="col-xs-12 col-sm-6 col-md-4 control-label">Reporte de paz y salvo:</label>
-                                                <div class="col-xs-12 col-sm-6 col-md-8">
-                                                    <input type="file" class="filestyle" id="reportePazSalvo" name="reportePazSalvo" data-iconName="glyphicon-inbox">
+                                                <div class="col-xs-12 col-sm-6 col-md-8">                                                    
+                                                    <!--agregado-->
+
+                                                    <a href="<% out.print(session.getAttribute("reportePazSalvo"));%>" class="thumbnail">
+                                                        <img src="<% out.print(session.getAttribute("reportePazSalvo"));%>" alt="Reporte Paz y Salvo">
+                                                    </a>  
+
                                                 </div>
+
+
+
                                             </div>
                                             <div class="form-group">
                                                 <label for="reciboInscripcion" class="col-xs-12 col-sm-6 col-md-4 control-label">Recibo de pago de inscripción:</label>
-                                                <div class="col-xs-12 col-sm-6 col-md-8">
-                                                    <input type="file" class="filestyle" id="reciboInscripcion" name="reciboInscripcion" data-iconName="glyphicon-inbox">
+                                                <div class="col-xs-12 col-sm-6 col-md-8">                                                   
+                                                    <!--agregado-->                                                    
+                                                    <a href="<% out.print(session.getAttribute("reciboInscripcion"));%>" class="thumbnail">
+                                                        <img src="<% out.print(session.getAttribute("reciboInscripcion"));%>" alt="Recibo Inscripción">
+                                                    </a>  
                                                 </div>
                                             </div>
                                         </fieldset>

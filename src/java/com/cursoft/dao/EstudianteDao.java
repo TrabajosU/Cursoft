@@ -61,7 +61,7 @@ public class EstudianteDao {
 
         String idAspirante = ((String) resultado.get(0)).split("-")[0];
 
-        String sql = "UPDATE estudiantes SET nota = '" + estudiante.getNota() + "' WHERE idAspirante = '" + idAspirante + "'";
+        String sql = "UPDATE estudiantes SET reciboPagoMatricula = '" + estudiante.getReciboPagoMatricula() + "' WHERE idAspirante = '" + idAspirante + "'";
 
         ConexionMysql.ejecutarActualizacionSQL(sql);
         ConexionMysql.desconectar();
@@ -72,45 +72,45 @@ public class EstudianteDao {
     public String consultarEstudianteCodigo(String codigo) {
 
         ConexionMysql.conectar();
-        
+
         String consultaArmada = "";
 
         ArrayList resultado = ConexionMysql.getConsultaSQL("SELECT * FROM usuarios WHERE codigo = '" + codigo + "';");
-        
+
         System.err.println(resultado.toString());
 
         try {
             String[] registro = resultado.get(0).toString().split("-");
             String idUsuario = registro[0];
 
-            consultaArmada += registro[1] + "-" + registro[2] + "-" + registro[3] + "-"
-                    + registro[4] + "-" + registro[5] + "-" + registro[6] + "-" + registro[7]
-                    + "-" + registro[8] + "-" + registro[9] + "-" + registro[10] + "-"
-                    + registro[11] + "-";
+            consultaArmada += registro[1] + ",," + registro[2] + ",," + registro[3] + ",,"
+                    + registro[4] + ",," + registro[5] + ",," + registro[6] + ",," + registro[7]
+                    + ",," + registro[8] + ",," + registro[9] + ",," + registro[10] + ",,"
+                    + registro[11] + ",,";
 
             resultado.clear();
 
             resultado = ConexionMysql.getConsultaSQL("SELECT * FROM aspirantes WHERE idUsuario='"
-                    + idUsuario + "';");           
+                    + idUsuario + "';");
 
             registro = resultado.get(0).toString().split("-");
-            
+
             String idAspirante = registro[0];
-            consultaArmada += registro[2] + "-" + registro[3] + "-" + registro[4] + "-" +
-                              registro[5] + "-" + registro[6] + "-";
-            
-            System.out.println("RESULTADO ASPIR: "+registro[2] + "-" + registro[3] + "-" + registro[4] + "-" +
-                              registro[5] + "-" + registro[6] + "-");
+            consultaArmada += registro[2] + ",," + registro[3] + ",," + registro[4] + ",,"
+                    + registro[5] + ",," + registro[6] + ",,";
+
+            System.out.println("RESULTADO ASPIR: " + registro[2] + ",," + registro[3] + ",," + registro[4] + ",,"
+                    + registro[5] + ",," + registro[6] + ",,");
 
             resultado.clear();
 
             resultado = ConexionMysql.getConsultaSQL("SELECT * FROM estudiantes WHERE idAspirante='"
                     + idAspirante + "';");
 
-            System.out.println("bu: "+(String) resultado.get(0));
-            registro = resultado.get(0).toString().split("-");
-            consultaArmada += registro[1] + "-" + registro[5];
-            
+            if (!resultado.isEmpty()) {
+                registro = resultado.get(0).toString().split("-");
+                consultaArmada += registro[1] + ",," + registro[5];
+            }
             ConexionMysql.desconectar();
 
             return consultaArmada;
@@ -124,49 +124,98 @@ public class EstudianteDao {
     public String consultarEstudianteCorreo(String correo) {
 
         ConexionMysql.conectar();
-        
+
         String consultaArmada = "";
 
         ArrayList resultado = ConexionMysql.getConsultaSQL("SELECT * FROM usuarios WHERE correo = '" + correo + "';");
-        
+
         System.err.println(resultado.toString());
-        
+
         try {
             String[] registro = resultado.get(0).toString().split("-");
             String idUsuario = registro[0];
 
-            consultaArmada += registro[1] + "-" + registro[2] + "-" + registro[3] + "-"
-                    + registro[4] + "-" + registro[5] + "-" + registro[6] + "-" + registro[7]
-                    + "-" + registro[8] + "-" + registro[9] + "-" + registro[10] + "-"
-                    + registro[11] + "-";
+            consultaArmada += registro[1] + ",," + registro[2] + ",," + registro[3] + ",,"
+                    + registro[4] + ",," + registro[5] + ",," + registro[6] + ",," + registro[7]
+                    + ",," + registro[8] + ",," + registro[9] + ",," + registro[10] + ",,"
+                    + registro[11] + ",,";
 
             resultado.clear();
 
             resultado = ConexionMysql.getConsultaSQL("SELECT * FROM aspirantes WHERE idUsuario='"
-                    + idUsuario + "';");            
+                    + idUsuario + "';");
 
             registro = resultado.get(0).toString().split("-");
-            
+
             String idAspirante = registro[0];
-            consultaArmada += registro[2] + "-" + registro[3] + "-" + registro[4] + "-" +
-                              registro[5] + "-" + registro[6] + "-";
-            
-            System.out.println("RESULTADO ASPIR: "+registro[2] + "-" + registro[3] + "-" + registro[4] + "-" +
-                              registro[5] + "-" + registro[6] + "-");
+            String repFinMat = registro[4].replace("%20", "-");
+            String repPazSalvo = registro[5].replace("%20", "-");
+            String recInsc = registro[6].replace("%20", "-");
+
+            consultaArmada += registro[2] + ",," + registro[3] + ",," + repFinMat + ",,"
+                    + repPazSalvo + ",," + recInsc + ",,";
+
+            System.out.println("RESULTADO ASPIR: " + registro[2] + ",," + registro[3] + ",," + repFinMat + ",,"
+                    + registro[5] + ",," + registro[6] + ",,");
 
             resultado.clear();
 
             resultado = ConexionMysql.getConsultaSQL("SELECT * FROM estudiantes WHERE idAspirante='"
-                    + idAspirante + "';");            
-            System.out.println("bu: "+(String) resultado.get(0));
-            registro = resultado.get(0).toString().split("-");
-            consultaArmada += registro[1] + "-" + registro[5];
+                    + idAspirante + "';");
 
+            System.out.println("RESULTADOOOOOO FINAL:" + resultado.toString());
+            if (!resultado.isEmpty()) {
+                registro = resultado.get(0).toString().split("-");
+                consultaArmada += registro[6].replace("%20", "-");
+            }
             ConexionMysql.desconectar();
 
+            System.out.println("CONSULTA FINAL:" + consultaArmada);
             return consultaArmada;
         } catch (Exception e) {
             return "0";
+        }
+
+    }
+    
+    public String obtenerIdEstudiante(String correo) {
+
+        ConexionMysql.conectar();
+
+        String consultaArmada = "";
+
+        ArrayList resultado = ConexionMysql.getConsultaSQL("SELECT * FROM usuarios WHERE correo = '" + correo + "';");
+
+        System.err.println(resultado.toString());
+
+        try {
+            String[] registro = resultado.get(0).toString().split("-");
+            String idUsuario = registro[0];
+
+            resultado.clear();
+
+            resultado = ConexionMysql.getConsultaSQL("SELECT * FROM aspirantes WHERE idUsuario='"
+                    + idUsuario + "';");
+
+            registro = resultado.get(0).toString().split("-");
+
+            String idAspirante = registro[0];
+            
+            resultado.clear();
+
+            resultado = ConexionMysql.getConsultaSQL("SELECT * FROM estudiantes WHERE idAspirante='"
+                    + idAspirante + "';");
+            
+            if (!resultado.isEmpty()) {
+                return resultado.get(0).toString().split("-")[0];                
+            }
+            ConexionMysql.desconectar();
+
+            System.out.println("CONSULTA FINAL:" + consultaArmada);
+            return consultaArmada;
+            
+        } catch (Exception e) {
+            return "";
         }
 
     }
@@ -191,9 +240,10 @@ public class EstudianteDao {
 
                 ArrayList resultado3 = ConexionMysql.getConsultaSQL("SELECT estudiantes.estado FROM estudiantes WHERE idAspirante='"
                         + resultado2.get(0).toString().split("-")[0] + "';");
-                
-                if(!resultado3.isEmpty()){
-                    consulta += idUsuarios[1] + "-" + idUsuarios[2] + "-" + idUsuarios[3] + "-" + resultado3.get(0).toString().split("-")[0] + ";";
+
+                System.out.println("ACÁ:" + resultado3.toString());
+                if (!resultado3.isEmpty()) {
+                    consulta += idUsuarios[1] + ",," + idUsuarios[2] + ",," + idUsuarios[3] + ",," + resultado3.get(0).toString().split("-")[0] + ";";
                 }
             }
         }

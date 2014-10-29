@@ -32,6 +32,8 @@
     System.out.println("comenzo con aspirantes");
         String [] asp = aspirantes.split(";");
         for(int i =0; i<asp.length; i++){
+            String [] asp2 = asp[i].split(",,");
+            aspi += "<tr>"+"<td>"+(i+1)+"</td>"+"<td>"+asp2[0]+"</td>"+"<td>"+asp2[1]+" "+asp2[2]+"</td>";
             String [] asp2 = asp[i].split("-");
             
             int estado = Integer.parseInt(asp2[3]);
@@ -86,8 +88,8 @@
         String [] est = estudiantes.split(";");
         for(int i =0; i<est.length; i++){
             System.out.println("entro al for y el valor de i es: "+i);
-            String [] asp2 = est[i].split("-");
-            
+            String [] asp2 = est[i].split(",,");
+            estu += "<tr>"+"<td>"+(i+1)+"</td>"+"<td>"+asp2[0]+"</td>"+"<td>"+asp2[1]+" "+asp2[2]+"</td>";
             int estado = Integer.parseInt(asp2[3]);
           if(estado != 1){
             estu += "<tr>"+"<td>"+(i+1)+"</td>"+"<td>"+asp2[0]+"</td>"+"<td>"+asp2[1]+" "+asp2[2]+"</td>";

@@ -1,12 +1,12 @@
 <%-- 
-    Document   : estudianteAprobado
-    Created on : 12/10/2014, 05:39:17 PM
+    Document   : inicioProfesor
+    Created on : 22-oct-2014, 20:22:42
     Author     : Jhorman Perez
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
-<html lang="es">
+<html>
     <head>
         <!--Codificación de caracteres-->
         <meta charset="utf-8">
@@ -37,7 +37,6 @@
         <!--Iconos-->
         <link href="../../img/favicon.ico" rel="shortcut icon">
     </head>
-
     <body>
         <div class="container">
             <header>
@@ -60,63 +59,66 @@
                                         <a href="#"><i class="fa fa-bar-chart-o fa-fw"></i> Operaciones<span class="fa arrow"></span></a>
                                         <ul class="nav nav-second-level">
                                             <li>
-                                                <a href="administrarEstudiante.jsp?requerimiento=consultarCorreo">Consultar Datos</a>
-                                            </li>
-                                            <li>
-                                                <a href="#"><i class="fa fa-bar-chart-o fa-fw"></i> Administrar Módulos<span class="fa arrow"></span></a>
-                                                <ul class="nav nav-third-level">
-                                                    <li>
-                                                        <a href="../modulo/administrarModulo.jsp?requerimiento=matricularModuloEstudiante">Matricular Módulo</a>                                                                                                
-                                                        <a href="../modulo/administrarModulo.jsp?requerimiento=consultarModulosEstudiante">Consultar Módulos</a>
-                                                    </li>                                            
-                                                </ul>
-                                            </li>
-
-                                        </ul>                                        
+                                                <a href="administrarDocente.jsp?requerimiento=consultarCorreo">Consultar Datos</a>
+                                            </li>                                            
+                                        </ul>
                                     </li>
                                     <li>
                                         <a href="../usuario/administrarUsuario.jsp?requerimiento=cerrarSesion">Cerrar Sesión</a>
                                     </li>
                                 </ul>
                             </div>
-                        </div>                            
+                        </div>
                     </div>
-
                     <div class="col-xs-9 col-sm-9 col-md-9 col-lg-8" id="contenido">
                         <div class="text-right">
                             <% out.print(session.getAttribute("nombre") + " " + session.getAttribute("apellido"));%>                            
                             <a href="../usuario/administrarUsuario.jsp?requerimiento=cerrarSesion">  (Cerrar sesión)</a>                        
-                        </div> 
+                        </div>
                         <ol class="breadcrumb">
-                            <li><a href="administrarEstudiante.jsp?requerimiento=mostrarInicio">Inicio</a></li>
-                            <li class="active">Estudiante</li>
+                            <li><a href="#">Inicio</a></li>                            
                         </ol>
                         <div id="subtitulo">
-                            <h2>Inicio Estudiante - Aprobado</h2>
+                            <h2>Inicio Profesor</h2>
                         </div>
                         <div class="row">
-                            <div class="col-xs-offset-1 col-xs-10" id="contenedor">
+                            <div class="col-xs-offset-1 col-xs-10" id="contenedor">                                
                                 <div class="panel panel-default">
-                                    <div class="panel-heading text-center">
-                                        <strong>Módulos Matriculados</strong>
-                                    </div> 
-                                    <div class="panel-body">                                     
-                                        <%
-                                            out.print(session.getAttribute("modulos"));
-                                        %>
+                                    <div class="panel-heading">
+                                        <strong>Modulos Dictados</strong>
+                                    </div>
+                                    <div class="panel-body">
+                                        <div class="table-responsive">
+                                            <table class="table">
+                                                <thead>
+                                                    <tr>
+                                                        <th>Nombre</th>
+                                                        <th>Horario</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <% out.println(session.getAttribute("modulosDictados"));%>
+                                                </tbody>
+                                            </table>
+
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
+                <br>
+                <br>
+                <br>
+                <br>
             </section>
+
 
             <footer>
                 <p><strong>Copyright © 2014. Programa de Ingeniería de Sistemas - UFPS</strong></p>
-                <p>Desarrollado por: <span class="icon-github"></span><strong><a id="megaterios" href="https://github.com/Megaterios/"> Megaterios</a></strong></p>
+                <p>Desarrollado por <strom><a href="#">Megaterios</a></strong></p>
             </footer>
-
 
             <!--Scripts-->
             <script src="../../js/modernizr.js"></script>

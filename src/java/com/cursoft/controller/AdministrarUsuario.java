@@ -14,7 +14,9 @@ import com.cursoft.dto.UsuarioDto;
  */
 public class AdministrarUsuario {
     
-    public AdministrarUsuario(){}
+    public AdministrarUsuario(){
+    
+    }
     
     public String iniciarSesion(UsuarioDto usuario){
         

@@ -17,8 +17,12 @@ import com.cursoft.dto.*;
  */
 public class Facade {
     
-    public int registrarEstudiante(UsuarioDto usuario, AspiranteDto aspirante, EstudianteDto estudiante ) {
-        return new AdministrarEstudiante().registrarEstudiante(usuario, aspirante, estudiante);
+    public Facade(){
+        
+    }
+    
+    public int registrarAspirante(UsuarioDto usuario, AspiranteDto aspirante) {
+        return new AdministrarAspirante().registrarAspirante(usuario, aspirante);
     }
     
     public String consultarEstudianteCodigo(String codigo){
@@ -31,6 +35,10 @@ public class Facade {
     
     public int actualizarEstudiante(UsuarioDto usuario, AspiranteDto aspirante, EstudianteDto estudiante ) {
         return new AdministrarEstudiante().actualizarEstudiante(usuario, aspirante, estudiante);
+    }
+    
+    public int actualizarAspirante(UsuarioDto usuario, AspiranteDto aspirante){
+        return new AdministrarAspirante().actualizarAspirante(usuario, aspirante);
     }
     
     public String iniciarSesion(UsuarioDto usuario){
@@ -61,6 +69,10 @@ public class Facade {
     
     public boolean registrarDocente(UsuarioDto usuario, DocenteDto docente){
         return new AdministrarDocente().registrarDocente(usuario,docente);
+    }
+    
+    public String consultarDocenteCorreo(String correo){
+        return new AdministrarDocente().consultarDocenteCorreo(correo);
     }
     
     public String consultarDocenteCodigo(String codigo){
@@ -111,6 +123,30 @@ public class Facade {
         return new AdministrarDocente().listarModulosProfesor(cod);
     }
     
+    public String obtenerIdModulo(ModuloDto modulo){
+        return new AdministrarModulo().obtenerIdModulo(modulo);
+    }
+    
+    public String obtenerIdEstudiante(String correo){
+        return new AdministrarEstudiante().obtenerIdEstudiante(correo);
+    }
+    
+    public boolean matricularModuloEstudiante(String idEstudiante, String idModuloDoc){
+        return new AdministrarModulo().matricularModuloEstudiante(idEstudiante, idModuloDoc);
+    }
+    
+    /**
+     * Método que permite listar los módulos que no han sido matriculados por un estudiante
+     * determinado.
+     * @param idEstudiante
+     * @return 
+     */
+    public String listarModulosAMatricular(String idEstudiante){
+        return new AdministrarModulo().listarModulosAMatricular(idEstudiante);
+    }
+    
+    public String listarModulosMatriculados(String idEstudiante){
+        return new AdministrarModulo().listarModulosMatriculados(idEstudiante);
     public String listarEstudiantesModulo(String nombre){
         return new AdministrarModulo().listarEstudiantesModulo(nombre);
     }

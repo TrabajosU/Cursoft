@@ -15,7 +15,9 @@ import com.cursoft.dao.*;
  */
 public class AdministrarDocente {
 
-    public AdministrarDocente(){}
+    public AdministrarDocente(){
+    
+    }
     
     public boolean registrarDocente(UsuarioDto usuario, DocenteDto docente) {
         UsuarioDao user = new UsuarioDao();
@@ -27,6 +29,12 @@ public class AdministrarDocente {
         return false;
     }
 
+    public String consultarDocenteCorreo(String correo) {
+        DocenteDao doc = new DocenteDao();
+        String consulta = doc.consultarDocenteCorreo(correo);
+        return consulta;
+    }
+    
     public String consultarDocenteCodigo(String codigo) {
         DocenteDao doc = new DocenteDao();
         String consulta = doc.consultarDocenteCodigo(codigo);

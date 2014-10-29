@@ -15,7 +15,9 @@ import com.cursoft.dao.ModuloDao;
  */
 public class AdministrarModulo {
 
-    public AdministrarModulo(){}
+    public AdministrarModulo(){
+    
+    }
     
     public boolean registrarModulo(ModuloDto modulo, UsuarioDto usuario, String horario) {
         ModuloDao mod = new ModuloDao();
@@ -42,11 +44,27 @@ public class AdministrarModulo {
         return mod.listarModulos();
     }
 
+    public String obtenerIdModulo(ModuloDto modulo){
+        ModuloDao mod = new ModuloDao();
+        return mod.obtenerIdModulo(modulo);
+    }
+
+    public boolean matricularModuloEstudiante(String idEstudiante, String idModuloDoc) {
+        return new ModuloDao().matricularModuloEstudiante(idEstudiante, idModuloDoc);
+    }
     public String listarEstudiantesModulo(String nombre) {
         ModuloDao mod = new ModuloDao();
         return mod.listarEstudiantesModulo(nombre);
     }
 
     
+    public String listarModulosAMatricular(String idEstudiante) {
+        ModuloDao mod = new ModuloDao();
+        return mod.listarModulosAMatricular(idEstudiante);
+    }
     
+    public String listarModulosMatriculados(String idEstudiante){
+        ModuloDao mod = new ModuloDao();
+        return mod.listarModulosMatriculados(idEstudiante);
+    }
 }

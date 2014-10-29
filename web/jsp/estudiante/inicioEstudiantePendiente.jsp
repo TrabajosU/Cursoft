@@ -1,6 +1,6 @@
 <%-- 
-    Document   : estudianteAprobado
-    Created on : 12/10/2014, 05:39:17 PM
+    Document   : inicioEstudiantePendiente
+    Created on : 23-oct-2014, 22:09:05
     Author     : Jhorman Perez
 --%>
 
@@ -61,18 +61,8 @@
                                         <ul class="nav nav-second-level">
                                             <li>
                                                 <a href="administrarEstudiante.jsp?requerimiento=consultarCorreo">Consultar Datos</a>
-                                            </li>
-                                            <li>
-                                                <a href="#"><i class="fa fa-bar-chart-o fa-fw"></i> Administrar Módulos<span class="fa arrow"></span></a>
-                                                <ul class="nav nav-third-level">
-                                                    <li>
-                                                        <a href="../modulo/administrarModulo.jsp?requerimiento=matricularModuloEstudiante">Matricular Módulo</a>                                                                                                
-                                                        <a href="../modulo/administrarModulo.jsp?requerimiento=consultarModulosEstudiante">Consultar Módulos</a>
-                                                    </li>                                            
-                                                </ul>
-                                            </li>
-
-                                        </ul>                                        
+                                            </li>                                            
+                                        </ul>
                                     </li>
                                     <li>
                                         <a href="../usuario/administrarUsuario.jsp?requerimiento=cerrarSesion">Cerrar Sesión</a>
@@ -88,24 +78,16 @@
                             <a href="../usuario/administrarUsuario.jsp?requerimiento=cerrarSesion">  (Cerrar sesión)</a>                        
                         </div> 
                         <ol class="breadcrumb">
-                            <li><a href="administrarEstudiante.jsp?requerimiento=mostrarInicio">Inicio</a></li>
+                            <li><a href="#">Inicio</a></li>
                             <li class="active">Estudiante</li>
                         </ol>
                         <div id="subtitulo">
-                            <h2>Inicio Estudiante - Aprobado</h2>
+                            <h2>Inicio Estudiante - Pendiente</h2>
                         </div>
                         <div class="row">
                             <div class="col-xs-offset-1 col-xs-10" id="contenedor">
-                                <div class="panel panel-default">
-                                    <div class="panel-heading text-center">
-                                        <strong>Módulos Matriculados</strong>
-                                    </div> 
-                                    <div class="panel-body">                                     
-                                        <%
-                                            out.print(session.getAttribute("modulos"));
-                                        %>
-                                    </div>
-                                </div>
+                                <p>Su estado aún se encuentra <strong>PENDIENTE</strong>. Para más información, diríjase a: 
+                                    Msc. <a href="mailto:pilinrt@gmail.com" target="_top">Judith del Pilar Rodríguez Tenjo</a>
                             </div>
                         </div>
                     </div>
