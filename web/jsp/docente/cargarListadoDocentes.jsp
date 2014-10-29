@@ -12,7 +12,7 @@
         String [] listaDocentes = lista.split("::");
         String listadoHtml ="";
         for(int i=0; i<listaDocentes.length; i++){
-            String [] docente = listaDocentes[i].split("-");
+            String [] docente = listaDocentes[i].split(",,");
             listadoHtml += "<tr>"+"<td>"+docente[0]+"</td>"+"<td>"+docente[1]+"</td>";
             String [] modulos = docente[2].split("/");
             String listaMod = "<ul>";
