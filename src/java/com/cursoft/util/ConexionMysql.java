@@ -14,6 +14,7 @@ import java.sql.*;
  */
 public class ConexionMysql {
     
+    /*
     private static  String bd = "cursoft";
     private static  String login = "cursoft";
     private static  String password = "123456";    
@@ -21,7 +22,15 @@ public class ConexionMysql {
     private static  String url = "jdbc:mysql://" + host + ":3306/"+bd;
     private static  String controlador = "com.mysql.jdbc.Driver";
     private static  JDBCMiddler jdbc;
+    */
     
+    private static  String bd = "ufps_3";
+    private static  String login = "ufps_3";
+    private static  String password = "ufps_82";    
+    private static  String host = "sandbox2.ufps.edu.co";
+    private static  String url = "jdbc:mysql://" + host + ":3306/"+bd;
+    private static  String controlador = "com.mysql.jdbc.Driver";
+    private static  JDBCMiddler jdbc;
    
     
     /**

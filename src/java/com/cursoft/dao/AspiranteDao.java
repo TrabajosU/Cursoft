@@ -48,9 +48,8 @@ public class AspiranteDao {
 
         String idUsuario = ((String) resultado.get(0)).split("-")[0];
 
-        String sql = "UPDATE aspirantes SET promedioPonderado = '" + aspirante.getPromedioPonderado() + "', semestreFinalizacionMaterias = '" + aspirante.getSemestreFinalizacionMaterias() + "', "
-                + "reporteFinalizacionMaterias = '" + aspirante.getReporteFinalizacionMaterias() + "', reportePazSalvo = '" + aspirante.getReportePazSalvo()
-                + "', reciboInscripcion = '" + aspirante.getReciboInscripcion() + "' WHERE idUsuario = '" + idUsuario + "'";
+        String sql = "UPDATE aspirantes SET promedioPonderado = '" + aspirante.getPromedioPonderado() + "', semestreFinalizacionMaterias = '" + aspirante.getSemestreFinalizacionMaterias() + "'"
+                + " WHERE idUsuario = '" + idUsuario + "'";
 
         boolean x = ConexionMysql.ejecutarActualizacionSQL(sql);
         ConexionMysql.desconectar();

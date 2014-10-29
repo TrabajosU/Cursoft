@@ -83,7 +83,7 @@
             sesionUsuario.setAttribute("estadoUsuario", resp);
             response.sendRedirect("../docente/administrarDocente.jsp?requerimiento=mostrarInicio");
         } else if (resp.equals("D2")) {
-            out.print("Bienvenido, eres un estudiante coordinador");
+            //out.print("Bienvenido, eres un docente coordinador");
             sesionUsuario = request.getSession(true);
             sesionUsuario.setAttribute("usuario", correo);
             sesionUsuario.setAttribute("estadoUsuario", resp);

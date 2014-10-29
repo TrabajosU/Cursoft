@@ -88,7 +88,7 @@ public class AdministrarEstudiante {
         EstudianteDao estudianteDao = new EstudianteDao();
         boolean es = estudianteDao.actualizarEstudiante(usuario, aspirante, estudiante);
         
-        if( us || as || es )
+        if( us && as && es )
             return 1;
         return 0;
     }

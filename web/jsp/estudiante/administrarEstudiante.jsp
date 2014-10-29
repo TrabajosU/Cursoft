@@ -95,7 +95,7 @@
             response.sendRedirect("inicioEstudianteGraduado.jsp");
         }
     } else if (val.equals("consultarCorreo")) {
-
+        
         resp = facade.consultarEstudianteCorreo((String) sesionUsuario.getAttribute("usuario"));
 
         resul = resp.split(",,");
@@ -165,6 +165,7 @@
 
     } else if (val.equals("consultar")) {
 
+                
         resp = facade.consultarEstudianteCodigo(request.getParameter("codigo"));
 
         resul = resp.split(",,");
@@ -213,7 +214,7 @@
         //String reciboInscripcion = request.getParameter("reciboInscripcion");
 
         //String reciboPagoMatricula = request.getParameter("reciboPagoMatricula");
-        int nota = Integer.parseInt(request.getParameter("nota"));
+        //int nota = Integer.parseInt(request.getParameter("nota"));
         /*
          if(codigo.isEmpty() || correo.isEmpty() || contrasenia.isEmpty() || contrasenia2.isEmpty() || nombre.isEmpty() || apellido.isEmpty()
          || numeroDocumento.isEmpty() || fechaNacimiento.isEmpty() || direccion.isEmpty() || telefono.isEmpty() || telefonoMovil.isEmpty()
@@ -240,45 +241,21 @@
         //out.println(usuario.getTelefonoMovil());
         aspirante.setPromedioPonderado(promedioPonderado);
         aspirante.setSemestreFinalizacionMaterias(semestreFinalizacionMaterias);
-        aspirante.setReporteFinalizacionMaterias("reporteFinalizacionMaterias");
-        aspirante.setReportePazSalvo("reportePazSalvo");
-        aspirante.setReciboInscripcion("reciboInscripcion");
+        //aspirante.setReporteFinalizacionMaterias("reporteFinalizacionMaterias");
+        //aspirante.setReportePazSalvo("reportePazSalvo");
+        //aspirante.setReciboInscripcion("reciboInscripcion");
 
-        estudiante.setReciboPagoMatricula("reciboPagoMatricula");
-        estudiante.setNota(nota);
-
-        System.out.println("Se fueeeee a actualizaaarrrrrrr");
+        //estudiante.setReciboPagoMatricula("reciboPagoMatricula");
+        
+       
         int bandera = facade.actualizarEstudiante(usuario, aspirante, estudiante);
-        System.out.println(" actualizaaarrrrrrr");
-        if (bandera == 1) {
 
-            String consulta = facade.consultarEstudianteCodigo(codigo);
-            out.println("La consulta esssss:                    ......     " + consulta);
-
-            session.setAttribute("codigo", (String) consulta.split(",,")[0] + "\" disabled");
-            session.setAttribute("correo", (String) consulta.split(",,")[1]);
-            session.setAttribute("contrasenia", (String) consulta.split(",,")[2]);
-            session.setAttribute("contrasenia2", (String) consulta.split(",,")[2]);
-            session.setAttribute("nombre", (String) consulta.split(",,")[3]);
-            session.setAttribute("apellido", (String) consulta.split(",,")[4]);
-            session.setAttribute("tipoDocumento", (String) consulta.split(",,")[5]);
-            session.setAttribute("documento", (String) consulta.split(",,")[6]);
-            session.setAttribute("fechaNacimiento", (String) consulta.split(",,")[7]);
-            session.setAttribute("direccion", (String) consulta.split(",,")[8]);
-            session.setAttribute("telefono", (String) consulta.split(",,")[9]);
-            session.setAttribute("telefonoMovil", (String) consulta.split(",,")[10]);
-
-            session.setAttribute("promedio", (String) consulta.split(",,")[11]);
-            session.setAttribute("semestreTerminacionMaterias", (String) consulta.split(",,")[12]);
-
-            session.setAttribute("nota", (String) consulta.split(",,")[13]);
-
-            session.setAttribute("Mensaje", "Éxito");
-            response.sendRedirect("estudiante.jsp");
+        if (bandera == 1) {            
+            session.setAttribute("Mensaje", "Los datos han sido actualizados exitosamente.");                                    
         } else if (bandera == 0) {
-            session.setAttribute("Mensaje", "Error");
-            response.sendRedirect("estudiante.jsp");
+            session.setAttribute("Mensaje", "Error");            
         }
+        response.sendRedirect("administrarEstudiante.jsp?requerimiento=consultarCorreo");        
         //}
 
     } else if (val.equals("eliminar")) {

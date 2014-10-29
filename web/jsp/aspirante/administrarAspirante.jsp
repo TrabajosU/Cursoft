@@ -53,6 +53,7 @@
         } else if (req.equals("consultarCorreo")) {
 
             try {
+                                
                 resp = facade.consultarAspiranteCorreo((String) sesionUsuario.getAttribute("usuario"));
                 resul = resp.split(",,");
 
@@ -85,7 +86,8 @@
             }
 
         } else if (req.equals("consultar")) {
-
+            
+            
             resp = facade.consultarAspiranteCodigo(request.getParameter("codigo"));
             resul = resp.split(",,");
 
@@ -112,6 +114,68 @@
 
             response.sendRedirect("aspirante.jsp");
 
+        } else if (req.equals("actualizar")) {
+
+            String codigo = request.getParameter("codigo");
+            String correo = request.getParameter("correo");
+            String contrasenia = request.getParameter("contrasenia");
+            String contrasenia2 = request.getParameter("confirmarContrasenia");
+            String nombre = request.getParameter("nombre");
+            String apellido = request.getParameter("apellido");
+            int idTipoDocumento = Integer.parseInt(request.getParameter("idTipoDocumento"));
+            String numeroDocumento = request.getParameter("numeroDocumento");
+            String fechaNacimiento = request.getParameter("fechaNacimiento");
+            String direccion = request.getParameter("direccion");
+            String telefono = request.getParameter("telefono");
+            String telefonoMovil = request.getParameter("telefonoMovil");
+
+            String promedioPonderado = request.getParameter("promedioPonderado");
+            String semestreFinalizacionMaterias = request.getParameter("semestreFinalizacionMaterias");
+        //String reporteFinalizacionMaterias = request.getParameter("reporteFinalizacionMaterias");
+            //String reportePazSalvo = request.getParameter("reportePazSalvo");
+            //String reciboInscripcion = request.getParameter("reciboInscripcion");
+
+        //String reciboPagoMatricula = request.getParameter("reciboPagoMatricula");
+            //int nota = Integer.parseInt(request.getParameter("nota"));
+        /*
+             if(codigo.isEmpty() || correo.isEmpty() || contrasenia.isEmpty() || contrasenia2.isEmpty() || nombre.isEmpty() || apellido.isEmpty()
+             || numeroDocumento.isEmpty() || fechaNacimiento.isEmpty() || direccion.isEmpty() || telefono.isEmpty() || telefonoMovil.isEmpty()
+             || promedioPonderado.isEmpty() || semestreFinalizacionMaterias.isEmpty()){
+            
+             session.setAttribute("Mensaje", "Verifique los campos");
+             response.sendRedirect("estudiante.jsp");
+             }
+             else{
+        
+             */
+            usuario.setCodigo(codigo);
+            usuario.setCorreo(correo);
+            usuario.setContrasenia(contrasenia);
+            usuario.setNombre(nombre);
+            usuario.setApellido(apellido);
+            usuario.setIdTipoDocumento(idTipoDocumento);
+            usuario.setNumeroDocumento(numeroDocumento);
+            usuario.setFechaNacimiento(fechaNacimiento);
+            usuario.setDireccion(direccion);
+            usuario.setTelefono(telefono);
+            usuario.setTelefonoMovil(telefonoMovil);
+            usuario.setIdTipoUsuario(((byte) 1));
+            //out.println(usuario.getTelefonoMovil());
+            aspirante.setPromedioPonderado(promedioPonderado);
+            aspirante.setSemestreFinalizacionMaterias(semestreFinalizacionMaterias);
+            //aspirante.setReporteFinalizacionMaterias("reporteFinalizacionMaterias");
+            //aspirante.setReportePazSalvo("reportePazSalvo");
+            //aspirante.setReciboInscripcion("reciboInscripcion");
+            
+
+            int bandera = facade.actualizarAspirante(usuario, aspirante);
+
+            if (bandera == 1) {                
+                sesionUsuario.setAttribute("Mensaje", "Los datos han sido actualizados exitosamente.");
+            } else if (bandera == 0) {
+                sesionUsuario.setAttribute("Mensaje", "Error");
+            }
+            response.sendRedirect("administrarAspirante.jsp?requerimiento=consultarCorreo");
         }
 
     } else if (req.equals("registrarAspirante")) {

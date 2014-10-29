@@ -93,7 +93,11 @@
                         </div>
                         <div class="row">
                             <div id="error">
-                                <p><strong><% out.print(session.getAttribute("Mensaje"));%></strong></p>
+                                <p><strong><%
+                                    out.print(session.getAttribute("Mensaje"));
+                                    session.setAttribute("Mensaje", "");
+                                        %>
+                                    </strong></p>
                             </div>
                         </div>                                           
                         <div class="row">

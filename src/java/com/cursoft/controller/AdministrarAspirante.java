@@ -57,4 +57,16 @@ public class AdministrarAspirante {
         return aspirante.consultarAspiranteCodigo(codigo);
     }
 
+    public int actualizarAspirante(UsuarioDto usuario, AspiranteDto aspirante){
+        
+        UsuarioDao usuarioDao = new UsuarioDao();
+        boolean us = usuarioDao.actualizarUsuario(usuario);        
+        
+        AspiranteDao aspiranteDao = new AspiranteDao();
+        boolean as =  aspiranteDao.actualizarAspirante(usuario, aspirante);               
+        
+        if( us && as )
+            return 1;
+        return 0;
+    }
 }

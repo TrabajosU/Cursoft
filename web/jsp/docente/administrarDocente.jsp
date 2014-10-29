@@ -42,7 +42,7 @@
                 response.sendRedirect("inicioProfesor.jsp");
             }
             if (sesionUsuario.getAttribute("estadoUsuario").equals("D2")) {
-                response.sendRedirect("inicioCoordinador.jsp");
+                response.sendRedirect("cargarCoordinador.jsp");
             }
             if (sesionUsuario.getAttribute("estadoUsuario").equals("D3")) {
                 response.sendRedirect("inicioProfesorCoordinador.jsp");

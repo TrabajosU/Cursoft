@@ -37,6 +37,10 @@ public class Facade {
         return new AdministrarEstudiante().actualizarEstudiante(usuario, aspirante, estudiante);
     }
     
+    public int actualizarAspirante(UsuarioDto usuario, AspiranteDto aspirante){
+        return new AdministrarAspirante().actualizarAspirante(usuario, aspirante);
+    }
+    
     public String iniciarSesion(UsuarioDto usuario){
         return new AdministrarUsuario().iniciarSesion(usuario);
     }

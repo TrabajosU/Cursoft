@@ -61,7 +61,7 @@ public class EstudianteDao {
 
         String idAspirante = ((String) resultado.get(0)).split("-")[0];
 
-        String sql = "UPDATE estudiantes SET nota = '" + estudiante.getNota() + "' WHERE idAspirante = '" + idAspirante + "'";
+        String sql = "UPDATE estudiantes SET reciboPagoMatricula = '" + estudiante.getReciboPagoMatricula() + "' WHERE idAspirante = '" + idAspirante + "'";
 
         ConexionMysql.ejecutarActualizacionSQL(sql);
         ConexionMysql.desconectar();
