@@ -4,7 +4,7 @@
     Author     : Jhorman Perez
 --%>
 
-<%@page import = "com.cursoft.facade.Facade"%>
+<%--<%@page import = "com.cursoft.facade.Facade"%>--%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <jsp:useBean id="facade" class="com.cursoft.facade.Facade"></jsp:useBean>

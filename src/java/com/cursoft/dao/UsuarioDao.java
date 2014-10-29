@@ -19,7 +19,8 @@ public class UsuarioDao {
     
     public boolean registrarUsuario (UsuarioDto usuario) {
         
-        System.out.println("datosss: "+usuario.toString());
+        usuario.setDireccion(usuario.getDireccion().replace("-", " "));
+        
         String sql = "INSERT INTO usuarios(codigo, correo, contrasenia, nombre, apellido, idTipoDocumento, numeroDocumento, "
                 + "fechaNacimiento, direccion, telefono, telefonoMovil, idTipoUsuario, estado) VALUES ('" + usuario.getCodigo() + "','" 
                 + usuario.getCorreo()+ "','" + usuario.getContrasenia() + "','" + usuario.getNombre() + "','"
