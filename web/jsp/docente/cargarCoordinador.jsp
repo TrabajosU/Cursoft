@@ -33,23 +33,25 @@
         String [] asp = aspirantes.split(";");
         for(int i =0; i<asp.length; i++){
             String [] asp2 = asp[i].split("-");
-            aspi += "<tr>"+"<td>"+(i+1)+"</td>"+"<td>"+asp2[0]+"</td>"+"<td>"+asp2[1]+" "+asp2[2]+"</td>";
+            
             int estado = Integer.parseInt(asp2[3]);
-            String [] estad ={"Pendiente","Aceptado","Rechazado"};
+            String [] estad ={"Pendiente","Aprobado","Rechazado"};
             String value ="";
+          if(estado!=1){
+            aspi += "<tr>"+"<td>"+(i+1)+"</td>"+"<td>"+asp2[0]+"</td>"+"<td>"+asp2[1]+" "+asp2[2]+"</td>";
             if(estado ==0){
                 value = "<option value= \"" + (estado+2) +"\">"+ estad[estado+1] +"</option>" + "\n\t\t\t\t\t\t\t"+
                     "<option value= \"" + (estado+3) +"\">"+ estad[estado+2] +"</option>" + "\n\t\t\t\t\t\t\t";
-            }
+            }/*
             else if(estado ==1){
                 value = "<option value= \"" + (estado) +"\">"+ estad[estado-1] +"</option>" + "\n\t\t\t\t\t\t\t"+
                     "<option value= \"" + (estado+2) +"\">"+ estad[estado+1] +"</option>" + "\n\t\t\t\t\t\t\t";
-            }
+            }*/
             else if(estado ==2){
                 value = "<option value= \"" + (estado-1) +"\">"+ estad[estado-2] +"</option>" + "\n\t\t\t\t\t\t\t"+
                     "<option value= \"" + (estado) +"\">"+ estad[estado-1] +"</option>" + "\n\t\t\t\t\t\t\t";
             }
-        
+          
             String values ="<option value= \"" + (estado+1) +"\">"+ estad[estado] +"</option>" + "\n\t\t\t\t\t\t\t" + value;
         
             aspi +="<td>"+"<form action="+"\"administrarFuncionesCoordinador.jsp\""+ "class="+"\"form-horizontal\""+
@@ -66,6 +68,10 @@
                             "</div>"+
                         "</div>"+
                     "</form>"+"</td>"+"</tr>";
+          }
+        }
+        if(aspi.isEmpty()){
+            aspi = "No hay Aspirantes por revisar";
         }
         session.setAttribute("aspirantes", aspi);
     System.out.println("termino con aspirantes");
@@ -81,18 +87,20 @@
         for(int i =0; i<est.length; i++){
             System.out.println("entro al for y el valor de i es: "+i);
             String [] asp2 = est[i].split("-");
-            estu += "<tr>"+"<td>"+(i+1)+"</td>"+"<td>"+asp2[0]+"</td>"+"<td>"+asp2[1]+" "+asp2[2]+"</td>";
+            
             int estado = Integer.parseInt(asp2[3]);
-            String [] estad ={"Pendiente","Aceptado","Rechazado"};
+          if(estado != 1){
+            estu += "<tr>"+"<td>"+(i+1)+"</td>"+"<td>"+asp2[0]+"</td>"+"<td>"+asp2[1]+" "+asp2[2]+"</td>";
+            String [] estad ={"Pendiente","Aprobado","Rechazado"};
             String value ="";
             if(estado ==0){
                 value = "<option value=\"" + (estado+2) +"\">"+ estad[estado+1] +"</option>" + "\n\t\t\t\t\t\t\t"+
                     "<option value=\"" + (estado+3) +"\">"+ estad[estado+2] +"</option>" + "\n\t\t\t\t\t\t\t";
-            }
+            }/*
             else if(estado ==1){
                 value = "<option value=\"" + (estado) +"\">"+ estad[estado-1] +"</option>" + "\n\t\t\t\t\t\t\t"+
                     "<option value=\"" + (estado+2) +"\">"+ estad[estado+1] +"</option>" + "\n\t\t\t\t\t\t\t";
-            }
+            }*/
             else if(estado ==2){
                 value = "<option value=\"" + (estado-1) +"\">"+ estad[estado-2] +"</option>" + "\n\t\t\t\t\t\t\t"+
                     "<option value=\"" + (estado) +"\">"+ estad[estado-1] +"</option>" + "\n\t\t\t\t\t\t\t";
@@ -114,7 +122,11 @@
                             "</div>"+
                         "</div>"+
                     "</form>"+"</td>"+"</tr>";
+          }
             
+        }
+        if(estu.isEmpty()){
+            estu = "No hay estudiantes por revisar";
         }
         session.setAttribute("estudiantes", estu);
     System.out.println("termino con estudiantes");

@@ -215,5 +215,21 @@ public class ModuloDao {
         return lista;
     }
 
+    public String listarEstudiantesModulo(String nombre) {
+        ConexionMysql.conectar();
+        
+        ArrayList resultado = ConexionMysql.getConsultaSQL("SELECT u.codigo, u.nombre, dme.nota FROM estudiantes e, docentesmodulosestudiantes dme, aspirantes a, usuarios u WHERE dme.idEstudianteFK = e.idEstudiante AND e.idAspirante = a.idAspirante AND a.idUsuario = u.idUsuario;");
+        
+        String lista = "";
+        if(!resultado.isEmpty()){
+            for(int i = 0; i<resultado.size();i++){
+                String consul[] = resultado.get(i).toString().split("-");
+                lista += consul[0]+",,"+consul[1]+",,"+consul[2]+";";
+            }
+        }
+        ConexionMysql.desconectar();
+        return lista;
+    }
+
     
 }

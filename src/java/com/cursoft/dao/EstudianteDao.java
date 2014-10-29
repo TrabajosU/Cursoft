@@ -176,8 +176,10 @@ public class EstudianteDao {
         ConexionMysql.conectar();
         String sql1 = "SELECT usuarios.idUsuario,usuarios.codigo,usuarios.nombre,usuarios.apellido FROM usuarios ;";
         ArrayList resultado = ConexionMysql.getConsultaSQL(sql1);
-        System.out.println(resultado.toString());
         String consulta = "";
+        if(!resultado.isEmpty()){
+        System.out.println(resultado.toString());
+        
         for (int i = 0; i < resultado.size(); i++) {
 
             String[] idUsuarios = resultado.get(i).toString().split("-");
@@ -189,9 +191,12 @@ public class EstudianteDao {
 
                 ArrayList resultado3 = ConexionMysql.getConsultaSQL("SELECT estudiantes.estado FROM estudiantes WHERE idAspirante='"
                         + resultado2.get(0).toString().split("-")[0] + "';");
-
-                consulta += idUsuarios[1] + "-" + idUsuarios[2] + "-" + idUsuarios[3] + "-" + resultado3.get(0).toString().split("-")[0] + ";";
+                
+                if(!resultado3.isEmpty()){
+                    consulta += idUsuarios[1] + "-" + idUsuarios[2] + "-" + idUsuarios[3] + "-" + resultado3.get(0).toString().split("-")[0] + ";";
+                }
             }
+        }
         }
         ConexionMysql.desconectar();
         return consulta;

@@ -42,6 +42,11 @@ public class AdministrarModulo {
         return mod.listarModulos();
     }
 
+    public String listarEstudiantesModulo(String nombre) {
+        ModuloDao mod = new ModuloDao();
+        return mod.listarEstudiantesModulo(nombre);
+    }
+
     
     
 }

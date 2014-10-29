@@ -16,11 +16,13 @@
     String cod = "12043";
     String lista = facade.listarModulosProfesor(cod);
     String listadoHtml = "";
+    String listaModulos ="";
     if(!lista.isEmpty()){
         String modulos [] = lista.split(";");
         for(int i = 0; i < modulos.length; i++){
             String mod [] = modulos[i].split(",,");
-            listadoHtml += "<tr><td><a href=\"../modulos/cargarModulo.jsp\">"+mod[0]+"</a></td>";
+            listadoHtml += "<tr><td><a href=\"../modulo/cargarModulo.jsp?posicion="+i+"\">"+mod[0]+"</a>"+"</td>";
+            listaModulos += mod[0] + ";";
             String hor[] = mod[1].split(":,");
             listadoHtml += "<td><ul>";
             for(int j =0; j<hor.length; j++){
@@ -32,6 +34,7 @@
     if(listadoHtml.isEmpty()){
         listadoHtml = "Sin Modulos";
     }
+    session.setAttribute("listadoModulos", listaModulos); 
     session.setAttribute("modulosDictados", listadoHtml);
     response.sendRedirect("principalProfesor.jsp");
 %>
