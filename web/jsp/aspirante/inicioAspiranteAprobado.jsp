@@ -120,7 +120,7 @@
 
             <footer>
                 <p><strong>Copyright © 2014. Programa de Ingeniería de Sistemas - UFPS</strong></p>
-                <p>Desarrollado por <strom><a href="#">Megaterios</a></strong></p>
+                <p>Desarrollado por <strong><a href="#">Megaterios</a></strong></p>
             </footer>
             
             <!--Scripts-->

@@ -35,7 +35,7 @@
             resp = facade.consultarAspiranteCorreo((String) sesionUsuario.getAttribute("usuario"));
 
             if (resp.isEmpty()) {
-                session.setAttribute("Mensaje", "Datos incorrectos, verifica tu usuario y contraseña");
+                session.setAttribute("Mensaje", "Datos incorrectos, verifique su usuario y contraseña");
                 response.sendRedirect("../usuario/iniciarSesion.jsp");
             }
             sesionUsuario.setAttribute("nombre", (String) resp.split(",,")[3]);

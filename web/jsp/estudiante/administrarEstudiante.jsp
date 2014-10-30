@@ -33,6 +33,12 @@
     if (val.equals("mostrarInicio")) {
 
         resp = facade.consultarEstudianteCorreo((String) sesionUsuario.getAttribute("usuario"));
+
+        if (resp.isEmpty()) {
+            session.setAttribute("Mensaje", "Datos incorrectos, verifique su usuario y contraseña");
+            response.sendRedirect("../usuario/iniciarSesion.jsp");
+        }
+
         resul = resp.split(",,");
 
         sesionUsuario.setAttribute("nombre", resul[3]);
@@ -40,8 +46,7 @@
 
         if (sesionUsuario.getAttribute("estadoUsuario").equals("E0")) {
             response.sendRedirect("inicioEstudiantePendiente.jsp");
-        }
-        if (sesionUsuario.getAttribute("estadoUsuario").equals("E1")) {
+        } else if (sesionUsuario.getAttribute("estadoUsuario").equals("E1")) {
 
             String idEstudiante = facade.obtenerIdEstudiante((String) sesionUsuario.getAttribute("usuario"));
 
@@ -65,7 +70,7 @@
                 String[] mods = resp.split(";");
                 for (int i = 0; i < mods.length; i++) {
                     String[] modulo = mods[i].split(",,");
-                    
+
                     if (modulo[1].equals("1")) {
                         tipo = "Semestral";
                     } else if (modulo[1].equals("2")) {
@@ -87,15 +92,15 @@
             sesionUsuario.setAttribute("modulos", tabla);
 
             response.sendRedirect("inicioEstudianteAprobado.jsp");
-        }
-        if (sesionUsuario.getAttribute("estadoUsuario").equals("E2")) {
+            
+        } else if (sesionUsuario.getAttribute("estadoUsuario").equals("E2")) {
             response.sendRedirect("inicioEstudianteRechazado.jsp");
-        }
-        if (sesionUsuario.getAttribute("estadoUsuario").equals("E3")) {
+            
+        } else if (sesionUsuario.getAttribute("estadoUsuario").equals("E3")) {
             response.sendRedirect("inicioEstudianteGraduado.jsp");
         }
     } else if (val.equals("consultarCorreo")) {
-        
+
         resp = facade.consultarEstudianteCorreo((String) sesionUsuario.getAttribute("usuario"));
 
         resul = resp.split(",,");
@@ -165,7 +170,6 @@
 
     } else if (val.equals("consultar")) {
 
-                
         resp = facade.consultarEstudianteCodigo(request.getParameter("codigo"));
 
         resul = resp.split(",,");
@@ -246,16 +250,14 @@
         //aspirante.setReciboInscripcion("reciboInscripcion");
 
         //estudiante.setReciboPagoMatricula("reciboPagoMatricula");
-        
-       
         int bandera = facade.actualizarEstudiante(usuario, aspirante, estudiante);
 
-        if (bandera == 1) {            
-            session.setAttribute("Mensaje", "Los datos han sido actualizados exitosamente.");                                    
+        if (bandera == 1) {
+            session.setAttribute("Mensaje", "Los datos han sido actualizados exitosamente.");
         } else if (bandera == 0) {
-            session.setAttribute("Mensaje", "Error");            
+            session.setAttribute("Mensaje", "Error");
         }
-        response.sendRedirect("administrarEstudiante.jsp?requerimiento=consultarCorreo");        
+        response.sendRedirect("administrarEstudiante.jsp?requerimiento=consultarCorreo");
         //}
 
     } else if (val.equals("eliminar")) {

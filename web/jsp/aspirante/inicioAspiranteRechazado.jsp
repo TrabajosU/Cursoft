@@ -1,7 +1,7 @@
 <%-- 
-    Document   : aspirante
-    Created on : 27/09/2014, 05:55:04 PM
-    Author     : Manuel
+    Document   : inicioAspiranteRechazado
+    Created on : 29-oct-2014, 21:13:04
+    Author     : Jhorman Perez
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -79,11 +79,12 @@
                             <li><a href="#">Inicio</a></li>                            
                         </ol>
                         <div id="subtitulo">
-                            <h2>Inicio Aspirante - Pendiente</h2>
+                            <h2>Inicio Aspirante - Rechazado</h2>
                         </div>
                         <div class="row">
                             <div class="col-xs-offset-1 col-xs-10" id="contenedor">
-                                <p>Su estado aún se encuentra <strong>PENDIENTE</strong>. Para más información, diríjase a: Msc. <a href="mailto:pilinrt@yahoo.es" target="_top">Judith del Pilar Rodríguez Tenjo</a>
+                                <p>Su estado actual es: <strong>RECHAZADO</strong>. No ha sido aceptada su solicitud de inscripción.
+                                    Para más información, diríjase a: Msc. <a href="mailto:pilinrt@yahoo.es" target="_top">Judith del Pilar Rodríguez Tenjo</a>
                             </div>
                         </div>
                     </div>
