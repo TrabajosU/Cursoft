@@ -49,11 +49,11 @@
             sesionUsuario.setAttribute("usuario", correo);
             sesionUsuario.setAttribute("estadoUsuario", resp);
             response.sendRedirect("../aspirante/administrarAspirante.jsp?requerimiento=mostrarInicio");
-        } else if (resp.equals("E0")) {
-            out.print("Bienvenido, eres un estudiante pendiente");
+        } else if (resp.equals("E0")) {            
             sesionUsuario = request.getSession(true);
             sesionUsuario.setAttribute("usuario", correo);
             sesionUsuario.setAttribute("estadoUsuario", resp);
+            response.sendRedirect("../estudiante/administrarEstudiante.jsp?requerimiento=mostrarInicio");
         } else if (resp.equals("E1")) {            
             sesionUsuario = request.getSession(true);
             sesionUsuario.setAttribute("usuario", correo);
