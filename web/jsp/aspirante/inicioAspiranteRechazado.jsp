@@ -54,15 +54,7 @@
                     <div class="col-xs-12 col-sm-3 col-md-3 col-lg-3" id="menu">
                         <div class="navbar-default navbar-static-side" role="navigation">
                             <div class="sidebar-collapse">                    
-                                <ul class="nav" id="side-menu">
-                                    <li>
-                                        <a href="#"><i class="fa fa-bar-chart-o fa-fw"></i> Operaciones<span class="fa arrow"></span></a>
-                                        <ul class="nav nav-second-level">
-                                            <li>
-                                                <a href="administrarAspirante.jsp?requerimiento=consultarCorreo">Consultar Datos</a>
-                                            </li>                                            
-                                        </ul>
-                                    </li>
+                                <ul class="nav" id="side-menu">                                    
                                     <li>
                                         <a href="../usuario/administrarUsuario.jsp?requerimiento=cerrarSesion">Cerrar Sesión</a>
                                     </li>

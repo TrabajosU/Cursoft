@@ -91,16 +91,15 @@
             }
             sesionUsuario.setAttribute("modulos", tabla);
 
-            if(sesionUsuario.getAttribute("estadoUsuario").equals("E1")){
+            if (sesionUsuario.getAttribute("estadoUsuario").equals("E1")) {
                 response.sendRedirect("inicioEstudianteAprobado.jsp");
+            } else {
+                response.sendRedirect("inicioEstudianteEgresado.jsp");
             }
-            else{
-                response.sendRedirect("inicioEstudianteGraduado.jsp");
-            }
-            
+
         } else if (sesionUsuario.getAttribute("estadoUsuario").equals("E2")) {
             response.sendRedirect("inicioEstudianteRechazado.jsp");
-            
+
         }
     } else if (val.equals("consultarCorreo")) {
 
@@ -127,42 +126,48 @@
         session.setAttribute("reciboInscripcion", resul[15]);
         session.setAttribute("reciboPagoMatricula", resul[16]);
 
-        String actualizarButton = "<div class=\"form-group\">"
-                + "<div class=\"row\">"
-                + "<div class=\"col-xs-offset-4 col-xs-4 text-center\">"
-                + "<button class=\"btn btn-danger\" id=\"cancelar\" name=\"requerimiento\""
-                + "value=\"actualizar\" type=\"submit\">Actualizar</button>"
-                + "</div>"
-                + "</div>"
-                + "</div>";
+        String actualizarButton = "";
 
-        String registrarButton = "<div class=\"form-group\">"
-                + "<div class=\"row\">"
-                + "<div class=\"col-xs-offset-4 col-xs-4 text-center\">"
-                + "<button class=\"btn btn-danger\" id=\"cancelar\" name=\"requerimiento\""
-                + "value=\"registrar\" type=\"submit\">Registrar</button>"
-                + "</div>"
-                + "</div>"
-                + "</div>";
+        if (sesionUsuario.getAttribute("estadoUsuario").equals("E2") || sesionUsuario.getAttribute("estadoUsuario").equals("E3")) {
+            actualizarButton = "";
+        } else {
+            actualizarButton = "<div class=\"form-group\">"
+                    + "<div class=\"row\">"
+                    + "<div class=\"col-xs-offset-4 col-xs-4 text-center\">"
+                    + "<button class=\"btn btn-danger\" id=\"cancelar\" name=\"requerimiento\""
+                    + "value=\"actualizar\" type=\"submit\">Actualizar</button>"
+                    + "</div>"
+                    + "</div>"
+                    + "</div>";
 
-        String eliminarButton = "<div class=\"form-group\">"
-                + "<div class=\"row\">"
-                + "<div class=\"col-xs-offset-4 col-xs-4 text-center\">"
-                + "<button class=\"btn btn-danger\" id=\"cancelar\" name=\"requerimiento\""
-                + "value=\"eliminar\" type=\"submit\">Eliminar</button>"
-                + "</div>"
-                + "</div>"
-                + "</div>";
+            String registrarButton = "<div class=\"form-group\">"
+                    + "<div class=\"row\">"
+                    + "<div class=\"col-xs-offset-4 col-xs-4 text-center\">"
+                    + "<button class=\"btn btn-danger\" id=\"cancelar\" name=\"requerimiento\""
+                    + "value=\"registrar\" type=\"submit\">Registrar</button>"
+                    + "</div>"
+                    + "</div>"
+                    + "</div>";
 
-        String consultarButton = "<div class=\"form-group\">"
-                + "<div class=\"row\">"
-                + "<div class=\"col-xs-offset-4 col-xs-4 text-center\">"
-                + "<button class=\"btn btn-danger\" id=\"cancelar\" name=\"requerimiento\""
-                + "value=\"consultar\" type=\"submit\">Consultar</button>"
-                + "</div>"
-                + "</div>"
-                + "</div>";
+            String eliminarButton = "<div class=\"form-group\">"
+                    + "<div class=\"row\">"
+                    + "<div class=\"col-xs-offset-4 col-xs-4 text-center\">"
+                    + "<button class=\"btn btn-danger\" id=\"cancelar\" name=\"requerimiento\""
+                    + "value=\"eliminar\" type=\"submit\">Eliminar</button>"
+                    + "</div>"
+                    + "</div>"
+                    + "</div>";
 
+            String consultarButton = "<div class=\"form-group\">"
+                    + "<div class=\"row\">"
+                    + "<div class=\"col-xs-offset-4 col-xs-4 text-center\">"
+                    + "<button class=\"btn btn-danger\" id=\"cancelar\" name=\"requerimiento\""
+                    + "value=\"consultar\" type=\"submit\">Consultar</button>"
+                    + "</div>"
+                    + "</div>"
+                    + "</div>";
+        }
+        
         session.setAttribute("actualizar", actualizarButton);
         session.setAttribute("registrar", "");
         session.setAttribute("eliminar", "");
