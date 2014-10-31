@@ -65,7 +65,7 @@
                         <div class="row">
                             <div class="col-xs-offset-1 col-xs-10" id="contenedor">
                                 <div class="row" id="formulario">
-                                    <form action="administrarAspirante.jsp" class="form-horizontal" method="post" role="form">
+                                    <form action="administrarAspirante.jsp" class="form-horizontal" method="post" enctype="MULTIPART/FORM-DATA" role="form">
                                         <fieldset>
                                             <legend>Datos de Usuario</legend>
                                             <div class="form-group">
@@ -149,7 +149,7 @@
                                                 <div class="col-xs-12 col-sm-6 col-md-8">
                                                     <div class="input-group">
                                                         <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span></span>
-                                                        <input class="form-control" id="fechaNacimiento" name="fechaNacimiento" placeholder="16/04/1984" type="text" required>
+                                                        <input class="form-control" id="fechaNacimiento" name="fechaNacimiento" type="date" required>
                                                     </div>
                                                 </div>
                                             </div>

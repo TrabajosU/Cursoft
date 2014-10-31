@@ -1,6 +1,6 @@
 <%-- 
-    Document   : inicioEstudiantePendiente
-    Created on : 23-oct-2014, 22:09:05
+    Document   : inicioEstudianteEgresado
+    Created on : 31-oct-2014, 15:19:10
     Author     : Jhorman Perez
 --%>
 
@@ -82,12 +82,22 @@
                             <li class="active">Estudiante</li>
                         </ol>
                         <div id="subtitulo">
-                            <h2>Inicio Estudiante - Pendiente</h2>
+                            <h2>Inicio Estudiante - Egresado</h2>
                         </div>
                         <div class="row">
                             <div class="col-xs-offset-1 col-xs-10" id="contenedor">
-                                <p>Su estado aún se encuentra <strong>PENDIENTE</strong>. Para más información, diríjase a: 
-                                    Msc. <a href="mailto:pilinrt@yahoo.es" target="_top">Judith del Pilar Rodríguez Tenjo</a>
+                                <p>Su estado actual como estudiante es: <strong>EGRESADO</strong>.
+                                    <br>
+                                <div class="panel panel-default">
+                                    <div class="panel-heading text-center">
+                                        <strong>Módulos Cursados</strong>
+                                    </div> 
+                                    <div class="panel-body">                                     
+                                        <%
+                                            out.print(session.getAttribute("modulos"));
+                                        %>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>

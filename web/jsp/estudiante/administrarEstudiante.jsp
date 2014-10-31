@@ -46,7 +46,7 @@
 
         if (sesionUsuario.getAttribute("estadoUsuario").equals("E0")) {
             response.sendRedirect("inicioEstudiantePendiente.jsp");
-        } else if (sesionUsuario.getAttribute("estadoUsuario").equals("E1")) {
+        } else if (sesionUsuario.getAttribute("estadoUsuario").equals("E1") || sesionUsuario.getAttribute("estadoUsuario").equals("E3")) {
 
             String idEstudiante = facade.obtenerIdEstudiante((String) sesionUsuario.getAttribute("usuario"));
 
@@ -91,13 +91,16 @@
             }
             sesionUsuario.setAttribute("modulos", tabla);
 
-            response.sendRedirect("inicioEstudianteAprobado.jsp");
+            if(sesionUsuario.getAttribute("estadoUsuario").equals("E1")){
+                response.sendRedirect("inicioEstudianteAprobado.jsp");
+            }
+            else{
+                response.sendRedirect("inicioEstudianteGraduado.jsp");
+            }
             
         } else if (sesionUsuario.getAttribute("estadoUsuario").equals("E2")) {
             response.sendRedirect("inicioEstudianteRechazado.jsp");
             
-        } else if (sesionUsuario.getAttribute("estadoUsuario").equals("E3")) {
-            response.sendRedirect("inicioEstudianteGraduado.jsp");
         }
     } else if (val.equals("consultarCorreo")) {
 

@@ -1,6 +1,6 @@
 <%-- 
-    Document   : inicioEstudiantePendiente
-    Created on : 23-oct-2014, 22:09:05
+    Document   : inicioEstudianteRechazado
+    Created on : 29-oct-2014, 22:17:45
     Author     : Jhorman Perez
 --%>
 
@@ -82,11 +82,12 @@
                             <li class="active">Estudiante</li>
                         </ol>
                         <div id="subtitulo">
-                            <h2>Inicio Estudiante - Pendiente</h2>
+                            <h2>Inicio Estudiante - Rechazado</h2>
                         </div>
                         <div class="row">
                             <div class="col-xs-offset-1 col-xs-10" id="contenedor">
-                                <p>Su estado aún se encuentra <strong>PENDIENTE</strong>. Para más información, diríjase a: 
+                                <p>Su estado actual como estudiante es: <strong>RECHAZADO</strong>. Su solicitud de matrícula no ha sido aprobada.
+                                    Para más información, diríjase a: 
                                     Msc. <a href="mailto:pilinrt@yahoo.es" target="_top">Judith del Pilar Rodríguez Tenjo</a>
                             </div>
                         </div>
