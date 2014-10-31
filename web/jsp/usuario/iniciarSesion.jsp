@@ -48,9 +48,9 @@
             </div>        
             <div class="col-xs-12 col-sm-offset-2 col-sm-8 col-md-offset-3 col-md-6 col-lg-offset-3 col-lg-6">
 
-                <%                     
-                    out.print(session.getAttribute("Mensaje"));
+                <%  
                     session.setAttribute("Mensaje", "");
+                    out.print(session.getAttribute("Mensaje"));                    
                 %>
 
                 <div class="row">
