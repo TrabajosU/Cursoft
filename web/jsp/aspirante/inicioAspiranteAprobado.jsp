@@ -84,8 +84,7 @@
                         </div>
                         <div class="row">
                             <div class="col-xs-offset-1 col-xs-10" id="contenedor">
-                                <p>Consignar el valor de $ X.XXX.XXX</p>
-                                <p>En cualquiera de los siguietes bancos:</p>
+                                <p>Consignar el pago de matrícula en cualquiera de los siguietes bancos:</p>
                                 <ol>
                                     <li>Bancolombia</li>
                                     <li>Davivienda</li>
@@ -93,13 +92,14 @@
                                 </ol>
                                 <p>Si ya realizó el pago, cargue el archivo a continuación:</p>
                                 <div id="formulario">
-                                    <form action="#" method="post" role="form">
+                                    <% out.print(session.getAttribute("cargaMatricula")); %>
+                                    <form action="administrarAspirante.jsp" method="post" role="form">
                                         <fieldset>
                                             <legend>Documentos</legend>
                                             <div class="form-group">
                                                 <label for="telefono_movil" class="col-xs-12 col-sm-6 col-md-4 control-label">Recibo de pago de matrícula:</label>
                                                 <div class="col-xs-12 col-sm-6 col-md-8">
-                                                    <input type="file" class="filestyle" data-iconName="glyphicon-inbox">
+                                                    <input type="file" name="reciboPagoMatricula" class="filestyle" data-iconName="glyphicon-inbox">
                                                     <p class="help-block">Selecciona tu archivo del recibo de pago de matrícula</p>
                                                 </div>
                                             </div>
@@ -107,7 +107,7 @@
                                         <br>
                                         <div class="form-group">
                                             <div id="botones">
-                                                <button class="btn btn-danger" id="recuperar" type="submit">Guardar</button>
+                                                <button class="btn btn-danger" id="recuperar" name="requerimiento" value="cargarPagoMatricula" type="submit">Guardar</button>
                                             </div>
                                         </div>
                                     </form>

@@ -108,5 +108,9 @@ public class AdministrarEstudiante {
     public String obtenerIdEstudiante(String correo) {
         return new EstudianteDao().obtenerIdEstudiante(correo);
     }
+
+    public boolean registrarEstudiante(String idAspirante, String reciboPagoMatricula) {
+        return new EstudianteDao().registrarEstudiante(idAspirante, reciboPagoMatricula);
+    }
     
 }

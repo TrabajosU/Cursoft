@@ -65,7 +65,7 @@
                         <div class="row">
                             <div class="col-xs-offset-1 col-xs-10" id="contenedor">
                                 <div class="row" id="formulario">
-                                    <form action="administrarAspirante.jsp" class="form-horizontal" method="post" enctype="MULTIPART/FORM-DATA" role="form">
+                                    <form action="administrarAspirante.jsp" class="form-horizontal" method="post" role="form">
                                         <fieldset>
                                             <legend>Datos de Usuario</legend>
                                             <div class="form-group">

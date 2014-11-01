@@ -131,6 +131,10 @@ public class Facade {
         return new AdministrarEstudiante().obtenerIdEstudiante(correo);
     }
     
+    public String obtenerIdAspirante(String correo){
+        return new AdministrarAspirante().obtenerIdAspirante(correo);
+    }
+    
     public boolean matricularModuloEstudiante(String idEstudiante, String idModuloDoc){
         return new AdministrarModulo().matricularModuloEstudiante(idEstudiante, idModuloDoc);
     }
@@ -151,5 +155,9 @@ public class Facade {
     
     public String listarEstudiantesModulo(String nombre){
         return new AdministrarModulo().listarEstudiantesModulo(nombre);
+    }
+    
+    public boolean cargarPagoMatricula(String idAspirante, String reciboPagoMatricula){
+        return new AdministrarEstudiante().registrarEstudiante(idAspirante, reciboPagoMatricula);
     }
 }

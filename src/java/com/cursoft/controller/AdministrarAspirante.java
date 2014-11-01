@@ -69,4 +69,8 @@ public class AdministrarAspirante {
             return 1;
         return 0;
     }
+    
+    public String obtenerIdAspirante(String correo){
+        return new AspiranteDao().obtenerIdAspirante(correo);
+    }
 }
