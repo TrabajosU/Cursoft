@@ -62,6 +62,7 @@
                             <div class="panel-heading">
                                 <strong> <% out.println(session.getAttribute("nombreModulo")); %> </strong>
                             </div>
+                            <form action="administrarNotas.jsp" class="form-horizontal" method="get" role="form">
                             <div class="panel-body">
                                 <div class="table-responsive">
                                     <table class="table">
@@ -80,6 +81,15 @@
                                 </div>
                             </div>
                         </div>
+                        
+                            <div class="form-group">
+                                <div class="row">
+                                    <div class="col-xs-offset-4 col-xs-4 text-center">
+                                        <button class="btn btn-danger" id="cancelar" name="requerimiento" value="Guardar" type="submit">Guardar Cambios</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
                         <form>
                             <div class="form-group">
                                 <div class="row">

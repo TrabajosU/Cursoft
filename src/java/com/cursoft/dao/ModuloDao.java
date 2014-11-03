@@ -309,4 +309,22 @@ public class ModuloDao {
 
     }
 
+    public void registrarNotasModulos(String listado, String nombreModulo) {
+        String estudiantesNotas [] = listado.split(";");
+        for(int i =0; i<estudiantesNotas.length; i++){
+            String estudiante = estudiantesNotas[i].split(",,")[0];
+            String nota = estudiantesNotas[i].split(",,")[1];
+            
+            ConexionMysql.conectar();
+            
+            ArrayList resultado = ConexionMysql.getConsultaSQL("SELECT dme.idEstudianteModulo FROM aspirantes a, estudiantes e, docentesmodulos dm, usuarios u, modulos m, docentesmodulosestudiantes dme WHERE u.codigo = '"+estudiante+"' AND a.idUsuario = u.idUsuario AND a.idAspirante = e.idAspirante AND e.idEstudiante = dme.idEstudianteFK AND m.nombre = '"+nombreModulo+"' AND m.idModulo = dm.idModuloFK AND dm.idDocenteModulo = dme.idDocenteModuloFK;");
+            
+            ConexionMysql.ejecutarActualizacionSQL("UPDATE docentesmodulosestudiantes SET nota = '"+ nota +"' WHERE idEstudianteModulo = '"+resultado.get(0).toString().split("-")[0]+"'");
+            
+            ConexionMysql.desconectar();
+        }
+        
+        
+    }
+
 }

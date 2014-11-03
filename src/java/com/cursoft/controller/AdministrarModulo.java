@@ -67,4 +67,9 @@ public class AdministrarModulo {
         ModuloDao mod = new ModuloDao();
         return mod.listarModulosMatriculados(idEstudiante);
     }
+
+    public void registrarNotasModulos(String listado, String nombreModulo) {
+        ModuloDao mod = new ModuloDao();
+        mod.registrarNotasModulos(listado, nombreModulo);
+    }
 }

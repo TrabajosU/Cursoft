@@ -152,4 +152,8 @@ public class Facade {
     public String listarEstudiantesModulo(String nombre){
         return new AdministrarModulo().listarEstudiantesModulo(nombre);
     }
+    
+    public void registrarNotasModulos(String listado, String nombreModulo){
+        new AdministrarModulo().registrarNotasModulos(listado, nombreModulo);
+    }
 }
