@@ -1,7 +1,7 @@
 <%-- 
-    Document   : aspirante
-    Created on : 27/09/2014, 05:55:04 PM
-    Author     : Manuel
+    Document   : inicioAspiranteRechazado
+    Created on : 29-oct-2014, 21:13:04
+    Author     : Jhorman Perez
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -54,15 +54,7 @@
                     <div class="col-xs-12 col-sm-3 col-md-3 col-lg-3" id="menu">
                         <div class="navbar-default navbar-static-side" role="navigation">
                             <div class="sidebar-collapse">                    
-                                <ul class="nav" id="side-menu">
-                                    <li>
-                                        <a href="#"><i class="fa fa-bar-chart-o fa-fw"></i> Operaciones<span class="fa arrow"></span></a>
-                                        <ul class="nav nav-second-level">
-                                            <li>
-                                                <a href="administrarAspirante.jsp?requerimiento=consultarCorreo">Consultar Datos</a>
-                                            </li>                                            
-                                        </ul>
-                                    </li>
+                                <ul class="nav" id="side-menu">                                    
                                     <li>
                                         <a href="../usuario/administrarUsuario.jsp?requerimiento=cerrarSesion">Cerrar Sesión</a>
                                     </li>
@@ -79,11 +71,12 @@
                             <li><a href="#">Inicio</a></li>                            
                         </ol>
                         <div id="subtitulo">
-                            <h2>Inicio Aspirante - Pendiente</h2>
+                            <h2>Inicio Aspirante - Rechazado</h2>
                         </div>
                         <div class="row">
                             <div class="col-xs-offset-1 col-xs-10" id="contenedor">
-                                <p>Su estado aún se encuentra <strong>PENDIENTE</strong>. Para más información, diríjase a: Msc. <a href="mailto:pilinrt@yahoo.es" target="_top">Judith del Pilar Rodríguez Tenjo</a>
+                                <p>Su estado actual es: <strong>RECHAZADO</strong>. No ha sido aceptada su solicitud de inscripción.
+                                    Para más información, diríjase a: Msc. <a href="mailto:pilinrt@yahoo.es" target="_top">Judith del Pilar Rodríguez Tenjo</a>
                             </div>
                         </div>
                     </div>

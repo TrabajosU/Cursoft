@@ -20,29 +20,19 @@ public class EstudianteDao {
     public EstudianteDao() {
     }
 
-    public boolean registrarEstudiante(UsuarioDto usuario, AspiranteDto aspirante, EstudianteDto estudiante) {
+    public boolean registrarEstudiante(String idAspirante, String reciboPagoMatricula) {
 
+        reciboPagoMatricula = reciboPagoMatricula.replace("-", "%20");
+        
+        System.out.println("SOY ASPIRANTILLOOOO: "+idAspirante);
         ConexionMysql.conectar();
+        
+        String sql = "INSERT INTO estudiantes(idAspirante, estado, reciboPagoMatricula) VALUES ('"+ idAspirante +"', '0', '" + reciboPagoMatricula + "');";
 
-        ArrayList resultado = ConexionMysql.getConsultaSQL("SELECT usuarios.idUsuario FROM usuarios WHERE codigo='" + usuario.getCodigo() + "';");
-
-        String idUsuario = ((String) resultado.get(0)).split("-")[0];
-
-        resultado.clear();
-
-        resultado = ConexionMysql.getConsultaSQL("SELECT aspirantes.idAspirante FROM aspirantes WHERE idUsuario='"
-                + idUsuario + "';");
-
-        String idAspirante = ((String) resultado.get(0)).split("-")[0];
-
-        System.out.println(idAspirante);
-
-        String sql = "INSERT INTO estudiantes(idAspirante, nota, estado) VALUES ('"
-                + idAspirante + "','" + estudiante.getNota() + "','0')";
-
-        ConexionMysql.ejecutarActualizacionSQL(sql);
+        boolean res = ConexionMysql.ejecutarActualizacionSQL(sql);
         ConexionMysql.desconectar();
-        return true;
+        
+        return res;
 
     }
 

@@ -123,8 +123,7 @@ public class AspiranteDao {
 
         info += registro[1] + ",," + registro[2] + ",," + registro[3] + ",," + registro[4] + ",,"
                 + registro[5] + ",," + registro[6] + ",," + registro[7] + ",," + registro[8] + ",,"
-                + registro[9] + ",," + registro[10] + ",," + registro[11] + ",," + registro[12] + ",,"
-                + registro[13] + ",,";
+                + registro[9] + ",," + registro[10] + ",," + registro[11] + ",,";
 
         resultado.clear();
 
@@ -192,6 +191,26 @@ public class AspiranteDao {
         ConexionMysql.desconectar();
 
         return info;
+    }
+
+    public String obtenerIdAspirante(String correo) {
+
+        try{
+            
+            ConexionMysql.conectar();
+            
+            String sql = "SELECT a.idAspirante FROM aspirantes a, usuarios u"
+                        + " WHERE u.correo = '" + correo + "' AND u.idUsuario = a.idUsuario;";
+            
+            ArrayList <String> res = ConexionMysql.getConsultaSQL(sql);
+            
+            ConexionMysql.desconectar();
+            
+            return res.get(0).split("-")[0];
+                    
+        }catch(Exception e){
+            return "";
+        }
     }
 
 }

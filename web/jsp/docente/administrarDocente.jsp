@@ -28,7 +28,7 @@
             resp = facade.consultarDocenteCorreo((String) sesionUsuario.getAttribute("usuario"));
             
             if (resp.isEmpty()) {
-                session.setAttribute("Mensaje", "Datos incorrectos, verifica tu usuario y contraseña");
+                session.setAttribute("Mensaje", "Datos incorrectos, verifique su usuario y contraseña");
                 response.sendRedirect("../usuario/iniciarSesion.jsp");
             }
             resul = resp.split(",,");
@@ -38,22 +38,22 @@
             if (sesionUsuario.getAttribute("estadoUsuario").equals("D0")) {
                 response.sendRedirect("inicioAdministrador.jsp");
             }
-            if (sesionUsuario.getAttribute("estadoUsuario").equals("D1")) {
+            else if (sesionUsuario.getAttribute("estadoUsuario").equals("D1")) {
                 response.sendRedirect("inicioProfesor.jsp");
             }
-            if (sesionUsuario.getAttribute("estadoUsuario").equals("D2")) {
+            else if (sesionUsuario.getAttribute("estadoUsuario").equals("D2")) {
                 response.sendRedirect("cargarCoordinador.jsp");
             }
-            if (sesionUsuario.getAttribute("estadoUsuario").equals("D3")) {
+            else if (sesionUsuario.getAttribute("estadoUsuario").equals("D3")) {
                 response.sendRedirect("inicioProfesorCoordinador.jsp");
             }
-            if (sesionUsuario.getAttribute("estadoUsuario").equals("D4")) {
+            else if (sesionUsuario.getAttribute("estadoUsuario").equals("D4")) {
                 response.sendRedirect("inicioAdministradorProfesor.jsp");
             }
-            if (sesionUsuario.getAttribute("estadoUsuario").equals("D5")) {
+            else if (sesionUsuario.getAttribute("estadoUsuario").equals("D5")) {
                 response.sendRedirect("inicioAdministradorCoordinador.jsp");
             }
-            if (sesionUsuario.getAttribute("estadoUsuario").equals("D6")) {
+            else if (sesionUsuario.getAttribute("estadoUsuario").equals("D6")) {
                 response.sendRedirect("inicioDocente.jsp");
             }
 

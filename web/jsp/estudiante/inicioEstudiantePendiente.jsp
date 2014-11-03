@@ -86,8 +86,9 @@
                         </div>
                         <div class="row">
                             <div class="col-xs-offset-1 col-xs-10" id="contenedor">
-                                <p>Su estado aún se encuentra <strong>PENDIENTE</strong>. Para más información, diríjase a: 
-                                    Msc. <a href="mailto:pilinrt@gmail.com" target="_top">Judith del Pilar Rodríguez Tenjo</a>
+                                <p>Su estado aún se encuentra <strong>PENDIENTE</strong>. Se encuentra en proceso de validación su recibo de
+                                    pago de matrícula. Para más información, diríjase a: 
+                                    Msc. <a href="mailto:pilinrt@yahoo.es" target="_top">Judith del Pilar Rodríguez Tenjo</a>
                             </div>
                         </div>
                     </div>

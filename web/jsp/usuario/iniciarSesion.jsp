@@ -47,10 +47,12 @@
                 <h2>Iniciar sesión</h2>
             </div>        
             <div class="col-xs-12 col-sm-offset-2 col-sm-8 col-md-offset-3 col-md-6 col-lg-offset-3 col-lg-6">
-
-                <%                     
+                <br>
+                <%
+                    if (session.getAttribute("Mensaje") == null) {
+                        session.setAttribute("Mensaje", "");
+                    }
                     out.print(session.getAttribute("Mensaje"));
-                    session.setAttribute("Mensaje", "");
                 %>
 
                 <div class="row">

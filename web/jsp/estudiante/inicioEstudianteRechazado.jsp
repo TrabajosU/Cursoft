@@ -1,12 +1,12 @@
 <%-- 
-    Document   : aspirante
-    Created on : 27/09/2014, 05:55:04 PM
-    Author     : Manuel
+    Document   : inicioEstudianteRechazado
+    Created on : 29-oct-2014, 22:17:45
+    Author     : Jhorman Perez
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
-<html>
+<html lang="es">
     <head>
         <!--Codificación de caracteres-->
         <meta charset="utf-8">
@@ -37,6 +37,7 @@
         <!--Iconos-->
         <link href="../../img/favicon.ico" rel="shortcut icon">
     </head>
+
     <body>
         <div class="container">
             <header>
@@ -59,7 +60,7 @@
                                         <a href="#"><i class="fa fa-bar-chart-o fa-fw"></i> Operaciones<span class="fa arrow"></span></a>
                                         <ul class="nav nav-second-level">
                                             <li>
-                                                <a href="administrarAspirante.jsp?requerimiento=consultarCorreo">Consultar Datos</a>
+                                                <a href="administrarEstudiante.jsp?requerimiento=consultarCorreo">Consultar Datos</a>
                                             </li>                                            
                                         </ul>
                                     </li>
@@ -68,37 +69,37 @@
                                     </li>
                                 </ul>
                             </div>
-                        </div>
+                        </div>                            
                     </div>
-                    <div class="col-xs-9 col-sm-9 col-md-9 col-lg-9" id="contenido">
+
+                    <div class="col-xs-9 col-sm-9 col-md-9 col-lg-8" id="contenido">
                         <div class="text-right">
                             <% out.print(session.getAttribute("nombre") + " " + session.getAttribute("apellido"));%>                            
                             <a href="../usuario/administrarUsuario.jsp?requerimiento=cerrarSesion">  (Cerrar sesión)</a>                        
-                        </div>
+                        </div> 
                         <ol class="breadcrumb">
-                            <li><a href="#">Inicio</a></li>                            
+                            <li><a href="#">Inicio</a></li>
+                            <li class="active">Estudiante</li>
                         </ol>
                         <div id="subtitulo">
-                            <h2>Inicio Aspirante - Pendiente</h2>
+                            <h2>Inicio Estudiante - Rechazado</h2>
                         </div>
                         <div class="row">
                             <div class="col-xs-offset-1 col-xs-10" id="contenedor">
-                                <p>Su estado aún se encuentra <strong>PENDIENTE</strong>. Para más información, diríjase a: Msc. <a href="mailto:pilinrt@yahoo.es" target="_top">Judith del Pilar Rodríguez Tenjo</a>
+                                <p>Su estado actual como estudiante es: <strong>RECHAZADO</strong>. Su solicitud de matrícula no ha sido aprobada.
+                                    Para más información, diríjase a: 
+                                    Msc. <a href="mailto:pilinrt@yahoo.es" target="_top">Judith del Pilar Rodríguez Tenjo</a>
                             </div>
                         </div>
                     </div>
                 </div>
-                <br>
-                <br>
-                <br>
-                <br>
             </section>
-
 
             <footer>
                 <p><strong>Copyright © 2014. Programa de Ingeniería de Sistemas - UFPS</strong></p>
-                <p>Desarrollado por <strong><a href="#">Megaterios</a></strong></p>
+                <p>Desarrollado por: <span class="icon-github"></span><strong><a id="megaterios" href="https://github.com/Megaterios/"> Megaterios</a></strong></p>
             </footer>
+
 
             <!--Scripts-->
             <script src="../../js/modernizr.js"></script>

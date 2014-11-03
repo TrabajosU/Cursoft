@@ -44,32 +44,31 @@
             sesionUsuario.setAttribute("usuario", correo);
             sesionUsuario.setAttribute("estadoUsuario", resp);
             response.sendRedirect("../aspirante/administrarAspirante.jsp?requerimiento=mostrarInicio");
-        } else if (resp.equals("A2")) {
-            out.print("Bienvenido, eres un aspirante en estado rechazado, comunícate con el coordinador del curso");
+        } else if (resp.equals("A2")) {            
             sesionUsuario = request.getSession(true);
             sesionUsuario.setAttribute("usuario", correo);
             sesionUsuario.setAttribute("estadoUsuario", resp);
-        } else if (resp.equals("E0")) {
-            out.print("Bienvenido, eres un estudiante pendiente");
-            sesionUsuario = request.getSession(true);
-            sesionUsuario.setAttribute("usuario", correo);
-            sesionUsuario.setAttribute("estadoUsuario", resp);
-        } else if (resp.equals("E1")) {
-            //out.print("Bienvenido, eres un estudiante aprobado, ya estás matriculado");
+            response.sendRedirect("../aspirante/administrarAspirante.jsp?requerimiento=mostrarInicio");
+        } else if (resp.equals("E0")) {            
             sesionUsuario = request.getSession(true);
             sesionUsuario.setAttribute("usuario", correo);
             sesionUsuario.setAttribute("estadoUsuario", resp);
             response.sendRedirect("../estudiante/administrarEstudiante.jsp?requerimiento=mostrarInicio");
-        } else if (resp.equals("E2")) {
-            out.print("Bienvenido, eres un estudiante en estado rechazado, comunícate con el coordinador del curso");
+        } else if (resp.equals("E1")) {            
             sesionUsuario = request.getSession(true);
             sesionUsuario.setAttribute("usuario", correo);
             sesionUsuario.setAttribute("estadoUsuario", resp);
-        } else if (resp.equals("E3")) {
-            out.print("Bienvenido, eres un estudiante egresado");
+            response.sendRedirect("../estudiante/administrarEstudiante.jsp?requerimiento=mostrarInicio");
+        } else if (resp.equals("E2")) {            
             sesionUsuario = request.getSession(true);
             sesionUsuario.setAttribute("usuario", correo);
             sesionUsuario.setAttribute("estadoUsuario", resp);
+            response.sendRedirect("../estudiante/administrarEstudiante.jsp?requerimiento=mostrarInicio");
+        } else if (resp.equals("E3")) {            
+            sesionUsuario = request.getSession(true);
+            sesionUsuario.setAttribute("usuario", correo);
+            sesionUsuario.setAttribute("estadoUsuario", resp);
+            response.sendRedirect("../estudiante/administrarEstudiante.jsp?requerimiento=mostrarInicio");
         } else if (resp.equals("D0")) {
             out.print("Bienvenido, eres el administrador");
             sesionUsuario = request.getSession(true);
@@ -118,9 +117,9 @@
             String mensaje = "";
 
             if (resp.equals("-1")) {
-                mensaje = "Datos incorrectos, verifica tu usuario y contraseña";
+                mensaje = "Datos incorrectos, verifique su usuario y contraseña";
             } else if (resp.equals("-2")) {
-                mensaje = "Tu cuenta se encuentra inhabilitada";
+                mensaje = "Su cuenta se encuentra inhabilitada";
             }
             error = "<div class=\"row\">"
                     + "<div class=\"col-xs-offset-1 col-xs-10 alert alert-success\">"

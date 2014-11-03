@@ -149,7 +149,7 @@
                                                 <div class="col-xs-12 col-sm-6 col-md-8">
                                                     <div class="input-group">
                                                         <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span></span>
-                                                        <input class="form-control" id="fechaNacimiento" name="fechaNacimiento" placeholder="16/04/1984" type="text" required>
+                                                        <input class="form-control" id="fechaNacimiento" name="fechaNacimiento" type="date" required>
                                                     </div>
                                                 </div>
                                             </div>
