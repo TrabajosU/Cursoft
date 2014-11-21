@@ -39,7 +39,7 @@
                 response.sendRedirect("inicioAdministrador.jsp");
             }
             else if (sesionUsuario.getAttribute("estadoUsuario").equals("D1")) {
-                response.sendRedirect("inicioProfesor.jsp");
+                response.sendRedirect("cargarProfesor.jsp"); // antes era inicioProfesor.jsp pero eso es solo una vista
             }
             else if (sesionUsuario.getAttribute("estadoUsuario").equals("D2")) {
                 response.sendRedirect("cargarCoordinador.jsp");

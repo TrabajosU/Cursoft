@@ -159,6 +159,8 @@ public class Facade {
     
     public boolean cargarPagoMatricula(String idAspirante, String reciboPagoMatricula){
         return new AdministrarEstudiante().registrarEstudiante(idAspirante, reciboPagoMatricula);
+    }
+    
     public void registrarNotasModulos(String listado, String nombreModulo){
         new AdministrarModulo().registrarNotasModulos(listado, nombreModulo);
     }
