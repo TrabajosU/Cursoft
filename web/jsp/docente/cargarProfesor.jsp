@@ -12,8 +12,8 @@
     cuando se conecte con la interfaz de inicio de session se debe redireccionar a esta pagina con el codigo del profesor
     que va a acceder al sistema para poder hacer la consulta, por ahora se hará con un codigo de docente que ya este registrado
     */
-    //String cod = session.getAttribute("codigoProfesor");
-    String cod = "12043";
+    String cod = session.getAttribute("codigoProfesor").toString();
+    //String cod = "12043";
     String lista = facade.listarModulosProfesor(cod);
     String listadoHtml = "";
     String listaModulos ="";
@@ -36,5 +36,6 @@
     }
     session.setAttribute("listadoModulos", listaModulos); 
     session.setAttribute("modulosDictados", listadoHtml);
-    response.sendRedirect("principalProfesor.jsp");
+    //response.sendRedirect("principalProfesor.jsp");
+    response.sendRedirect("inicioProfesor.jsp");
 %>
