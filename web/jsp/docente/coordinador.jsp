@@ -57,13 +57,13 @@
                                         <a href="#"><i class="fa fa-bar-chart-o fa-fw"></i> Administrar<span class="fa arrow"></span></a>
                                         <ul class="nav nav-second-level">
                                             <li>
-                                                <a href="#">Aspirante</a>
+                                                <a href="../aspirante/aspiranteCoordinador.jsp">Aspirante</a>
                                             </li>
                                             <li>
                                                 <a href="../estudiante/estudiante.jsp">Estudiante</a>
                                             </li>
                                             <li>
-                                                <a href="docente.jsp">Docente</a>
+                                                <a href="../docente/docente.jsp">Docente</a>
                                             </li>
                                             <li>
                                                 <a href="../modulo/cargarProfesores.jsp">Modulo</a>
@@ -80,7 +80,7 @@
                                                 <a href="../estudiante/cargarListadoEstudiantes.jsp">Listar Estudiantes</a>
                                             </li>
                                             <li>
-                                                <a href="cargarListadoDocentes.jsp">Listar Docentes</a>
+                                                <a href="../docente/cargarListadoDocentes.jsp">Listar Docentes</a>
                                             </li>
                                             <li>
                                                 <a href="../modulo/cargarListadoModulos.jsp">Listar Modulos</a>

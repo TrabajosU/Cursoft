@@ -26,7 +26,7 @@
         if (req.equals("mostrarInicio")) {
 
             resp = facade.consultarDocenteCorreo((String) sesionUsuario.getAttribute("usuario"));
-            
+            System.out.println("reessssppppppppp es: ............      "+resp);
             if (resp.isEmpty()) {
                 session.setAttribute("Mensaje", "Datos incorrectos, verifique su usuario y contraseña");
                 response.sendRedirect("../usuario/iniciarSesion.jsp");
@@ -34,6 +34,7 @@
             resul = resp.split(",,");
             sesionUsuario.setAttribute("nombre", resul[3]);
             sesionUsuario.setAttribute("apellido", resul[4]);
+            session.setAttribute("codigoProfesor",resul[0]);
 
             if (sesionUsuario.getAttribute("estadoUsuario").equals("D0")) {
                 response.sendRedirect("inicioAdministrador.jsp");

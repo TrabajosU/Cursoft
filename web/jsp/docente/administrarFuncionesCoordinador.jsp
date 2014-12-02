@@ -337,6 +337,40 @@
         
         response.sendRedirect("../modulo/cargarProfesores.jsp");
     }
+    else if(bot.equals("consultarAspirante")){
+        System.out.println("entro a consultar aspirante");
+        
+        String codigo = request.getParameter("codigo");
+        usuario.setCodigo(codigo);
+        
+        String consulta = facade.consultarAspiranteCodigo(codigo);        
+        System.out.println("el aspirante consultado es: "+consulta);
+        
+        if(!consulta.isEmpty()){
+            //consulta = consultaa.split(",,");
+            
+            session.setAttribute("codigo", "value="+ "\""+(String)consulta.split(",,")[0]+ "\"");
+            session.setAttribute("correo", "value="+ "\""+(String)consulta.split(",,")[1]+ "\"");
+            session.setAttribute("contrasenia", "value="+ "\""+(String)consulta.split(",,")[2]+ "\"");
+            session.setAttribute("contrasenia2", "value="+ "\""+(String)consulta.split(",,")[2]+ "\"");
+            session.setAttribute("nombre", "value="+ "\""+(String)consulta.split(",,")[3]+ "\"");
+            session.setAttribute("apellido", "value="+ "\""+(String)consulta.split(",,")[4]+ "\"");
+            session.setAttribute("tipoDocumento", "value="+ "\""+(String)consulta.split(",,")[5]+ "\"");
+            session.setAttribute("numeroDocumento", "value="+ "\""+(String)consulta.split(",,")[6]+ "\"");
+            session.setAttribute("fechaNacimiento", "value="+ "\""+(String)consulta.split(",,")[7]+ "\"");
+            session.setAttribute("direccion", "value="+ "\""+(String)consulta.split(",,")[8]+ "\"");
+            session.setAttribute("telefono", "value="+ "\""+(String)consulta.split(",,")[9]+ "\"");
+            session.setAttribute("telefonoMovil", "value="+ "\""+(String)consulta.split(",,")[10]+ "\"");
+            
+            session.setAttribute("promedioPonderado", "value="+ "\""+(String)consulta.split(",,")[13]+ "\"");
+            session.setAttribute("semestreFinalizacionMaterias", "value="+ "\""+(String)consulta.split(",,")[14]+ "\"");
+            session.setAttribute("reporteFinalizacionMaterias", "value="+ "\""+(String)consulta.split(",,")[15]+ "\"");
+            session.setAttribute("reportePazSalvo", "value="+ "\""+(String)consulta.split(",,")[16]+ "\"");
+            session.setAttribute("reciboInscripcion", "value="+ "\""+(String)consulta.split(",,")[17]+ "\"");
+            
+            response.sendRedirect("../aspirante/aspiranteCoordinador.jsp");
+        }
+    }
     
     
     
