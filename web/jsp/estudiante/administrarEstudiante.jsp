@@ -261,9 +261,9 @@
         int bandera = facade.actualizarEstudiante(usuario, aspirante, estudiante);
 
         if (bandera == 1) {
-            session.setAttribute("Mensaje", "Los datos han sido actualizados exitosamente.");
+            session.setAttribute("MensajeEstudiante", "Los datos han sido actualizados exitosamente.");
         } else if (bandera == 0) {
-            session.setAttribute("Mensaje", "Error");
+            session.setAttribute("MensajeEstudiante", "Error");
         }
         response.sendRedirect("administrarEstudiante.jsp?requerimiento=consultarCorreo");
         //}
@@ -278,11 +278,11 @@
         String respuesta = facade.eliminarEstudiante(usuario);
 
         if (!respuesta.isEmpty()) {
-            session.setAttribute("Mensaje", "Procedimiento exitoso. Información del"
+            session.setAttribute("MensajeEstudiante", "Procedimiento exitoso. Información del"
                     + " estudiante eliminado del sistema:\n"
                     + respuesta.split(",,")[0] + " " + respuesta.split(",,")[1] + " " + respuesta.split(",,")[2]);
         } else {
-            session.setAttribute("Mensaje", "Error");
+            session.setAttribute("MensajeEstudiante", "Error");
         }
 
         response.sendRedirect("estudiante.jsp");

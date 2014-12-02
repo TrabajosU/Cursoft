@@ -44,27 +44,27 @@
             sesionUsuario.setAttribute("usuario", correo);
             sesionUsuario.setAttribute("estadoUsuario", resp);
             response.sendRedirect("../aspirante/administrarAspirante.jsp?requerimiento=mostrarInicio");
-        } else if (resp.equals("A2")) {            
+        } else if (resp.equals("A2")) {
             sesionUsuario = request.getSession(true);
             sesionUsuario.setAttribute("usuario", correo);
             sesionUsuario.setAttribute("estadoUsuario", resp);
             response.sendRedirect("../aspirante/administrarAspirante.jsp?requerimiento=mostrarInicio");
-        } else if (resp.equals("E0")) {            
+        } else if (resp.equals("E0")) {
             sesionUsuario = request.getSession(true);
             sesionUsuario.setAttribute("usuario", correo);
             sesionUsuario.setAttribute("estadoUsuario", resp);
             response.sendRedirect("../estudiante/administrarEstudiante.jsp?requerimiento=mostrarInicio");
-        } else if (resp.equals("E1")) {            
+        } else if (resp.equals("E1")) {
             sesionUsuario = request.getSession(true);
             sesionUsuario.setAttribute("usuario", correo);
             sesionUsuario.setAttribute("estadoUsuario", resp);
             response.sendRedirect("../estudiante/administrarEstudiante.jsp?requerimiento=mostrarInicio");
-        } else if (resp.equals("E2")) {            
+        } else if (resp.equals("E2")) {
             sesionUsuario = request.getSession(true);
             sesionUsuario.setAttribute("usuario", correo);
             sesionUsuario.setAttribute("estadoUsuario", resp);
             response.sendRedirect("../estudiante/administrarEstudiante.jsp?requerimiento=mostrarInicio");
-        } else if (resp.equals("E3")) {            
+        } else if (resp.equals("E3")) {
             sesionUsuario = request.getSession(true);
             sesionUsuario.setAttribute("usuario", correo);
             sesionUsuario.setAttribute("estadoUsuario", resp);
@@ -150,7 +150,59 @@
          */
     } else if (boton.equals("registrarAspirante")) {
         response.sendRedirect("../estudiante/estudiante.jsp");
-    } else if (boton.equals("cerrarSesion")) {        
+        
+    } else if (boton.equals("mostrarRecuperarContrasenia")) {
+        response.sendRedirect("recuperarContrasenia.jsp");
+        
+    } else if(boton.equals("recuperarContrasenia")){
+                        
+        String contrasenia = facade.consultarUsuario(request.getParameter("correo"));
+        
+        if(!contrasenia.isEmpty()){
+            
+            boolean x = facade.enviarEmail(request.getParameter("correo"), contrasenia);
+            if(x){
+                session.setAttribute("Mensaje", "<div class=\"row\">"
+                    + "<div class=\"col-xs-offset-1 col-xs-10 alert alert-success\">"
+                    + "<div id=\"error\">"
+                    + "<p><strong>Se ha enviado la contraseña de su usuario a su cuenta de "
+                        + "correo electrónico."
+                    +"</strong>"
+                    + "</p>"
+                    + "</div>"
+                    + "</div>"
+                    + "</div>");
+                response.sendRedirect("iniciarSesion.jsp");
+            }
+            else{
+                session.setAttribute("MensajeRecuperar", "<div class=\"row\">"
+                    + "<div class=\"col-xs-offset-1 col-xs-10 alert alert-danger\">"
+                    + "<div id=\"error\">"
+                    + "<p><strong>Ha ocurrido un error al intentar enviar la contraseña"
+                        + "a su cuenta de correo electrónico, intente nuevamente."
+                    + "</strong>"
+                    + "</p>"
+                    + "</div>"
+                    + "</div>"
+                    + "</div>");
+                response.sendRedirect("recuperarContrasenia.jsp");
+            }
+        }
+        else{
+            session.setAttribute("MensajeRecuperar", "<div class=\"row\">"
+                    + "<div class=\"col-xs-offset-1 col-xs-10 alert alert-danger\">"
+                    + "<div id=\"error\">"
+                    + "<p><strong>Datos incorrectos. Ingrese un correo válido."
+                    + "</strong>"
+                    + "</p>"
+                    + "</div>"
+                    + "</div>"
+                    + "</div>");
+                response.sendRedirect("recuperarContrasenia.jsp");
+        }
+               
+    }
+    else if (boton.equals("cerrarSesion")) {
         sesionUsuario = request.getSession(true);
         sesionUsuario.setAttribute("Mensaje", "");
         sesionUsuario.invalidate();

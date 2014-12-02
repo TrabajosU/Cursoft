@@ -1,11 +1,10 @@
 <%-- 
-    Document   : usuario
-    Created on : 27/09/2014, 05:56:04 PM
-    Author     : Manuel
+    Document   : recuperarContrasenia
+    Created on : 24-nov-2014, 20:48:22
+    Author     : Jhorman Perez
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-
 <!DOCTYPE html>
 <html>
     <head>
@@ -44,54 +43,33 @@
         </div>
         <div class="row">
             <div id="subtitulo">
-                <h2>Iniciar sesión</h2>
+                <h2>Recuperar Contraseña</h2>
             </div>        
             <div class="col-xs-12 col-sm-offset-2 col-sm-8 col-md-offset-3 col-md-6 col-lg-offset-3 col-lg-6">
                 <br>
                 <%
-                    if (session.getAttribute("Mensaje") == null) {
-                        session.setAttribute("Mensaje", "");
+                    if (session.getAttribute("MensajeRecuperar") == null) {
+                        session.setAttribute("MensajeRecuperar", "");
                     }
-                    out.print(session.getAttribute("Mensaje"));
-                    session.setAttribute("MensajeRecuperar", "");
-                    session.setAttribute("Mensaje", "");
+                    out.print(session.getAttribute("MensajeRecuperar"));
                 %>
 
                 <div class="row">
                     <div class="col-xs-offset-2 col-xs-8 panel panel-default">
                         <div id="formulario">
-                            <form action="administrarUsuario.jsp" class="form-horizontal" method="get" role="form">
-                                <div class="form-group">
-                                    <label for="tipo">Tipo de usuario:</label>
-                                    <select class="form-control" id="tipo" name = "tipo">
-                                        <!--<option value="1">Aspirante</option>-->
-                                        <option value="1">Estudiante</option>
-                                        <!--<option value="2">Profesor</option>-->
-                                        <option value="2">Docente</option>
-                                        <option value="0">Administrador</option>
-                                    </select>
-                                    <p class="help-block">Selecciona tu tipo de usuario</p>
-                                </div>
+                            <form action="administrarUsuario.jsp" method="post" role="form">
                                 <div class="[CLASS_CORREO]">
                                     <label for="correo">Correo electrónico:</label>
                                     <div class="input-group">
                                         <span class="input-group-addon"><span class="glyphicon glyphicon-envelope"></span></span>
-                                        <input class="form-control" id="correo" name = "correo" placeholder="Ingresa tu correo electrónico" type="text" required="">
-                                    </div>
-                                </div>
-                                <div class="[CLASS_CONTRASENIA]">
-                                    <label for="contraseña">Contraseña:</label>
-                                    <div class="input-group">
-                                        <span class="input-group-addon"><span class="glyphicon glyphicon-lock"></span></span>
-                                        <input class="form-control" id="contraseña" name = "contrasenia" placeholder="Ingresa tu contraseña" type="password" required="">
-                                    </div>
-                                    <div id="recordar">
-                                        <p><a href="administrarUsuario.jsp?requerimiento=mostrarRecuperarContrasenia">¿Olvidaste tu contraseña?</a></p>
+                                        <input class="form-control" id="correo" name = "correo" placeholder="Ingresa tu correo electrónico" type="text">
                                     </div>
                                 </div>
                                 <div class="form-group">
+                                    <br/>
                                     <div id="botones">
-                                        <button class="btn btn-danger" id="registrar" name = "requerimiento" value="iniciarSesion" type="submit">Iniciar Sesión</button>
+                                        <button class="btn btn-danger" id="recuperar" name = "requerimiento" value="recuperarContrasenia" type="submit">Recuperar</button>
+                                        <a class="btn btn-danger" role="button" href="../../index.jsp">Cancelar</a>
                                     </div>
                                 </div>
                             </form>

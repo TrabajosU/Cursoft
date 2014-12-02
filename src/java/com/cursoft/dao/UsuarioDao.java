@@ -57,7 +57,7 @@ public class UsuarioDao {
         ArrayList resultado = ConexionMysql.getConsultaSQL("SELECT * FROM usuarios WHERE correo = '" + usuario.getCorreo() + "';");
         //consulta += resultado.toString();        
                 
-        if(resultado.isEmpty()){            
+        if(resultado == null || resultado.isEmpty()){            
             return "-1";
         }
         String [] registro = resultado.get(0).toString().split("-");
@@ -174,7 +174,7 @@ public class UsuarioDao {
         System.out.println(resultado.toString());
         
         boolean sw = false;
-        if(resultado.size()!=0){
+        if(resultado != null && !resultado.isEmpty()){
             usuario.setApellido(((String) resultado.get(0)).split("-")[1] );
             usuario.setNombre(((String) resultado.get(0)).split("-")[0] );
             sw= true;
@@ -183,6 +183,20 @@ public class UsuarioDao {
         ConexionMysql.desconectar();
         
         return sw;
+    }
+
+    public String consultarUsuario(String correo) {
+        
+        String sql = "SELECT usuarios.idUsuario, usuarios.contrasenia FROM usuarios WHERE correo = '"+correo+"'";
+        
+        ConexionMysql.conectar();
+        
+        ArrayList <String> resultado = ConexionMysql.getConsultaSQL(sql);
+        
+        if(resultado != null && !resultado.isEmpty()){
+            return resultado.get(0).split("-")[1];
+        }
+        return "";
     }
 
     

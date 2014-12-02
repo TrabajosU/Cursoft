@@ -94,8 +94,11 @@
                         <div class="row">
                             <div id="error">
                                 <p><strong><%
-                                    out.print(session.getAttribute("Mensaje"));
-                                    session.setAttribute("Mensaje", "");
+                                    if(session.getAttribute("MensajeEstudiante") == null){
+                                        session.setAttribute("MensajeEstudiante", "");
+                                    }
+                                    out.print(session.getAttribute("MensajeEstudiante"));
+                                    session.setAttribute("MensajeEstudiante", "");
                                         %>
                                     </strong></p>
                             </div>

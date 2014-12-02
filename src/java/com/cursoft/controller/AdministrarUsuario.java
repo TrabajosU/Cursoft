@@ -77,5 +77,9 @@ public class AdministrarUsuario {
         }
         
     }
+
+    public String consultarUsuario(String correo) {
+        return new UsuarioDao().consultarUsuario(correo);
+    }
     
 }
