@@ -216,7 +216,7 @@ public class EstudianteDao {
         String sql1 = "SELECT usuarios.idUsuario,usuarios.codigo,usuarios.nombre,usuarios.apellido FROM usuarios ;";
         ArrayList resultado = ConexionMysql.getConsultaSQL(sql1);
         String consulta = "";
-        if(!resultado.isEmpty()){
+        if(resultado != null && !resultado.isEmpty()){
         System.out.println(resultado.toString());
         
         for (int i = 0; i < resultado.size(); i++) {

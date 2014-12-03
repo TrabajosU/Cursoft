@@ -61,6 +61,7 @@ public class AspiranteDao {
         ConexionMysql.conectar();
         String sql1 = "SELECT usuarios.idUsuario, usuarios.codigo, usuarios.nombre, usuarios.apellido FROM usuarios;";
         ArrayList resultado = ConexionMysql.getConsultaSQL(sql1);
+        System.out.println("el resultadooooooooooooooooooooooooooooo "+resultado);
         System.out.println("el resultado es:     " + resultado.toString());
         String consulta = "";
         for (int i = 0; i < resultado.size(); i++) {
@@ -68,9 +69,9 @@ public class AspiranteDao {
             String[] idUsuarios = resultado.get(i).toString().split("-");
 
             ArrayList resultado2 = ConexionMysql.getConsultaSQL("SELECT aspirantes.estado FROM aspirantes WHERE idUsuario='"
-                    + idUsuarios[0] + "';");
-            System.out.println("el resultado 2 es igual a:  " + resultado2.toString());
-            if (!resultado2.isEmpty()) {
+                    + idUsuarios[0] + "';");            
+            if (resultado2 != null && !resultado2.isEmpty()) {
+                System.out.println("el resultado 2 es igual a:  " + resultado2.toString());
                 System.out.println(resultado2.toString());
                 consulta += idUsuarios[1] + ",," + idUsuarios[2] + ",," + idUsuarios[3] + ",," + resultado2.get(0).toString().split("-")[0] + ";";
                 System.out.println("La consulta va de la siguiente manera:   " + consulta);
@@ -114,7 +115,7 @@ public class AspiranteDao {
 
         ArrayList resultado = ConexionMysql.getConsultaSQL("SELECT * FROM usuarios WHERE correo = '" + correo + "';");
 
-        if (resultado.isEmpty()) {
+        if (resultado != null || resultado.isEmpty()) {
             return "";
         }
         String[] registro = resultado.get(0).toString().split("-");
