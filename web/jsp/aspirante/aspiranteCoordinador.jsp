@@ -123,7 +123,7 @@
                             </div>
                         </div>
                         <div class="row">
-                            <div class="col-xs-offset-1 col-xs-10" id="contenedor">
+                            <div class="col-xs-offset-4 col-xs-7" id="contenedor">
                                 <div class="row" id="formulario">
                                     <form action="../docente/administrarFuncionesCoordinador.jsp" class="form-horizontal" method="post" role="form">
                                         <fieldset>

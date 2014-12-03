@@ -106,6 +106,7 @@ public class Facade {
     }
 
     public String consultarAspiranteCorreo(String correo) {
+        System.out.println("usuario voy acá-"+correo);
         return new AdministrarAspirante().consultarAspiranteCorreo(correo);
     }
 

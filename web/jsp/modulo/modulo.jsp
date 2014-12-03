@@ -104,8 +104,7 @@
                             <li><a href="#">Docente</a></li>
                         </ol>
                     </div>
-                    <div class="col-xs-6 col-
-                         sm-12 col-md-9 col-lg-12" id="contenido">                        
+                    <div class="col-xs-6 col-md-12" id="contenido">                        
                         <div class="text-center" id="subtitulo">
                             <h2> Administrar Modulo </h2>
                         </div>
@@ -121,7 +120,7 @@
                             </div>
                         </div>
                         <div class="row">
-                            <div class="col-xs-offset-1 col-xs-10" id="contenedor">
+                            <div class="col-xs-offset-4 col-xs-7" id="contenedor">
                                 <div class="row" id="formulario">
                                     <form action="../docente/administrarFuncionesCoordinador.jsp" class="form-horizontal" method="get" role="form">
                                         <fieldset>
@@ -171,10 +170,17 @@
                                                 <div class="col-xs-12 col-sm-6 col-md-8">
                                                     <div class="input-group">
                                                         <span class="input-group-addon"><span class="glyphicon glyphicon-list-alt"></span></span>
-                                                        <input class="form-control" id="horario" name="horario"  value =" <% out.print(session.getAttribute("horario")); %>" type="text" disabled>
+                                                        <input class="form-control" id="horario" name="horario"  value =" <% 
+                                                        
+                                                        if(session.getAttribute("horario") == null){
+                                                            session.setAttribute("horario", "");
+                                                        }
+                                                        out.print(session.getAttribute("horario")); 
+                                                        
+                                                        %>" type="text" disabled>
                                                         
                                                     </div>
-                                                    
+                                                        </br>
                                                     <div class="col-xs-12 text-center">
                                                         <button class="btn btn-danger" id="agregar" name="requerimiento" value="horarioBtn" type="submit" >Crear Horario</button>
                                                     </div>
@@ -228,10 +234,40 @@
             <script src="../../js/modernizr.js"></script>
             <script src="../../js/main.js"></script>
             <script src="../../js/jquery.js"></script>
+            <script src="../../js/angular.js"></script>
             <!--Scripts Bootstrap-->
             <script src="../../js/bootstrap.js"></script>
             <script src="../../js/vendor/bootstrap-filestyle.js"></script>
             <script src="../../js/vendor/bootstrap-formhelpers.js"></script>
+            <!-- Core Scripts - Include with every page -->
+            <script src="../../js/jquery-1.10.2.js"></script>
+            <script src="../../js/bootstrap.min.js"></script>
+            <script src="../../js/plugins/metisMenu/jquery.metisMenu.js"></script>
+            <!-- Page-Level Plugin Scripts - Tables -->
+            <script src="../../js/plugins/dataTables/jquery.dataTables.js"></script>
+            <script src="../../js/plugins/dataTables/dataTables.bootstrap.js"></script>
+            <!-- SB Admin Scripts - Include with every page -->
+            <script src="../../js/sb-admin.js"></script>
+
+
+            <script src="../../js/plugins/flot/excanvas.min.js"></script>
+            <script src="../../js/plugins/flot/jquery.flot.js"></script>
+            <script src="../../js/plugins/flot/jquery.flot.pie.js"></script>
+            <script src="../../js/plugins/flot/jquery.flot.resize.js"></script>
+            <script src="../../js/plugins/flot/jquery.flot.tooltip.min.js"></script>
+
+            <script src="../../js/plugins/metisMenu/jquery.metisMenu.js"></script>
+
+
+            <script src="../../js/plugins/morris/morris.js"></script>
+            <script src="../../js/plugins/morris/raphael-2.1.0.min.js"></script>
+
+            <!-- Page-Level Demo Scripts - Tables - Use for reference -->
+            <script>
+                $(document).ready(function () {
+                    $('#dataTables-example').dataTable();
+                });
+            </script>
 
         </div>
     </body>

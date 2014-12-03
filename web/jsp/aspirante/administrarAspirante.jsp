@@ -40,18 +40,22 @@
 
     HttpSession sesionUsuario = request.getSession(true);
 
+    System.out.println("holitausuario " + sesionUsuario.getAttribute("usuario"));
     if (!sesionUsuario.isNew() && sesionUsuario != null && sesionUsuario.getAttribute("usuario") != null) {
 
         String resp = "";
         String[] resul;
 
         if (req.equals("mostrarInicio")) {
-
+            
             resp = facade.consultarAspiranteCorreo((String) sesionUsuario.getAttribute("usuario"));
+            System.out.println("holitanuevo " + resp);
 
             if (resp.isEmpty()) {
+                System.out.println("holitanuevo " + resp);
                 session.setAttribute("Mensaje", "Datos incorrectos, verifique su usuario y contraseña");
                 response.sendRedirect("../usuario/iniciarSesion.jsp");
+                return;
             }
             //sesionUsuario.setAttribute("cargaMatricula", "");
             session.setAttribute("nombre", (String) resp.split(",,")[3]);

@@ -9,11 +9,15 @@
 <jsp:useBean id="facade" class="com.cursoft.facade.Facade"></jsp:useBean>
 
 <%
-    // Volver todos los elementos de una session null..
+    // Volver todos los elementos de una session null..    
+                    
+    
     Enumeration<String> atributos = session.getAttributeNames();
     while(atributos.hasMoreElements()){
         String name = atributos.nextElement();
-        session.setAttribute(name, null);
+        if(!name.equals("nombre") && !name.equals("apellido")){
+            session.setAttribute(name, "");
+        }
     }
     System.gc(); //<-- Activar el recolector de basura
     String profesores = facade.consultarProfesores();

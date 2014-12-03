@@ -92,7 +92,12 @@
                                 </ol>
                                 <p>Si ya realizó el pago, cargue el archivo a continuación:</p>
                                 <div id="formulario">
-                                    <% out.print(session.getAttribute("cargaMatricula")); %>
+                                    <% 
+                                    if(session.getAttribute("cargaMatricula") == null){
+                                        session.setAttribute("cargaMatricula", "");
+                                    }
+                                    out.print(session.getAttribute("cargaMatricula")); 
+                                    %>
                                     <form action="administrarAspirante.jsp" method="post" role="form">
                                         <fieldset>
                                             <legend>Documentos</legend>

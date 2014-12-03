@@ -1,7 +1,7 @@
 <%-- 
-    Document   : docente
-    Created on : 27/09/2014, 05:55:17 PM
-    Author     : Manuel
+    Document   : docenteCoordinador
+    Created on : 03-dic-2014, 6:15:31
+    Author     : Jhorman Perez
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -57,16 +57,40 @@
                             <div class="sidebar-collapse">
                                 <ul class="nav" id="side-menu">
                                     <li>
-                                        <a href="#"><i class="fa fa-bar-chart-o fa-fw"></i> Operaciones<span class="fa arrow"></span></a>
+                                        <a href="#"><i class="fa fa-bar-chart-o fa-fw"></i> Administrar<span class="fa arrow"></span></a>
                                         <ul class="nav nav-second-level">
                                             <li>
-                                                <a href="administrarDocente.jsp?requerimiento=consultarDocenteCorreo">Consultar Datos</a>
-                                            </li>                                            
+                                                <a href="../aspirante/aspiranteCoordinador.jsp">Aspirante</a>
+                                            </li>
+                                            <li>
+                                                <a href="../estudiante/estudiante.jsp">Estudiante</a>
+                                            </li>
+                                            <li>
+                                                <a href="../docente/docente.jsp">Docente</a>
+                                            </li>
+                                            <li>
+                                                <a href="../modulo/cargarProfesores.jsp">Modulo</a>
+                                            </li>
                                         </ul>
                                     </li>
                                     <li>
-                                        <a href="../usuario/administrarUsuario.jsp?requerimiento=cerrarSesion">Cerrar Sesión</a>
+                                        <a href="#"><i class="fa fa-bar-chart-o fa-fw"></i> Consultar Listados<span class="fa arrow"></span></a>
+                                        <ul class="nav nav-second-level">
+                                            <li>
+                                                <a href="../aspirante/cargarListadoAspirantes.jsp">Listar Aspirantes</a>
+                                            </li>
+                                            <li>
+                                                <a href="../estudiante/cargarListadoEstudiantes.jsp">Listar Estudiantes</a>
+                                            </li>
+                                            <li>
+                                                <a href="../docente/cargarListadoDocentes.jsp">Listar Docentes</a>
+                                            </li>
+                                            <li>
+                                                <a href="../modulo/cargarListadoModulos.jsp">Listar Modulos</a>
+                                            </li>
+                                        </ul>
                                     </li>
+
                                 </ul>
                             </div>
                         </div>
@@ -117,7 +141,7 @@
                                                 <div class="col-xs-12 col-sm-6 col-md-8">
                                                     <div class="input-group">
                                                         <span class="input-group-addon"><span class="glyphicon glyphicon-envelope"></span></span>
-                                                        <input class="form-control" id="correo" name="correo" placeholder="profesor@gmail.com" <% out.print(session.getAttribute("correo"));%> type="text">
+                                                        <input class="form-control" id="correo" name="correo" placeholder="profesor@gmail.com" <% out.print(session.getAttribute("correo"));%> type="text" enabled>
                                                     </div>
                                                 </div>
                                             </div>
@@ -126,7 +150,7 @@
                                                 <div class="col-xs-12 col-sm-6 col-md-8">
                                                     <div class="input-group">
                                                         <span class="input-group-addon"><span class="glyphicon glyphicon-lock"></span></span>
-                                                        <input class="form-control" id="contrasenia" name="contrasenia" placeholder= "********" <% out.print(session.getAttribute("contrasenia"));%> type="password" >
+                                                        <input class="form-control" id="contrasenia" name="contrasenia" placeholder= "********" <% out.print(session.getAttribute("contrasenia"));%> type="password">
                                                     </div>
                                                 </div>
                                             </div>
@@ -135,7 +159,7 @@
                                                 <div class="col-xs-12 col-sm-6 col-md-8">
                                                     <div class="input-group">
                                                         <span class="input-group-addon"><span class="glyphicon glyphicon-lock"></span></span>
-                                                        <input class="form-control" id="confirmarContrasenia" name="confirmarContrasenia" placeholder= "********" <% out.print(session.getAttribute("contrasenia2"));%> type="password" >
+                                                        <input class="form-control" id="confirmarContrasenia" name="confirmarContrasenia" placeholder= "********" <% out.print(session.getAttribute("contrasenia2"));%> type="password" enabled>
                                                     </div>
                                                 </div>
                                             </div>
@@ -144,7 +168,7 @@
                                                 <div class="col-xs-12 col-sm-6 col-md-8">
                                                     <div class="input-group">
                                                         <span class="input-group-addon"><span class="glyphicon glyphicon-user"></span></span>
-                                                        <input class="form-control" id="nombre" name="nombre" placeholder="Marco" <% out.print(session.getAttribute("nombre"));%> type="text" >
+                                                        <input class="form-control" id="nombre" name="nombre" placeholder="Marco" <% out.print(session.getAttribute("nombre"));%> type="text" enabled>
                                                     </div>
                                                 </div>
                                             </div>
@@ -153,14 +177,14 @@
                                                 <div class="col-xs-12 col-sm-6 col-md-8">
                                                     <div class="input-group">
                                                         <span class="input-group-addon"><span class="glyphicon glyphicon-user"></span></span>
-                                                        <input class="form-control" id="apellido" name="apellido" placeholder="Adarme Jaimes" <% out.print(session.getAttribute("apellido"));%> type="text" >
+                                                        <input class="form-control" id="apellido" name="apellido" placeholder="Adarme Jaimes" <% out.print(session.getAttribute("apellido"));%> type="text" enabled>
                                                     </div>
                                                 </div>
                                             </div>
                                             <div class="form-group">
                                                 <label for="idTipoDocumento" class="col-xs-12 col-sm-6 col-md-4 control-label">Tipo de documento:</label>
                                                 <div class="col-xs-12 col-sm-6 col-md-8">
-                                                    <select class="form-control" id="idTipoDocumento" name="idTipoDocumento" >
+                                                    <select class="form-control" id="idTipoDocumento" name="idTipoDocumento" enabled>
                                                         <%
                                                         String [] opciones = {"CÃ©dula de ciudadania", "Tarjeta de identidad", "Pasaporte"};
                                                         for(int i = 0; i<opciones.length; i++){
@@ -175,7 +199,7 @@
                                                 <div class="col-xs-12 col-sm-6 col-md-8">
                                                     <div class="input-group">
                                                         <span class="input-group-addon"><span class="glyphicon glyphicon-barcode"></span></span>
-                                                        <input class="form-control" id="numeroDocumento" name="numeroDocumento" placeholder="88214098" <% out.print(session.getAttribute("documento"));%> type="text" >
+                                                        <input class="form-control" id="numeroDocumento" name="numeroDocumento" placeholder="88214098" <% out.print(session.getAttribute("documento"));%> type="text" enabled>
                                                     </div>
                                                 </div>
                                             </div>
@@ -184,7 +208,7 @@
                                                 <div class="col-xs-12 col-sm-6 col-md-8">
                                                     <div class="input-group">
                                                         <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span></span>
-                                                        <input class="form-control" id="fechaNacimiento" name="fechaNacimiento" placeholder="25/04/1975" <% out.print(session.getAttribute("fechaNacimiento"));%> type="text" >
+                                                        <input class="form-control" id="fechaNacimiento" name="fechaNacimiento" placeholder="25/04/1975" <% out.print(session.getAttribute("fechaNacimiento"));%> type="text" enabled>
                                                     </div>
                                                 </div>
                                             </div>
@@ -193,7 +217,7 @@
                                                 <div class="col-xs-12 col-sm-6 col-md-8">
                                                     <div class="input-group">
                                                         <span class="input-group-addon"><span class="glyphicon glyphicon-home"></span></span>
-                                                        <input class="form-control" id="direccion" name="direccion" placeholder="Av 5A #5-66 CeibaII" <% out.print(session.getAttribute("direccion"));%> type="text" >
+                                                        <input class="form-control" id="direccion" name="direccion" placeholder="Av 5A #5-66 CeibaII" <% out.print(session.getAttribute("direccion"));%> type="text" enabled>
                                                     </div>
                                                 </div>
                                             </div>
@@ -202,7 +226,7 @@
                                                 <div class="col-xs-12 col-sm-6 col-md-8">
                                                     <div class="input-group">
                                                         <span class="input-group-addon"><span class="glyphicon glyphicon-phone-alt"></span></span>
-                                                        <input class="form-control" id="telefono" name="telefono" placeholder="5756836" <% out.print(session.getAttribute("telefono"));%> type="text" >
+                                                        <input class="form-control" id="telefono" name="telefono" placeholder="5756836" <% out.print(session.getAttribute("telefono"));%> type="text" enabled>
                                                     </div>
                                                 </div>
                                             </div>
@@ -211,7 +235,7 @@
                                                 <div class="col-xs-12 col-sm-6 col-md-8">
                                                     <div class="input-group">
                                                         <span class="input-group-addon"><span class="glyphicon glyphicon-phone"></span></span>
-                                                        <input class="form-control" id="telefonoMovil" name="telefonoMovil" placeholder="3165783452" <% out.print(session.getAttribute("telefonoMovil"));%> type="text" >
+                                                        <input class="form-control" id="telefonoMovil" name="telefonoMovil" placeholder="3165783452" <% out.print(session.getAttribute("telefonoMovil"));%> type="text" enabled>
                                                     </div>
                                                 </div>
                                             </div>
@@ -237,7 +261,7 @@
                                                 <div class="col-xs-12 col-sm-6 col-md-8">
                                                     <div class="input-group">
                                                         <span class="input-group-addon"><span class="glyphicon glyphicon-stats"></span></span>
-                                                        <input class="form-control" id="escalafon" name="escalafon" placeholder="4" <% out.print(session.getAttribute("escalafon"));%> type="text" >
+                                                        <input class="form-control" id="escalafon" name="escalafon" placeholder="4" <% out.print(session.getAttribute("escalafon"));%> type="text" enabled>
                                                     </div>
                                                 </div>
                                             </div>
@@ -246,14 +270,14 @@
                                                 <div class="col-xs-12 col-sm-6 col-md-8">
                                                     <div class="input-group">
                                                         <span class="input-group-addon"><span class="glyphicon glyphicon-stats"></span></span>
-                                                        <input class="form-control" id="puntaje" name="puntaje" placeholder="3.7" <% out.print(session.getAttribute("puntaje"));%> type="text" >
+                                                        <input class="form-control" id="puntaje" name="puntaje" placeholder="3.7" <% out.print(session.getAttribute("puntaje"));%> type="text" enabled>
                                                     </div>
                                                 </div>
                                             </div>
                                             <div class="form-group">
                                                 <label for="contrato" class="col-xs-12 col-sm-6 col-md-4 control-label">Contrato:</label>
                                                 <div class="col-xs-12 col-sm-6 col-md-8">
-                                                    <select class="form-control" id="contrato" name="contrato" >
+                                                    <select class="form-control" id="contrato" name="contrato" enabled>
                                                         <%
                                                         String [] tipo = {"Catedra", "Planta"};
                                                         for(int i = 0; i<tipo.length; i++){

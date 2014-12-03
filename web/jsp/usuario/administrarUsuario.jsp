@@ -34,12 +34,14 @@
 
         if (resp.equals("A0")) {
             //out.print("Bienvenido, eres un aspirante pendiente");
+            System.out.println("holita " + resp);
             sesionUsuario = request.getSession(true);
             sesionUsuario.setAttribute("usuario", correo);
             sesionUsuario.setAttribute("estadoUsuario", resp);
 
             response.sendRedirect("../aspirante/administrarAspirante.jsp?requerimiento=mostrarInicio");
         } else if (resp.equals("A1")) {
+            System.out.println("holita2 " + resp);
             //out.print("Bienvenido, eres un aspirante aprobado, puedes cargar tu matrícula");
             sesionUsuario = request.getSession(true);
             sesionUsuario.setAttribute("usuario", correo);

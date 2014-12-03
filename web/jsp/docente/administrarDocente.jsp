@@ -61,24 +61,25 @@
         } else if (req.equals("consultarDocenteCorreo")) {
             
             try{
-                resp = facade.consultarDocenteCorreo((String) sesionUsuario.getAttribute("usuario"));         
+                resp = facade.consultarDocenteCorreo((String) sesionUsuario.getAttribute("usuario"));
+                System.out.println("datos prof:"+resp);
                 resul = resp.split(",,");
                 
-                session.setAttribute("codigo", "value=" + "\"" + (String) resp.split("-")[0] + "\"");
-                session.setAttribute("correo", "value=" + "\"" + (String) resp.split("-")[1] + "\"");
-                session.setAttribute("contrasenia", "value=" + "\"" + (String) resp.split("-")[2] + "\"");
-                session.setAttribute("contrasenia2", "value=" + "\"" + (String) resp.split("-")[2] + "\"");
-                session.setAttribute("nombre", "value=" + "\"" + (String) resp.split("-")[3] + "\"");
-                session.setAttribute("apellido", "value=" + "\"" + (String) resp.split("-")[4] + "\"");
-                session.setAttribute("tipoDocumento", "value=" + "\"" + (String) resp.split("-")[5] + "\"");
-                session.setAttribute("documento", "value=" + "\"" + (String) resp.split("-")[6] + "\"");
-                session.setAttribute("fechaNacimiento", "value=" + "\"" + (String) resp.split("-")[7] + "\"");
-                session.setAttribute("direccion", "value=" + "\"" + (String) resp.split("-")[8] + "\"");
-                session.setAttribute("telefono", "value=" + "\"" + (String) resp.split("-")[9] + "\"");
-                session.setAttribute("telefonoMovil", "value=" + "\"" + (String) resp.split("-")[10] + "\"");
+                session.setAttribute("codigo", (String) resul[0]);
+                session.setAttribute("correo", (String) resul[1]);
+                session.setAttribute("contrasenia", (String) resul[2]);
+                session.setAttribute("contrasenia2", (String) resul[2]);
+                session.setAttribute("nombre", (String) resul[3]);
+                session.setAttribute("apellido", (String) resul[4]);
+                session.setAttribute("tipoDocumento", (String) resul[5]);
+                session.setAttribute("documento", (String) resul[6]);
+                session.setAttribute("fechaNacimiento", (String) resul[7]);
+                session.setAttribute("direccion", (String) resul[8]);
+                session.setAttribute("telefono", (String) resul[9]);
+                session.setAttribute("telefonoMovil", (String) resul[10]);
 
-                session.setAttribute("escalafon", "value=" + "\"" + (String) resp.split("-")[11] + "\"");
-                session.setAttribute("puntaje", "value=" + "\"" + (String) resp.split("-")[12] + "\"");
+                session.setAttribute("escalafon", (String) resul[11]);
+                session.setAttribute("puntaje", (String) resul[12]);
 
                 session.setAttribute("Mensaje", "Éxito");
                 response.sendRedirect("docente.jsp");

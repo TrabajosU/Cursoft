@@ -37,6 +37,7 @@
         if (resp.isEmpty()) {
             session.setAttribute("Mensaje", "Datos incorrectos, verifique su usuario y contraseña");
             response.sendRedirect("../usuario/iniciarSesion.jsp");
+            return;
         }
 
         resul = resp.split(",,");

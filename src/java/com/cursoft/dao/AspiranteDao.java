@@ -61,7 +61,7 @@ public class AspiranteDao {
         ConexionMysql.conectar();
         String sql1 = "SELECT usuarios.idUsuario, usuarios.codigo, usuarios.nombre, usuarios.apellido FROM usuarios;";
         ArrayList resultado = ConexionMysql.getConsultaSQL(sql1);
-        System.out.println("el resultadooooooooooooooooooooooooooooo "+resultado);
+        System.out.println("el resultadooooooooooooooooooooooooooooo " + resultado);
         System.out.println("el resultado es:     " + resultado.toString());
         String consulta = "";
         for (int i = 0; i < resultado.size(); i++) {
@@ -69,7 +69,7 @@ public class AspiranteDao {
             String[] idUsuarios = resultado.get(i).toString().split("-");
 
             ArrayList resultado2 = ConexionMysql.getConsultaSQL("SELECT aspirantes.estado FROM aspirantes WHERE idUsuario='"
-                    + idUsuarios[0] + "';");            
+                    + idUsuarios[0] + "';");
             if (resultado2 != null && !resultado2.isEmpty()) {
                 System.out.println("el resultado 2 es igual a:  " + resultado2.toString());
                 System.out.println(resultado2.toString());
@@ -93,14 +93,13 @@ public class AspiranteDao {
         String sql = "UPDATE aspirantes SET estado = '" + estad + "' WHERE idUsuario = '" + idUsuario + "'";
 
         boolean x = ConexionMysql.ejecutarActualizacionSQL(sql);
-        
+
         //resultado = ConexionMysql.getConsultaSQL("SELECT aspirantes.idAspirante FROM aspirantes WHERE idUsuario = '"+idUsuario+"';");
-        
         /*if(estad == 1){
-            String idAspirante = ((String) resultado.get(0)).split("-")[0];  
-            String sq = "INSERT INTO estudiantes (idAspirante, nota, estado, reciboPagoMatricula) VALUES ('"+idAspirante+"','0','0','reciboPagoMatricula')";
-            ConexionMysql.ejecutarActualizacionSQL(sq);
-        }*/
+         String idAspirante = ((String) resultado.get(0)).split("-")[0];  
+         String sq = "INSERT INTO estudiantes (idAspirante, nota, estado, reciboPagoMatricula) VALUES ('"+idAspirante+"','0','0','reciboPagoMatricula')";
+         ConexionMysql.ejecutarActualizacionSQL(sq);
+         }*/
         ConexionMysql.desconectar();
         System.out.println("actualizo estado ???? : " + x);
         return;
@@ -115,7 +114,8 @@ public class AspiranteDao {
 
         ArrayList resultado = ConexionMysql.getConsultaSQL("SELECT * FROM usuarios WHERE correo = '" + correo + "';");
 
-        if (resultado != null || resultado.isEmpty()) {
+        if (resultado == null || resultado.isEmpty()) {
+            System.out.println("buenas0");
             return "";
         }
         String[] registro = resultado.get(0).toString().split("-");
@@ -131,16 +131,16 @@ public class AspiranteDao {
         resultado = ConexionMysql.getConsultaSQL("SELECT * FROM aspirantes WHERE idUsuario='"
                 + idUsuario + "';");
 
-        if (resultado.isEmpty()) {
+        if (resultado.isEmpty()) {            
             return "";
         }
-
-        registro = resultado.get(0).toString().split("-");
         
+        registro = resultado.get(0).toString().split("-");
+
         String repFinMat = registro[4].replace("%20", "-");
         String repPazSalvo = registro[5].replace("%20", "-");
         String recInsc = registro[6].replace("%20", "-");
-        
+
         info += registro[2] + ",," + registro[3] + ",," + repFinMat + ",," + repPazSalvo
                 + ",," + recInsc;
 
@@ -185,7 +185,7 @@ public class AspiranteDao {
         String repFinMat = registro[4].replace("%20", "-");
         String repPazSalvo = registro[5].replace("%20", "-");
         String recInsc = registro[6].replace("%20", "-");
-        
+
         info += registro[2] + ",," + registro[3] + ",," + repFinMat + ",," + repPazSalvo
                 + ",," + recInsc;
 
@@ -196,20 +196,20 @@ public class AspiranteDao {
 
     public String obtenerIdAspirante(String correo) {
 
-        try{
-            
+        try {
+
             ConexionMysql.conectar();
-            
+
             String sql = "SELECT a.idAspirante FROM aspirantes a, usuarios u"
-                        + " WHERE u.correo = '" + correo + "' AND u.idUsuario = a.idUsuario;";
-            
-            ArrayList <String> res = ConexionMysql.getConsultaSQL(sql);
-            
+                    + " WHERE u.correo = '" + correo + "' AND u.idUsuario = a.idUsuario;";
+
+            ArrayList<String> res = ConexionMysql.getConsultaSQL(sql);
+
             ConexionMysql.desconectar();
-            
+
             return res.get(0).split("-")[0];
-                    
-        }catch(Exception e){
+
+        } catch (Exception e) {
             return "";
         }
     }
