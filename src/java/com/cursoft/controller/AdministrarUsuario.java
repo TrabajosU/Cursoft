@@ -18,11 +18,11 @@ public class AdministrarUsuario {
     
     }
     
-    public String iniciarSesion(UsuarioDto usuario){
+    public String iniciarSesion(UsuarioDto usuario, String [] respuesta){
         
         UsuarioDao user = new UsuarioDao();
                 
-        return user.validarInicioSesion(usuario);
+        return user.validarInicioSesion(usuario, respuesta);
     }
     
      public String eliminarUsuario(UsuarioDto usuario, byte estado){

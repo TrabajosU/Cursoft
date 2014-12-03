@@ -50,13 +50,14 @@ public class UsuarioDao {
         return x;
     }
     
-    public String validarInicioSesion(UsuarioDto usuario){
+    public String validarInicioSesion(UsuarioDto usuario, String [] respuesta){
         
         ConexionMysql.conectar();
         
         ArrayList resultado = ConexionMysql.getConsultaSQL("SELECT * FROM usuarios WHERE correo = '" + usuario.getCorreo() + "';");
         //consulta += resultado.toString();        
-                
+        
+        respuesta [0] = ConexionMysql.hayConexion() + "";
         if(resultado == null || resultado.isEmpty()){            
             return "-1";
         }

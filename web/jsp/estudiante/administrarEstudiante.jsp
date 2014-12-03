@@ -102,6 +102,11 @@
 
         }
     } else if (val.equals("consultarCorreo")) {
+        
+        if(sesionUsuario.getAttribute("estadoUsuario").equals("E2")){
+            response.sendRedirect("estudianteRechazado.jsp");
+            return;
+        }
 
         resp = facade.consultarEstudianteCorreo((String) sesionUsuario.getAttribute("usuario"));
 

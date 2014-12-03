@@ -51,8 +51,8 @@ public class Facade {
         return new AdministrarAspirante().actualizarAspirante(usuario, aspirante);
     }
 
-    public String iniciarSesion(UsuarioDto usuario) {
-        return new AdministrarUsuario().iniciarSesion(usuario);
+    public String iniciarSesion(UsuarioDto usuario, String [] respuesta) {
+        return new AdministrarUsuario().iniciarSesion(usuario, respuesta);
     }
 
     public String consultarAspirantes() {

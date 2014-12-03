@@ -29,7 +29,8 @@
         usuario.setCorreo(correo);
         usuario.setContrasenia(contrasenia);
 
-        String resp = facade.iniciarSesion(usuario);
+        String [] respuesta = new String[1];
+        String resp = facade.iniciarSesion(usuario, respuesta);
 
         if (resp.equals("A0")) {
             //out.print("Bienvenido, eres un aspirante pendiente");
@@ -117,7 +118,7 @@
             String mensaje = "";
 
             if (resp.equals("-1")) {
-                mensaje = "Datos incorrectos, verifique su usuario y contraseña";
+                mensaje = "Datos incorrectos, verifique su usuario y contraseña\n" + respuesta[0];
             } else if (resp.equals("-2")) {
                 mensaje = "Su cuenta se encuentra inhabilitada";
             }

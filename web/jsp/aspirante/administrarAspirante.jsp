@@ -54,8 +54,8 @@
                 response.sendRedirect("../usuario/iniciarSesion.jsp");
             }
             //sesionUsuario.setAttribute("cargaMatricula", "");
-            sesionUsuario.setAttribute("nombre", (String) resp.split(",,")[3]);
-            sesionUsuario.setAttribute("apellido", (String) resp.split(",,")[4]);
+            session.setAttribute("nombre", (String) resp.split(",,")[3]);
+            session.setAttribute("apellido", (String) resp.split(",,")[4]);
 
             if (sesionUsuario.getAttribute("estadoUsuario").equals("A0")) {
                 response.sendRedirect("inicioAspirantePendiente.jsp");

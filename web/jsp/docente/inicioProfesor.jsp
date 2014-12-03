@@ -59,7 +59,7 @@
                                         <a href="#"><i class="fa fa-bar-chart-o fa-fw"></i> Operaciones<span class="fa arrow"></span></a>
                                         <ul class="nav nav-second-level">
                                             <li>
-                                                <a href="administrarDocente.jsp?requerimiento=consultarCorreo">Consultar Datos</a>
+                                                <a href="administrarDocente.jsp?requerimiento=consultarDocenteCorreo">Consultar Datos</a>
                                             </li>                                            
                                         </ul>
                                     </li>
@@ -117,7 +117,7 @@
 
             <footer>
                 <p><strong>Copyright © 2014. Programa de Ingeniería de Sistemas - UFPS</strong></p>
-                <p>Desarrollado por <strom><a href="#">Megaterios</a></strong></p>
+                <p>Desarrollado por <strong><a href="#">Megaterios</a></strong></p>
             </footer>
 
             <!--Scripts-->
