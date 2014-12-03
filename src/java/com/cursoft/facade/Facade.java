@@ -211,4 +211,26 @@ public class Facade {
             throw new RuntimeException(e);            
         }
     }
+    
+    public boolean esNumero(String valor){
+        
+        try{
+            Integer.parseInt(valor);
+            return true;
+        }catch(NumberFormatException n){
+            return false;
+        }
+                
+    }
+    
+    public boolean esNumeroDecimal(String valor){
+        
+        try{
+            Float.parseFloat(valor);
+            return true;
+        }catch(NumberFormatException n){
+            return false;
+        }
+                
+    }
 }

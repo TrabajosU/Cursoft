@@ -4,6 +4,21 @@
     Author     : Jhorman Perez
 --%>
 
+<%@page import="java.io.FileInputStream"%>
+<%@page import="java.io.BufferedInputStream"%>
+<%@page import="org.apache.commons.net.ftp.FTP"%>
+<%@page import="org.apache.commons.net.ftp.FTPReply"%>
+<%@page import="java.net.InetAddress"%>
+<%@page import="org.apache.commons.net.ftp.FTPClient"%>
+<%@page import="org.apache.commons.fileupload.FileUploadException"%>
+<%@page import="org.apache.commons.fileupload.FileItem"%>
+<%@page import="java.util.Iterator"%>
+<%@page import="java.util.List"%>
+<%@page import="org.apache.commons.fileupload.servlet.ServletFileUpload"%>
+<%@page import="java.io.File"%>
+<%@page import="org.apache.commons.fileupload.disk.DiskFileItemFactory"%>
+<%@page import="java.util.regex.Matcher"%>
+<%@page import="java.util.regex.Pattern"%>
 <%--<%@page import = "com.cursoft.facade.Facade"%>--%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -57,8 +72,8 @@
 
                 resp = facade.consultarAspiranteCorreo((String) sesionUsuario.getAttribute("usuario"));
                 resul = resp.split(",,");
-                
-                System.out.println("SOY RESUL: "+resp);
+
+                System.out.println("SOY RESUL: " + resp);
                 sesionUsuario.setAttribute("codigo", "value=" + "\"" + resul[0] + "\"");
                 sesionUsuario.setAttribute("correo", "value=" + "\"" + resul[1] + "\"");
                 sesionUsuario.setAttribute("contrasenia", "value=" + "\"" + resul[2] + "\"");
@@ -77,7 +92,7 @@
 
                 sesionUsuario.setAttribute("reporteFinalizacionMaterias", resul[13]);
                 sesionUsuario.setAttribute("reportePazSalvo", resul[14]);
-                sesionUsuario.setAttribute("reciboInscripcion", resul[15]);                
+                sesionUsuario.setAttribute("reciboInscripcion", resul[15]);
 
                 response.sendRedirect("aspirante.jsp");
 
@@ -240,7 +255,7 @@
 
                 String reciboPagoMatricula = "http://sandbox1.ufps.edu.co/~ufps_3/ArchivosCursoft/pagomatricula.png";
                 String idAspirante = facade.obtenerIdAspirante((String) sesionUsuario.getAttribute("usuario"));
-                
+
                 System.out.println("consultaba id aspirante");
                 boolean registro = facade.cargarPagoMatricula(idAspirante, reciboPagoMatricula);
                 if (registro) {
@@ -296,12 +311,13 @@
             }
 
         }
-        
+
     } else if (req.equals("registrarAspirante")) {
 
         String codigo = request.getParameter("codigo");
         String correo = request.getParameter("correo");
         String contrasenia = request.getParameter("contrasenia");
+        String contraseniaConfirmacion = request.getParameter("confirmarContrasenia");
         String nombre = request.getParameter("nombre");
         String apellido = request.getParameter("apellido");
         int idTipoDocumento = Integer.parseInt(request.getParameter("idTipoDocumento"));
@@ -310,13 +326,33 @@
         String direccion = request.getParameter("direccion");
         String telefono = request.getParameter("telefono");
         String telefonoMovil = request.getParameter("telefonoMovil");
-
         String promedioPonderado = request.getParameter("promedioPonderado");
         String semestreFinalizacionMaterias = request.getParameter("semestreFinalizacionMaterias");
 
         String reporteFinalizacionMaterias = "http://sandbox1.ufps.edu.co/~ufps_3/ArchivosCursoft/reportefinmaterias.png";
         String reportePazSalvo = "http://sandbox1.ufps.edu.co/~ufps_3/ArchivosCursoft/pazysalvo.png";
         String reciboInscripcion = "http://sandbox1.ufps.edu.co/~ufps_3/ArchivosCursoft/inscripcion.png";
+
+        if (!facade.esNumero(codigo) || !facade.esNumero(numeroDocumento) || !facade.esNumero(telefono)
+                || !facade.esNumeroDecimal(promedioPonderado)) {
+            session.setAttribute("Mensaje", "Formato de datos inválidos. Por favor, llene el formulario nuevamente.");
+            response.sendRedirect("registrarAspirante.jsp");
+            return;
+        }
+        if (!contrasenia.equals(contraseniaConfirmacion)) {
+            session.setAttribute("Mensaje", "La confirmación de contraseña es inválida.");
+            response.sendRedirect("registrarAspirante.jsp");
+            return;
+        }
+        Pattern pat = Pattern.compile("[a-zA-Z]*");
+        Matcher mat = pat.matcher(nombre);
+        Matcher mat2 = pat.matcher(apellido);
+
+        if (!mat.matches() || !mat2.matches()) {
+            session.setAttribute("Mensaje", "Formato de datos inválidos. Por favor, llene el formulario nuevamente.");
+            response.sendRedirect("registrarAspirante.jsp");
+            return;
+        }
 
         usuario.setCodigo(codigo);
         usuario.setCorreo(correo);
@@ -337,6 +373,45 @@
         aspirante.setReportePazSalvo(reportePazSalvo);
         aspirante.setReciboInscripcion(reciboInscripcion);
 
+        //Cargando archivos a servidor
+        /*
+         try {
+            
+         FTPClient ftpClient = new FTPClient();
+         ftpClient.connect(InetAddress.getByName("http://sandbox1.ufps.edu.co:8080/"));
+         ftpClient.login("ufps_3", "ufps_82");
+
+         //Verificar conexión con el servidor.
+         int reply = ftpClient.getReplyCode();
+
+         System.out.println("Respuesta recibida de conexión FTP:" + reply);
+
+         if (FTPReply.isPositiveCompletion(reply)) {
+         System.out.println("Conectado Satisfactoriamente");
+         } else {
+         System.out.println("Imposible conectarse al servidor");
+         }
+
+         //Verificar si se cambia de direcotirio de trabajo
+         ftpClient.changeWorkingDirectory("/");//Cambiar directorio de trabajo
+         System.out.println("Se cambió satisfactoriamente el directorio");
+
+         //Activar que se envie cualquier tipo de archivo
+         ftpClient.setFileType(FTP.BINARY_FILE_TYPE);
+
+         BufferedInputStream buffIn = null;
+         buffIn = new BufferedInputStream(new FileInputStream(""));//Ruta del archivo para enviar
+         ftpClient.enterLocalPassiveMode();
+         ftpClient.storeFile("", buffIn);//Ruta completa de alojamiento en el FTP
+
+         buffIn.close(); //Cerrar envio de arcivos al FTP
+         ftpClient.logout(); //Cerrar sesión
+         ftpClient.disconnect();//Desconectarse del servidor
+         } catch (Exception e) {
+         System.out.println(e.getMessage());
+         System.out.println("Algo malo sucedió");
+         }
+         */
         int reg = facade.registrarAspirante(usuario, aspirante);
 
         if (reg == 1) {
@@ -347,7 +422,8 @@
 
         response.sendRedirect("../usuario/iniciarSesion.jsp");
 
-    } else if (req.equals("mostrarRegistrarAspirante")) {
+    } else if (req.equals(
+            "mostrarRegistrarAspirante")) {
         session.setAttribute("Mensaje", "");
         response.sendRedirect("registrarAspirante.jsp");
     } else {
