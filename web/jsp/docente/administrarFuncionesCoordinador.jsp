@@ -4,6 +4,7 @@
     Author     : Manuel
 --%>
 
+<%@page import="java.util.Enumeration"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <jsp:useBean id="facade" class="com.cursoft.facade.Facade"></jsp:useBean>
 <jsp:useBean id="usuario" class="com.cursoft.dto.UsuarioDto"></jsp:useBean>
@@ -230,9 +231,9 @@
             
             
             //mirar si aca tambien
-            String [] profesor = profes[prof].split("-");
+            String [] profesor = profes[prof].split(";");
             
-            String codigoProfe = profesor[0];
+            String codigoProfe = profesor[0].split(",,")[0];
             
             modulo.setNombre(nombre);
             modulo.setHoras(horas);
@@ -276,7 +277,7 @@
             
             System.out.println("el profesor es: "+profesor[0].toString());
             
-            String codigoProfe = profesor[0];
+            String codigoProfe = profesor[0].split(",,")[0];
             
             System.out.println("El codigo profe es:"+codigoProfe);
             modulo.setNombre(nombre);
@@ -303,6 +304,7 @@
         modulo.setNombre(nombre);
         String consulta = facade.consultarModulo(modulo);
         
+        if(!consulta.isEmpty()){
         session.setAttribute("nombre", "value="+ "\""+modulo.getNombre()+ "\"");
         session.setAttribute("horas", "value="+ "\""+modulo.getHoras()+ "\"");
         session.setAttribute("fechaInicio", "value="+ "\""+modulo.getFechaInicio()+ "\"");
@@ -317,7 +319,7 @@
         session.setAttribute("profesores", profesores);
         
         session.setAttribute("Mensaje", "Consulta Exitosa");
-        
+        }
         response.sendRedirect("../modulo/modulo.jsp");
     }
     
@@ -343,7 +345,7 @@
         String codigo = request.getParameter("codigo");
         usuario.setCodigo(codigo);
         
-        String consulta = facade.consultarAspiranteCodigo(codigo);        
+        String consulta = facade.consultarAspiranteCodigo(usuario.getCodigo());        
         System.out.println("el aspirante consultado es: "+consulta);
         
         if(!consulta.isEmpty()){
@@ -371,7 +373,66 @@
             response.sendRedirect("../aspirante/aspiranteCoordinador.jsp");
         }
     }
-    
+    else if(bot.equals("actualizarAspirante")){
+        
+        String codigo = request.getParameter("codigo");   
+        String correo = request.getParameter("correo");
+        String contrasenia = request.getParameter("contrasenia");
+        String nombre = request.getParameter("nombre");
+        String apellido = request.getParameter("apellido");
+        int idTipoDocumento = Integer.parseInt(request.getParameter("idTipoDocumento"));
+        String numeroDocumento = request.getParameter("numeroDocumento");
+        String fechaNacimiento = request.getParameter("fechaNacimiento");
+        String direccion = request.getParameter("direccion");
+        String telefono = request.getParameter("telefono");
+        String telefonoMovil = request.getParameter("telefonoMovil");
+        
+        String promedioPonderado = request.getParameter("promedioPonderado");
+        String semestreFinalizacionMaterias = request.getParameter("semestreFinalizacionMaterias");
+        
+            // Volver todos los elementos de una session null..
+            Enumeration<String> atributos = session.getAttributeNames();
+            while(atributos.hasMoreElements()){
+                String name = atributos.nextElement();
+                session.setAttribute(name, null);
+            }
+            System.gc(); //<-- Activar el recolector de basura
+            
+        usuario.setCodigo(codigo);
+            usuario.setCorreo(correo);
+            if(!contrasenia.isEmpty()){
+                usuario.setContrasenia(contrasenia);
+            }
+            usuario.setNombre(nombre);
+            usuario.setApellido(apellido);
+            usuario.setIdTipoDocumento(idTipoDocumento);
+            usuario.setNumeroDocumento(numeroDocumento);
+            usuario.setFechaNacimiento(fechaNacimiento);
+            usuario.setDireccion(direccion);
+            usuario.setTelefono(telefono);
+            usuario.setTelefonoMovil(telefonoMovil);
+            usuario.setIdTipoUsuario(((byte) 1));
+            //out.println(usuario.getTelefonoMovil());
+            aspirante.setPromedioPonderado(promedioPonderado);
+            aspirante.setSemestreFinalizacionMaterias(semestreFinalizacionMaterias);
+            //aspirante.setReporteFinalizacionMaterias("reporteFinalizacionMaterias");
+            //aspirante.setReportePazSalvo("reportePazSalvo");
+            //aspirante.setReciboInscripcion("reciboInscripcion");
+
+            int bandera = facade.actualizarAspirante(usuario, aspirante);
+            
+            
+
+            if (bandera == 1) {
+                session.setAttribute("Mensaje", "Los datos han sido actualizados exitosamente.");
+            } else if (bandera == 0) {
+                session.setAttribute("Mensaje", "Error");
+            }
+            //bot = "consultarAspirante";
+            
+            response.sendRedirect("../aspirante/aspiranteCoordinador.jsp");
+            //response.sendRedirect("administrarFuncionesCoordinador.jsp?requerimiento=consultarAspirante");
+    }
     
     
      

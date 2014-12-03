@@ -4,6 +4,7 @@
     Author     : Manuel
 --%>
 
+<%@page import="java.util.Enumeration"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="es">
@@ -59,7 +60,13 @@
                         </div>
                         <div class="row">
                             <div id="error">
-                                <p><strong><% out.print(session.getAttribute("Mensaje"));%></strong></p>
+                                <p><strong><% 
+                                                if(session.getAttribute("Mensaje")!=null){
+                                                out.print(session.getAttribute("Mensaje"));}
+                                                
+                                                
+    
+                                %></strong></p>
                             </div>
                         </div>
                         <div class="row">
@@ -91,7 +98,7 @@
                                                 <div class="col-xs-12 col-sm-6 col-md-8">
                                                     <div class="input-group">
                                                         <span class="input-group-addon"><span class="glyphicon glyphicon-lock"></span></span>
-                                                        <input class="form-control" id="contrasenia" name="contrasenia" placeholder= "********" type="password">
+                                                        <input class="form-control" id="contrasenia" name="contrasenia" placeholder= "********" <% out.print(session.getAttribute("contrasenia"));%> type="password">
                                                     </div>
                                                 </div>
                                             </div>
@@ -100,7 +107,7 @@
                                                 <div class="col-xs-12 col-sm-6 col-md-8">
                                                     <div class="input-group">
                                                         <span class="input-group-addon"><span class="glyphicon glyphicon-lock"></span></span>
-                                                        <input class="form-control" id="confirmarContrasenia" name="confirmarContrasenia" placeholder= "********" type="password">
+                                                        <input class="form-control" id="confirmarContrasenia" name="confirmarContrasenia" placeholder= "********" <% out.print(session.getAttribute("contrasenia2"));%> type="password">
                                                     </div>
                                                 </div>
                                             </div>
@@ -226,9 +233,7 @@
                                             <div class="row">
                                                 <div class="col-xs-12 text-center">                                                    
                                                     <button class="btn btn-danger" id="consultar" name="requerimiento" value="consultarAspirante" type="submit" >Consultar</button>
-                                                    <button class="btn btn-danger" id="registrar" name="requerimiento" value="registrarAspirante" type="submit" >Registrar</button>
                                                     <button class="btn btn-danger" id="actualizar" name="requerimiento" value="actualizarAspirante" type="submit" >Actualizar</button>
-                                                    <button class="btn btn-danger" id="eliminar" name="requerimiento" value="eliminarAspirante" type="submit" >Eliminar</button>
                                                 </div>
                                             </div>
                                         </div>                                        

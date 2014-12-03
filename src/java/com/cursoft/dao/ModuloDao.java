@@ -42,7 +42,7 @@ public class ModuloDao {
         }
 
         String idDocente = this.consultarIdDocente(usuario.getCodigo());
-        sql = "INSERT INTO docentesmodulos(idDocenteFK, idModuloFK, fecha) VALUES('" + idDocente + "','" + idModulo + "','" + modulo.getFechaInicio() + "')";
+        sql = "INSERT INTO docentesmodulos(idDocenteFK, idModuloFK, fecha, estado) VALUES('" + idDocente + "','" + idModulo + "','" + modulo.getFechaInicio() + "', '1')";
         ConexionMysql.conectar();
         ConexionMysql.ejecutarActualizacionSQL(sql);
         ConexionMysql.desconectar();
@@ -61,7 +61,9 @@ public class ModuloDao {
         ConexionMysql.conectar();
 
         ArrayList resultado = ConexionMysql.getConsultaSQL("SELECT modulos.idModulo, modulos.horas, modulos.tipo, modulos.fechaInicio FROM modulos WHERE nombre='" + modulo.getNombre() + "';");
-
+        if(resultado == null || resultado.isEmpty()){
+            return "";
+        }
         String[] mod = resultado.get(0).toString().split("-");
         String idModulo = mod[0];
         modulo.setIdModulo(Integer.parseInt(idModulo));
@@ -82,7 +84,8 @@ public class ModuloDao {
         resultado.clear();
 
         resultado = ConexionMysql.getConsultaSQL("SELECT docentesmodulos.idDocenteFK FROM docentesmodulos WHERE idModuloFK='" + idModulo + "';");
-
+        
+        
         String idDocente = resultado.get(0).toString().split("-")[0];
 
         resultado.clear();
@@ -97,7 +100,11 @@ public class ModuloDao {
 
         String codProfe = resultado.get(0).toString().split("-")[0];
 
-        consulta += resultado.get(0).toString() + ";";
+        String profeAux = resultado.get(0).toString();
+        
+        String profeAux2 [] = profeAux.split("-");
+        
+        consulta += profeAux2[0] + ",," + profeAux2[1] +",," + profeAux2[2] + ";";
 
         resultado.clear();
 
@@ -106,9 +113,9 @@ public class ModuloDao {
         String d = docente.consultarProfesores();
         String[] docentes = d.split(";");
         for (int i = 0; i < docentes.length; i++) {
-            String doc[] = docentes[i].split("-");
+            String doc[] = docentes[i].split(",,");
             if (!doc[0].equals(codProfe)) {
-                consulta += doc[0] + "-" + doc[1] + "-" + doc[2] + ";";
+                consulta += doc[0] + ",," + doc[1] + ",," + doc[2] + ";";
             }
         }
         ConexionMysql.desconectar();
@@ -122,12 +129,13 @@ public class ModuloDao {
         ConexionMysql.ejecutarActualizacionSQL(sql);
         ConexionMysql.desconectar();
 
-        String horarios[] = horario.split(";");
+        String horarios [] = horario.split(";");
         String idModulo = this.consultarIdModulo(modulo);
         String sql1 = "DELETE FROM horarios WHERE idModulo='" + idModulo + "'";
         ConexionMysql.conectar();
         ConexionMysql.ejecutarActualizacionSQL(sql1);
         ConexionMysql.desconectar();
+        System.out.println("El horario que llega es: "+horario);
         for (int i = 0; i < horarios.length; i++) {
             String horas[] = horarios[i].split("-");
             System.out.println("El horario a actualizar es: " + horas.toString());
@@ -141,8 +149,11 @@ public class ModuloDao {
             System.out.println("Inserto el horario " + i);
             ConexionMysql.desconectar();
         }
-
+        System.out.println("Termino con los horarios.........");
+        
         String idDocente = this.consultarIdDocente(usuario.getCodigo());
+        
+        System.out.println("el id del docente es:     " +idDocente);
         sql = "UPDATE docentesmodulos SET idDocenteFK='" + idDocente + "', fecha='" + modulo.getFechaInicio() + "' WHERE idModuloFK='" + idModulo + "'";
         ConexionMysql.conectar();
         ConexionMysql.ejecutarActualizacionSQL(sql);
@@ -164,19 +175,21 @@ public class ModuloDao {
 
     private String consultarIdDocente(String codigo) {
         ConexionMysql.conectar();
-
+        System.out.println("El codigoooooooooo para consultar el idDocente essss:................" + codigo);
         ArrayList resultado = ConexionMysql.getConsultaSQL("SELECT usuarios.idUsuario FROM usuarios WHERE codigo='" + codigo + "';");
-
+        String idDocente="";
+        if(resultado!=null && !resultado.isEmpty()){
         String idUsuario = ((String) resultado.get(0)).split("-")[0];
         System.out.println("El idUsuario es: " + idUsuario);
         resultado.clear();
-
+        
         resultado = ConexionMysql.getConsultaSQL("SELECT docentes.idDocente FROM docentes WHERE idUsuarioDoc='"
                 + idUsuario + "';");
 
-        String idDocente = ((String) resultado.get(0)).split("-")[0];
+        idDocente = ((String) resultado.get(0)).split("-")[0];
         System.out.println("El idDocente es: " + idDocente);
         ConexionMysql.desconectar();
+        }
         return idDocente;
     }
 
